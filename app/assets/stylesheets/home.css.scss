@@ -8,6 +8,5 @@
 .top_banner {
     height: 400px;
     width: 100%;
-    background-image: url(/assets/top.jpg);
-    background-attachment: fixed;
+    background: url(/assets/top.jpg) center top fixed;
 }
