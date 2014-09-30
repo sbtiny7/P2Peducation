@@ -1,2 +1,16 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% 3.times do %>
+<div class="row">
+    <% 3.times do %>
+    <div class="span4">
+        <div class="course">
+            <div class="poster">
+                <%= image_tag "top.jpg", :width => "100%" %>
+            </div>
+            <div class="title">
+                测试课程
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+<% end %>
