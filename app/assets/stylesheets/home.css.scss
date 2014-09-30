@@ -7,5 +7,7 @@
 }
 .top_banner {
     height: 400px;
-    overflow: hidden;
+    width: 100%;
+    background-image: url(/assets/top.jpg);
+    background-attachment: fixed;
 }
