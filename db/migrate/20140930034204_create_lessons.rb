@@ -5,6 +5,7 @@ class CreateLessons < ActiveRecord::Migration
       t.integer :course_id
       t.string  :title
       t.string  :token
+      t.string  :stream_name
 
       t.timestamps
     end
