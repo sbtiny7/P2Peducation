@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930034204) do
+ActiveRecord::Schema.define(version: 20141010065753) do
+
+  create_table "bookmarks", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "bookmarkable_id"
+    t.string   "bookmarkable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "courses", force: true do |t|
     t.integer  "user_id"
@@ -31,12 +39,26 @@ ActiveRecord::Schema.define(version: 20140930034204) do
     t.datetime "updated_at"
   end
 
+  create_table "learnships", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "lesson_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "lessons", force: true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
     t.string   "title"
     t.string   "token"
     t.string   "stream_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "studyships", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
