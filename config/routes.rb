@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :users
+
   namespace :accounts do
     resources :lessons
     resources :courses
   end
+
   namespace :admin do
     resources :lessons
     resources :courses
     resources :users
   end
+
+
+
+  devise_for :users, path: "accounts",
+  controllers: {
+    sessions:      "accounts/sessions",
+    registrations: "accounts/registrations",
+    confirmations: "accounts/confirmations",
+    passwords:     "accounts/passwords",
+    unlocks:       "accounts/unlocks"
+  }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
