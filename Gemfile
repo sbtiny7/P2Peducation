@@ -42,3 +42,4 @@ gem 'spring',        group: :development
 gem 'mysql2'
 gem 'devise'
 gem "twitter-bootstrap-rails"
+gem "rolify"
