@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
     TYPES = %w(ONLINE OFFLINE)
-    CATEGORIES = %(实用技能 兴趣爱好)
+    CATEGORIES = %w(实用技能 兴趣爱好)
     belongs_to :user
     has_many :lessons
     has_many :studyships
