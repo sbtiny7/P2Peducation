@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+    mount_uploader :image, ImageUploader
     TYPES = %w(ONLINE OFFLINE)
     CATEGORIES = %w(实用技能 兴趣爱好)
     belongs_to :user
