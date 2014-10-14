@@ -41,5 +41,6 @@ gem 'spring',        group: :development
 gem 'quiet_assets', group: :development
 gem 'mysql2'
 gem 'devise'
-gem "twitter-bootstrap-rails"
-gem "rolify"
+gem 'twitter-bootstrap-rails'
+gem 'rolify'
+gem 'carrierwave'
