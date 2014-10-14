@@ -1,10 +1,11 @@
 class Accounts::CoursesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @courses = current_user.courses.all
   end
 
   # GET /courses/1
@@ -14,7 +15,7 @@ class Accounts::CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = Course.new
+    @course = current_user.courses.new
   end
 
   # GET /courses/1/edit

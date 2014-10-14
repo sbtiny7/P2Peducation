@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  rolify
+
   has_many :courses
   has_many :lessons, :through => :courses
   has_many :studyships, :as => :student
