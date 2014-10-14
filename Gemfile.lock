@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/wanxsb/carrierwave-azure.git
+  revision: 096c59c09fac3ddffc739a8879650e1f4d37f8e9
+  specs:
+    carrierwave-azure (0.0.2)
+      azure
+      carrierwave
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,8 +36,13 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    azure (0.0.0)
     bcrypt (3.1.7)
     builder (3.2.2)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -61,6 +74,8 @@ GEM
     multi_json (1.10.1)
     mysql2 (0.3.16)
     orm_adapter (0.5.0)
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -124,11 +139,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  carrierwave
+  carrierwave-azure!
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  quiet_assets
   rails (= 4.1.6)
   rolify
   sass-rails (~> 4.0.3)
