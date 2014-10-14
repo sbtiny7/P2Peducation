@@ -1,10 +1,17 @@
 class HomeController < ApplicationController
-  def index
-  end
+    before_action :authenticate_user!, :only => [:lesson]
+    def index
+    end
 
-  def courses
-  end
+    def courses
+    end
 
-  def course
-  end
+    def course
+    end
+
+    def study
+    end
+
+    def lesson
+    end
 end
