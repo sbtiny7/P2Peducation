@@ -40,7 +40,9 @@ gem 'spring',        group: :development
 gem 'quiet_assets', group: :development
 gem 'mysql2'
 gem 'devise'
-gem 'twitter-bootstrap-rails'
+#gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails' #与bootstrap配套
 gem 'rolify'
 gem 'azure', '0.6.4'
 gem 'carrierwave'
