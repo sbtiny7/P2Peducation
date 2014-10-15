@@ -20,7 +20,7 @@
         </a>
         <a class="brand" href="#">教育直播</a>
         <div class="container nav-collapse">
-          <ul class="nav">
+          <ul class="nav navbar-nav">
             <% if current_user %>
             <li><%= current_user.username || current_user.email %></li>
             <li><%= link_to '修改资料', edit_user_registration_path %></li>
