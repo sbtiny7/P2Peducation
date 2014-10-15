@@ -1,5 +1,4 @@
-source 'https://rubygems.org'
-
+source 'http://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -43,6 +42,6 @@ gem 'mysql2'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'rolify'
+gem 'azure', '0.6.4'
 gem 'carrierwave'
-gem 'carrierwave-azure'
 gem 'carrierwave-azure', :git => 'https://github.com/wanxsb/carrierwave-azure.git'
