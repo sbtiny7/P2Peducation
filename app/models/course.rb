@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
     acts_as_commentable :chat, :qa
     mount_uploader :image, ImageUploader
     TYPES = %w(ONLINE OFFLINE)
-    CATEGORIES = %w(实用技能 兴趣爱好)
+    COURSE_CATEGORIES = %w(实用技能 兴趣爱好)
     belongs_to :user
     has_many :lessons
     has_many :studyships
