@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014022102) do
+ActiveRecord::Schema.define(version: 20141023080152) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(version: 20141014022102) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", force: true do |t|
+    t.string   "title",            limit: 50, default: ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.integer  "user_id"
@@ -109,5 +123,13 @@ ActiveRecord::Schema.define(version: 20141014022102) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+
+  create_table "videos", force: true do |t|
+    t.string   "stream_name"
+    t.integer  "videoable_id"
+    t.string   "videoable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

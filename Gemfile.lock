@@ -35,7 +35,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts_as_commentable (3.0.1)
+    acts_as_commentable (4.0.2)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (3.1.1.20141001)
       execjs
@@ -156,7 +156,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_commentable
+  acts_as_commentable (= 4.0.2)
   autoprefixer-rails
   azure (= 0.6.4)
   bootstrap-sass (~> 3.2.0)
