@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
   has_many :learned_lessons, :through => :learnships, :source => :lesson
   has_many :bookmarks
   has_many :marked_courses, :through => :bookmarks, :source => :bookmarkable, :source_type => "Course"
+
+  def is_admin?
+    self.has_role? :admin
+  end
+
+  def is_teacher?
+    self.has_role? :teacher
+  end
 end
