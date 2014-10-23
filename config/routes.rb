@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get 'api/study/study.:format' => 'api/study#study'
 
 
   devise_for :users, path: "accounts",
