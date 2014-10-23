@@ -17,7 +17,7 @@ class CreateCourses < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :courses, :token, unique: true
   end
 
-  add_index :courses, :token, unique: true
 end
