@@ -7,6 +7,7 @@ class Course < ActiveRecord::Base
     has_many :lessons
     has_many :studyships
     has_many :students, :through => :studyships
+    has_many :videos, :as => :videoable
 
     validates :course_type, :inclusion  => {
         :in      => TYPES,
