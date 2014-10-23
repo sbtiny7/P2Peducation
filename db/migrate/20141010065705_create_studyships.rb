@@ -7,5 +7,7 @@ class CreateStudyships < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :studyships, :token, unique: true
   end
 end

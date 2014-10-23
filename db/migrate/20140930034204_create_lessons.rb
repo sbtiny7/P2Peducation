@@ -5,9 +5,10 @@ class CreateLessons < ActiveRecord::Migration
       t.integer :course_id
       t.string  :title
       t.string  :token
-      t.string  :stream_name
 
       t.timestamps
     end
+
+    add_index :lessons, :token, unique: true
   end
 end

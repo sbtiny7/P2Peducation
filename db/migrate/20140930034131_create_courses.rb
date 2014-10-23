@@ -18,4 +18,6 @@ class CreateCourses < ActiveRecord::Migration
       t.timestamps
     end
   end
+
+  add_index :courses, :token, unique: true
 end
