@@ -3,25 +3,25 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <%= f.text_field :title, :placeholder => "请输入标题" %>
+            <%= f.text_field :title, :class => "form-control", :placeholder => "请输入标题" %>
             <span class="error_message"></span>
         </div>
         <div class="form-group">
-            <%= f.select :category, Course::CATEGORIES %>
+            <%= f.select :category, :class => "form-control", Course::CATEGORIES %>
             <span class="error_message"></span>
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <%= f.text_field :start_time, :placeholder => "开始时间" %>
+                <%= f.text_field :start_time, :class => "form-control", :placeholder => "开始时间" %>
                 <span class="error_message"></span>
             </div>
             <div class="form-group col-md-6">
-                <%= f.text_field :end_time, :placeholder => "结束时间" %>
+                <%= f.text_field :end_time, :class => "form-control", :placeholder => "结束时间" %>
                 <span class="error_message"></span>
             </div>
         </div>
         <div class="form-group">
-            <%= f.text_field :price, :placeholder => "请输入价格" %>
+            <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
             <span class="error_message"></span>
         </div>
         <!--div class="form-group">
@@ -30,13 +30,13 @@
         </div-->
     </div>
     <div class="col-md-8">
-        <%= f.file_field :image %>
+        <%= f.file_field :image, :class => "form-control" %>
     </div>
 </div>
 
 <div class="detail">
     <div class="form-group">
-        <%= f.text_area :detail %>
+        <%= f.text_area :detail, :class => "form-control" %>
         <span class="error_message"></span>
     </div>
 </div>
