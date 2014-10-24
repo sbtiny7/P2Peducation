@@ -13,6 +13,7 @@ class CreateCourses < ActiveRecord::Migration
       t.datetime :end_time
       t.integer  :students_count
       t.integer  :students_max
+      t.decimal  :price,         :precision => 15, :scale => 3
       t.integer  :mark_count
       t.text     :detail
 
