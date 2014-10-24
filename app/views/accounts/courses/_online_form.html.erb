@@ -68,8 +68,6 @@ $('.upload_image:not(input)').mouseover(function(){
     $('icon.upload_image').show();
 }).mouseout(function(){
     $('icon.upload_image').hide();
-}).click(function(){
-    $('input.upload_image').click();
 })
 
 $('input.upload_image').change(function(){
@@ -84,6 +82,8 @@ function on_upload_image(sender) {
     var img = sender.parent().children('img')[0];
     if( sender[0].files &&  sender[0].files[0] ){
         img.src = window.URL.createObjectURL(sender[0].files[0]);
+    } else {
+        img.src = sender.val();
     }
 }
 
