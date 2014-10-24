@@ -1,6 +1,6 @@
 <div class="list-group">
   <span class="list-group-item">
-    <%= link_to image_tag(current_user.avatar.url), account_upload_avatar_path, :class => 'avatar' %>
+    <%= link_to image_tag(current_user.avatar.url, :class => 'avatar'), account_upload_avatar_path %>
   </span>
   <%= link_to '个人设置', edit_user_registration_path, :class => "list-group-item" %>
   <%= link_to '修改密码', edit_user_registration_path, :class => "list-group-item" %><!-- TODO -->
