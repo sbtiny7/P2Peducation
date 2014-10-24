@@ -1,19 +1,24 @@
-<% 3.times do %>
-<div class="row">
+<div class="top_banner">
+</div>
+
+<div class="container our_container">
     <% 3.times do %>
-    <div class="col-md-4">
-        <div class="course">
-            <div class="poster">
-                <%= image_tag "top.jpg", :width => "100%" %>
-            </div>
-            <div class="title">
-                测试课程
-                <div class="time">
-                    9-30 21:00
+    <div class="row">
+        <% 3.times do %>
+        <div class="col-md-4">
+            <div class="course">
+                <div class="poster">
+                    <%= image_tag "top.jpg", :width => "100%" %>
+                </div>
+                <div class="title">
+                    测试课程
+                    <div class="time">
+                        9-30 21:00
+                    </div>
                 </div>
             </div>
         </div>
+        <% end %>
     </div>
     <% end %>
 </div>
-<% end %>

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
     before_action :authenticate_user!, :only => [:lesson]
+
     def index #首页
     end
 

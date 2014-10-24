@@ -5,6 +5,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string   :title
       t.string   :token
       t.string   :image
+      t.string   :tmp_image
       t.string   :category
       t.string   :address
       t.string   :course_type

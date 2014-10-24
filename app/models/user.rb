@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   rolify
+  mount_uploader :avatar, AvatarUploader
+  mount_uploader :tmp_avatar, TempUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

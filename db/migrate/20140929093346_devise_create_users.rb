@@ -32,6 +32,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       
       t.string :username, null: false, default: ""
       t.string :phone,    null: false, default: ""
+      t.string :avatar
+      t.string :tmp_avatar
 
       t.timestamps
     end

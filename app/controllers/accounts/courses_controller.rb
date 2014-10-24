@@ -2,6 +2,8 @@ class Accounts::CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
+  layout 'accounts_teacher'
+
   # GET /courses
   # GET /courses.json
   def index
