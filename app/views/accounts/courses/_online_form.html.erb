@@ -58,6 +58,6 @@
     })
 
     $('div#step1 #online input.upload_image').change(function(){
-        $('div#step1 #online img.upload_image').attr('src', $(this).val());
+        $('div#step1 #online img.upload_image').attr('src', "file:///" + $(this).val());
     })
 </script>
