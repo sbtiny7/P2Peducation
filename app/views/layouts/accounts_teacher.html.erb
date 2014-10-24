@@ -11,20 +11,20 @@
 </head>
 <body>
   <%#= bootstrap_flash %>
-  <%= render "home/header.html.erb" %>
+  <%= render "layout/header.html.erb" %>
 
   <div class="container our_container">
 
     <div class="row">
       <div class="col-md-3 sidebar">
-        <%= "home/sidebar_teacher.html.erb" %>
+        <%= "layout/sidebar_teacher.html.erb" %>
       </div>
       <div class="col-md-9 content">
         <%= yield %>
       </div>
     </div>
   </div>
-  <%= render "home/footer.html.erb" %>
+  <%= render "layout/footer.html.erb" %>
 
 </body>
 </html>
