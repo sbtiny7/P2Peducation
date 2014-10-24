@@ -33,6 +33,7 @@
         <div class="upload_image">
             <img src="<%= @course.image.url %>" class="upload_image" />
             <%= f.file_field :image, :class => "form-control upload_image" %>
+            <icon class="upload_image">上传图像</icon>
         </div>
     </div>
 </div>
@@ -48,3 +49,11 @@
     <a class='btn btn-primary'>提交</a>
 </div>
 <% end %>
+
+<script type="text/javascript">
+    $('.upload_image').mouseover(function(){
+        $('icon.upload_image').show();
+    }).mouseout(function(){
+        $('icon.upload_image').hide();
+    })
+</script>
