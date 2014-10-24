@@ -29,11 +29,9 @@
             <span class="error_message"></span>
         </div-->
     </div>
-    <div class="col-md-6">
-        <div class="upload_image">
-            <img src="<%= @course.image.url %>" class="upload_image" />
-            <%= f.file_field :image, :class => "form-control upload_image" %>
-        </div>
+    <div class="col-md-6 upload_image">
+        <img src="<%= @course.image.url %>" class="upload_image" />
+        <%= f.file_field :image, :class => "form-control upload_image" %>
     </div>
 </div>
 

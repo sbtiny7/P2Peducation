@@ -15,7 +15,9 @@
 
 div.upload_image {
     position: relative;
-    padding: 0 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 9px;
     height: 300px;
 }
 input.upload_image {
