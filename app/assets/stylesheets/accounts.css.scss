@@ -25,16 +25,13 @@ div.upload_image {
 }
 input.upload_image {
     margin: 9px;
+    padding: 0;
     position: absolute;
     width: 400px;
     height: 300px;
-    opacity: 0;
-    padding: 0;
-    filter: alpha(opacity=0);
-    +width:0px;
-    +top:11px;
-    +left:300px;
     z-index: 999;
+    //opacity: 0;
+    //filter: alpha(opacity=0);
 }
 img.upload_image {
     position: absolute;
