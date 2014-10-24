@@ -90,7 +90,7 @@ function on_upload_image(sender) {
         var ie_preview = sender.parent().children('.ie_preview')[0];
         var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper')[0];
         sender.parent().children('img').hide();
-        sender[0].select();
+        //sender[0].select();
         var path = document.selection.createRange().text;
         ie_preview_wrapper.css({"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\""+ path + "\")"}).show();
         ie_preview.css({"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\""+ path + "\")"}).show();
