@@ -64,12 +64,12 @@
 <% end %>
 
 <script type="text/javascript">
-$('.upload_image').mouseover(function(){
+$('.upload_image:not(input)').mouseover(function(){
     $('icon.upload_image').show();
 }).mouseout(function(){
     $('icon.upload_image').hide();
 }).click(function(){
-    $('input.upload_image').select();
+    $('input.upload_image').click();
 })
 
 $('input.upload_image').change(function(){
