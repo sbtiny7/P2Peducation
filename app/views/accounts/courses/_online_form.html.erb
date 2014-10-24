@@ -67,7 +67,7 @@ function on_upload_image(sender) {
         return false;   
     }
     var img = sender.parent().children('img')[0];
-    if( sender.files &&  sender.files[0] ){
+    if( sender[0].files &&  sender[0].files[0] ){
         img.src = sender.files[0].getAsDataURL();       
     }
 }
