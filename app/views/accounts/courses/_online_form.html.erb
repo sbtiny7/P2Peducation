@@ -12,11 +12,11 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <%= f.text_field :start_time, :class => "form-control", :placeholder => "开始时间" %>
+                <%= f.text_field :start_time, :class => "form-control datetime", :placeholder => "开始时间" %>
                 <span class="error_message"></span>
             </div>
             <div class="form-group col-md-6">
-                <%= f.text_field :end_time, :class => "form-control", :placeholder => "结束时间" %>
+                <%= f.text_field :end_time, :class => "form-control datetime", :placeholder => "结束时间" %>
                 <span class="error_message"></span>
             </div>
         </div>
@@ -57,20 +57,21 @@ $('.upload_image').mouseover(function(){
     $('icon.upload_image').hide();
 })
 
-$('div#step1 #online input.upload_image').change(function(){
+$('input.upload_image').change(function(){
     on_upload_image($(this));
 })
 
 function on_upload_image(sender) {
-    if( !sender.val().match( /.jpg|.jpeg|.gif|.png|.bmp/i ) ){   
-        alert('图片格式无效！');   
-        return false;   
+    if( !sender.val().match( /.jpg|.jpeg|.gif|.png|.bmp/i ) ){
+        alert('图片格式无效！');
+        return false;
     }
     var img = sender.parent().children('img')[0];
     if( sender[0].files &&  sender[0].files[0] ){
-        img.src = window.URL.createObjectURL(sender[0].files[0]);       
+        img.src = window.URL.createObjectURL(sender[0].files[0]);
     }
 }
 
 
+$('input.datetime').datepicker({ constrainInput: false })
 </script>
