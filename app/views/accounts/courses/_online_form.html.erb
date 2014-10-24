@@ -1,7 +1,7 @@
 <%= form_for([:accounts, @course], :html => {:id => 'online_course'}, :remote => true) do |f| %>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
             <%= f.text_field :title, :class => "form-control", :placeholder => "请输入标题" %>
             <span class="error_message"></span>
@@ -29,7 +29,7 @@
             <span class="error_message"></span>
         </div-->
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
         <%= f.file_field :image, :class => "form-control" %>
     </div>
 </div>
