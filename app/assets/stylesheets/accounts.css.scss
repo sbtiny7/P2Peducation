@@ -17,21 +17,21 @@ div.upload_image {
     position: relative;
     border: 1px solid #cccccc;
     border-radius: 4px;
-    padding: 9px;
     height: 300px;
 }
 input.upload_image {
+    margin: 9px;
     position: absolute;
     width: 400px;
     height: 300px;
     opacity: 0;
-    margin: 0;
     padding: 0;
 }
 img.upload_image {
     position: absolute;
     width: 400px;
     height: 300px;
+    margin: 9px;
 }
 
 .course {
