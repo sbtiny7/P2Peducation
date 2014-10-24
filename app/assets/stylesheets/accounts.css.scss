@@ -34,7 +34,7 @@ input.upload_image {
     opacity: 0;
     filter: alpha(opacity=0);
 }
-img.upload_image {
+img.upload_image, .ie_preview {
     position: absolute;
     width: 400px;
     height: 300px;

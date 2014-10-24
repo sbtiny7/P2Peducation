@@ -43,6 +43,10 @@
     </div>
     <div class="col-md-6">
         <div class="upload_image">
+            <div class="ie_preview_wrapper">
+                <div class="ie_preview">
+                </div>
+            </div>
             <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
             <%= f.file_field :image, :class => "form-control upload_image" %>
             <icon class="upload_image">上传图像</icon>
@@ -83,7 +87,13 @@ function on_upload_image(sender) {
     if( sender[0].files &&  sender[0].files[0] ){
         img.src = window.URL.createObjectURL(sender[0].files[0]);
     } else {
-        img.src = sender.val();
+        var ie_preview = sender.parent().children('.ie_preview')[0];
+        var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper')[0];
+        img.remove();
+        sender[0].select();
+        path = document.selection.createRange().text;
+        ie_preview_wrapper.css({"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\""+ path + "\")"}).show();
+        ie_preview.css({"filter":"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\""+ path + "\")"}).show();
     }
 }
 
