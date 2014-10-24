@@ -12,6 +12,25 @@
         padding: 10px 0;
     }
 }
+
+div.upload_image {
+    position: relative;
+    padding: 10px;
+}
+input.upload_image {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+img.upload_image {
+    position: absolute;
+    width: 400px;
+    height: 300px;
+}
+
 .course {
     border-radius: 10px;
     border-color: #DDD;
