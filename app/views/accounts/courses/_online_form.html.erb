@@ -58,12 +58,11 @@ $('.upload_image').mouseover(function(){
 })
 
 $('div#step1 #online input.upload_image').change(function(){
-    $('div#step1 #online img.upload_image').attr('src', "file:///" + $(this).val());
-    on_upload_image(this);
+    on_upload_image($(this));
 })
 
 function on_upload_image(sender) {
-    if( !sender.value.match( /.jpg|.jpeg|.gif|.png|.bmp/i ) ){   
+    if( !sender.val().match( /.jpg|.jpeg|.gif|.png|.bmp/i ) ){   
         alert('图片格式无效！');   
         return false;   
     }
