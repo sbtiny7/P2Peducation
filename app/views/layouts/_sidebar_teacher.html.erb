@@ -4,7 +4,7 @@
   </span>
   <%= link_to '个人设置', edit_user_registration_path, :class => "list-group-item" %>
   <%= link_to '修改密码', edit_user_registration_path, :class => "list-group-item" %><!-- TODO -->
-  <%= link_to '我要教课', new_accounts_course_path, :class => "list-group-item" %>
+  <a href='<%= new_accounts_course_path %>' class='list-group-item<% if controller_name == 'courses' and action_name == 'new' %> active<% end %>'>我要教课</a>
   <%= link_to '学堂管理', accounts_courses_path, :class => "list-group-item" %>
   <%= link_to '我的收入', '', :class => "list-group-item" %>
 </div>
