@@ -1,5 +1,27 @@
-<h1>New course</h1>
+<ol class='breadcrumb'>
+  <li id='step1' class='active'>课程信息</li>
+  <li id='step2'>讲师信息</li>
+  <li id='step3'>发布课程</li>
+</ol>
 
-<%= render 'form' %>
+<div id='step1'>
+    <div id='type_select'>
+        <a class="btn btn-primary btn-lg" role="button" onclick="$('#type_select').hide();$('div#step1 #online').show();course.type='ONLINE'">线上课程</a>
+        <a class="btn btn-info btn-lg" role="button" onclick="$('#type_select').hide();$('div#step1 #offline').show();course.type='OFFLINE'">线下课程</a>
+    </div>
+    <div id='online' style='display:none'>
+        <%= render 'online_form' %>
+    </div>
+    <div id='offline' style='display:none'>
+        <%= render 'offline_form' %>
+    </div>
+</div>
 
-<%= link_to 'Back', accounts_courses_path %>
+<div id='step2'>
+</div>
+<div id='step3'>
+</div>
+
+<script type="text/javascript">
+    var course = {};
+</script>
