@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023080152) do
+ActiveRecord::Schema.define(version: 20141023092955) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141023080152) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
+    t.string   "role",                        default: "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,6 +54,8 @@ ActiveRecord::Schema.define(version: 20141023080152) do
     t.datetime "updated_at"
   end
 
+  add_index "courses", ["token"], name: "index_courses_on_token", unique: true, using: :btree
+
   create_table "learnships", force: true do |t|
     t.integer  "student_id"
     t.integer  "lesson_id"
@@ -65,10 +68,11 @@ ActiveRecord::Schema.define(version: 20141023080152) do
     t.integer  "course_id"
     t.string   "title"
     t.string   "token"
-    t.string   "stream_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "lessons", ["token"], name: "index_lessons_on_token", unique: true, using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -84,9 +88,12 @@ ActiveRecord::Schema.define(version: 20141023080152) do
   create_table "studyships", force: true do |t|
     t.integer  "student_id"
     t.integer  "course_id"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "studyships", ["token"], name: "index_studyships_on_token", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
