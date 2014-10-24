@@ -51,13 +51,27 @@
 <% end %>
 
 <script type="text/javascript">
-    $('.upload_image').mouseover(function(){
-        $('icon.upload_image').show();
-    }).mouseout(function(){
-        $('icon.upload_image').hide();
-    })
+$('.upload_image').mouseover(function(){
+    $('icon.upload_image').show();
+}).mouseout(function(){
+    $('icon.upload_image').hide();
+})
 
-    $('div#step1 #online input.upload_image').change(function(){
-        $('div#step1 #online img.upload_image').attr('src', "file:///" + $(this).val());
-    })
+$('div#step1 #online input.upload_image').change(function(){
+    $('div#step1 #online img.upload_image').attr('src', "file:///" + $(this).val());
+    on_upload_image(this);
+})
+
+function on_upload_image(sender) {
+    if( !sender.value.match( /.jpg|.jpeg|.gif|.png|.bmp/i ) ){   
+        alert('图片格式无效！');   
+        return false;   
+    }
+    var img = sender.parent.child('img');
+    if( sender.files &&  sender.files[0] ){
+        img.src = sender.files[0].getAsDataURL();       
+    }
+}
+
+
 </script>
