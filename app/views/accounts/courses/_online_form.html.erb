@@ -12,7 +12,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <%= f.text_field 'start_time_date', @course.start_time || Time.now, :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
+                <%= f.text_field 'start_time_date', :value => @course.start_time || Time.now, :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
             </div>
             <div class="form-group col-md-3">
                 <%= f.select 'start_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.start_time.try(:hour) || Time.now.hour) %>
@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <%= f.text_field 'end_time_date', @course.end_time || Time.now, :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
+                <%= f.text_field 'end_time_date', :value => @course.end_time || Time.now, :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
             </div>
             <div class="form-group col-md-3">
                 <%= f.select 'end_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.end_time.try(:hour) || Time.now.hour) %>
