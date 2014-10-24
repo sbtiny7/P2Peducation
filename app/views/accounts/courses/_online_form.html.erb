@@ -7,7 +7,7 @@
             <span class="error_message"></span>
         </div>
         <div class="form-group">
-            <%= f.select :category, options_for_select(Course::CATEGORIES), {}, {:class => "form-control"} %>
+            <%= f.select :category, options_for_select(Course::CATEGORIES), @course.category || {}, {:class => "form-control"} %>
             <span class="error_message"></span>
         </div>
         <div class="row">
@@ -26,10 +26,10 @@
                 <%= f.text_field 'end_time_date', :value => @course.end_time || Time.now, :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
             </div>
             <div class="form-group col-md-3">
-                <%= f.select 'end_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.end_time.try(:hour) || Time.now.hour) %>
+                <%= f.select 'end_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.end_time.try(:hour) || Time.now.hour), {:class => "form-control"} %>
             </div>
             <div class="form-group col-md-3">
-                <%= f.select 'end_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.end_time.try(:min) || 0) %>
+                <%= f.select 'end_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.end_time.try(:min) || 0), {:class => "form-control"} %>
             </div>
         </div>
         <div class="form-group">
