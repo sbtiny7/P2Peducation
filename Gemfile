@@ -45,6 +45,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails' #与bootstrap配套
 gem 'rolify'
 gem 'azure', '0.6.4'
+gem 'rails_kindeditor'
 gem 'carrierwave'
 gem 'carrierwave-azure', :git => 'https://github.com/wanxsb/carrierwave-azure.git'
 gem 'mini_magick'
