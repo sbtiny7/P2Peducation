@@ -1,7 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 .our_container {
-    margin-top: 30px;
+    margin-top: 50px;
+    padding: 20px 0;
+}
+.sidebar {
+    text-align: center;
+    width: 270px;
+    .avatar {
+        padding: 10px 0;
+    }
 }
 .course {
     border-radius: 10px;
