@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-6">
         <div class="upload_image">
-            <%= image_tag @course.image.url, :class => "upload_image" %>
+            <img src="<%= @course.image.url %>" class="upload_image" />
             <%= f.file_field :image, :class => "form-control upload_image" %>
         </div>
     </div>
