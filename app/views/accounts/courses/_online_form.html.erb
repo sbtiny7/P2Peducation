@@ -56,4 +56,8 @@
     }).mouseout(function(){
         $('icon.upload_image').hide();
     })
+
+    $('div#step1 #online input.upload_image').change(function(){
+        $('div#step1 #online img.upload_image').attr('src', $(this).val());
+    })
 </script>
