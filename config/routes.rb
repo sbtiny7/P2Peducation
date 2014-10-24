@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :lessons
     resources :courses
   end
-  get 'accounts/upload_avatar' => 'accounts/main#upload_avatar_page', :as => :account_upload_avatar
+  get 'accounts/upload_avatar' => 'accounts/main#upload_avatar_page', as: :account_upload_avatar
 
   namespace :admin do
     resources :lessons
