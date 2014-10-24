@@ -17,7 +17,6 @@
 //= require make_ie_happy
 //= require jquery.ui.all
 //= require jquery.ui.datepicker
-//= require jquery.strobemediaplayback
 //= require jquery-ui-timepicker-addon
 //= require jquery.ui.datepicker-zh-CN.js.js
 //= require jquery-ui-timepicker-zh-CN.js
