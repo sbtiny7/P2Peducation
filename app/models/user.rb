@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  DEFAULT_AVATAR_PATH = "/assets/temp.jpg"
   rolify
   mount_uploader :avatar, AvatarUploader
   mount_uploader :tmp_avatar, TempUploader

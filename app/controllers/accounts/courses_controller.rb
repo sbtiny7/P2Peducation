@@ -79,8 +79,15 @@ class Accounts::CoursesController < ApplicationController
         :course_type,
         :category,
         :start_time,
+        :start_time_date,
+        :start_time_hour,
+        :start_time_min,
         :end_time,
+        :end_time_date,
+        :end_time_hour,
+        :end_time_min,
         :students_max,
+        :price,
         :detail,
         :address
         )

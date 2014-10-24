@@ -12,30 +12,42 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <%= f.text_field :start_time, :class => "form-control datetime", :placeholder => "开始时间" %>
-                <span class="error_message"></span>
+                <%= f.text_field 'start_time_date', @course.start_time || Time.now, :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
             </div>
+            <div class="form-group col-md-3">
+                <%= f.select 'start_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.start_time.try(:hour) || Time.now.hour) %>
+            </div>
+            <div class="form-group col-md-3">
+                <%= f.select 'start_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.start_time.try(:min) || 0) %>
+            </div>
+        </div>
+        <div class="row">
             <div class="form-group col-md-6">
-                <%= f.text_field :end_time, :class => "form-control datetime", :placeholder => "结束时间" %>
-                <span class="error_message"></span>
+                <%= f.text_field 'end_time_date', @course.end_time || Time.now, :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
+            </div>
+            <div class="form-group col-md-3">
+                <%= f.select 'end_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.end_time.try(:hour) || Time.now.hour) %>
+            </div>
+            <div class="form-group col-md-3">
+                <%= f.select 'end_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.end_time.try(:min) || 0) %>
             </div>
         </div>
         <div class="form-group">
             <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
             <span class="error_message"></span>
         </div>
-        <!--div class="form-group">
-            <%#= f.number_field :students_max, :placeholder => "可容纳学生数量" %>
-            <span class="error_message"></span>
-        </div-->
+<!--div class="form-group">
+<%#= f.number_field :students_max, :placeholder => "可容纳学生数量" %>
+<span class="error_message"></span>
+</div-->
+</div>
+<div class="col-md-6">
+    <div class="upload_image">
+        <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
+        <%= f.file_field :image, :class => "form-control upload_image" %>
+        <icon class="upload_image">上传图像</icon>
     </div>
-    <div class="col-md-6">
-        <div class="upload_image">
-            <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
-            <%= f.file_field :image, :class => "form-control upload_image" %>
-            <icon class="upload_image">上传图像</icon>
-        </div>
-    </div>
+</div>
 </div>
 
 <div class="detail">
