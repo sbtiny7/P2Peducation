@@ -82,8 +82,9 @@ $(function(){
                 required: true,
                 number: true
             },
-            students_max: {
-
+            "course[students_max]": {
+                digits: true,
+                min: 1
             }
         },
         messages: {
@@ -102,9 +103,14 @@ $(function(){
             "course[price]": {
                 required: '请填写课程价格',
                 number: '请填写具体数字'
+            },
+            "course[students_max]": {
+                digits: '请填写具体整数',
+                min: '请填写大于零的整数'
             }
         },
         errorPlacement: function(error, element) {
+            $('.form-group').removeClass('has-error');
             error.appendTo( element.parent() );
             element.parent().addClass('has-error');
         }
