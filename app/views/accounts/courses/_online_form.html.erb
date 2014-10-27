@@ -88,14 +88,14 @@ function on_upload_image(sender) {
     var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper');
     if( sender[0].files &&  sender[0].files[0] ){
         img.src = window.URL.createObjectURL(sender[0].files[0]);
-    } else if( ie_preview.filters ) {
+    } else if( ie_preview[0].filters ) {
         sender.parent().children('img').hide();
         sender.select();
         sender.blur();
         var path = document.selection.createRange().text;
         var filter_str = "\"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='" + path + "')\""
         //ie_preview.css({"-ms-filter":filter_str}).show();
-        ie_preview.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
+        ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
     }
 }
 
