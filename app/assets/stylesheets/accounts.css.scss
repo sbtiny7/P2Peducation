@@ -4,6 +4,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* main */
 .our_container {
     margin-top: 50px;
     padding: 20px 0;
@@ -15,7 +16,21 @@
         padding: 10px 0;
     }
 }
+/* main */
 
+
+
+/* form */
+label.error {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px 25px;
+    color: red;
+}
+/* form */
+
+/* upload images */
 div.upload_image {
     position: relative;
     border: 1px solid #cccccc;
@@ -53,7 +68,10 @@ icon.upload_image {
     display: none;
     padding: 5px 10px;
 }
+/* upload images*/
 
+
+/* courses list */
 .course {
     border-radius: 10px;
     border-color: #DDD;
