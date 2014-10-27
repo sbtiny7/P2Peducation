@@ -33,6 +33,10 @@ label.error {
 }
 .upload_image label.error {
     bottom: 0;
+    top: initial;
+}
+div.upload_image.error {
+    border-color: #a94442;
 }
 /* form */
 
