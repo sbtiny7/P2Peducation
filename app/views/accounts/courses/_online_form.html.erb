@@ -84,8 +84,8 @@ function on_upload_image(sender) {
         return false;
     }
     var img = sender.parent().children('img')[0];
-    var ie_preview = sender.parent().children('.ie_preview');
     var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper');
+    var ie_preview = ie_preview_wrapper.children('.ie_preview');
     if( sender[0].files &&  sender[0].files[0] ){
         img.src = window.URL.createObjectURL(sender[0].files[0]);
     } else if( ie_preview[0].filters ) {
@@ -94,8 +94,8 @@ function on_upload_image(sender) {
         sender.blur();
         var path = document.selection.createRange().text;
         var filter_str = "\"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='" + path + "')\""
-        //ie_preview.css({"-ms-filter":filter_str}).show();
-        ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
+        ie_preview.css({"-ms-filter":filter_str}).show();
+        //ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
     }
 }
 
