@@ -34,7 +34,7 @@
             <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
         </div>
         <div class="form-group">
-            <%= f.number_field :students_max, :class => "form-control", :placeholder => "可容纳学生数量（可选）" %>
+            <%= f.text_field :students_max, :class => "form-control", :placeholder => "可容纳学生数量（可选）" %>
         </div>
     </div>
     <div class="col-md-6">
@@ -75,7 +75,19 @@ $(function(){
             "course[start_time_date]": {
                 required: true
             },
+            "course[start_time_hour]": {
+                required: true
+            },
+            "course[start_time_min]": {
+                required: true
+            },
             "course[end_time_date]": {
+                required: true
+            },
+            "course[end_time_hour]": {
+                required: true
+            },
+            "course[end_time_min]": {
                 required: true
             },
             "course[price]": {
@@ -85,6 +97,11 @@ $(function(){
             "course[students_max]": {
                 digits: true,
                 min: 1
+            },
+            "course[image]": {
+                required:true,
+                extension: "png|jpe?g|gif",
+                accept: "image/*"
             }
         },
         messages: {
@@ -97,8 +114,20 @@ $(function(){
             "course[start_time_date]": {
                 required: '请填写开始日期'
             },
+            "course[start_time_hour]": {
+                required: '请填写开始时间'
+            },
+            "course[start_time_min]": {
+                required: '请填写开始时间'
+            },
             "course[end_time_date]": {
                 required: '请填写结束日期'
+            },
+            "course[end_time_hour]": {
+                required: '请填写结束时间'
+            },
+            "course[end_time_min]": {
+                required: '请填写结束时间'
             },
             "course[price]": {
                 required: '请填写课程价格',
@@ -107,6 +136,11 @@ $(function(){
             "course[students_max]": {
                 digits: '请填写具体整数',
                 min: '请填写大于零的整数'
+            },
+            "course[image]": {
+                required: '请选择缩略图',
+                accept: '上传文件必须为图片类型',
+                extension: '只能上传后缀名为jpg、jpeg、png、gif的文件'
             }
         },
         highlight: function(element) {   // <-- fires when element has error

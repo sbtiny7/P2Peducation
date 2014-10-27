@@ -14,7 +14,7 @@ $(function(){
 })
 
 function on_upload_image(sender) {
-    if( !sender.val().match( /.jpg|.jpeg|.gif|.png|.bmp/i ) ){
+    if( !sender.val().match( /.jpg|.jpeg|.gif|.png/i ) ){
         alert('图片格式无效！');
         return false;
     }
