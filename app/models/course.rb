@@ -15,9 +15,9 @@ class Course < ActiveRecord::Base
     has_many :students, :through => :studyships
     has_many :videos, :as => :videoable
 
-    validates :title,  presence: true, message: "标题不能为空"
-    validates :price,  presence: true, message: "标价不能为空"
-    validates :detail, presence: true, message: "详细描述不能为空"
+    validates :title,  presence: true#, message: "标题不能为空"
+    validates :price,  presence: true#, message: "标价不能为空"
+    validates :detail, presence: true#, message: "详细描述不能为空"
     validates :course_type, :inclusion  => {
         :in      => TYPES,
         :message => "%{value}不能作为课程类型"
