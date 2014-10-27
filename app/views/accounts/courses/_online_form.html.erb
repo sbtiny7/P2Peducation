@@ -109,10 +109,14 @@ $(function(){
                 min: '请填写大于零的整数'
             }
         },
+        highlight: function(element) {   // <-- fires when element has error
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        unhighlight: function(element) { // <-- fires when element is valid
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
         errorPlacement: function(error, element) {
-            $('.form-group').removeClass('has-error');
             error.appendTo( element.parent() );
-            element.parent().addClass('has-error');
         }
     });
 })
