@@ -40,6 +40,9 @@ img.upload_image, .ie_preview {
     height: 300px;
     margin: 9px;
 }
+.ie_preview {
+    FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
+}
 icon.upload_image {
     position: absolute;
     top: 9px;
