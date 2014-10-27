@@ -7,7 +7,7 @@
   <title><%= content_for?(:title) ? yield(:title) : "教育直播" %></title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "accounts", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", "accounts" %>
 </head>
 <body>
   <%#= bootstrap_flash %>
