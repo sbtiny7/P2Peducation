@@ -23,6 +23,7 @@ class Course < ActiveRecord::Base
         :message => "%{value}不能作为课程类型"
     }
 
+    after_create :rename_image
     before_save :parse_time
     def parse_time
         if start_time_date && start_time_hour && start_time_min
@@ -31,5 +32,13 @@ class Course < ActiveRecord::Base
         if end_time_date && end_time_hour && end_time_min
             self.end_time= "#{end_time_date} #{end_time_hour}:#{end_time_min}"
         end
+    end
+
+    def rename_image
+        old_str = self.read_attribute(:image)
+        str_arr = old_str.split('.')
+        str_arr[-2] += self.id.to_s
+        new_str = str_arr.join('.')
+        self.update_column(:image, new_str)
     end
 end
