@@ -1,3 +1,5 @@
+//= require 'china_city/jquery.china_city'
+
 $(function(){
 
     $('.upload_image:not(input)').mouseover(function(){

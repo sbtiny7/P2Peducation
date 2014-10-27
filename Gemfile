@@ -52,3 +52,4 @@ gem 'carrierwave-azure', :git => 'https://github.com/wanxsb/carrierwave-azure.gi
 gem 'mini_magick'
 gem 'acts_as_commentable', '4.0.2'
 gem 'rqrcode'
+gem 'china_city'
