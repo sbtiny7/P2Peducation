@@ -26,7 +26,7 @@
 //= require additional-methods.min.js
 //= require jquery.jcrop
 //= require bootstrap-sprockets
-//= require_tree .
+// require_tree .
 $(function(){
   $('input, textarea').placeholder();
 })
