@@ -73,27 +73,19 @@
 $(function(){
     $('form#online_course').validate({
         rules: {
-            title: {
+            "course[title]": {
                 required: true
             },
-            category: {
+            "course[category]": {
                 required: true
             },
-            start_time_date: {
+            "course[start_time_date]": {
                 required: true
             },
-            start_time_hour: {
-            },
-            start_time_min: {
-            },
-            end_time_date: {
+            "course[end_time_date]": {
                 required: true
             },
-            end_time_hour: {
-            },
-            end_time_min: {
-            },
-            price: {
+            "course[price]": {
                 required: true,
                 number: true
             },
