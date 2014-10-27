@@ -87,8 +87,8 @@ function on_upload_image(sender) {
     if( sender[0].files &&  sender[0].files[0] ){
         img.src = window.URL.createObjectURL(sender[0].files[0]);
     } else {
-        var ie_preview = sender.parent().children('.ie_preview')[0];
-        var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper')[0];
+        var ie_preview = sender.parent().children('.ie_preview');
+        var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper');
         sender.parent().children('img').hide();
         sender.select();
         sender.blur();
