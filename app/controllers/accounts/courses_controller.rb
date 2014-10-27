@@ -17,7 +17,14 @@ class Accounts::CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @course = current_user.courses.new
+  end
+
+  def new_online
+    @course = current_user.courses.new(:course_type => "ONLINE")
+  end
+
+  def new_offline
+    @course = current_user.courses.new(:course_type => "OFFLINE")
   end
 
   # GET /courses/1/edit
@@ -32,7 +39,7 @@ class Accounts::CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to [:accounts, @course], notice: 'Course was successfully created.' }
+        format.html { redirect_to :action => :edit_teacher, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }

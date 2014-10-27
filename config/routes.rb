@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :courses
   end
   get 'accounts/upload_avatar' => 'accounts/main#upload_avatar_page', as: :account_upload_avatar
+  get 'accounts/courses/new/online'  => 'accounts/courses#new_online',  as: :new_accounts_courese_online
+  get 'accounts/courses/new/offline' => 'accounts/courses#new_offline', as: :new_accounts_courese_offline
+  get 'accounts/courses/edit/teacher' => 'accounts/courses#edit_teacher', as: :edit_accounts_courses_teacher
+  put 'accounts/courses/teacher' => 'accounts/courses#update_teacher', as: :accounts_courses_teacher
 
   namespace :admin do
     resources :lessons
