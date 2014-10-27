@@ -13,6 +13,7 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <%= f.text_field 'start_time_date', :value => @course.start_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
+                <span class="error_message"></span>
             </div>
             <div class="form-group col-md-3">
                 <%= f.select 'start_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.start_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
@@ -24,6 +25,7 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <%= f.text_field 'end_time_date', :value => @course.end_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
+                <span class="error_message"></span>
             </div>
             <div class="form-group col-md-3">
                 <%= f.select 'end_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.end_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
@@ -68,5 +70,59 @@
 <% end %>
 
 <script type="text/javascript">
+$(function(){
+    $('form#online_course').validate({
+        rules: {
+            title: {
+                required: true
+            },
+            category: {
+                required: true
+            },
+            start_time_date: {
+                required: true
+            },
+            start_time_hour: {
+            },
+            start_time_min: {
+            },
+            end_time_date: {
+                required: true
+            },
+            end_time_hour: {
+            },
+            end_time_min: {
+            },
+            price: {
+                required: true,
+                number: true
+            },
+            students_max: {
 
+            }
+        },
+        messages: {
+            title: {
+                required: '请输入课程标题'
+            },
+            category: {
+                required: '请选择课程分类'
+            },
+            start_time_date: {
+                required: '请填写开始日期'
+            },
+            end_time_date: {
+                required: '请填写结束日期'
+            },
+            price: {
+                required: '请填写课程价格',
+                number: '请填写具体数字'
+            }
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo( element.parent().last() );
+            element.parent().addClass('has-error');
+        }
+    });
+})
 </script>
