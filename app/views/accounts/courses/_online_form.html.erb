@@ -94,8 +94,8 @@ function on_upload_image(sender) {
         sender.blur();
         var path = document.selection.createRange().text;
         var filter_str = "\"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='" + path + "')\""
-        ie_preview.css({"-ms-filter":filter_str}).show();
-        //ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
+        //ie_preview.css({"-ms-filter":filter_str}).show();
+        ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
     }
 }
 
