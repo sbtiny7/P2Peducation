@@ -39,10 +39,9 @@ class Accounts::CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to :action => :edit_teacher, notice: 'Course was successfully created.' }
+        format.html { redirect_to :action => :edit_teacher}
         format.json { render :show, status: :created, location: @course }
       else
-        Rails.logger.info(@course.errors)
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
