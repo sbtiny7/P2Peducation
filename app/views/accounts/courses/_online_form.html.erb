@@ -45,9 +45,9 @@
         <div class="upload_image">
             <div class="ie_preview_wrapper">
                 <div class="ie_preview">
+                    <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
                 </div>
             </div>
-            <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
             <%= f.file_field :image, :class => "form-control upload_image" %>
             <icon class="upload_image">上传图像</icon>
         </div>
@@ -86,18 +86,16 @@ function on_upload_image(sender) {
     var img = sender.parent().children('img')[0];
     if( sender[0].files &&  sender[0].files[0] ){
         img.src = window.URL.createObjectURL(sender[0].files[0]);
-    } else {
+    } else if( ie_preview.filters ) {
         var ie_preview = sender.parent().children('.ie_preview');
         var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper');
         sender.parent().children('img').hide();
         sender.select();
         sender.blur();
         var path = document.selection.createRange().text;
-        path = "/assets/top.jpg"
         var filter_str = "\"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='" + path + "')\""
-        //alert(filter_str);
-        ie_preview_wrapper.show();
-        ie_preview.css({"-ms-filter":filter_str}).show();
+        //ie_preview.css({"-ms-filter":filter_str}).show();
+        ie_preview.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
     }
 }
 
