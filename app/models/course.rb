@@ -7,7 +7,8 @@ class Course < ActiveRecord::Base
     mount_uploader :tmp_image, TempUploader
     acts_as_commentable :chat, :qa # commentable.chat_comments, commentable.qa_comments
 
-    attr_accessor :start_time_date, :start_time_hour, :start_time_min, :end_time_date, :end_time_hour, :end_time_min
+    attr_accessor :start_time_date, :start_time_hour, :start_time_min, :end_time_date, :end_time_hour, :end_time_min,
+        :address_1, :address_2, :address_3, :address_4
 
     belongs_to :user
     has_many :lessons
@@ -30,7 +31,10 @@ class Course < ActiveRecord::Base
             self.start_time = "#{start_time_date} #{start_time_hour}:#{start_time_min}"
         end
         if end_time_date && end_time_hour && end_time_min
-            self.end_time= "#{end_time_date} #{end_time_hour}:#{end_time_min}"
+            self.end_time = "#{end_time_date} #{end_time_hour}:#{end_time_min}"
+        end
+        if address_1 && address_2 && address_3 && address_4
+            self.address = "#{address_1} #{address_2} #{address_3} #{address_4}"
         end
     end
 
