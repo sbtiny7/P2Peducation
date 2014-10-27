@@ -52,7 +52,7 @@
 
 <div class="detail">
     <div class="form-group">
-        <%= f.kindeditor :detail, :class => "form-control", :width => 870 %>
+        <%= f.kindeditor :detail, :class => "form-control", :placeholder => "请填写课程详细信息", :width => 870 %>
     </div>
 </div>
 
@@ -99,9 +99,12 @@ $(function(){
                 min: 1
             },
             "course[image]": {
-                required:true,
+                required: true,
                 extension: "png|jpe?g|gif",
                 accept: "image/*"
+            },
+            "course[detail]": {
+                required: true
             }
         },
         messages: {
@@ -141,6 +144,9 @@ $(function(){
                 required: '请选择缩略图',
                 accept: '上传文件必须为图片类型',
                 extension: '只能上传后缀名为jpg、jpeg、png、gif的文件'
+            },
+            "course[detail]": {
+                required: '请填写课程详细信息'
             }
         },
         highlight: function(element) {   // <-- fires when element has error

@@ -22,6 +22,7 @@ class Accounts::CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    @course = current_user.courses.find_by_id params[:id]
   end
 
   # POST /courses
@@ -63,6 +64,17 @@ class Accounts::CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def edit_teacher
+    @teacher = current_user
+  end
+
+  def update_teacher
+    if @teacher.update(teacher_params)
+    else
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
