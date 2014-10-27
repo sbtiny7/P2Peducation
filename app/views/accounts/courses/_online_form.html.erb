@@ -2,38 +2,38 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="form-group">
+        <div class="form-group our_form-line">
             <%= f.text_field :title, :class => "form-control", :placeholder => "请输入标题" %>
         </div>
-        <div class="form-group">
+        <div class="form-group our_form-line">
             <%= f.select :category, options_for_select(Course::CATEGORIES, @course.category), {}, {:class => "form-control"} %>
         </div>
         <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group our_form-line col-md-6">
                 <%= f.text_field 'start_time_date', :value => @course.start_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group our_form-line col-md-3">
                 <%= f.select 'start_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.start_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group our_form-line col-md-3">
                 <%= f.select 'start_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.start_time.try(:min) || 0), {}, {:class => "form-control"} %>
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group our_form-line col-md-6">
                 <%= f.text_field 'end_time_date', :value => @course.end_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group our_form-line col-md-3">
                 <%= f.select 'end_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.end_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
             </div>
-            <div class="form-group col-md-3">
+            <div class="form-group our_form-line col-md-3">
                 <%= f.select 'end_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.end_time.try(:min) || 0), {}, {:class => "form-control"} %>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group our_form-line">
             <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
         </div>
-        <div class="form-group">
+        <div class="form-group our_form-line">
             <%= f.text_field :students_max, :class => "form-control", :placeholder => "可容纳学生数量（可选）" %>
         </div>
     </div>
