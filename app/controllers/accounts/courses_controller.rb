@@ -35,7 +35,6 @@ class Accounts::CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    course_params.permit!
     @course = Course.new(course_params)
 
     respond_to do |format|
@@ -43,6 +42,7 @@ class Accounts::CoursesController < ApplicationController
         format.html { redirect_to :action => :edit_teacher, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
+        Rails.logger.info(@course.errors)
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
