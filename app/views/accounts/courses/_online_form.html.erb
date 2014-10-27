@@ -84,8 +84,8 @@ function on_upload_image(sender) {
         return false;
     }
     var img = sender.parent().children('img')[0];
-        var ie_preview = sender.parent().children('.ie_preview');
-        var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper');
+    var ie_preview = sender.parent().children('.ie_preview');
+    var ie_preview_wrapper = sender.parent().children('.ie_preview_wrapper');
     if( sender[0].files &&  sender[0].files[0] ){
         img.src = window.URL.createObjectURL(sender[0].files[0]);
     } else if( ie_preview[0].filters ) {
