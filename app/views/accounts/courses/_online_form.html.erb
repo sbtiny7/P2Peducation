@@ -93,6 +93,7 @@ function on_upload_image(sender) {
         sender.select();
         sender.blur();
         var path = document.selection.createRange().text;
+        path = "/assets/top.jpg"
         var filter_str = "\"progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src='" + path + "')\""
         //alert(filter_str);
         ie_preview_wrapper.show();
