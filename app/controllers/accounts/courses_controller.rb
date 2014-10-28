@@ -89,7 +89,7 @@ class Accounts::CoursesController < ApplicationController
   end
 
   def complate
-    @teacher = current_user.teachers.where(:id => params[:teacher_id])
+    @teacher = current_user.teachers.where(:id => params[:teacher_id]).first
     @course.teacher = @teacher
     @course.save
   end
