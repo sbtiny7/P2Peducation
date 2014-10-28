@@ -28,10 +28,9 @@ Rails.application.routes.draw do
     unlocks:       "accounts/unlocks"
   }
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
+  mount ChinaCity::Engine => '/china_city'
+
   root 'home#index'
 
   # Example of regular route:
