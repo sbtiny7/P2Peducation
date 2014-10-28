@@ -40,6 +40,12 @@ div.upload_image.has-error {
     border-color: #a94442;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
+.agreement {
+    height: 300px;
+    border-color: #a94442;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    overflow-y: scroll;
+}
 /* form */
 
 /* upload images */
