@@ -52,22 +52,22 @@
 <div class="row city-group our_form-line">
     <div class="col-md-2">
         <div class="form-group">
-            <%= f.select :address_1, options_for_select(["--省份--"] + ChinaCity.list), {}, {:class => "form-control city-select"} %>
+            <%= f.select :address1, options_for_select(["--省份--"] + ChinaCity.list), {}, {:class => "form-control city-select"} %>
         </div>
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <%= f.select :address_2, options_for_select(["--城市--"], disabled: "--城市--"), {}, {:class => "form-control city-select"} %>
+            <%= f.select :address2, options_for_select(["--城市--"], disabled: "--城市--"), {}, {:class => "form-control city-select"} %>
         </div>
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <%= f.select :address_3, options_for_select(["--地区--"], disabled: "--地区--"), {}, {:class => "form-control city-select"} %>
+            <%= f.select :address3, options_for_select(["--地区--"], disabled: "--地区--"), {}, {:class => "form-control city-select"} %>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <%= f.text_field :address_4, :class => "form-control", :placeholder => "请填写详细地址" %>
+            <%= f.text_field :address4, :class => "form-control", :placeholder => "请填写详细地址" %>
         </div>
     </div>
 </div>
