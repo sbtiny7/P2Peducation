@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :agreements
+
   namespace :accounts do
     resources :lessons
     resources :courses

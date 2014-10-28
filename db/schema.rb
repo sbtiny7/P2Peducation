@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023092955) do
+ActiveRecord::Schema.define(version: 20141028060941) do
+
+  create_table "agreements", force: true do |t|
+    t.text     "detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
@@ -38,6 +44,7 @@ ActiveRecord::Schema.define(version: 20141023092955) do
 
   create_table "courses", force: true do |t|
     t.integer  "user_id"
+    t.integer  "teacher_id"
     t.string   "title"
     t.string   "token"
     t.string   "image"
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 20141023092955) do
     t.decimal  "price",          precision: 15, scale: 3
     t.integer  "mark_count"
     t.text     "detail"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,6 +104,19 @@ ActiveRecord::Schema.define(version: 20141023092955) do
   end
 
   add_index "studyships", ["token"], name: "index_studyships_on_token", unique: true, using: :btree
+
+  create_table "teachers", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.boolean  "sex"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "organ_name"
+    t.text     "organ_detail"
+    t.integer  "agreement_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
