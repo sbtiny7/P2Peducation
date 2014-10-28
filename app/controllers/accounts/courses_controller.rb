@@ -39,7 +39,7 @@ class Accounts::CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to :action => :edit_teacher}
+        format.html { redirect_to :action => :edit_teacher, :id => @course.id}
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new }
@@ -72,12 +72,16 @@ class Accounts::CoursesController < ApplicationController
     end
   end
 
-  def edit_teacher
-    @teacher = current_user
+  def new_teacher
+    @agreement = Agreement.last
+    @teacher = current_user.teachers.last || current_user.teachers.new
+    @teacher.agreement = @agreement
+    @teacher.course_id = params[:id]
   end
 
-  def update_teacher
-    if @teacher.update(teacher_params)
+  def create_teacher
+    @teacher = Teacher.find_or_create_by(teacher_params)
+    if
     else
     end
   end
