@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141023092955) do
     t.string   "title"
     t.string   "token"
     t.string   "image"
+    t.string   "tmp_image"
     t.string   "category"
     t.string   "address"
     t.string   "course_type"
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20141023092955) do
     t.datetime "end_time"
     t.integer  "students_count"
     t.integer  "students_max"
+    t.decimal  "price",          precision: 15, scale: 3
     t.integer  "mark_count"
     t.text     "detail"
     t.datetime "created_at"
@@ -115,6 +117,8 @@ ActiveRecord::Schema.define(version: 20141023092955) do
     t.datetime "locked_at"
     t.string   "username",               default: "", null: false
     t.string   "phone",                  default: "", null: false
+    t.string   "avatar"
+    t.string   "tmp_avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
