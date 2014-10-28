@@ -1,37 +1,64 @@
 class Admin::AgreementsController < ApplicationController
   before_action :set_agreement, only: [:show, :edit, :update, :destroy]
 
+  # GET /agreements
+  # GET /agreements.json
   def index
     @agreements = Agreement.all
-    respond_with(@agreements, location: [:admin, @agreements])
   end
 
+  # GET /agreements/1
+  # GET /agreements/1.json
   def show
-    respond_with(@agreement)
   end
 
+  # GET /agreements/new
   def new
     @agreement = Agreement.new
-    respond_with(@agreement)
   end
 
+  # GET /agreements/1/edit
   def edit
   end
 
+  # POST /agreements
+  # POST /agreements.json
   def create
     @agreement = Agreement.new(agreement_params)
-    @agreement.save
-    respond_with(@agreement)
+
+    respond_to do |format|
+      if @agreement.save
+        format.html { redirect_to [:admin, @agreement], notice: 'Agreement was successfully created.' }
+        format.json { render :show, status: :created, location: @agreement }
+      else
+        format.html { render :new }
+        format.json { render json: @agreement.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
+  # PATCH/PUT /agreements/1
+  # PATCH/PUT /agreements/1.json
   def update
-    @agreement.update(agreement_params)
-    respond_with(@agreement)
+    respond_to do |format|
+      if @agreement.update(agreement_params)
+        format.html { redirect_to [:admin, @agreement], notice: 'Agreement was successfully updated.' }
+        format.json { render :show, status: :ok, location: @agreement }
+      else
+        format.html { render :edit }
+        format.json { render json: @agreement.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
+  # DELETE /agreements/1
+  # DELETE /agreements/1.json
   def destroy
     @agreement.destroy
-    respond_with(@agreement)
+    respond_to do |format|
+      format.html { redirect_to admin_agreements_url, notice: 'Agreement was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
