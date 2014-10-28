@@ -49,20 +49,20 @@
         </div>
     </div>
 </div>
-<div class="row city-group">
+<div class="row city-group our_form-line">
     <div class="col-md-2">
         <div class="form-group">
-            <%= f.select :address_1, options_for_select(["--省份--"] + ChinaCity.list), {}, {:class => "form-control city-select"} %>
+            <%= f.select :address_1, options_for_select(["--省份--"] + ChinaCity.list, disabled: "--省份--"), {}, {:class => "form-control city-select"} %>
         </div>
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <%= f.select :address_2, options_for_select(["--城市--"]), {}, {:class => "form-control city-select"} %>
+            <%= f.select :address_2, options_for_select(["--城市--"], disabled: "--城市--"), {}, {:class => "form-control city-select"} %>
         </div>
     </div>
     <div class="col-md-2">
         <div class="form-group">
-            <%= f.select :address_3, options_for_select(["--地区--"]), {}, {:class => "form-control city-select"} %>
+            <%= f.select :address_3, options_for_select(["--地区--"], disabled: "--地区--"), {}, {:class => "form-control city-select"} %>
         </div>
     </div>
     <div class="col-md-6">
@@ -126,6 +126,21 @@ $(function(){
             },
             "course[detail]": {
                 required: true
+            },
+            "course[address1]": {
+                required: true,
+                notEqual: "--省份--"
+            },
+            "course[address2]": {
+                required: true,
+                notEqual: "--城市--"
+            },
+            "course[address3]": {
+                required: true,
+                notEqual: "--地区--"
+            },
+            "course[address4]": {
+                required: true
             }
         },
         messages: {
@@ -168,6 +183,21 @@ $(function(){
             },
             "course[detail]": {
                 required: '请填写课程详细信息'
+            },
+            "course[address1]": {
+                required: '请选择正确的地区',
+                notEqual: '请选择正确的地区'
+            },
+            "course[address2]": {
+                required: '请选择正确的地区',
+                notEqual: '请选择正确的地区'
+            },
+            "course[address3]": {
+                required: '请选择正确的地区',
+                notEqual: '请选择正确的地区'
+            },
+            "course[address4]": {
+                required: '请填写具体地址'
             }
         },
         highlight: function(element) {   // <-- fires when element has error

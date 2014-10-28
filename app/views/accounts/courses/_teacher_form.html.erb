@@ -1,3 +1,18 @@
 <%= form_for(@teacher, :url => accounts_course_teacher_path(@teacher), :html => {:id => 'online_teacher'}) do |f| %>
-
+<div class="row">
+    <div class="col-md-4">
+        <%= f.text_field :username %>
+        <%= f.select :sex %>
+        <%= f.text_field :phone %>
+        <%= f.text_field :email %>
+        <%= f.text_field :organ_name %>
+    </div>
+    <div class="col-md-8">
+        <%= f.kindeditor :organ_detail, :width => '100%' %>
+    </div>
+</div>
+<div>
+    协议
+</div>
+<%= f.submit "提交" %>
 <% end %>

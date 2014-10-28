@@ -106,7 +106,10 @@ class Accounts::CoursesController < ApplicationController
         :students_max,
         :price,
         :detail,
-        :address
+        :address1,
+        :address2,
+        :address3,
+        :address4
         )
     end
 end
