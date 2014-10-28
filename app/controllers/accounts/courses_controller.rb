@@ -80,7 +80,7 @@ class Accounts::CoursesController < ApplicationController
   end
 
   def teacher_action
-    @teacher = Teacher.find_or_create_by(teacher_params)
+    @teacher = Teacher.find_or_create_by(params[:teacher])
   end
 
 
