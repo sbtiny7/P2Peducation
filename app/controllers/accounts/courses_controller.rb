@@ -113,4 +113,18 @@ class Accounts::CoursesController < ApplicationController
         :address4
         )
     end
+
+    def teacher_params
+      params.require(:teacher).permit(
+        :user_id,
+        :agreement_id,
+        :course_id,
+        :name,
+        :sex,
+        :phone,
+        :email,
+        :organ_name,
+        :organ_detail
+        )
+    end
 end
