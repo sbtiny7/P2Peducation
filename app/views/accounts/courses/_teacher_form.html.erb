@@ -8,7 +8,7 @@
             <%= f.text_field :name, :value => @teacher.name || current_user.username, :class => "form-control", :placeholder => "姓名" %>
         </div>
         <div class="form-group">
-            <%= f.select :sex, options_for_select(['男','女'], @teacher.sex || true), {}, {:class => "form-control"} %>
+            <%= f.select :sex, options_for_select(['男','女'], @teacher.sex || "男"), {}, {:class => "form-control"} %>
         </div>
         <div class="form-group">
             <%= f.text_field :phone, :value => @teacher.phone || current_user.try(:phone), :class => "form-control", :placeholder => "联系电话" %>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="col-md-8">
-        <%= f.kindeditor :organ_detail, :value => @teacher.organ_detail, :width => '100%' %>
+        <%= f.kindeditor :organ_detail, :value => @teacher.organ_detail, :width => '100%', :height => "230px", :simple_mode => true %>
     </div>
 </div>
 <div class="agreement">
