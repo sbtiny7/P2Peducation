@@ -52,7 +52,7 @@
 <div class="row city-group our_form-line">
     <div class="col-md-2">
         <div class="form-group">
-            <%= f.select :address_1, options_for_select(["--省份--"] + ChinaCity.list, disabled: "--省份--"), {}, {:class => "form-control city-select"} %>
+            <%= f.select :address_1, options_for_select(["--省份--"] + ChinaCity.list), {}, {:class => "form-control city-select"} %>
         </div>
     </div>
     <div class="col-md-2">
