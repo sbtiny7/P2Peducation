@@ -1,6 +1,6 @@
 class Accounts::CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_course,  only: [:show, :edit, :update, :destroy]
+  before_action :set_course,  only: [:show, :edit, :update, :destroy, :complate, :pub]
 
   layout 'accounts_teacher'
 
@@ -81,11 +81,22 @@ class Accounts::CoursesController < ApplicationController
   def teacher_action
     @teacher = Teacher.find_or_create_by(teacher_params.except(:course_id))
     if @teacher.id
-      redirect_to complate_course_path(params[:id], @teacher.id)
+      redirect_to complate_accounts_course_path(params[:id], @teacher.id)
     else
       @agreement = Agreement.last
       render :action => :teacher
     end
+  end
+
+  def complate
+    @teacher = current_user.teachers.where(:id => params[:teacher_id])
+    @course.teacher = @teacher
+    @course.save
+  end
+
+  def pub
+    @course.update_column(:status => 1)
+    redirect_to course_path(@course)
   end
 
 
