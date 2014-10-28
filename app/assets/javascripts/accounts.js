@@ -12,7 +12,7 @@ $(function(){
         on_upload_image($(this));
     })
 
-    $('input.datetime').datepicker({ constrainInput: false })
+    $('input.datetime').datepicker()
 })
 
 function on_upload_image(sender) {
