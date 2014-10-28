@@ -95,7 +95,7 @@ class Accounts::CoursesController < ApplicationController
   end
 
   def pub
-    @course.update_column(:status => 1)
+    @course.update_column(:status, 1)
     redirect_to course_path(@course)
   end
 
