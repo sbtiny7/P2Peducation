@@ -1,5 +1,6 @@
 <%= form_for([:accounts, @course], :html => {:id => 'online_course', :multipart => true}) do |f| %>
 <%= f.hidden_field :course_type %>
+<%= f.hidden_field :user_id %>
 <div class="row">
     <div class="col-md-6">
         <div class="form-group our_form-line">

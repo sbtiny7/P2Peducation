@@ -20,11 +20,11 @@ class Accounts::CoursesController < ApplicationController
   end
 
   def new_online
-    @course = current_user.courses.new(:course_type => "ONLINE")
+    @course = current_user.courses.new(:course_type => "ONLINE", :user => current_user)
   end
 
   def new_offline
-    @course = current_user.courses.new(:course_type => "OFFLINE")
+    @course = current_user.courses.new(:course_type => "OFFLINE", :user => current_user)
   end
 
   # GET /courses/1/edit
