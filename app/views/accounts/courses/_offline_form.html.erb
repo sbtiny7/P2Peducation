@@ -85,6 +85,9 @@
 
 <script type="text/javascript">
 $(function(){
+    $('.ui-datepicker-calendar a').click(function(){
+        $('form#online_course').valid();
+    })
     $('form#online_course').validate({
         rules: {
             "course[title]": {
