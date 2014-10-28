@@ -1,4 +1,7 @@
+# STATUS: 0 - 未公开；1 - 已公开
+
 class Course < ActiveRecord::Base
+
     TYPES = %w(ONLINE OFFLINE)
     CATEGORIES = %w(实用技能 兴趣爱好)
     DEFAULT_IMG_PATH = "/assets/temp.jpg"
@@ -11,29 +14,36 @@ class Course < ActiveRecord::Base
         :address1, :address2, :address3, :address4
 
     belongs_to :user
+    belongs_to :teacher
     has_many :lessons
     has_many :studyships
     has_many :students, :through => :studyships
     has_many :videos, :as => :videoable
 
-    validates :title,  presence: true#, message: "标题不能为空"
-    validates :price,  presence: true#, message: "标价不能为空"
-    validates :detail, presence: true#, message: "详细描述不能为空"
+    validates :title,  presence: true #, message: "标题不能为空"
+    validates :price,  presence: true #, message: "标价不能为空"
+    validates :detail, presence: true #, message: "详细描述不能为空"
     validates :course_type, :inclusion  => {
         :in      => TYPES,
         :message => "%{value}不能作为课程类型"
     }
 
-    after_create :rename_image
-    before_save :parse_time
-    def parse_time
+    before_create :init
+    after_create  :rename_image
+    before_save   :parse_values
+
+    def init
+        self.status = 0
+    end
+
+    def parse_values
         if start_time_date && start_time_hour && start_time_min
             self.start_time = "#{start_time_date} #{start_time_hour}:#{start_time_min}"
         end
         if end_time_date && end_time_hour && end_time_min
             self.end_time = "#{end_time_date} #{end_time_hour}:#{end_time_min}"
         end
-        if address_1 && address_2 && address_3 && address_4
+        if address1 && address2 && address3 && address4
             self.address = "#{address1} #{address2} #{address3} #{address4}"
         end
     end

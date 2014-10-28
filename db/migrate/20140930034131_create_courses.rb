@@ -2,6 +2,7 @@ class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
       t.integer  :user_id
+      t.integer  :teacher_id
       t.string   :title
       t.string   :token
       t.string   :image
@@ -16,6 +17,7 @@ class CreateCourses < ActiveRecord::Migration
       t.decimal  :price,         :precision => 15, :scale => 3
       t.integer  :mark_count
       t.text     :detail
+      t.integer  :status
 
       t.timestamps
     end
