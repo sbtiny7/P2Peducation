@@ -79,7 +79,7 @@ class Accounts::CoursesController < ApplicationController
   end
 
   def teacher_action
-    @teacher = Teacher.find_or_create_by(teacher_params)
+    @teacher = Teacher.find_or_create_by(teacher_params.except(:course_id))
     if @teacher.id
       redirect_to complate_course_path(params[:id], @teacher.id)
     else
