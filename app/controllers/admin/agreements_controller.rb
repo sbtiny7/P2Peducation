@@ -3,16 +3,16 @@ class Admin::AgreementsController < ApplicationController
 
   def index
     @agreements = Agreement.all
-    respond_with([:admin, @agreements])
+    respond_with(@agreements)
   end
 
   def show
-    respond_with([:admin, @agreement])
+    respond_with(@agreement)
   end
 
   def new
     @agreement = Agreement.new
-    respond_with([:admin, @agreement])
+    respond_with(@agreement)
   end
 
   def edit
@@ -21,17 +21,17 @@ class Admin::AgreementsController < ApplicationController
   def create
     @agreement = Agreement.new(agreement_params)
     @agreement.save
-    respond_with([:admin, @agreement])
+    respond_with(@agreement)
   end
 
   def update
     @agreement.update(agreement_params)
-    respond_with([:admin, @agreement])
+    respond_with(@agreement)
   end
 
   def destroy
     @agreement.destroy
-    respond_with([:admin, @agreement])
+    respond_with(@agreement)
   end
 
   private
