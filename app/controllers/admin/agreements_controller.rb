@@ -3,7 +3,7 @@ class Admin::AgreementsController < ApplicationController
 
   def index
     @agreements = Agreement.all
-    respond_with(@agreements)
+    respond_with(@agreements, :location => :admin)
   end
 
   def show
