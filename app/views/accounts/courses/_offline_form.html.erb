@@ -207,9 +207,7 @@ $(function(){
             $(element).closest('.our_form-line').removeClass('has-error').addClass('has-success');
         },
         errorPlacement: function(error, element) {
-            if ( element.parent().children('label') ) {
-                error.appendTo( element.parent() );
-            }
+            error.appendTo( element.closest('.our-form-line') );
         }
     });
 })
