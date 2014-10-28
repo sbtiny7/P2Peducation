@@ -12,7 +12,11 @@ $(function(){
         on_upload_image($(this));
     })
 
-    $('input.datetime').datepicker()
+    $('input.datetime').datepicker({
+        onSelect: function() {
+            $(this).change();
+        }
+    })
 })
 
 function on_upload_image(sender) {
