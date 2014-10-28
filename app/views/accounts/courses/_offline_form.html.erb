@@ -201,10 +201,10 @@ $(function(){
             }
         },
         highlight: function(element) {   // <-- fires when element has error
-            $(element).closest('.our-form-line').removeClass('has-success').addClass('has-error');
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
         },
         unhighlight: function(element) { // <-- fires when element is valid
-            $(element).closest('.our_form-line').removeClass('has-error').addClass('has-success');
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
         },
         errorPlacement: function(error, element) {
             if ( element.closest('.our_form-line').find('label').length <= 0 ) {
