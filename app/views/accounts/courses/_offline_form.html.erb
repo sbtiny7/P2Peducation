@@ -205,10 +205,13 @@ $(function(){
         },
         unhighlight: function(element) { // <-- fires when element is valid
             $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+            $(element).closest('.our_form-line').find('label').first().show();
         },
         errorPlacement: function(error, element) {
             if ( element.closest('.our_form-line').find('label').length <= 0 ) {
                 error.appendTo( element.closest('.our_form-line') );
+            } else {
+                error.appendTo( element.closest('.our_form-line') ).hide();
             }
         }
     });
