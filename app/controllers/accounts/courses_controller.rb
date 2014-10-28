@@ -1,6 +1,6 @@
 class Accounts::CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course,  only: [:show, :edit, :update, :destroy]
 
   layout 'accounts_teacher'
 
@@ -29,7 +29,6 @@ class Accounts::CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @course = current_user.courses.find_by_id params[:id]
   end
 
   # POST /courses
@@ -80,14 +79,20 @@ class Accounts::CoursesController < ApplicationController
   end
 
   def teacher_action
-    @teacher = Teacher.find_or_create_by(params[:teacher])
+    @teacher = Teacher.find_or_create_by(teacher_params)
+    if @teacher.id
+      redirect_to complate_course_path(params[:id], @teacher.id)
+    else
+      @agreement = Agreement.last
+      render :action => :teacher
+    end
   end
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_course
-      @course = Course.find(params[:id])
+      @course = current_user.courses.find_by_id params[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
