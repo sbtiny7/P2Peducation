@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="upload_image form-group">
+        <div class="upload_image form-group our_form-line">
             <div class="ie_preview_wrapper">
                 <div class="ie_preview">
                 </div>
@@ -73,7 +73,7 @@
 </div>
 
 <div class="detail">
-    <div class="form-group">
+    <div class="form-group our_form-line">
         <%= f.kindeditor :detail, :class => "form-control", :placeholder => "请填写课程详细信息", :width => 870 %>
     </div>
 </div>
@@ -201,13 +201,15 @@ $(function(){
             }
         },
         highlight: function(element) {   // <-- fires when element has error
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            $(element).closest('.our-form-line').removeClass('has-success').addClass('has-error');
         },
         unhighlight: function(element) { // <-- fires when element is valid
-            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+            $(element).closest('.our_form-line').removeClass('has-error').addClass('has-success');
         },
         errorPlacement: function(error, element) {
-            error.appendTo( element.parent() );
+            if ( !element.parent().children('label') ) {
+                error.appendTo( element.parent() );
+            }
         }
     });
 })
