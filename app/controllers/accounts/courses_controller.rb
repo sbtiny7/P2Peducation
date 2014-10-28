@@ -81,9 +81,6 @@ class Accounts::CoursesController < ApplicationController
 
   def teacher_action
     @teacher = Teacher.find_or_create_by(teacher_params)
-    if
-    else
-    end
   end
 
 
