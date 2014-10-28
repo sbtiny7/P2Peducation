@@ -1,4 +1,4 @@
-<%= form_for(@teacher, :url => accounts_course_teacher_path(params[:id], @teacher), :html => {:id => 'online_teacher'}) do |f| %>
+<%= form_for(@teacher, :url => accounts_course_teacher_action_path(params[:id], @teacher), :html => {:id => 'online_teacher'}) do |f| %>
 <%= f.hidden_field :user_id %>
 <%= f.hidden_field :agreement_id %>
 <%= f.hidden_field :course_id %>

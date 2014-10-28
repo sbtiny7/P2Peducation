@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'accounts/upload_avatar' => 'accounts/main#upload_avatar_page', as: :account_upload_avatar
   get 'accounts/courses/new/online'  => 'accounts/courses#new_online',  as: :new_accounts_course_online
   get 'accounts/courses/new/offline' => 'accounts/courses#new_offline', as: :new_accounts_course_offline
-  get 'accounts/courses/:id/edit/teacher' => 'accounts/courses#edit_teacher', as: :edit_accounts_course_teacher
-  put 'accounts/courses/:id/teacher' => 'accounts/courses#update_teacher', as: :accounts_course_teacher
+  get 'accounts/courses/:id/teacher' => 'accounts/courses#teacher', as: :accounts_course_teacher
+  match 'accounts/courses/:id/teacher_action' => 'accounts/courses#teacher_action', as: :accounts_course_teacher_action
 
   namespace :admin do
     resources :lessons
