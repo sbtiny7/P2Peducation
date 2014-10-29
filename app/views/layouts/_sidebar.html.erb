@@ -3,11 +3,14 @@
         <h3 class="panel-title"><%= current_user.username %></h3>
     </div>
     <div class="panel-body">
-        <%= link_to image_tag(current_user.avatar.url, :class => 'avatar', :width => 200, :height => 200), accounts_upload_avatar_path %>
+        <div class="avatar">
+            <%= link_to image_tag(current_user.avatar.url, :width => 200, :height => 200), accounts_upload_avatar_path %>
+            <icon class="upload_image">上传图像</icon>
+        </div>
     </div>
     <div class="list-group">
         <a href='<%= accounts_config_path %>' class='list-group-item<% if action_name == 'config_account' %> active<% end %>'>个人设置</a>
-        <a href='<%= edit_user_registration_path %>' class='list-group-item<% if controller_name == 'registrations' %> active<% end %>'>修改密码
+        <a href='<%= edit_user_registration_path %>' class='list-group-item<% if controller_name == 'registrations' %> active<% end %>'>修改密码</a>
         <% if current_user.has_role?(:teacher) %>
         <a href='<%= new_accounts_course_path %>' class='list-group-item<% if controller_name == 'courses' and !['index', 'edit'].include?(action_name) %> active<% end %>'>我要教课</a>
         <%= link_to '学堂管理', accounts_courses_path, :class => "list-group-item" %>
