@@ -33,13 +33,13 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group actions">
           <%= f.submit '提交', class: 'btn btn-danger' %>
         </div>
         <% end %>
       </div>
 
-      <div class="panel-footer text-right actions">
+      <div class="panel-footer text-right">
         <%= button_to "删除账户", registration_path(:user), data: { confirm: "Are you sure?" }, class: 'btn btn-warning', method: :delete %>
       </div>
     </div>
