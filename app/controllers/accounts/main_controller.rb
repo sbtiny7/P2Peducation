@@ -5,6 +5,7 @@ class Accounts::MainController < ApplicationController
     end
 
     def config_account
+        render "config"
     end
 
     def upload_avatar_page
