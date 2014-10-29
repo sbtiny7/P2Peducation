@@ -1,6 +1,10 @@
 class Accounts::MainController < ApplicationController
+  before_action :authenticate_user!
 
     def index #已报名课程
+    end
+
+    def config
     end
 
     def upload_avatar_page

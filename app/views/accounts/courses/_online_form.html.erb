@@ -155,11 +155,11 @@ $(function(){
         },
         highlight: function(element) {   // <-- fires when element has error
             $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-            $(element).closest('.form-group').children('span').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+            //$(element).closest('.form-group').children('span').removeClass('glyphicon-ok').addClass('glyphicon-remove');
         },
         unhighlight: function(element) { // <-- fires when element is valid
             $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-            $(element).closest('.form-group').children('span').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+            //$(element).closest('.form-group').children('span').removeClass('glyphicon-remove').addClass('glyphicon-ok');
         },
         errorPlacement: function(error, element) {
             error.appendTo( element.parent() );
