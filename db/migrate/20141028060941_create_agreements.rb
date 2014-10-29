@@ -5,5 +5,6 @@ class CreateAgreements < ActiveRecord::Migration
 
       t.timestamps
     end
+    Agreement.create(:detail => "test")
   end
 end
