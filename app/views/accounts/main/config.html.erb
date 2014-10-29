@@ -39,7 +39,7 @@
         <% end %>
       </div>
 
-      <div class="panel-footer">
+      <div class="panel-footer bg-warning">
         <%= button_to "删除账户", registration_path(:user), data: { confirm: "Are you sure?" }, class: 'btn btn-warning', method: :delete %>
       </div>
     </div>
@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <div class="panel-footer text-right">
+      <div class="panel-footer bg-warning text-right">
         <%= link_to "更换头像", accounts_upload_avatar_path, class: 'btn btn-success' %>
       </div>
     </div>
