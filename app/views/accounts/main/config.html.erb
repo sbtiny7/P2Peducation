@@ -51,8 +51,14 @@
         <h3 class="panel-title">我的头像</h3>
       </div>
       <div class="panel-body">
-        <img src="<%= current_user.avatar.url %>" width="200px" height="200px">
-        <img src="<%= current_user.avatar.thumb %>" width="32px" height="32px">
+        <div class="row">
+          <div class="col-xs-8">
+            <img src="<%= current_user.avatar.url %>" width="200px" height="200px">
+          </div>
+          <div class="col-xs-4 text-right">
+            <img src="<%= current_user.avatar.thumb %>" width="32px" height="32px">
+          </div>
+        </div>
       </div>
 
       <div class="panel-footer text-right">
