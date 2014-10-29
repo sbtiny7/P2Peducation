@@ -24,19 +24,19 @@ Rails.application.routes.draw do
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do
-    root 'accounts/main#index'
-    get 'upload_avatar' => 'accounts/main#upload_avatar_page', as: :account_upload_avatar
+    root 'main#index'
+    get  'upload_avatar' => 'main#upload_avatar_page'
     resources :courses do
       resources :lessons
       member do
-        get 'teacher', as: :accounts_course_teacher
-        match 'teacher_action', as: :accounts_course_teacher_action, via: [:put, :post, :patch]
-        get 'teacher/:teacher_id/complate' => 'accounts/courses#complate', as: :complate_accounts_course
-        get 'pub' => 'accounts/courses#pub', as: :pub_accounts_course
+        get   'teacher'
+        match 'teacher_action', via: [:put, :post, :patch]
+        get   'teacher/:teacher_id/complate' => 'courses#complate'
+        get   'pub' => 'courses#pub'
       end
       collection do
-        get 'new/online'  => 'accounts/courses#new_online',  as: :new_accounts_course_online
-        get 'new/offline' => 'accounts/courses#new_offline', as: :new_accounts_course_offline
+        get 'new/online'  => 'courses#new_online'
+        get 'new/offline' => 'courses#new_offline'
       end
     end
   end
