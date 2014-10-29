@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :accounts do
     root 'main#index'
-    get  'config' => 'main#config', as: :config
+    get  'config' => 'main#config_account', as: :config
     get  'upload_avatar' => 'main#upload_avatar_page'
     resources :courses do
       resources :lessons

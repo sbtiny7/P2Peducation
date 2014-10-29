@@ -4,7 +4,7 @@ class Accounts::MainController < ApplicationController
     def index #已报名课程
     end
 
-    def config
+    def config_account
     end
 
     def upload_avatar_page
