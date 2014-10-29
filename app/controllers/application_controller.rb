@@ -11,15 +11,15 @@ class ApplicationController < ActionController::Base
     end
 
     def check_admin
-        if current and current.has_role?(:admin)
+        if current_user and current_user.has_role?(:admin)
         else
             redirect_to root_path
         end
     end
 
     def check_teacher
-        if current and current.has_role?(:teacher)
-        elsif current
+        if current_user and current_user.has_role?(:teacher)
+        elsif current_user
             redirect_to accounts_path
         else
             redirect_to root_path
