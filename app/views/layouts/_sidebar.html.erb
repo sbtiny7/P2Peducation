@@ -2,7 +2,7 @@
   <span class="list-group-item">
     <%= link_to image_tag(current_user.avatar.url.start_with?('/assets/') ? current_user.avatar.url.split('/')[2..-1].join('/') : current_user.avatar.url, :class => 'avatar', :width => 200), accounts_upload_avatar_path %>
   </span>
-  <%= link_to '个人设置', accounts_config_path, :class => "list-group-item" %>
+  <a href='<%= accounts_config_path %>' class='list-group-item<% if action_name == 'config_account' %> active<% end %>'>个人设置</a>
   <%= link_to '修改密码', edit_user_registration_path, :class => "list-group-item" %>
   <% if current_user.has_role?(:teacher) %>
   <a href='<%= new_accounts_course_path %>' class='list-group-item<% if controller_name == 'courses' and action_name == 'new' %> active<% end %>'>我要教课</a>
