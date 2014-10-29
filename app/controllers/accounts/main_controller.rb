@@ -9,6 +9,14 @@ class Accounts::MainController < ApplicationController
         render "config"
     end
 
+    def update_account
+        if current_user.update(user_params)
+            redirect_to :action => :config_account, :notice => '账号设置成功'
+        else
+            render :action => :config_account, :notice => '账号设置失败'
+        end
+    end
+
     def upload_avatar_page
         @avatar = current_user.avatar
     end
@@ -17,4 +25,6 @@ class Accounts::MainController < ApplicationController
         current_user.avatar = params[:avatar]
         current_user.save
     end
+    private
+
 end

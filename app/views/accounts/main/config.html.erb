@@ -5,7 +5,12 @@
         <h3 class="panel-title">账户设置</h3>
       </div>
       <div class="panel-body">
-        <%= form_for(current_user, url: registration_path(:user), html: { method: :put }) do |f| %>
+        <% if notice %>
+        <div class="alert alert-info" role="alert">
+          <%= notice %>
+        </div>
+        <% end %>
+        <%= form_for(current_user, url: accounts_update_path, html: { method: :put }) do |f| %>
 
         <div class="form-group">
           <div class="input-group">
