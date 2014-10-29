@@ -3,7 +3,7 @@
         <h3 class="panel-title"><%= current_user.username %></h3>
     </div>
     <div class="panel-body">
-        <%= link_to image_tag(current_user.avatar.url.start_with?('/assets/') ? current_user.avatar.url.split('/')[2..-1].join('/') : current_user.avatar.url, :class => 'avatar', :width => 200), accounts_upload_avatar_path %>
+        <%= link_to image_tag(current_user.avatar.url, :class => 'avatar', :width => 200, :height => 200), accounts_upload_avatar_path %>
     </div>
     <div class="list-group">
         <a href='<%= accounts_config_path %>' class='list-group-item<% if action_name == 'config_account' %> active<% end %>'>个人设置</a>

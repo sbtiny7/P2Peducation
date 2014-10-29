@@ -4,7 +4,7 @@ class Course < ActiveRecord::Base
 
     TYPES = %w(ONLINE OFFLINE)
     CATEGORIES = %w(实用技能 兴趣爱好)
-    DEFAULT_IMG_PATH = "/assets/temp.jpg"
+    DEFAULT_IMG_PATH = "/temp.jpg"
 
     mount_uploader :image, ImageUploader
     mount_uploader :tmp_image, TempUploader
