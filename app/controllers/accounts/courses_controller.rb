@@ -1,6 +1,6 @@
 class Accounts::CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_teacher_role
+  before_action :check_teacher
   before_action :set_course,  only: [:show, :edit, :update, :destroy, :complate, :pub]
 
   layout 'accounts'
