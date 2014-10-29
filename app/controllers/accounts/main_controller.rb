@@ -26,5 +26,11 @@ class Accounts::MainController < ApplicationController
         current_user.save
     end
     private
-
+    def user_params
+      params.require(:user).permit(
+        :username,
+        :email,
+        :phone
+        )
+    end
 end
