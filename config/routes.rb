@@ -24,10 +24,10 @@ Rails.application.routes.draw do
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do
-    root 'main#index'
-    get  'config' => 'main#config_account', as: :config
-    post 'update' => 'main#update_account', as: :update
-    get  'upload_avatar' => 'main#upload_avatar_page'
+    root  'main#index'
+    get   'config' => 'main#config_account', as: :config
+    patch 'update' => 'main#update_account', as: :update
+    get   'upload_avatar' => 'main#upload_avatar_page'
     resources :courses do
       resources :lessons
       member do
