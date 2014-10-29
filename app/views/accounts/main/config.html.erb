@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-8">
+<!--div class="row">
+  <div class="col-md-8"-->
     <div class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">账户设置</h3>
@@ -48,7 +48,7 @@
         <%= button_to "删除账户", registration_path(:user), data: { confirm: "Are you sure?" }, class: 'btn btn-warning', method: :delete %>
       </div>
     </div>
-  </div>
+  <!--/div>
   <div class="col-md-4">
 
     <div class="panel panel-primary">
@@ -58,17 +58,17 @@
       <div class="panel-body">
         <div class="clearfix">
           <div class="left">
-            <img src="<%= current_user.avatar.url %>" width="200px" height="200px">
+            <img src="<%#= current_user.avatar.url %>" width="200px" height="200px">
           </div>
           <div class="right">
-            <img src="<%= current_user.avatar.thumb %>" width="32px" height="32px">
+            <img src="<%#= current_user.avatar.thumb %>" width="32px" height="32px">
           </div>
         </div>
       </div>
 
       <div class="panel-footer bg-warning text-right">
-        <%= link_to "更换头像", accounts_upload_avatar_path, class: 'btn btn-success' %>
+        <%#= link_to "更换头像", accounts_upload_avatar_path, class: 'btn btn-success' %>
       </div>
     </div>
   </div>
-</div>
+</div-->
