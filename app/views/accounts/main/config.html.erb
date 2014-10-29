@@ -72,3 +72,45 @@
     </div>
   </div>
 </div-->
+
+<script type="text/javascript">
+$(function(){
+    $('form').validate({
+        rules: {
+            "user[username]": {
+                required: true
+            },
+            "user[phone]": {
+                required: true,
+                isPhone: true
+            },
+            "user[email]": {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            "user[name]": {
+                required: '请填写教师姓名'
+            },
+            "user[phone]": {
+                required: '请填写联系电话',
+                isPhone: '请填写正确的电话号码（固话含区号）'
+            },
+            "user[email]": {
+                required: '请填写电子邮件',
+                email: '请填写正确的电子邮件'
+            }
+        },
+        highlight: function(element) {   // <-- fires when element has error
+            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        unhighlight: function(element) { // <-- fires when element is valid
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo( element.parent() );
+        }
+    });
+})
+</script>

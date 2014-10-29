@@ -41,10 +41,12 @@ $(function(){
                 required: true
             },
             "teacher[phone]": {
-                required: true
+                required: true,
+                isPhone: true
             },
             "teacher[email]": {
-                required: true
+                required: true,
+                email: true
             },
             "teacher[organ_name]": {
                 required: true
@@ -55,10 +57,12 @@ $(function(){
                 required: '请填写教师姓名'
             },
             "teacher[phone]": {
-                required: '请填写联系电话'
+                required: '请填写联系电话',
+                isPhone: '请填写正确的电话号码（固话含区号）'
             },
             "teacher[email]": {
-                required: '请填写电子邮件'
+                required: '请填写电子邮件',
+                email: '请填写正确的电子邮件'
             },
             "teacher[organ_name]": {
                 required: '请填写机构名称'
