@@ -251,6 +251,8 @@ zh:
         username: 用户名
         phone: 手机号码
         password: 密码
+        password_confirmation: 确认密码
+        current_password: 旧密码
         token: 验证码
       message:
         phones: 手机号码
