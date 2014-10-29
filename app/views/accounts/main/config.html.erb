@@ -1,24 +1,33 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">账户设置</h3>
-  </div>
-  <div class="panel-body">
-    <%= form_for(current_user, url: registration_path(:user), html: { method: :put }) do |f| %>
+<div class="row">
+  <div class="col-md-7">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">账户设置</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for(current_user, url: registration_path(:user), html: { method: :put }) do |f| %>
 
-    <div class="input-group">
-      <span class="input-group-btn">
-        <%= f.label :email, '电子邮件', class: 'btn btn-info' %>
-      </span>
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <%= f.label :email, '电子邮件', class: 'btn btn-info' %>
+          </span>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+        <div><%= f.submit "Update" %></div>
+        <% end %>
+      </div>
+
+      <div class="panel-footer">
+        <h3>Cancel my account</h3>
+
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(:user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      </div>
     </div>
-
-    <div><%= f.submit "Update" %></div>
-    <% end %>
   </div>
-
-  <div class="panel-footer">
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(:user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <div class="col-md-5 well">
+    <a href="#" class="thumbnail">
+      <%= image_tag current_user.avatar.url %>
+    </a>
   </div>
 </div>
