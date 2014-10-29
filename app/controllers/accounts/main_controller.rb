@@ -11,7 +11,7 @@ class Accounts::MainController < ApplicationController
 
     def update_account
         if current_user.update(user_params)
-            redirect_to :url => {:action => :config_account}, :notice => '账号设置成功'
+            redirect_to accounts_config_path, :notice => '账号设置成功'
         else
             render :action => :config_account
         end
