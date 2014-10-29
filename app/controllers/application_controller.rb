@@ -16,4 +16,13 @@ class ApplicationController < ActionController::Base
             redirect_to root_path
         end
     end
+
+    def check_teacher
+        if current and current.has_role?(:teacher)
+        elsif current
+            redirect_to accounts_path
+        else
+            redirect_to root_path
+        end
+    end
 end

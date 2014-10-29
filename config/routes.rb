@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
 
+  # ↓ 移动端API ↓
 
-  namespace :accounts do
-    resources :lessons
-    resources :courses
-  end
-  get 'accounts/upload_avatar' => 'accounts/main#upload_avatar_page', as: :account_upload_avatar
-  get 'accounts/courses/new/online'  => 'accounts/courses#new_online',  as: :new_accounts_course_online
-  get 'accounts/courses/new/offline' => 'accounts/courses#new_offline', as: :new_accounts_course_offline
-  get 'accounts/courses/:id/teacher' => 'accounts/courses#teacher', as: :accounts_course_teacher
-  match 'accounts/courses/:id/teacher_action' => 'accounts/courses#teacher_action', as: :accounts_course_teacher_action, via: [:put, :post, :patch]
-  get 'accounts/courses/:id/teacher/:teacher_id/complate' => 'accounts/courses#complate', as: :complate_accounts_course
-  get 'accounts/courses/:id/pub' => 'accounts/courses#pub', as: :pub_accounts_course
+  get 'api/study/study.:format' => 'api/study#study'
+
+  # ↑ 移动端API ↑
+
+
+
+  # ↓ 咱们用的后台管理 ↓
 
   namespace :admin do
     resources :lessons
@@ -20,8 +17,35 @@ Rails.application.routes.draw do
     resources :agreements
   end
 
-  get 'api/study/study.:format' => 'api/study#study'
+  # ↑ 咱们用的后台管理 ↑
 
+
+
+  # ↓ 用户使用的管理页面 ↓
+
+  namespace :accounts do
+    root 'accounts/main#index'
+    get 'upload_avatar' => 'accounts/main#upload_avatar_page', as: :account_upload_avatar
+    resources :courses do
+      resources :lessons
+      member do
+        get 'teacher', as: :accounts_course_teacher
+        match 'teacher_action', as: :accounts_course_teacher_action, via: [:put, :post, :patch]
+        get 'teacher/:teacher_id/complate' => 'accounts/courses#complate', as: :complate_accounts_course
+        get 'pub' => 'accounts/courses#pub', as: :pub_accounts_course
+      end
+      collection do
+        get 'new/online'  => 'accounts/courses#new_online',  as: :new_accounts_course_online
+        get 'new/offline' => 'accounts/courses#new_offline', as: :new_accounts_course_offline
+      end
+    end
+  end
+
+  # ↑ 用户使用的管理页面 ↑
+
+
+
+  # ↓ 基于DEVISE的用户账号管理 ↓
 
   devise_for :users, path: "accounts",
   controllers: {
@@ -32,58 +56,23 @@ Rails.application.routes.draw do
     unlocks:       "accounts/unlocks"
   }
 
+  # ↑ 基于DEVISE的用户账号管理 ↑
+
+
+
+  # ↓ 主页、课程展示等，未登录用户也能观看的部分 ↓
+
   get 'course/:course_id' => 'home#course', as: :course
 
   root 'home#index'
 
-  mount ChinaCity::Engine => '/china_city'
+  # ↑ 主页、课程展示等，未登录用户也能观看的部分 ↑
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  # ↓ 其他（如有优先级需求可以上移） ↓
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  mount ChinaCity::Engine => '/china_city' # 选择地址插件所用
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # ↑ 其他（如有优先级需求可以上移） ↑
 end
