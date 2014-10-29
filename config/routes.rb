@@ -31,8 +31,8 @@ Rails.application.routes.draw do
       member do
         get   'teacher'
         match 'teacher_action', via: [:put, :post, :patch]
-        get   'teacher/:teacher_id/complate' => 'courses#complate'
-        get   'pub' => 'courses#pub'
+        get   'teacher/:teacher_id/complate' => 'courses#complate', as: :complate
+        get   'pub'
       end
       collection do
         get 'new/online'  => 'courses#new_online'
