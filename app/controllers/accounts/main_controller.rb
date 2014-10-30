@@ -12,7 +12,7 @@ class Accounts::MainController < ApplicationController
     def update_account
         if current_user.update(user_params)
             flash.now[:notice] = '账号设置成功'
-            render :action => :config_account
+            render "config"
         else
             render :action => :config_account
         end
