@@ -25,9 +25,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   User::DEFAULT_AVATAR_PATH
   end
+  process :crop
   process :resize_to_fill => [200, 200]
 
   version :thumb do
+    process :crop
     process :resize_to_fill => [32, 32]
   end
   # Process files as they are uploaded:
@@ -54,4 +56,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "#{model.class.to_s.underscore}_#{mounted_as}_#{model.id}.#{file.extension}" if original_filename
   end
 
+  def crop
+    if model.avatar_x && model.avatar_y && model.avatar_w && model.avatar_h
+      manipulate! do |img|
+        arr = [model.avatar_x, model.avatar_y, model.avatar_w, model.avatar_h].map do |a|
+          Integer(a) * img.column / User::AVATAR_PREVIWE_SIZE
+        end
+        img.crop "#{arr[2]}x#{arr[3]}+#{arr[0]}+#{arr[1]}"
+        img
+      end
+    end
+  end
 end

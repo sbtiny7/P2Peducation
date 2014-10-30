@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   DEFAULT_AVATAR_PATH = "/temp.jpg"
+  AVATAR_PREVIEW_SIZE = 400
   rolify
   mount_uploader :avatar, AvatarUploader
   mount_uploader :tmp_avatar, TempUploader
@@ -7,6 +8,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  attr_accessor :avatar_x, :avatar_y, :avatar_w, :avatar_h
 
   has_many :teachers
   has_many :courses

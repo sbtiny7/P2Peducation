@@ -9,7 +9,7 @@
           <div class="avatar_preview">
           </div>
           <div class="avatar_preview">
-              <%= image_tag current_user.avatar.url, :class => "avatar_preview" %>
+            <%= image_tag current_user.avatar.url, :class => "avatar_preview" %>
           </div>
           <div class="avatar_preview">
           </div>
@@ -31,47 +31,52 @@
           </div>
         </div>
 
-        <div class="form-group actions text-right">
+        <div class="form-group text-right">
           <%= submit_tag '提交', class: 'btn btn-danger' %>
         </div>
 
-        <div class="well">
+        <div style="width:100px;height:100px;overflow:hidden;">
+          <img src="" id="crop_preview">
+        </div>
+        <%= hidden_field_tag :avatar_x %>
+        <%= hidden_field_tag :avatar_y %>
+        <%= hidden_field_tag :avatar_w %>
+        <%= hidden_field_tag :avatar_h %>
+
+        <!--div class="well">
           用于调试
-          <div style="width:100px;height:100px;overflow:hidden;">
-            <img src="" id="crop_preview">
-          </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :fw, '图片w', class: 'btn btn-info' %>
+                    <%#= label_tag :fw, '图片w', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :fw, nil, class: "form-control" %>
+                  <%#= text_field_tag :fw, nil, class: "form-control" %>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :fh, '图片h', class: 'btn btn-info' %>
+                    <%#= label_tag :fh, '图片h', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :fh, nil, class: "form-control" %>
+                  <%#= text_field_tag :fh, nil, class: "form-control" %>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :iw, '元素w', class: 'btn btn-info' %>
+                    <%#= label_tag :iw, '元素w', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :iw, nil, class: "form-control" %>
+                  <%#= text_field_tag :iw, nil, class: "form-control" %>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :ih, '元素h', class: 'btn btn-info' %>
+                    <%#= label_tag :ih, '元素h', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :ih, nil, class: "form-control" %>
+                  <%#= text_field_tag :ih, nil, class: "form-control" %>
                 </div>
               </div>
             </div>
@@ -79,38 +84,38 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :x, '选区x', class: 'btn btn-info' %>
+                    <%#= label_tag :x, '选区x', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :x, nil, class: "form-control" %>
+                  <%#= text_field_tag :x, nil, class: "form-control" %>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :y, '选区y', class: 'btn btn-info' %>
+                    <%#= label_tag :y, '选区y', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :y, nil, class: "form-control" %>
+                  <%#= text_field_tag :y, nil, class: "form-control" %>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :w, '选区w', class: 'btn btn-info' %>
+                    <%#= label_tag :w, '选区w', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :w, nil, class: "form-control" %>
+                  <%#= text_field_tag :w, nil, class: "form-control" %>
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <%= label_tag :h, '选区h', class: 'btn btn-info' %>
+                    <%#= label_tag :h, '选区h', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :h, nil, class: "form-control" %>
+                  <%#= text_field_tag :h, nil, class: "form-control" %>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div-->
 
         <% end %>
       </div>
@@ -159,10 +164,10 @@ function crop_image() {
 
 function showPreview(coords) {
 
-  $('#x').val(coords.x);
-  $('#y').val(coords.y);
-  $('#w').val(coords.w);
-  $('#h').val(coords.h);
+  $('#avatar_x').val(coords.x);
+  $('#avatar_y').val(coords.y);
+  $('#avatar_w').val(coords.w);
+  $('#avatar_h').val(coords.h);
 
   var rx = 100 / coords.w;
   var ry = 100 / coords.h;
@@ -194,10 +199,6 @@ $(function(){
       ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
     }
   })
-
-
-
-
 
   $('form').validate({
     rules: {
