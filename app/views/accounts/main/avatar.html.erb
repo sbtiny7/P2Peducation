@@ -124,8 +124,10 @@ var jcrop_api = $.Jcrop('img.avatar_preview');
 
 
 function crop_image() {
-  var fw = $('img.avatar_preview').naturalWidth;
-  var fh = $('img.avatar_preview').naturalHeight;
+  var theImage = new Image();
+  theImage.src = $('img.avatar_preview').attr("src");
+  var fw = theImage.width;
+  var fh = theImage.height;
   var iw = $('img.avatar_preview').width();
   var ih = $('img.avatar_preview').height();
 
