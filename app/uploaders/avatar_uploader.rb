@@ -58,6 +58,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   def crop
     if model.avatar_x && model.avatar_y && model.avatar_w && model.avatar_h
+      Rails.logger.info("in the avatar crop ==================================")
       manipulate! do |img|
         arr = [model.avatar_x, model.avatar_y, model.avatar_w, model.avatar_h].map do |a|
           Integer(a) * img.column / User::AVATAR_PREVIWE_SIZE
