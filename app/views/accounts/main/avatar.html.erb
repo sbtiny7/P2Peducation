@@ -119,18 +119,19 @@
 </div>
 
 <script type="text/javascript">
-
-//var jcrop_api = $.Jcrop('img.avatar_preview');
+var img = $('img.avatar_preview')[0];
+img.onload = function () {
+  $('#fw').val(img.naturalWidth);
+  $('#fh').val(img.naturalHeight);
+}
+var ie_preview_wrapper = $('div.avatar_preview_wrapper');
+var ie_preview = $('div.avatar_preview');
 
 
 function crop_image() {
-  var fw = $('img.avatar_preview')[0].naturalWidth;
-  var fh = $('img.avatar_preview')[0].naturalWidth;
   var iw = $('img.avatar_preview').width();
   var ih = $('img.avatar_preview').height();
 
-  $('#fw').val(fw);
-  $('#fh').val(fh);
   $('#iw').val(iw);
   $('#ih').val(ih);
 
@@ -168,9 +169,7 @@ $(function(){
       alert('图片格式无效！');
       return false;
     }
-    var img = $('img.avatar_preview')[0];
-    var ie_preview_wrapper = $('div.avatar_preview_wrapper');
-    var ie_preview = $('div.avatar_preview');
+
     if( $(this)[0].files && $(this)[0].files[0] ){
       $('img.avatar_preview').removeAttr("width").removeAttr("height");
       img.src = window.URL.createObjectURL($(this)[0].files[0]);
