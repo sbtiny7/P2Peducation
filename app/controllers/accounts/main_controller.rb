@@ -17,7 +17,7 @@ class Accounts::MainController < ApplicationController
         end
     end
 
-    def upload_avatar_page
+    def config_avatar
         @avatar = current_user.avatar
     end
 
