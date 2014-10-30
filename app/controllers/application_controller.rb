@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery with: :exception
     before_action :configure_permitted_parameters, if: :devise_controller?
-    after_action  :clear_notice
+    after_action  :clean_notice
 
     protected
 
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def clear_notice
-        notice = nil
+    def clean_notice
+        flash[:notice] = nil
     end
 end
