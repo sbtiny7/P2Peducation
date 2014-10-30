@@ -7,7 +7,7 @@
       <div class="col-md-6">
         <div class="avatar_preview_wrapper">
           <div class="avatar_preview">
-            <%= image_tag current_user.avatar.url, :class => "avatar_preview", :width => 400, :height => 400 %>
+            <%= image_tag current_user.avatar.url, :class => "avatar_preview" %>
           </div>
         </div>
       </div>
@@ -124,6 +124,7 @@ var img = $('img.avatar_preview')[0];
 img.onload = function () {
   $('#fw').val(img.naturalWidth);
   $('#fh').val(img.naturalHeight);
+  $('img.avatar_preview').removeAttr("width").removeAttr("height");
   crop_image();
 }
 var ie_preview_wrapper = $('div.avatar_preview_wrapper');
@@ -139,13 +140,14 @@ function crop_image() {
   $('#ih').val(ih);
 
   var min_value = Math.min(iw, ih);
-  //jcrop_api.setSelect([0, 0, min_value, min_value]);
+
   $('img.avatar_preview').Jcrop({
     onChange: showPreview,
     onSelect: showPreview,
     aspectRatio: 1
   }, function(){
     jcrop_api = this;
+    jcrop_api.setSelect([0, 0, min_value, min_value]);
   });
 }
 
@@ -176,7 +178,6 @@ $(function(){
     }
 
     if( $(this)[0].files && $(this)[0].files[0] ){
-      $('img.avatar_preview').removeAttr("width").removeAttr("height");
       img.src = $('img#crop_preview')[0].src = window.URL.createObjectURL($(this)[0].files[0]);
     } else if( ie_preview[0].filters ) {
       $('img.avatar_preview').hide();
