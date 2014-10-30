@@ -21,7 +21,7 @@
           <%= notice %>
         </div>
         <% end %>
-        <%= form_tag(accounts_upload_avatar_path, :multipart => true) do |f| %>
+        <%= form_tag(accounts_upload_avatar_path, :id => "upload_avatar", :multipart => true) do |f| %>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-btn">
@@ -200,7 +200,7 @@ $(function(){
     }
   })
 
-  $('form').validate({
+  $('form#upload_avatar').validate({
     rules: {
       "avatar": {
         required: true
