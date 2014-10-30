@@ -1,8 +1,20 @@
-class Video < ActiveRecord::Base
-    belongs_to :videoable, :polymorphic => true
+# == Schema Information
+#
+# Table name: videos
+#
+#  id             :integer          not null, primary key
+#  stream_name    :string(255)
+#  videoable_id   :integer
+#  videoable_type :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
 
-    def url(type)
-        case type.to_s
-        end
-    end
+class Video < ActiveRecord::Base
+  belongs_to :videoable, :polymorphic => true
+
+  def url(type)
+    # case type.to_s
+    # end
+  end
 end

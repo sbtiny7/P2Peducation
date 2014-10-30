@@ -56,5 +56,7 @@ gem 'china_city'
 gem 'alipay', '~> 0.1.0' # 支付宝支付
 gem 'settingslogic', '~> 2.0.9' # 配置项
 group :development do
-  gem 'thin', '~> 1.6.3'
+  gem 'thin', '~> 1.6.3' # 服务器
+  gem 'migration_comments', '~> 0.3.2' # 添加comment
+  gem 'annotate', '~> 2.6.5' # 生成model字段注释
 end

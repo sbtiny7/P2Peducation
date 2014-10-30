@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028060941) do
+ActiveRecord::Schema.define(version: 20141030135852) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 20141028060941) do
 
   add_index "lessons", ["token"], name: "index_lessons_on_token", unique: true, using: :btree
 
+  create_table "orders", force: true, comment: "订单" do |t|
+    t.integer  "quantity",                            default: 1,   null: false, comment: "数量"
+    t.decimal  "price",      precision: 16, scale: 2, default: 0.0, null: false, comment: "价格(元)"
+    t.decimal  "discount",   precision: 10, scale: 0, default: 0,   null: false, comment: "打折后的价格(元)"
+    t.string   "trade_no",                                          null: false, comment: "交易号"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -108,7 +117,7 @@ ActiveRecord::Schema.define(version: 20141028060941) do
   create_table "teachers", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.boolean  "sex"
+    t.string   "sex"
     t.string   "phone"
     t.string   "email"
     t.string   "organ_name"
