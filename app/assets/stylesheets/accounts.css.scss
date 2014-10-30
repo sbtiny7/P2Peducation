@@ -125,20 +125,16 @@ img.upload_image, .ie_preview {
     background-color: #fffafa;
 }
 div.avatar_preview {
-    width: auto;
-    height: auto;
     max-width: 400px;
     max-height: 400px;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+    overflow: hidden;
 }
 img.avatar_preview {
     max-width: 400px;
     max-height: 400px;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
 }
 /* upload avatar */
 

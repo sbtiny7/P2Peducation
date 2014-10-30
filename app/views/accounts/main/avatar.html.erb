@@ -6,9 +6,11 @@
     <div class="row">
       <div class="col-md-6">
         <div class="avatar_preview_wrapper">
-          <!--div class="avatar_preview"-->
-            <%= image_tag current_user.avatar.url, :class => "avatar_preview" %>
-          <!--/div-->
+          <div class="avatar_preview">
+            <div>
+              <%= image_tag current_user.avatar.url, :class => "avatar_preview" %>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-6">
@@ -32,7 +34,7 @@
         </div>
 
         <div class="well">
-          <h1>用于调试</h1>
+          用于调试
           <div style="width:100px;height:100px;overflow:hidden;">
             <img src="" id="crop_preview" width="100px" height="100px">
           </div>
@@ -135,6 +137,8 @@ function crop_image() {
   if (typeof jcrop_api != 'undefined') { jcrop_api.destroy(); }
   var iw = $('img.avatar_preview').width();
   var ih = $('img.avatar_preview').height();
+
+  $('div.avatar_preview').css({width: iw+"px", height: ih+"px"})
 
   $('#iw').val(iw);
   $('#ih').val(ih);
