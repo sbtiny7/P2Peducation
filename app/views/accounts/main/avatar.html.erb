@@ -168,8 +168,8 @@ function showPreview(coords) {
   var ry = 100 / coords.h;
 
   $('#crop_preview').css({
-    width:  Math.round(rx * iw) + 'px',
-    height: Math.round(ry * ih) + 'px',
+    width:  Math.round(rx * iw * iw / fw) + 'px',
+    height: Math.round(ry * ih * ih / fh) + 'px',
     marginLeft: '-' + Math.round(rx * coords.x) + 'px',
     marginTop:  '-' + Math.round(ry * coords.y) + 'px'
   });
