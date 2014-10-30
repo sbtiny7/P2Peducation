@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     def check_teacher
         if current_user and current_user.has_role?(:teacher)
         elsif current_user
-            redirect_to accounts_path
+            redirect_to accounts_root_path
         else
             redirect_to root_path
         end

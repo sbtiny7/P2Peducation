@@ -119,16 +119,19 @@
 </div>
 
 <script type="text/javascript">
+var jcrop_api;
 var img = $('img.avatar_preview')[0];
 img.onload = function () {
   $('#fw').val(img.naturalWidth);
   $('#fh').val(img.naturalHeight);
+  crop_image();
 }
 var ie_preview_wrapper = $('div.avatar_preview_wrapper');
 var ie_preview = $('div.avatar_preview');
 
 
 function crop_image() {
+  if (typeof jcrop_api != 'undefined') { jcrop_api.destroy(); }
   var iw = $('img.avatar_preview').width();
   var ih = $('img.avatar_preview').height();
 
@@ -141,6 +144,8 @@ function crop_image() {
     onChange: showPreview,
     onSelect: showPreview,
     aspectRatio: 1
+  }, function(){
+    jcrop_api = this;
   });
 }
 
@@ -173,14 +178,12 @@ $(function(){
     if( $(this)[0].files && $(this)[0].files[0] ){
       $('img.avatar_preview').removeAttr("width").removeAttr("height");
       img.src = $('img#crop_preview')[0].src = window.URL.createObjectURL($(this)[0].files[0]);
-      crop_image();
     } else if( ie_preview[0].filters ) {
       $('img.avatar_preview').hide();
       $(this).select();
       $(this).blur();
       var path = document.selection.createRange().text;
       ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
-      crop_image();
     }
   })
 
