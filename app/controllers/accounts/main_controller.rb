@@ -24,7 +24,7 @@ class Accounts::MainController < ApplicationController
 
     def upload_avatar
         if params[:avatar]
-            %(avatar avatar_x avatar_y avatar_w avatar_h).map do |attr|
+            %w(avatar avatar_x avatar_y avatar_w avatar_h).map do |attr|
                 current_user.send("#{attr}=", params[attr.to_sym] || nil)
             end
             current_user.save
