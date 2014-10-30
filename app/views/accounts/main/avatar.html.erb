@@ -176,14 +176,14 @@ $(function(){
     if( $(this)[0].files && $(this)[0].files[0] ){
       $('img.avatar_preview').removeAttr("width").removeAttr("height");
       img.src = window.URL.createObjectURL($(this)[0].files[0]);
-      crop_image();
+      //crop_image();
     } else if( ie_preview[0].filters ) {
       $('img.avatar_preview').hide();
       $(this).select();
       $(this).blur();
       var path = document.selection.createRange().text;
       ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
-      crop_image();
+      //crop_image();
     }
   })
 
