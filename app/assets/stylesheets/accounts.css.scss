@@ -129,7 +129,6 @@ div.avatar_preview {
     height: auto;
     max-width: 400px;
     max-height: 400px;
-    margin: auto;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
@@ -137,6 +136,9 @@ div.avatar_preview {
 img.avatar_preview {
     max-width: 400px;
     max-height: 400px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 /* upload avatar */
 
