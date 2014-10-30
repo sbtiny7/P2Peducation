@@ -6,32 +6,42 @@ class Accounts::MainController < ApplicationController
     end
 
     def config_account
-        render "config"
+        render "account"
     end
 
     def update_account
         if current_user.update(user_params)
             flash.now[:notice] = '账号设置成功'
-            render "config"
+            render "account"
         else
             render :action => :config_account
         end
     end
 
     def config_avatar
-        @avatar = current_user.avatar
+        render "avatar"
     end
 
     def upload_avatar
-        current_user.avatar = params[:avatar]
-        current_user.save
+        if params[:avatar]
+            current_user.avatar = params[:avatar]
+            current_user.save
+            flash.now[:notice] = '头像上传成功'
+        else
+            current_user.avatar = nil
+            current_user.save
+            flash.now[:notice] = '头像删除成功'
+        end
+        render "avatar"
     end
+
     private
+
     def user_params
-      params.require(:user).permit(
-        :username,
-        :email,
-        :phone
-        )
+        params.require(:user).permit(
+            :username,
+            :email,
+            :phone
+            )
     end
 end
