@@ -1,169 +1,180 @@
+<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index' %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'plugins/jquery-ui/jquery-ui' %>
+<% end %>
 <%= form_for([:accounts, @course], :html => {:id => 'online_course', :multipart => true}) do |f| %>
-<%= f.hidden_field :course_type %>
-<%= f.hidden_field :user_id %>
-<div class="row">
+  <%= f.hidden_field :course_type %>
+  <%= f.hidden_field :user_id %>
+  <div class="row">
     <div class="col-md-6">
-        <div class="form-group our_form-line has-feedback">
-            <%= f.text_field :title, :class => "form-control", :placeholder => "请输入标题" %>
-            <span class="glyphicon form-control-feedback"></span>
+      <div class="form-group our_form-line has-feedback">
+        <%= f.text_field :title, :class => "form-control", :placeholder => "请输入标题" %>
+        <span class="glyphicon form-control-feedback"></span>
+      </div>
+      <div class="form-group our_form-line">
+        <%= f.select :category, options_for_select(Course::CATEGORIES, @course.category), {}, {:class => "form-control"} %>
+      </div>
+      <div class="row">
+        <div class="form-group our_form-line col-md-6 has-feedback">
+          <%= f.text_field 'start_time_date', :value => @course.start_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
+          <span class="glyphicon form-control-feedback"></span>
         </div>
-        <div class="form-group our_form-line">
-            <%= f.select :category, options_for_select(Course::CATEGORIES, @course.category), {}, {:class => "form-control"} %>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'start_time_hour', options_for_select((0..23).map { |x| [double(x), x] }, @course.start_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
         </div>
-        <div class="row">
-            <div class="form-group our_form-line col-md-6 has-feedback">
-                <%= f.text_field 'start_time_date', :value => @course.start_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
-                <span class="glyphicon form-control-feedback"></span>
-            </div>
-            <div class="form-group our_form-line col-md-3">
-                <%= f.select 'start_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.start_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
-            </div>
-            <div class="form-group our_form-line col-md-3">
-                <%= f.select 'start_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.start_time.try(:min) || 0), {}, {:class => "form-control"} %>
-            </div>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'start_time_min', options_for_select((0..59).map { |x| [double(x), x] }, @course.start_time.try(:min) || 0), {}, {:class => "form-control"} %>
         </div>
-        <div class="row">
-            <div class="form-group our_form-line col-md-6 has-feedback">
-                <%= f.text_field 'end_time_date', :value => @course.end_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
-                <span class="glyphicon form-control-feedback"></span>
-            </div>
-            <div class="form-group our_form-line col-md-3">
-                <%= f.select 'end_time_hour', options_for_select((0..23).map{|x| [double(x), x]}, @course.end_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
-            </div>
-            <div class="form-group our_form-line col-md-3">
-                <%= f.select 'end_time_min', options_for_select((0..59).map{|x| [double(x), x]}, @course.end_time.try(:min) || 0), {}, {:class => "form-control"} %>
-            </div>
+      </div>
+      <div class="row">
+        <div class="form-group our_form-line col-md-6 has-feedback">
+          <%= f.text_field 'end_time_date', :value => @course.end_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
+          <span class="glyphicon form-control-feedback"></span>
         </div>
-        <div class="form-group our_form-line has-feedback">
-            <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
-            <span class="glyphicon form-control-feedback"></span>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'end_time_hour', options_for_select((0..23).map { |x| [double(x), x] }, @course.end_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
         </div>
-        <div class="form-group our_form-line">
-            <%= f.text_field :students_max, :class => "form-control", :placeholder => "可容纳学生数量（可选）" %>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'end_time_min', options_for_select((0..59).map { |x| [double(x), x] }, @course.end_time.try(:min) || 0), {}, {:class => "form-control"} %>
         </div>
+      </div>
+      <div class="form-group our_form-line has-feedback">
+        <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
+        <span class="glyphicon form-control-feedback"></span>
+      </div>
+      <div class="form-group our_form-line">
+        <%= f.text_field :students_max, :class => "form-control", :placeholder => "可容纳学生数量（可选）" %>
+      </div>
     </div>
     <div class="col-md-6">
-        <div class="upload_image form-group">
-            <div class="ie_preview_wrapper">
-                <div class="ie_preview">
-                </div>
-            </div>
-            <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
-            <%= f.file_field :image, :class => "form-control upload_image" %>
-            <icon class="upload_image">上传图像</icon>
+      <div class="upload_image form-group">
+        <div class="ie_preview_wrapper">
+          <div class="ie_preview">
+          </div>
         </div>
+        <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
+        <%= f.file_field :image, :class => "form-control upload_image" %>
+        <icon class="upload_image">上传图像</icon>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="detail">
+  <div class="detail">
     <div class="form-group">
-        <%= f.kindeditor :detail, :class => "form-control", :placeholder => "请填写课程详细信息", :width => 870 %>
+      <%= f.kindeditor :detail, :class => "form-control", :placeholder => "请填写课程详细信息", :width => 870 %>
     </div>
-</div>
+  </div>
 
-<div class="actions">
+  <div class="actions">
     <%= f.submit '提交', class: 'btn btn-primary' %>
-</div>
+  </div>
 <% end %>
 
-<script type="text/javascript">
-$(function(){
-    $('form#online_course').validate({
+<%= content_for :foot do %>
+  <script type="text/javascript">
+    $(function () {
+      $('input.datetime').datepicker({
+        onSelect: function () {
+          $(this).change();
+        }
+      });
+      $('form#online_course').validate({
         rules: {
-            "course[title]": {
-                required: true
-            },
-            "course[category]": {
-                required: true
-            },
-            "course[start_time_date]": {
-                required: true
-            },
-            "course[start_time_hour]": {
-                required: true
-            },
-            "course[start_time_min]": {
-                required: true
-            },
-            "course[end_time_date]": {
-                required: true
-            },
-            "course[end_time_hour]": {
-                required: true
-            },
-            "course[end_time_min]": {
-                required: true
-            },
-            "course[price]": {
-                required: true,
-                number: true
-            },
-            "course[students_max]": {
-                digits: true,
-                min: 1
-            },
-            "course[image]": {
-                required: true,
-                extension: "png|jpe?g|gif",
-                accept: "image/*"
-            },
-            "course[detail]": {
-                required: true
-            }
+          "course[title]": {
+            required: true
+          },
+          "course[category]": {
+            required: true
+          },
+          "course[start_time_date]": {
+            required: true
+          },
+          "course[start_time_hour]": {
+            required: true
+          },
+          "course[start_time_min]": {
+            required: true
+          },
+          "course[end_time_date]": {
+            required: true
+          },
+          "course[end_time_hour]": {
+            required: true
+          },
+          "course[end_time_min]": {
+            required: true
+          },
+          "course[price]": {
+            required: true,
+            number: true
+          },
+          "course[students_max]": {
+            digits: true,
+            min: 1
+          },
+          "course[image]": {
+            required: true,
+            extension: "png|jpe?g|gif",
+            accept: "image/*"
+          },
+          "course[detail]": {
+            required: true
+          }
         },
         messages: {
-            "course[title]": {
-                required: '请输入课程标题'
-            },
-            "course[category]": {
-                required: '请选择课程分类'
-            },
-            "course[start_time_date]": {
-                required: '请填写开始日期'
-            },
-            "course[start_time_hour]": {
-                required: '请填写开始时间'
-            },
-            "course[start_time_min]": {
-                required: '请填写开始时间'
-            },
-            "course[end_time_date]": {
-                required: '请填写结束日期'
-            },
-            "course[end_time_hour]": {
-                required: '请填写结束时间'
-            },
-            "course[end_time_min]": {
-                required: '请填写结束时间'
-            },
-            "course[price]": {
-                required: '请填写课程价格',
-                number: '请填写具体数字'
-            },
-            "course[students_max]": {
-                digits: '请填写具体整数',
-                min: '请填写大于零的整数'
-            },
-            "course[image]": {
-                required: '请选择缩略图',
-                accept: '上传文件必须为图片类型',
-                extension: '只能上传后缀名为jpg、jpeg、png、gif的文件'
-            },
-            "course[detail]": {
-                required: '请填写课程详细信息'
-            }
+          "course[title]": {
+            required: '请输入课程标题'
+          },
+          "course[category]": {
+            required: '请选择课程分类'
+          },
+          "course[start_time_date]": {
+            required: '请填写开始日期'
+          },
+          "course[start_time_hour]": {
+            required: '请填写开始时间'
+          },
+          "course[start_time_min]": {
+            required: '请填写开始时间'
+          },
+          "course[end_time_date]": {
+            required: '请填写结束日期'
+          },
+          "course[end_time_hour]": {
+            required: '请填写结束时间'
+          },
+          "course[end_time_min]": {
+            required: '请填写结束时间'
+          },
+          "course[price]": {
+            required: '请填写课程价格',
+            number: '请填写具体数字'
+          },
+          "course[students_max]": {
+            digits: '请填写具体整数',
+            min: '请填写大于零的整数'
+          },
+          "course[image]": {
+            required: '请选择缩略图',
+            accept: '上传文件必须为图片类型',
+            extension: '只能上传后缀名为jpg、jpeg、png、gif的文件'
+          },
+          "course[detail]": {
+            required: '请填写课程详细信息'
+          }
         },
-        highlight: function(element) {   // <-- fires when element has error
-            $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-            //$(element).closest('.form-group').children('span').removeClass('glyphicon-ok').addClass('glyphicon-remove');
+        highlight: function (element) {   // <-- fires when element has error
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+          //$(element).closest('.form-group').children('span').removeClass('glyphicon-ok').addClass('glyphicon-remove');
         },
-        unhighlight: function(element) { // <-- fires when element is valid
-            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-            //$(element).closest('.form-group').children('span').removeClass('glyphicon-remove').addClass('glyphicon-ok');
+        unhighlight: function (element) { // <-- fires when element is valid
+          $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+          //$(element).closest('.form-group').children('span').removeClass('glyphicon-remove').addClass('glyphicon-ok');
         },
-        errorPlacement: function(error, element) {
-            error.appendTo( element.parent() );
+        errorPlacement: function (error, element) {
+          error.appendTo(element.parent());
         }
+      });
     });
-})
-</script>
+  </script>
+<% end %>

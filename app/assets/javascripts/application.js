@@ -15,12 +15,12 @@
 // require json2
 // require kindeditor
 // require make_ie_happy
-// require jquery.ui.all
-// require jquery.ui.datepicker
+// require jquery-ui.all
+// require jquery-ui.datepicker
 // require jquery-ui-timepicker-addon
-// require jquery.ui.datepicker-zh-CN.js.js
+// require jquery-ui.datepicker-zh-CN.js.js
 // require jquery-ui-timepicker-zh-CN.js
-// require jquery.ui.timepicker
+// require jquery-ui.timepicker
 // require jquery.placeholder.js
 // require jquery.validate
 // require additional-methods.min.js

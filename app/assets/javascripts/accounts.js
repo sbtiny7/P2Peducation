@@ -1,4 +1,4 @@
-//= require 'china_city/jquery.china_city'
+//= require china_city/jquery.china_city
 
 $(function(){
 

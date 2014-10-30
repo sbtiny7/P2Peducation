@@ -7,24 +7,25 @@
   <title><%= content_for?(:title) ? yield(:title) : "教育直播" %></title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "accounts", :media => "all" %>
-  <%= javascript_include_tag "application", "accounts" %>
+  <%= javascript_include_tag "application" %>
+  <%= yield :head %>
 </head>
 <body>
   <%#= bootstrap_flash %>
-  <%= render "layouts/header.html.erb" %>
+  <%= render "layouts/header" %>
 
   <div class="container our_container">
 
     <div class="row">
       <div class="col-md-3 sidebar">
-        <%= render "layouts/sidebar.html.erb" %>
+        <%= render "layouts/sidebar" %>
       </div>
       <div class="col-md-9 content">
         <%= yield %>
       </div>
     </div>
   </div>
-  <%= render "layouts/footer.html.erb" %>
-
+  <%= render "layouts/footer" %>
+  <%= yield :foot %>
 </body>
 </html>
