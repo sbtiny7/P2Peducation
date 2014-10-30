@@ -166,10 +166,11 @@ function showPreview(coords) {
 
   var rx = 100 / coords.w;
   var ry = 100 / coords.h;
+  var bounds = jcrop_api.getBounds();
 
   $('#crop_preview').css({
-    width:  Math.round(rx * iw * fw) + 'px',
-    height: Math.round(ry * ih * fh) + 'px',
+    width:  Math.round(rx * bounds[0]) + 'px',
+    height: Math.round(ry * bounds[1]) + 'px',
     marginLeft: '-' + Math.round(rx * coords.x) + 'px',
     marginTop:  '-' + Math.round(ry * coords.y) + 'px'
   });
