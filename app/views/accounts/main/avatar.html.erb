@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">账户设置</h3>
+    <h3 class="panel-title">上传头像</h3>
   </div>
   <div class="panel-body">
     <div class="row">
@@ -30,6 +30,78 @@
         <div class="form-group actions text-right">
           <%= submit_tag '提交', class: 'btn btn-danger' %>
         </div>
+
+        <div class="well">
+          <h1>用于调试</h1>
+          <div style="width:100px;height:100px;overflow:hidden;">
+            <img src="" id="crop_preview" width="100px" height="100px">
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :fw, '图片w', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :fw, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :fh, '图片h', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :fh, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :iw, '元素w', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :iw, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :ih, '元素h', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :ih, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :x, '选区x', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :x, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :y, '选区y', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :y, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :w, '选区w', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :w, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <%= label_tag :h, '选区h', class: 'btn btn-info' %>
+              </span>
+              <%= text_field_tag :h, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+
         <% end %>
       </div>
     </div>
@@ -41,25 +113,69 @@
 </div>
 
 <script type="text/javascript">
+
+var jcrop_api = $.Jcrop('img.avatar_preview');
+
+
+function crop_image() {
+  var fw = $('img.avatar_preview').naturalWidth;
+  var fh = $('img.avatar_preview').naturalHeight;
+  var iw = $('img.avatar_preview').width();
+  var ih = $('img.avatar_preview').height();
+
+  $('#fw').val(fw);
+  $('#fh').val(fh);
+  $('#iw').val(iw);
+  $('#ih').val(ih);
+
+  var min_value = Math.min(iw, ih);
+  jcrop_api.setSelect([0, 0, min_value, min_value]);
+  $('img.avatar_preview').Jcrop({
+    onChange: showPreview,
+    onSelect: showPreview,
+    aspectRatio: 1
+  });
+}
+
+function showPreview(coords) {
+
+  $('#x').val(coords.x);
+  $('#y').val(coords.y);
+  $('#w').val(coords.w);
+  $('#h').val(coords.h);
+
+  var rx = 100 / coords.w;
+  var ry = 100 / coords.h;
+
+  $('#crop_preview').css({
+    width: Math.round(rx * iw) + 'px',
+    height: Math.round(ry * ih) + 'px',
+    marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+    marginTop: '-' + Math.round(ry * coords.y) + 'px'
+  });
+}
+
 $(function(){
 
   $('input#avatar').change(function(){
     if( !$(this).val().match( /.jpg|.jpeg|.gif|.png/i ) ){
-        alert('图片格式无效！');
-        return false;
+      alert('图片格式无效！');
+      return false;
     }
     var img = $('img.avatar_preview')[0];
     var ie_preview_wrapper = $('div.avatar_preview_wrapper');
     var ie_preview = $('div.avatar_preview');
     if( $(this)[0].files && $(this)[0].files[0] ){
-        $('img.avatar_preview').removeAttr("width").removeAttr("height");
-        img.src = window.URL.createObjectURL($(this)[0].files[0]);
+      $('img.avatar_preview').removeAttr("width").removeAttr("height");
+      img.src = window.URL.createObjectURL($(this)[0].files[0]);
+      crop_image();
     } else if( ie_preview[0].filters ) {
-        $('img.avatar_preview').hide();
-        $(this).select();
-        $(this).blur();
-        var path = document.selection.createRange().text;
-        ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
+      $('img.avatar_preview').hide();
+      $(this).select();
+      $(this).blur();
+      var path = document.selection.createRange().text;
+      ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
+      crop_image();
     }
   })
 
