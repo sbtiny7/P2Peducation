@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     root  'main#index'
     get   'config' => 'main#config_account', as: :config
     patch 'update' => 'main#update_account', as: :update
-    get   'upload_avatar' => 'main#upload_avatar_page'
+    get   'config_avatar' => 'main#config_avatar', as: :config_avatar
+    patch 'upload_avatar' => 'main#upload_avatar', as: :upload_avatar
     resources :courses do
       resources :lessons
       member do
