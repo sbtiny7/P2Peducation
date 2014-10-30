@@ -1,0 +1,63 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">账户设置</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-5">
+        <%= image_tag current_user.avatar.url %>
+      </div>
+      <div class="col-md-7">
+        <% if notice && notice == '头像上传成功' %>
+        <div class="alert alert-info" role="alert">
+          <%= notice %>
+        </div>
+        <% end %>
+        <%= form_tag(url: accounts_upload_avatar_path) do |f| %>
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <%= label_tag :avatar, '选择文件', class: 'btn btn-info' %>
+            </span>
+            <%= file_field_tag :avatar, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group actions text-right">
+          <%= f.submit '提交', class: 'btn btn-danger' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-footer bg-warning">
+    <%= button_to "删除头像", accounts_upload_avatar_path, data: { confirm: "是否确定删除头像？" }, class: 'btn btn-warning', method: :post %>
+  </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+  $('form').validate({
+    rules: {
+      "avatar": {
+        required: true
+      }
+    },
+    messages: {
+      "avatar": {
+        required: '请选择文件'
+      }
+    },
+    highlight: function(element) {
+      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+    },
+    unhighlight: function(element) {
+      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+    },
+    errorPlacement: function(error, element) {
+      error.appendTo( element.parent() );
+    }
+  });
+})
+</script>
