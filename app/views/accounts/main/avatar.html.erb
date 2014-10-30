@@ -36,68 +36,74 @@
           <div style="width:100px;height:100px;overflow:hidden;">
             <img src="" id="crop_preview" width="100px" height="100px">
           </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :fw, '图片w', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :fw, class: "form-control" %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :fw, '图片w', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :fw, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :fh, '图片h', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :fh, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :iw, '元素w', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :iw, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :ih, '元素h', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :ih, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :fh, '图片h', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :fh, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :iw, '元素w', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :iw, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :ih, '元素h', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :ih, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :x, '选区x', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :x, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :y, '选区y', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :y, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :w, '选区w', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :w, class: "form-control" %>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <%= label_tag :h, '选区h', class: 'btn btn-info' %>
-              </span>
-              <%= text_field_tag :h, class: "form-control" %>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :x, '选区x', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :x, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :y, '选区y', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :y, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :w, '选区w', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :w, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <%= label_tag :h, '选区h', class: 'btn btn-info' %>
+                  </span>
+                  <%= text_field_tag :h, nil, html: {class: "form-control"} %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
