@@ -53,3 +53,5 @@ gem 'mini_magick'
 gem 'acts_as_commentable', '4.0.2'
 gem 'rqrcode'
 gem 'china_city'
+gem 'alipay', '~> 0.1.0' # 支付宝支付
+gem 'settingslogic', '~> 2.0.9' # 配置项
