@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="list-group">
-        <a href='<%= accounts_config_path %>' class='list-group-item<% if action_name == 'config_account' %> active<% end %>'>个人设置</a>
+        <a href='<%= accounts_config_path %>' class='list-group-item<% if ['config_account', 'update_account'].include?(action_name) %> active<% end %>'>个人设置</a>
         <a href='<%= edit_user_registration_path %>' class='list-group-item<% if controller_name == 'registrations' %> active<% end %>'>修改密码</a>
         <% if current_user.has_role?(:teacher) %>
         <a href='<%= new_accounts_course_path %>' class='list-group-item<% if controller_name == 'courses' and !['index', 'edit'].include?(action_name) %> active<% end %>'>我要教课</a>
