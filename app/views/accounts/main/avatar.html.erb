@@ -4,10 +4,14 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-5">
-        <%= image_tag current_user.avatar.url %>
+      <div class="col-md-6">
+        <div class="avatar_preview_wrapper">
+          <div class="avatar_preview">
+            <%= image_tag current_user.avatar.url, :class => "avatar_preview", :width => 400, :height => 400 %>
+          </div>
+        </div>
       </div>
-      <div class="col-md-7">
+      <div class="col-md-6">
         <% if notice && notice == '头像上传成功' %>
         <div class="alert alert-info" role="alert">
           <%= notice %>
@@ -38,6 +42,31 @@
 
 <script type="text/javascript">
 $(function(){
+
+  $('input#avatar').change(function(){
+    if( !$(this).val().match( /.jpg|.jpeg|.gif|.png/i ) ){
+        alert('图片格式无效！');
+        return false;
+    }
+    var img = $('img.avatar_preview')[0];
+    var ie_preview_wrapper = $('div.avatar_preview_wrapper');
+    var ie_preview = $('div.avatar_preview');
+    if( $(this)[0].files && $(this)[0].files[0] ){
+        $('img.avatar_preview').removeAttr("width").removeAttr("height");
+        img.src = window.URL.createObjectURL($(this)[0].files[0]);
+    } else if( ie_preview[0].filters ) {
+        $('img.avatar_preview').hide();
+        $(this).select();
+        $(this).blur();
+        var path = document.selection.createRange().text;
+        ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
+    }
+  })
+
+
+
+
+
   $('form').validate({
     rules: {
       "avatar": {

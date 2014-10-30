@@ -115,8 +115,30 @@ img.upload_image, .ie_preview {
 .ie_preview {
     FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
 }
-/* upload images*/
+/* upload images */
 
+/* upload avatar */
+.avatar_preview_wrapper {
+    width: 400px;
+    height: 400px;
+    display: table;
+}
+div.avatar_preview {
+    width: auto;
+    height: auto;
+    max-width: 400px;
+    max-height: 400px;
+    margin: auto;
+    display: table-cell;
+    vertical-align: middle;
+}
+img.avatar_preview {
+    width: auto;
+    height: auto;
+    max-width: 400px;
+    max-height: 400px;
+}
+/* upload avatar */
 
 /* courses list */
 .course {
