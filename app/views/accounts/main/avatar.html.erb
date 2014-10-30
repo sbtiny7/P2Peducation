@@ -172,7 +172,7 @@ $(function(){
 
     if( $(this)[0].files && $(this)[0].files[0] ){
       $('img.avatar_preview').removeAttr("width").removeAttr("height");
-      img.src = window.URL.createObjectURL($(this)[0].files[0]);
+      img.src = $('img#crop_preview')[0].src = window.URL.createObjectURL($(this)[0].files[0]);
       crop_image();
     } else if( ie_preview[0].filters ) {
       $('img.avatar_preview').hide();
