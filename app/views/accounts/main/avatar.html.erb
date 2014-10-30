@@ -124,7 +124,7 @@ var img = $('img.avatar_preview')[0];
 img.onload = function () {
   $('#fw').val(img.naturalWidth);
   $('#fh').val(img.naturalHeight);
-  $('img.avatar_preview').removeAttr("width").removeAttr("height");
+  $('img.avatar_preview').removeAttr("width").removeAttr("height").removeAttr("style").css("max-width", "400px").css("max-height", "400px");
   crop_image();
 }
 var ie_preview_wrapper = $('div.avatar_preview_wrapper');
