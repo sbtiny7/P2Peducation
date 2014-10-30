@@ -120,7 +120,7 @@
 
 <script type="text/javascript">
 
-var jcrop_api = $.Jcrop('img.avatar_preview');
+//var jcrop_api = $.Jcrop('img.avatar_preview');
 
 
 function crop_image() {
@@ -137,7 +137,7 @@ function crop_image() {
   $('#ih').val(ih);
 
   var min_value = Math.min(iw, ih);
-  jcrop_api.setSelect([0, 0, min_value, min_value]);
+  //jcrop_api.setSelect([0, 0, min_value, min_value]);
   $('img.avatar_preview').Jcrop({
     onChange: showPreview,
     onSelect: showPreview,
