@@ -124,10 +124,8 @@
 
 
 function crop_image() {
-  var theImage = new Image();
-  theImage.src = $('img.avatar_preview').attr("src");
-  var fw = theImage.width;
-  var fh = theImage.height;
+  var fw = $('img.avatar_preview')[0].naturalWidth;
+  var fh = $('img.avatar_preview')[0].naturalWidth;
   var iw = $('img.avatar_preview').width();
   var ih = $('img.avatar_preview').height();
 
