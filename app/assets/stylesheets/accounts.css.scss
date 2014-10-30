@@ -122,6 +122,7 @@ img.upload_image, .ie_preview {
     width: 400px;
     height: 400px;
     display: table;
+    background-color: #fffafa;
 }
 div.avatar_preview {
     width: auto;
@@ -131,10 +132,9 @@ div.avatar_preview {
     margin: auto;
     display: table-cell;
     vertical-align: middle;
+    text-align: center;
 }
 img.avatar_preview {
-    width: auto;
-    height: auto;
     max-width: 400px;
     max-height: 400px;
 }
