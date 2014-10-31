@@ -68,7 +68,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
           if [img[:width], img[:height]].max < 400
             a.to_i
           else
-            a.to_i * [img[:width], img[:height]].max / User::AVATAR_PREVIWE_SIZE
+            a.to_i * [img[:width], img[:height]].max / User::AVATAR_PREVIEW_SIZE
           end
         end
         img.crop "#{arr[2]}x#{arr[3]}+#{arr[0]}+#{arr[1]}"
