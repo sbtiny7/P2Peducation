@@ -28,6 +28,11 @@ class Accounts::OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id]) #where(:trade_no, params[:trade_no])
   end
 
+  def settle
+    @order = current_user.orders.where(:trade_no, order_params[:trade_no]).first
+    redirect_to accounts_order_path and return unless @order .blank?
+  end
+
   #
   def alipay_notify
     notify_params = params.except(*request.path_parameters.keys)

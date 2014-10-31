@@ -1,22 +1,7 @@
-<%#= @order.pay_url %>
-<%= form_for @order, url: @order.pay_url, html: {id: 'order_payment_interface'} do |f| %>
-  <h1>
-    核对订单信息
-  </h1>
-  <%= @order.trade_no %><br>
-  <%= @order.price %>
-  <br>
-  <%= @order.inspect %>
-  <p>
-    <%= link_to '去结算', 'javascript:void(0);', class: 'btn btn-success goToOrder', target: '_blank' %>
-  </p>
-<% end %>
-<%= content_for :foot do %>
-  <script>
-    $(function () {
-      $('.goToOrder').on('click', function (event) {
-        $("#order_payment_interface").submit();
-      });
-    });
-  </script>
-<% end %>
+<h1>
+  核对订单信息
+</h1>
+<%= @order.inspect %>
+<p>
+  <%= link_to '去结算', @order.pay_url, class: 'btn btn-success', target: '_blank' %>
+</p>

@@ -72,7 +72,7 @@ class Order < ActiveRecord::Base
         :price => price,
         :quantity => quantity,
         :discount => discount,
-        :subject => "Writings.io \"} x #{quantity}",
+        :subject => "Writings.io x #{quantity}",
         :logistics_type => 'DIRECT',
         :logistics_fee => '0',
         :logistics_payment => 'SELLER_PAY',

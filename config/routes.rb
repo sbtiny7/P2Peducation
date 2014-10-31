@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
     resources :orders, :only => [:index, :show, :new, :create] do
       collection do
-        # get ':trade_no' => 'orders#show', as: 'order'
+        get :settle
         post :alipay_notify
       end
     end
