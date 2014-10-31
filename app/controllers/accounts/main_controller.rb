@@ -19,10 +19,12 @@ class Accounts::MainController < ApplicationController
     end
 
     def config_avatar
+        @timestamp = Time.now.to_i
         render "avatar"
     end
 
     def upload_avatar
+        @timestamp = Time.now.to_i
         if params[:avatar]
             %w(avatar avatar_x avatar_y avatar_w avatar_h).map do |attr|
                 current_user.send("#{attr}=", params[attr.to_sym] || nil)

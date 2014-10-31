@@ -9,7 +9,7 @@
           <div class="avatar_preview">
           </div>
           <div class="avatar_preview">
-            <%= image_tag current_user.avatar.url, :class => "avatar_preview", :width => 400, :height => 400 %>
+            <%= image_tag "#{current_user.avatar.url}?#{@timestamp}", :class => "avatar_preview", :width => 400, :height => 400 %>
           </div>
           <div class="avatar_preview">
           </div>
@@ -36,7 +36,7 @@
         </div>
 
         <div style="width:100px;height:100px;overflow:hidden;">
-          <%= image_tag "#{current_user.avatar.url}?#{Time.now.to_i}", :id => "crop_preview" %>
+          <%= image_tag "#{current_user.avatar.url}?#{@timestamp}", :id => "crop_preview" %>
         </div>
         <%= hidden_field_tag :avatar_x %>
         <%= hidden_field_tag :avatar_y %>
