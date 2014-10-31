@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <div class="avatar">
-            <%= link_to image_tag(@timestamp ? "#{current_user.avatar.url}?#{@timestamp}" : current_user.avatar.url, :width => 200, :height => 200), accounts_config_avatar_path, :class => 'upload_avatar' %>
+            <%= link_to image_tag(@timestamp ? "#{current_user.avatar.url(:crop)}?#{@timestamp}" : current_user.avatar.url(:crop), :width => 200, :height => 200), accounts_config_avatar_path, :class => 'upload_avatar' %>
             <icon class="upload_avatar">上传头像</icon>
         </div>
     </div>

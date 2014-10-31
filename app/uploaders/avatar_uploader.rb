@@ -23,15 +23,18 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  User::DEFAULT_AVATAR_PATH
-end
-process :crop
-process :resize_to_fill => [200, 200]
+    User::DEFAULT_AVATAR_PATH
+  end
 
-version :thumb do
-  process :crop
-  process :resize_to_fill => [32, 32]
-end
+  version :crop do
+    process :crop
+    process :resize_to_fill => [200, 200]
+  end
+
+  version :thumb do
+    process :crop
+    process :resize_to_fill => [32, 32]
+  end
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #

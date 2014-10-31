@@ -21,27 +21,27 @@
           <%= notice %>
         </div>
         <% end %>
-        <%= form_tag(accounts_upload_avatar_path, :id => "upload_avatar", :multipart => true) do |f| %>
+        <%= form_for(current_user, :url => accounts_upload_avatar_path, :html => {:id => "upload_avatar", :multipart => true}) do |f| %>
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-btn">
-              <%= label_tag :avatar, '选择文件', class: 'btn btn-info' %>
+              <%= f.label :avatar, '选择文件', class: 'btn btn-info' %>
             </span>
-            <%= file_field_tag :avatar, class: "form-control" %>
+            <%= f.file_field :avatar, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group text-right">
-          <%= submit_tag '提交', class: 'btn btn-danger' %>
+          <%= f.submit '提交', class: 'btn btn-danger' %>
         </div>
 
         <div style="width:100px;height:100px;overflow:hidden;">
           <%= image_tag "#{current_user.avatar.url}?#{@timestamp}", :id => "crop_preview" %>
         </div>
-        <%= hidden_field_tag :avatar_x %>
-        <%= hidden_field_tag :avatar_y %>
-        <%= hidden_field_tag :avatar_w %>
-        <%= hidden_field_tag :avatar_h %>
+        <%= f.hidden_field :avatar_x, :id => :avatar_x %>
+        <%= f.hidden_field :avatar_y, :id => :avatar_y %>
+        <%= f.hidden_field :avatar_w, :id => :avatar_w %>
+        <%= f.hidden_field :avatar_h, :id => :avatar_h %>
 
         <!--div class="well">
           用于调试
@@ -202,12 +202,12 @@ $(function(){
 
   $('form#upload_avatar').validate({
     rules: {
-      "avatar": {
+      "user[avatar]": {
         required: true
       }
     },
     messages: {
-      "avatar": {
+      "user[avatar]": {
         required: '请选择文件'
       }
     },
