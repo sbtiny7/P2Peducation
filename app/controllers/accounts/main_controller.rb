@@ -27,6 +27,7 @@ class Accounts::MainController < ApplicationController
         @timestamp = Time.now.to_i
         if params[:avatar]
             %w(avatar avatar_x avatar_y avatar_w avatar_h).map do |attr|
+                Rails.logger.info("======#{attr}:#{params[attr.to_sym]}======")
                 current_user.send("#{attr}=", params[attr.to_sym] || nil)
             end
             current_user.save
