@@ -13,100 +13,101 @@
       </div>
       <div class="col-md-6">
         <% if notice && notice == '头像上传成功' %>
-        <div class="alert alert-info" role="alert">
-          <%= notice %>
-        </div>
+          <div class="alert alert-info" role="alert">
+            <%= notice %>
+          </div>
         <% end %>
         <%= form_tag(accounts_upload_avatar_path, :multipart => true) do |f| %>
-        <div class="form-group">
-          <div class="input-group">
+          <div class="form-group">
+            <div class="input-group">
             <span class="input-group-btn">
               <%= label_tag :avatar, '选择文件', class: 'btn btn-info' %>
             </span>
-            <%= file_field_tag :avatar, class: "form-control" %>
+              <%= file_field_tag :avatar, class: "form-control" %>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group actions text-right">
-          <%= submit_tag '提交', class: 'btn btn-danger' %>
-        </div>
-
-        <div class="well">
-          <h1>用于调试</h1>
-          <div style="width:100px;height:100px;overflow:hidden;">
-            <img src="" id="crop_preview" width="100px" height="100px">
+          <div class="form-group actions text-right">
+            <%= submit_tag '提交', class: 'btn btn-danger' %>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group">
+
+          <div class="well">
+            <h1>用于调试</h1>
+
+            <div style="width:100px;height:100px;overflow:hidden;">
+              <img src="" id="crop_preview" width="100px" height="100px">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :fw, '图片w', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :fw, nil, class: "form-control" %>
+                    <%= text_field_tag :fw, nil, class: "form-control" %>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :fh, '图片h', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :fh, nil, class: "form-control" %>
+                    <%= text_field_tag :fh, nil, class: "form-control" %>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :iw, '元素w', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :iw, nil, class: "form-control" %>
+                    <%= text_field_tag :iw, nil, class: "form-control" %>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :ih, '元素h', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :ih, nil, class: "form-control" %>
+                    <%= text_field_tag :ih, nil, class: "form-control" %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :x, '选区x', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :x, nil, class: "form-control" %>
+                    <%= text_field_tag :x, nil, class: "form-control" %>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :y, '选区y', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :y, nil, class: "form-control" %>
+                    <%= text_field_tag :y, nil, class: "form-control" %>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :w, '选区w', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :w, nil, class: "form-control" %>
+                    <%= text_field_tag :w, nil, class: "form-control" %>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
+                <div class="form-group">
+                  <div class="input-group">
                   <span class="input-group-btn">
                     <%= label_tag :h, '选区h', class: 'btn btn-info' %>
                   </span>
-                  <%= text_field_tag :h, nil, class: "form-control" %>
+                    <%= text_field_tag :h, nil, class: "form-control" %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
         <% end %>
       </div>
@@ -114,100 +115,99 @@
   </div>
 
   <div class="panel-footer bg-warning">
-    <%= button_to "删除头像", accounts_upload_avatar_path, data: { confirm: "是否确定删除头像？" }, class: 'btn btn-warning', method: :post %>
+    <%= button_to "删除头像", accounts_upload_avatar_path, data: {confirm: "是否确定删除头像？"}, class: 'btn btn-warning', method: :post %>
   </div>
 </div>
+<%= content_for :foot do %>
+  <%= javascript_include_tag 'plugins/validate/index' %>
+  <script type="text/javascript">
+    var img = $('img.avatar_preview')[0];
+    img.onload = function () {
+      $('#fw').val(img.naturalWidth);
+      $('#fh').val(img.naturalHeight);
+    }
+    var ie_preview_wrapper = $('div.avatar_preview_wrapper');
+    var ie_preview = $('div.avatar_preview');
 
-<script type="text/javascript">
-var img = $('img.avatar_preview')[0];
-img.onload = function () {
-  $('#fw').val(img.naturalWidth);
-  $('#fh').val(img.naturalHeight);
-}
-var ie_preview_wrapper = $('div.avatar_preview_wrapper');
-var ie_preview = $('div.avatar_preview');
 
+    function crop_image() {
+      var iw = $('img.avatar_preview').width();
+      var ih = $('img.avatar_preview').height();
 
-function crop_image() {
-  var iw = $('img.avatar_preview').width();
-  var ih = $('img.avatar_preview').height();
+      $('#iw').val(iw);
+      $('#ih').val(ih);
 
-  $('#iw').val(iw);
-  $('#ih').val(ih);
-
-  var min_value = Math.min(iw, ih);
-  //jcrop_api.setSelect([0, 0, min_value, min_value]);
-  $('img.avatar_preview').Jcrop({
-    onChange: showPreview,
-    onSelect: showPreview,
-    aspectRatio: 1
-  });
-}
-
-function showPreview(coords) {
-
-  $('#x').val(coords.x);
-  $('#y').val(coords.y);
-  $('#w').val(coords.w);
-  $('#h').val(coords.h);
-
-  var rx = 100 / coords.w;
-  var ry = 100 / coords.h;
-
-  $('#crop_preview').css({
-    width: Math.round(rx * iw) + 'px',
-    height: Math.round(ry * ih) + 'px',
-    marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-    marginTop: '-' + Math.round(ry * coords.y) + 'px'
-  });
-}
-
-$(function(){
-
-  $('input#avatar').change(function(){
-    if( !$(this).val().match( /.jpg|.jpeg|.gif|.png/i ) ){
-      alert('图片格式无效！');
-      return false;
+      var min_value = Math.min(iw, ih);
+      //jcrop_api.setSelect([0, 0, min_value, min_value]);
+      $('img.avatar_preview').Jcrop({
+        onChange: showPreview,
+        onSelect: showPreview,
+        aspectRatio: 1
+      });
     }
 
-    if( $(this)[0].files && $(this)[0].files[0] ){
-      $('img.avatar_preview').removeAttr("width").removeAttr("height");
-      img.src = $('img#crop_preview')[0].src = window.URL.createObjectURL($(this)[0].files[0]);
-      crop_image();
-    } else if( ie_preview[0].filters ) {
-      $('img.avatar_preview').hide();
-      $(this).select();
-      $(this).blur();
-      var path = document.selection.createRange().text;
-      ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
-      crop_image();
+    function showPreview(coords) {
+
+      $('#x').val(coords.x);
+      $('#y').val(coords.y);
+      $('#w').val(coords.w);
+      $('#h').val(coords.h);
+
+      var rx = 100 / coords.w;
+      var ry = 100 / coords.h;
+
+      $('#crop_preview').css({
+        width: Math.round(rx * iw) + 'px',
+        height: Math.round(ry * ih) + 'px',
+        marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+        marginTop: '-' + Math.round(ry * coords.y) + 'px'
+      });
     }
-  })
+
+    $(function () {
+
+      $('input#avatar').change(function () {
+        if (!$(this).val().match(/.jpg|.jpeg|.gif|.png/i)) {
+          alert('图片格式无效！');
+          return false;
+        }
+
+        if ($(this)[0].files && $(this)[0].files[0]) {
+          $('img.avatar_preview').removeAttr("width").removeAttr("height");
+          img.src = $('img#crop_preview')[0].src = window.URL.createObjectURL($(this)[0].files[0]);
+          crop_image();
+        } else if (ie_preview[0].filters) {
+          $('img.avatar_preview').hide();
+          $(this).select();
+          $(this).blur();
+          var path = document.selection.createRange().text;
+          ie_preview[0].filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = path;
+          crop_image();
+        }
+      })
 
 
-
-
-
-  $('form').validate({
-    rules: {
-      "avatar": {
-        required: true
-      }
-    },
-    messages: {
-      "avatar": {
-        required: '请选择文件'
-      }
-    },
-    highlight: function(element) {
-      $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-    },
-    unhighlight: function(element) {
-      $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-    },
-    errorPlacement: function(error, element) {
-      error.appendTo( element.parent() );
-    }
-  });
-})
-</script>
+      $('form').validate({
+        rules: {
+          "avatar": {
+            required: true
+          }
+        },
+        messages: {
+          "avatar": {
+            required: '请选择文件'
+          }
+        },
+        highlight: function (element) {
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        unhighlight: function (element) {
+          $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorPlacement: function (error, element) {
+          error.appendTo(element.parent());
+        }
+      });
+    })
+  </script>
+<% end %>
