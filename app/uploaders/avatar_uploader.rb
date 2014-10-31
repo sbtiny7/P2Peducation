@@ -60,6 +60,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def crop
+    Rails.logger.info("before the avatar crop, avatar_x: #{model.avatar_x} ==================================")
     if model.avatar_x.present?
       Rails.logger.info("in the avatar crop ==================================")
       manipulate! do |img|
