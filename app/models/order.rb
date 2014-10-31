@@ -54,9 +54,19 @@ class Order < ActiveRecord::Base
       update_attribute :status, 'canceled'
     end
   end
-
+  # ==============================================================
+  # 生成即时到帐接口
+  # service                                       接口名称
+  # partner                                       申请支付接口时的partner_id
+  # _input_charset                                编码方式
+  # out_trade_no                                  商户订单号，唯一决定订单
+  # subject                                       订单名称
+  # payment_type                                  支付类型,默认值： 1
+  # seller_email                                  申请接口时填写的电子邮件
+  # price && quantiry                             商品价格和商品数量
+  # ===============================================================
   def pay_url
-    Alipay::Service.create_partner_trade_by_buyer_url(
+    Alipay::Service.create_direct_pay_by_user_url(
       {
         :out_trade_no => trade_no,
         :price => price,
