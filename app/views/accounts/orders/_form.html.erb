@@ -1,0 +1,30 @@
+<%= content_for :foot do %>
+  <%= javascript_include_tag 'plugins/validate/index','accounts/order_form' %>
+<% end %>
+<%= form_for [:accounts, @order], html: {id: id, role: 'form'} do |f| %>
+
+  <div class="form-group">
+    <%= f.label :trade_no, '商品号', class: 'control-label' %>
+    <%= f.text_field :trade_no, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, '原价', class: 'control-label' %>
+    <%= f.text_field :price, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :discount, '优惠价', class: 'control-label' %>
+    <%= f.text_field :discount, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :quantity, '数量', class: 'control-label' %>
+    <%= f.text_field :quantity, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit '保存' %>
+  </div>
+
+<% end %>

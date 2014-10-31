@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   # ↑ 移动端API ↑
 
 
-
   # ↓ 咱们用的后台管理 ↓
 
   namespace :admin do
@@ -20,26 +19,31 @@ Rails.application.routes.draw do
   # ↑ 咱们用的后台管理 ↑
 
 
-
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do
-    root  'main#index'
-    get   'config' => 'main#config_account', as: :config
+    root 'main#index'
+    get 'config' => 'main#config_account', as: :config
     patch 'update' => 'main#update_account', as: :update
-    get   'config_avatar' => 'main#config_avatar', as: :config_avatar
-    post  'upload_avatar' => 'main#upload_avatar', as: :upload_avatar
+    get 'config_avatar' => 'main#config_avatar', as: :config_avatar
+    post 'upload_avatar' => 'main#upload_avatar', as: :upload_avatar
     resources :courses do
       resources :lessons
       member do
-        get   'teacher'
+        get 'teacher'
         match 'teacher_action', via: [:put, :post, :patch]
-        get   'teacher/:teacher_id/complate' => 'courses#complate', as: :complate
-        get   'pub'
+        get 'teacher/:teacher_id/complate' => 'courses#complate', as: :complate
+        get 'pub'
       end
       collection do
-        get 'new/online'  => 'courses#new_online'
+        get 'new/online' => 'courses#new_online'
         get 'new/offline' => 'courses#new_offline'
+      end
+    end
+
+    resources :orders, :only => [:index, :new, :show, :create] do
+      collection do
+        post :alipay_notify
       end
     end
   end
@@ -47,20 +51,18 @@ Rails.application.routes.draw do
   # ↑ 用户使用的管理页面 ↑
 
 
-
   # ↓ 基于DEVISE的用户账号管理 ↓
 
   devise_for :users, path: "accounts",
-  controllers: {
-    sessions:      "accounts/sessions",
-    registrations: "accounts/registrations",
-    confirmations: "accounts/confirmations",
-    passwords:     "accounts/passwords",
-    unlocks:       "accounts/unlocks"
-  }
+             controllers: {
+               sessions: "accounts/sessions",
+               registrations: "accounts/registrations",
+               confirmations: "accounts/confirmations",
+               passwords: "accounts/passwords",
+               unlocks: "accounts/unlocks"
+             }
 
   # ↑ 基于DEVISE的用户账号管理 ↑
-
 
 
   # ↓ 主页、课程展示等，未登录用户也能观看的部分 ↓
@@ -70,7 +72,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # ↑ 主页、课程展示等，未登录用户也能观看的部分 ↑
-
 
 
   # ↓ 其他（如有优先级需求可以上移） ↓

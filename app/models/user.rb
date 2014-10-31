@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
   has_many :learned_lessons, :through => :learnships, :source => :lesson
   has_many :bookmarks
   has_many :marked_courses, :through => :bookmarks, :source => :bookmarkable, :source_type => "Course"
+  has_many :orders
 
   def is_admin?
     self.has_role? :admin
