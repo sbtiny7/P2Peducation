@@ -23,7 +23,7 @@ class Order < ActiveRecord::Base
   STATUS = %w(pendding paid completed canceled)
   validates_inclusion_of :status, :in => STATUS
   validates_presence_of :trade_no
-
+  before_create :generate_trade_no
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
 
   STATUS.each do |status|
@@ -68,12 +68,22 @@ class Order < ActiveRecord::Base
         :logistics_payment => 'SELLER_PAY',
         :return_url => Rails.application.routes.url_helpers.accounts_order_url(self, host: "#{Settings.host}:#{Settings.port}"),
         :notify_url => Rails.application.routes.url_helpers.alipay_notify_accounts_orders_url(host: "#{Settings.host}:#{Settings.port}"),
-        :receive_name => 'none', # 这里填写了收货信息，用户就不必填写
+        :receive_name => 'none',
         :receive_address => 'none',
         :receive_zip => '100000',
         :receive_mobile => '100000000000'
       }
     )
+  end
+
+  def self.generate_uuid
+    Digest::MD5.hexdigest "#{Time.now.to_i}#{rand(Time.now.to_i)}"
+  end
+
+  private
+
+  def generate_trade_no
+    write_attribute :trade_no, Order.generate_uuid
   end
 
 end
