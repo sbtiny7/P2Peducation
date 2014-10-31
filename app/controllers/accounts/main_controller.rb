@@ -27,6 +27,9 @@ class Accounts::MainController < ApplicationController
         @timestamp = Time.now.to_i
         if user_params
             current_user.update(user_params)
+            %(x y w h).each do |a|
+                Rails.logger.info("controller.avatar_#{a}:#{current_user.send("avatar_#{a}")}")
+            end
             flash.now[:notice] = '头像上传成功'
         else
             current_user.avatar = nil
