@@ -25,12 +25,8 @@ class Accounts::MainController < ApplicationController
 
     def upload_avatar
         @timestamp = Time.now.to_i
-        if params[:avatar]
-            %w(avatar avatar_x avatar_y avatar_w avatar_h).map do |attr|
-                Rails.logger.info("======#{attr}:#{params[attr.to_sym]}======")
-                current_user.send("#{attr}=", params[attr.to_sym] || nil)
-            end
-            current_user.save
+        if user_params
+            current_user.update(user_params)
             flash.now[:notice] = '头像上传成功'
         else
             current_user.avatar = nil
@@ -46,7 +42,12 @@ class Accounts::MainController < ApplicationController
         params.require(:user).permit(
             :username,
             :email,
-            :phone
+            :phone,
+            :avatar,
+            :avatar_x,
+            :avatar_y,
+            :avatar_w,
+            :avatar_h
             )
     end
 end
