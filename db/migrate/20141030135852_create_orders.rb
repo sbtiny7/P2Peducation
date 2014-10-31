@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :price, :null => false, :default => 0, :scale => 2, :precision => 16, :comment => '价格(元)'
       t.decimal :discount, :null => false, :default => 0, :comment => '打折后的价格(元)'
       t.string :trade_no, :null => false, :comment => '交易号'
-
+      t.string :status, :null => false, :default => 'pendding', :comment => '订单状态'
       t.timestamps
     end
   end

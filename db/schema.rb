@@ -85,10 +85,11 @@ ActiveRecord::Schema.define(version: 20141030135852) do
   add_index "lessons", ["token"], name: "index_lessons_on_token", unique: true, using: :btree
 
   create_table "orders", force: true, comment: "订单" do |t|
-    t.integer  "quantity",                            default: 1,   null: false, comment: "数量"
-    t.decimal  "price",      precision: 16, scale: 2, default: 0.0, null: false, comment: "价格(元)"
-    t.decimal  "discount",   precision: 10, scale: 0, default: 0,   null: false, comment: "打折后的价格(元)"
-    t.string   "trade_no",                                          null: false, comment: "交易号"
+    t.integer  "quantity",                            default: 1,          null: false, comment: "数量"
+    t.decimal  "price",      precision: 16, scale: 2, default: 0.0,        null: false, comment: "价格(元)"
+    t.decimal  "discount",   precision: 10, scale: 0, default: 0,          null: false, comment: "打折后的价格(元)"
+    t.string   "trade_no",                                                 null: false, comment: "交易号"
+    t.string   "status",                              default: "pendding", null: false, comment: "订单状态"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
