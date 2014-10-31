@@ -43,15 +43,19 @@ class Accounts::MainController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(
-            :username,
-            :email,
-            :phone,
-            :avatar,
-            :avatar_x,
-            :avatar_y,
-            :avatar_w,
-            :avatar_h
-            )
+        if params[:user]
+            params.require(:user).permit(
+                :username,
+                :email,
+                :phone,
+                :avatar,
+                :avatar_x,
+                :avatar_y,
+                :avatar_w,
+                :avatar_h
+                )
+        else
+            false
+        end
     end
 end
