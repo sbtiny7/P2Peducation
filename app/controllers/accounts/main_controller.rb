@@ -26,10 +26,12 @@ class Accounts::MainController < ApplicationController
     def upload_avatar
         @timestamp = Time.now.to_i
         if user_params
-            current_user.update(user_params)
+            current_user.avatar = user_params[:avatar]
             %w(x y w h).each do |a|
+                current_user.send("avatar_#{a}=", params["avatar_#{a}".to_sym])
                 Rails.logger.info("controller.avatar_#{a}:#{current_user.send("avatar_#{a}")}")
             end
+            current_user.save
             flash.now[:notice] = '头像上传成功'
         else
             current_user.avatar = nil
