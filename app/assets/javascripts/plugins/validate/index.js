@@ -3,3 +3,4 @@
  */
 //= require ./jquery.validate
 //= require ./additional-methods.min
+//= require ./localization/messages_zh

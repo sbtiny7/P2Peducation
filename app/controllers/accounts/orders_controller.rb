@@ -10,6 +10,7 @@ class Accounts::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.trade_no = Order.generate_uuid
   end
 
   def create

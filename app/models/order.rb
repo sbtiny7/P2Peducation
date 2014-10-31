@@ -58,7 +58,7 @@ class Order < ActiveRecord::Base
   def pay_url
     Alipay::Service.create_partner_trade_by_buyer_url(
       {
-        :out_trade_no => id.to_s,
+        :out_trade_no => trade_no,
         :price => price,
         :quantity => quantity,
         :discount => discount,
@@ -83,7 +83,7 @@ class Order < ActiveRecord::Base
   private
 
   def generate_trade_no
-    write_attribute :trade_no, Order.generate_uuid
+    write_attribute :trade_no, Order.generate_uuid unless trade_no.present?
   end
 
 end
