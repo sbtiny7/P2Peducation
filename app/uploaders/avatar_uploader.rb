@@ -65,10 +65,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
       Rails.logger.info("in the avatar crop ==================================")
       manipulate! do |img|
         arr = [model.avatar_x, model.avatar_y, model.avatar_w, model.avatar_h].map do |a|
-          if [img.columns, img.rows].max < 400
+          if [img[:width], img[:height]].max < 400
             a.to_i
           else
-            a.to_i * [img.columns, img.rows].max / User::AVATAR_PREVIWE_SIZE
+            a.to_i * [img[:width], img[:height]].max / User::AVATAR_PREVIWE_SIZE
           end
         end
         img.crop "#{arr[2]}x#{arr[3]}+#{arr[0]}+#{arr[1]}"
