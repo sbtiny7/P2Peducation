@@ -2,8 +2,12 @@
  * Created by spf on 10/31/14.
  */
 $(function () {
-  $('.submit-order-button').preventMultipleClick();
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa")
+  $('.submit-order-button').preventMultipleClick()
+  $("#account_order_new_form").submit(function (event) {
+    return $(this).valid() //$(this).preventMultipleAjax(event);
+      ;
+  });
+
   $("#account_order_new_form").validate({
     rules: {
       "order[trade_no]": {
@@ -11,7 +15,8 @@ $(function () {
       },
       "order[price]": {
         required: true,
-        number: true
+        number: true,
+        min: 0.01
       },
       "order[discount]": {
         number: true
@@ -28,7 +33,8 @@ $(function () {
       },
       "order[price]": {
         required: "请输入产品价格",
-        number: "请输入有效数字"
+        number: "请输入有效数字",
+        min: '请输入有效数字'
       },
       "order[discount]": {
         number: "请输入有效数字"
@@ -43,7 +49,7 @@ $(function () {
 
     },
     errorPlacement: function (error, ele) {
-        console.log(error)
+      console.log(error)
     }
   })
 });

@@ -30,4 +30,14 @@ class ApplicationController < ActionController::Base
   def clean_notice
     flash[:notice] = nil
   end
+
+  def check_token
+    if session[:__token__] == params[:__token__]
+      session[:__token__] = nil
+      # session.update
+      return true
+    end
+    false
+  end
+
 end

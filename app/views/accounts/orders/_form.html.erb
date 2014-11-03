@@ -1,13 +1,11 @@
-<%= content_for :foot do %>
-  <%= javascript_include_tag 'plugins/validate/index','accounts/order_form' %>
-<% end %>
-<%= form_for [:accounts, @order], html: {id: id, role: 'form'} do |f| %>
+<%= javascript_include_tag 'plugins/validate/index', 'accounts/order_form', 'lib/common' %>
+<%= form_for [:accounts, @order], html: {id: id, role: 'form'}, remote: true do |f| %>
 
-<!--   <div class="form-group">
+  <!--   <div class="form-group">
     <%#= f.label :trade_no, '商品号', class: 'control-label' %>
-    <%#= f.text_field :trade_no, class: 'form-control' %>
+  <%#= f.text_field :trade_no, class: 'form-control' %>
   </div> -->
-
+  <%= token_field %>
   <div class="form-group">
     <%= f.label :price, '原价', class: 'control-label' %>
     <%= f.number_field :price, class: 'form-control' %>
@@ -24,7 +22,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit '保存',class:'submit-order-button' %>
+    <%= f.submit '保存', class: 'submit-order-button btn btn-lg' %>
   </div>
 
 <% end %>

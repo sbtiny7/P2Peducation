@@ -14,14 +14,18 @@ class Accounts::OrdersController < ApplicationController
   end
 
   def create
+    render json: {message: '重复提交'} and return unless check_token
+    success, redirect, message = false, '', ''
     @order = current_user.orders.build order_params
     @order.goods_id = rand Time.now.to_i
     if @order.save
       # 本地订单创建成功
-      redirect_to accounts_order_path(@order)
+      success, redirect = true, accounts_order_path(@order)
+      # redirect_to accounts_order_path(@order)
     else
-
+      message = '订单保存失败'
     end
+    render json: {success: success, redirect: redirect, message: message}
   end
 
   def show
@@ -30,7 +34,7 @@ class Accounts::OrdersController < ApplicationController
 
   def settle
     @order = current_user.orders.where(:trade_no => params[:trade_no]).first
-    redirect_to @order.pay_url(current_user) and return if @order
+    # redirect_to @order.pay_url(current_user) and return if @order
     render json: {success: false}
   end
 
