@@ -1,19 +1,32 @@
-<% 3.times do %>
-<div class="row">
-    <% 3.times do %>
-    <div class="col-md-4">
-        <div class="course">
-            <div class="poster">
-                <%= image_tag "top.jpg", :width => "100%" %>
-            </div>
-            <div class="title">
-                测试课程
-                <div class="time">
-                    9-30 21:00
-                </div>
-            </div>
-        </div>
-    </div>
-    <% end %>
+<ul class="nav nav-tabs" >
+  <li class="active">
+  <a href="#abc" data-toggle="tab">直播课</a>
+  </li>
+  <li>
+  <a href="#bcd" data-toggle="tab">录播课</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane fade active in" id="abc">
+    <%= render partial: "live_classes"%>
+  </div>
+  <div class="tab-pane fade" id="bcd">
+    <%= render partial: "vod_classes"%>
+  </div>
 </div>
-<% end %>
+
+<br>
+
+<ul class="nav nav-tabs" >
+  <li class="active">
+  <a href="#abc" data-toggle="tab">录像课</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane fade active in" id="abc">
+    <%#= render partial: "live_classes"%>
+    TODO
+  </div>
+</div>
