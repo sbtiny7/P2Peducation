@@ -2,12 +2,17 @@
  * Created by spf on 10/31/14.
  */
 $(function () {
-  $('.submit-order-button').preventMultipleClick()
+  $('.submit-order-button').preventMultipleClick();
   $("#account_order_new_form").submit(function (event) {
-    return $(this).valid() //$(this).preventMultipleAjax(event);
-      ;
+    return $(this).valid();
   });
-
+  $("#account_order_new_form").on('ajax:success', function (event, result) {
+    if(result.success){
+      location = result.redirect;
+    }else{
+      alert(result.message);
+    }
+  });
   $("#account_order_new_form").validate({
     rules: {
       "order[trade_no]": {
@@ -49,7 +54,7 @@ $(function () {
 
     },
     errorPlacement: function (error, ele) {
-      console.log(error)
+
     }
   })
 });

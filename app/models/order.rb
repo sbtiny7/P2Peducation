@@ -68,14 +68,14 @@ class Order < ActiveRecord::Base
   # price && quantiry                             商品价格和商品数量
   # ===============================================================
   def pay_url(user)
-    return unless user.present?
+    return unless user.present? or user.phone.present?
     Alipay::Service.create_direct_pay_by_user_url(
       {
         :out_trade_no => trade_no,
         :price => price,
         :quantity => quantity,
         :discount => discount,
-        :subject => "Writings.io x #{quantity}",
+        :subject => "商品名称",
         # :logistics_type => 'DIRECT',
         # :logistics_fee => '0',
         # :logistics_payment => 'SELLER_PAY',
@@ -84,7 +84,7 @@ class Order < ActiveRecord::Base
         :receive_name => user.username,
         :receive_address => 'none',
         :receive_zip => '100000',
-        :receive_mobile => user.phone
+        :receive_mobile => '15201248936'
       }
     )
   end

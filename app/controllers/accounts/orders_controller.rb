@@ -34,6 +34,7 @@ class Accounts::OrdersController < ApplicationController
 
   def settle
     @order = current_user.orders.where(:trade_no => params[:trade_no]).first
+    puts "#{@order.pay_url(current_user)}"
     # redirect_to @order.pay_url(current_user) and return if @order
     render json: {success: false}
   end
