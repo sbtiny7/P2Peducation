@@ -3,5 +3,18 @@
 </h1>
 <%= @order.inspect %>
 <p>
-  <%= link_to '去结算', @order.pay_url, class: 'btn btn-success', target: '_blank' %>
+  <%= link_to '去结算', 'javascript:void(0)', class: 'btn btn-success alipay-submit', target: '_blank' %>
 </p>
+<script>
+  $(function () {
+    $('.alipay-submit').preventMultipleClick();
+    $('.alipay-submit').click(function () {
+      console.log('aaaaaaaaaaaaaaaaaaaaaa')
+        $.post('/accounts/orders/settle', {
+          trade_no: '<%= @order.trade_no %>'
+        }, function (data) {
+          console.log(data);
+        }, 'json');
+    });
+  })
+</script>

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require lib/common
 // require json2
 // require kindeditor
 // require make_ie_happy
