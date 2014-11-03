@@ -15,7 +15,7 @@ class Accounts::OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build order_params
-    @order.goods_id = 1
+    @order.goods_id = rand Time.now.to_i
     if @order.save
       # 本地订单创建成功
       redirect_to accounts_order_path(@order)
@@ -29,9 +29,8 @@ class Accounts::OrdersController < ApplicationController
   end
 
   def settle
-    puts "#{current_user.orders.where(:trade_no, params[:trade_no]).first}   ===== "
-    @order = current_user.orders.where(:trade_no, params[:trade_no]).first
-    redirect_to @order.pay_ment and return if @order
+    @order = current_user.orders.where(:trade_no => params[:trade_no]).first
+    redirect_to @order.pay_url(current_user) and return if @order
     render json: {success: false}
   end
 

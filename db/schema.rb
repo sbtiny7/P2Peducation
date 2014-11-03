@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20141030135852) do
 
   create_table "orders", force: true, comment: "订单" do |t|
     t.integer  "user_id",                                                  null: false, comment: "订单所属用户id"
+    t.integer  "goods_id",                                                 null: false, comment: "商品id"
     t.integer  "quantity",                            default: 1,          null: false, comment: "数量"
     t.decimal  "price",      precision: 16, scale: 2, default: 0.0,        null: false, comment: "价格(元)"
     t.decimal  "discount",   precision: 16, scale: 2, default: 0.0,        null: false, comment: "打折后的价格(元)"
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(version: 20141030135852) do
     t.datetime "updated_at"
   end
 
+  add_index "orders", ["goods_id"], name: "index_orders_on_goods_id", unique: true, using: :btree
   add_index "orders", ["trade_no"], name: "index_orders_on_trade_no", unique: true, using: :btree
 
   create_table "roles", force: true do |t|

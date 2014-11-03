@@ -3,10 +3,10 @@
 <% end %>
 <%= form_for [:accounts, @order], html: {id: id, role: 'form'} do |f| %>
 
-  <div class="form-group">
-    <%= f.label :trade_no, '商品号', class: 'control-label' %>
-    <%= f.text_field :trade_no, class: 'form-control' %>
-  </div>
+<!--   <div class="form-group">
+    <%#= f.label :trade_no, '商品号', class: 'control-label' %>
+    <%#= f.text_field :trade_no, class: 'form-control' %>
+  </div> -->
 
   <div class="form-group">
     <%= f.label :price, '原价', class: 'control-label' %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit '保存' %>
+    <%= f.submit '保存',class:'submit-order-button' %>
   </div>
 
 <% end %>

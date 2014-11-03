@@ -2,6 +2,7 @@
  * Created by spf on 10/31/14.
  */
 $(function () {
+  $('.submit-order-button').preventMultipleClick();
   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa")
   $("#account_order_new_form").validate({
     rules: {
