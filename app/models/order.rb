@@ -16,7 +16,6 @@
 #
 # Indexes
 #
-#  index_orders_on_goods_id  (goods_id) UNIQUE
 #  index_orders_on_trade_no  (trade_no) UNIQUE
 #
 
@@ -26,36 +25,42 @@ class Order < ActiveRecord::Base
   validates_inclusion_of :status, :in => STATUS
   validates_presence_of :trade_no
   before_validation :generate_trade_no
-  belongs_to :owner, class_name: 'User', foreign_key: :user_id
+  validate do |order|
+    order.smaller_then_students_max
+  end
 
+  after_create :increase_student_count
+
+  belongs_to :owner, class_name: 'User', foreign_key: :user_id
+  belongs_to :resource, class_name: 'Course', foreign_key: :goods_id
   STATUS.each do |status|
     define_method "#{status}?" do
       self.status == status
     end
   end
 
-  def pay
-    if pendding?
-      # 订单生效
-      update_attribute :status, 'paid'
-    end
-  end
-
-  def complete
-    if pendding? or paid?
-      puts '订单生效' if pendding?
-
-      update_attribute :status, 'completed'
-    end
-  end
-
-  def cancel
-    if pendding? or paid?
-      puts '取消订单' if paid?
-
-      update_attribute :status, 'canceled'
-    end
-  end
+  # def pay
+  #   if pendding?
+  #     # 订单生效
+  #     update_attribute :status, 'paid'
+  #   end
+  # end
+  #
+  # def complete
+  #   if pendding? or paid?
+  #     puts '订单生效' if pendding?
+  #
+  #     update_attribute :status, 'completed'
+  #   end
+  # end
+  #
+  # def cancel
+  #   if pendding? or paid?
+  #     puts '取消订单' if paid?
+  #
+  #     update_attribute :status, 'canceled'
+  #   end
+  # end
 
   def set_values(course)
     self.goods_id = course.id
@@ -96,6 +101,10 @@ class Order < ActiveRecord::Base
     )
   end
 
+  def is_smaller_then_students_max?
+    resource.students_count + quantity < resource.students_max
+  end
+
   def self.generate_uuid
     Digest::MD5.hexdigest "#{Time.now.to_i}#{rand(Time.now.to_i)}"
   end
@@ -104,6 +113,14 @@ class Order < ActiveRecord::Base
 
   def generate_trade_no
     write_attribute :trade_no, Order.generate_uuid unless trade_no.present?
+  end
+
+  def increase_student_count
+    resource.update_attribute(:quantity, resource.students_count + quantity)
+  end
+
+  def smaller_then_students_max
+    errors.add(:quantity, '教室已满') unless is_smaller_then_students_max?
   end
 
 end

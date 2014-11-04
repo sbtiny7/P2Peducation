@@ -1,25 +1,25 @@
 # == Schema Information
 #
-# Table name: courses
+# Table name: courses # 课程
 #
-#  id             :integer          not null, primary key
-#  user_id        :integer
-#  teacher_id     :integer
-#  title          :string(255)
+#  id             :integer          not null, primary key # 课程
+#  user_id        :integer                                # 所属用户id
+#  teacher_id     :integer                                # 教师id
+#  title          :string(255)                            # 标题
 #  token          :string(255)
-#  image          :string(255)
+#  image          :string(255)                            # 图标
 #  tmp_image      :string(255)
-#  category       :string(255)
-#  address        :string(255)
-#  course_type    :string(255)
-#  start_time     :datetime
-#  end_time       :datetime
-#  students_count :integer
-#  students_max   :integer
-#  price          :decimal(15, 3)
+#  category       :string(255)                            # 分类
+#  address        :string(255)                            # 所开地址
+#  course_type    :string(255)                            # 类型
+#  start_time     :datetime                               # 开始时间
+#  end_time       :datetime                               # 结束时间
+#  students_count :integer                                # 学生数量
+#  students_max   :integer                                # 最大学生数量
+#  price          :decimal(15, 3)                         # 价格
 #  mark_count     :integer
-#  detail         :text
-#  status         :integer
+#  detail         :text                                   # 详细
+#  status         :integer                                # 课程状态
 #  created_at     :datetime
 #  updated_at     :datetime
 #
