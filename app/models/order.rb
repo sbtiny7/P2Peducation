@@ -101,12 +101,16 @@ class Order < ActiveRecord::Base
     )
   end
 
+  def self.generate_uuid
+    Digest::MD5.hexdigest "#{Time.now.to_i}#{rand(Time.now.to_i)}"
+  end
+
   def is_smaller_then_students_max?
     resource.students_count + quantity < resource.students_max
   end
 
-  def self.generate_uuid
-    Digest::MD5.hexdigest "#{Time.now.to_i}#{rand(Time.now.to_i)}"
+  def smaller_then_students_max
+    errors.add(:quantity, '教室已满') unless is_smaller_then_students_max?
   end
 
   private
@@ -116,11 +120,7 @@ class Order < ActiveRecord::Base
   end
 
   def increase_student_count
-    resource.update_attribute(:quantity, resource.students_count + quantity)
-  end
-
-  def smaller_then_students_max
-    errors.add(:quantity, '教室已满') unless is_smaller_then_students_max?
+    resource.update_attribute(:quantity, (resource.students_count || 0) + quantity)
   end
 
 end
