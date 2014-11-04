@@ -1,0 +1,9 @@
+正在努力加载....
+<form action="<%= Alipay::GatewayUrl::GATEWAY_URL %>" name="alipay-submit" id="alipay-submit" method="get">
+  <% options.each do |k, v| %>
+    <input type="hidden" name="<%= k.to_s %>" value="<%= v.to_s %>">
+  <% end %>
+</form>
+<script>
+  document.forms['alipay-submit'].submit();
+</script>

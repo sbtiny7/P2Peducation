@@ -56,6 +56,7 @@ class Order < ActiveRecord::Base
       update_attribute :status, 'canceled'
     end
   end
+
   # ==============================================================
   # 生成即时到帐接口
   # service                                       接口名称
@@ -81,7 +82,7 @@ class Order < ActiveRecord::Base
         # :logistics_payment => 'SELLER_PAY',
         :return_url => Rails.application.routes.url_helpers.accounts_order_url(self, host: "#{Settings.host}:#{Settings.port}"),
         :notify_url => Rails.application.routes.url_helpers.alipay_notify_accounts_orders_url(host: "#{Settings.host}:#{Settings.port}"),
-        :receive_name => user.username,
+        :receive_name => 'xxx',
         :receive_address => 'none',
         :receive_zip => '100000',
         :receive_mobile => '15201248936'

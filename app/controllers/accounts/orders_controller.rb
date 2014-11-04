@@ -34,9 +34,12 @@ class Accounts::OrdersController < ApplicationController
 
   def settle
     @order = current_user.orders.where(:trade_no => params[:trade_no]).first
-    puts "#{@order.pay_url(current_user)}"
-    # redirect_to @order.pay_url(current_user) and return if @order
-    render json: {success: false}
+    # puts "#{@order.pay_url(current_user)}"
+    if @order
+      redirect_to @order.pay_url(current_user) and return if @order
+      # render :partial => 'alipay_submit', layout: false, locals: {options: options} # and return
+    end
+    render :partial => 'alipay_submit', layout: false, locals: {options: {}}
   end
 
   #
