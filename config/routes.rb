@@ -79,4 +79,6 @@ Rails.application.routes.draw do
   mount ChinaCity::Engine => '/china_city' # 选择地址插件所用
 
   # ↑ 其他（如有优先级需求可以上移） ↑
+
+  get "/dashboard/lesson"  => "dashboard#lesson" 
 end
