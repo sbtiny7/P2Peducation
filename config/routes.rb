@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   get 'course/:course_id' => 'home#course', as: :course
 
   root 'home#index'
+  get '/live_class/1'
 
   # ↑ 主页、课程展示等，未登录用户也能观看的部分 ↑
 
