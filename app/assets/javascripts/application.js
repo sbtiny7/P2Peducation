@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require lib/common
+//= require bootstrap-sprockets
 // require json2
 // require kindeditor
 // require make_ie_happy
@@ -26,7 +27,6 @@
 // require jquery.validate
 // require additional-methods.min.js
 // require jquery.jcrop
-// require bootstrap-sprockets
 // require_tree .
 //$(function(){
 //  $('input, textarea').placeholder();
