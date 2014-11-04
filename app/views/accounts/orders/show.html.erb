@@ -3,7 +3,8 @@
 </h1>
 <%= form_for @order, url: '/accounts/orders/settle', method: 'post', html: {id: 'go-to-settle'} do %>
   <%= hidden_field_tag :trade_no, @order.trade_no %>
-  <%= @order.inspect %>
+
+  <%= @order.price %>
 <% end %>
 <p>
   <%= link_to '去结算', 'javascript:void(0)', class: 'btn btn-success alipay-submit', target: '_blank' %>

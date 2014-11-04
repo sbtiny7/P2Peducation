@@ -1,19 +1,19 @@
 <%= javascript_include_tag 'plugins/validate/index', 'accounts/order_form', 'lib/common' %>
 <%= form_for [:accounts, @order], html: {id: id, role: 'form'}, remote: true do |f| %>
 
-  <!--   <div class="form-group">
-    <%#= f.label :trade_no, '商品号', class: 'control-label' %>
-  <%#= f.text_field :trade_no, class: 'form-control' %>
-  </div> -->
   <%= token_field %>
+  <%= f.hidden_field :trade_no, class: 'form-control' %>
+  <%= f.hidden_field :goods_id, value: @order.goods_id %>
+  <%= f.hidden_field :discount, value: @order.discount %>
+  <%= f.hidden_field :price, value: @order.price %>
   <div class="form-group">
     <%= f.label :price, '原价', class: 'control-label' %>
-    <%= f.number_field :price, class: 'form-control' %>
+    <%= f.label :price, @order.price, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= f.label :discount, '优惠价', class: 'control-label' %>
-    <%= f.number_field :discount, class: 'form-control' %>
+    <%= f.label :discount, @order.discount, class: 'form-control' %>
   </div>
 
   <div class="form-group">

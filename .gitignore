@@ -16,4 +16,5 @@
 /tmp
 /public/uploads
 /.idea/*
-./config/app_config.yml
+/config/app_config.yml
+/public/

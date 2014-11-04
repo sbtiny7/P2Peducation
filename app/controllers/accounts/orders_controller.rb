@@ -9,17 +9,21 @@ class Accounts::OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
-    @order.trade_no = Order.generate_uuid
+    puts params
+    @course = Course.find(params[:course_id])
+    @order = current_user.orders.build
+    @order.set_values @course
+    render 'new', layout: 'home'
   end
 
   def create
     render json: {message: '重复提交'} and return unless check_token
+    @course = Course.find(order_params[:goods_id])
+
     success, redirect, message = false, '', ''
     @order = current_user.orders.build order_params
-    @order.goods_id = rand Time.now.to_i
+    @order.set_values(@course)
     if @order.save
-      # 本地订单创建成功
       success, redirect = true, accounts_order_path(@order)
       # redirect_to accounts_order_path(@order)
     else
@@ -75,7 +79,7 @@ class Accounts::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:user_id, :quantity, :price, :discount, :trade_no)
+    params.require(:order).permit(:quantity, :trade_no, :goods_id)
   end
 
 end

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  rescue_from ActiveRecord::RecordNotFound, :with => :redirect_to_not_found
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :clean_notice
 
@@ -40,4 +41,8 @@ class ApplicationController < ActionController::Base
     false
   end
 
+  private
+  def redirect_to_not_found
+    render text: '没有找到数据', status: 400
+  end
 end

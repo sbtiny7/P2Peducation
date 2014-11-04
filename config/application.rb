@@ -14,6 +14,19 @@ module Jiaoyu
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+
+    #2. skip rspec test and js/css generated
+    config.generators do |g|
+      g.view_specs false
+      g.helper_specs false
+      g.orm :active_record
+      #g.assets false #this is both for stylesheets and javascripts
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.rspec false
+    end
+
     config.time_zone = 'Beijing'
     config.active_record.default_timezone = :local   #active_record对数据库交互的时区设置
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

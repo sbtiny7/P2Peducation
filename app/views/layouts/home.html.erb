@@ -7,6 +7,7 @@
   <title><%= content_for?(:title) ? yield(:title) : "教育直播" %></title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "home", :media => "all" %>
+  <%= yield :head %>
   <%= javascript_include_tag "application" %>
 </head>
 <body>
@@ -14,6 +15,6 @@
   <%= render "layouts/header.html.erb" %>
   <%= yield %>
   <%= render "layouts/footer.html.erb" %>
-
+  <%= yield :foot %>
 </body>
 </html>

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  scope path: '/public' do
+    get 'courses/:id' => 'courses#show', :as => 'public_show_course'
+    get 'enroll' => 'courses#enroll', :as => 'public_enroll_course'
+    post 'enroll' => 'courses#enroll_create', :as => 'enroll_course'
+  end
+
   # ↓ 移动端API ↓
 
   get 'api/study/study.:format' => 'api/study#study'

@@ -1,0 +1,24 @@
+.content .ul-ele-title span {
+  font-size: 25px;
+  font-family: -webkit-pictograph;
+  font-size: -webkit-xxx-large;
+}
+
+.content .teacher-description {
+  margin-top: 30px;
+  padding: 20px 10px;
+  height: 100px;
+}
+
+.content .ul-ele {
+  font-size: 1.5em;
+}
+
+.content .currency {
+  color: red;
+  font-weight: bold;
+}
+.content .ul-ele-title{
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+}

@@ -1,0 +1,61 @@
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'course' %>
+<% end %>
+<div class="container">
+  <div class="content" style="height:800px; margin:80px 0px;">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 video-player-container">
+        <video width="750px" height="562px" controls="controls">
+          <source src="" type="video/ogg">
+          <source src="" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="col-md-4 col-sm-4">
+        <div class="ul-ele-title">
+          <span class=""><%= @course.title.truncate(20) %></span>
+        </div>
+
+        <div class="ul-ele-label">
+          <span class="">主讲人&nbsp;:&nbsp;</span><span><%= link_to @course.teacher.try(:name), '' %></span>
+        </div>
+
+        <div class="ul-ele-label">
+          <span class="">地址&nbsp;:&nbsp;</span><span><%= @course.title %></span>
+        </div>
+
+        <div class="ul-ele-label">
+          <span class="">价格&nbsp;:&nbsp;</span><span class="currency"><%= number_to_currency(@course.price, :unit => '￥', :precision => 2)%></span>
+        </div>
+
+        <div class="ul-ele">
+          <%= link_to '报名线下课程', new_accounts_order_path(course_id: @course, i: Time.now.to_i), class: 'btn btn-primary btn-lg' %>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="teacher-description jumbotron">
+      讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍
+      讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍讲师介绍
+    </div>
+
+    <div class="course-description">
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+      课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍课程介绍
+    </div>
+
+  </div>
+
+</div>

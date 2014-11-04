@@ -57,6 +57,12 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def set_values(course)
+    self.goods_id = course.id
+    self.price = course.price
+    self.trade_no = Order.generate_uuid
+  end
+
   # ==============================================================
   # 生成即时到帐接口
   # service                                       接口名称

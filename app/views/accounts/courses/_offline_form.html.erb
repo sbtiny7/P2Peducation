@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index' %>
+<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index','china_city/jquery.china_city' %>
 <%= form_for([:accounts, @course], :html => {:id => 'offline_course', :multipart => true}) do |f| %>
   <%= f.hidden_field :course_type %>
   <%= f.hidden_field :user_id %>
