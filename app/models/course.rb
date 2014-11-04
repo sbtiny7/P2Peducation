@@ -66,6 +66,10 @@ class Course < ActiveRecord::Base
         self.status = 0
     end
 
+    def is_ordered_by?(user)
+      !user.orders.where(:goods_id => id).empty?
+    end
+
     def parse_values
         if start_time_date && start_time_hour && start_time_min
             self.start_time = "#{start_time_date} #{start_time_hour}:#{start_time_min}"
