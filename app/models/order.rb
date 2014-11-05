@@ -55,9 +55,9 @@ class Order < ActiveRecord::Base
   # end
   #
   def cancel
-    transaction do  # 在这里需要判断订单的状态
+    transaction do # 在这里需要判断订单的状态
       decrease_student_count
-      update_attribute :status, 'canceled'
+      update_attributes(:status => 'canceled', :quantity => 0)
     end
     # if pendding? or paid?
     #   puts '取消订单' if paid?

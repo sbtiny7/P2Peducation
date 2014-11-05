@@ -1,4 +1,7 @@
 <%= javascript_include_tag 'plugins/validate/index', 'accounts/order_form', 'lib/common' %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'accounts/order' %>
+<% end %>
 <%= form_for [:accounts, @order], html: {id: id, role: 'form'}, remote: true do |f| %>
 
   <%= token_field %>
@@ -22,7 +25,11 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit '保存', class: 'submit-order-button btn btn-primary btn-lg' %>
+    <div class="result col-md-1 col-sm-2 col-md-offset-11 col-sm-offset-10">￥sss</div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit '去结算', class: 'submit-order-button btn btn-success btn-lg' %>
   </div>
 
 <% end %>

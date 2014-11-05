@@ -63,16 +63,19 @@ class Course < ActiveRecord::Base
     self.status = 0
   end
 
+  # 返回剩下的空座位的数量
   def just_numbers_left
     students_max - students_count
   end
 
+  # 用户是否已经下过订单
   def is_ordered_by?(user)
     !user.orders.where(:goods_id => id).empty?
   end
 
+  # 判断是否爆满
   def is_jammed?
-    students_count >= students_max
+    !(Order.where(goods_id: id).sum(:quantity) <= students_max && students_count <= students_max)
   end
 
   def parse_values

@@ -24,8 +24,7 @@ class Accounts::OrdersController < ApplicationController
     @order = current_user.orders.build order_params
     @order.set_values(@course)
     if @order.save
-      success, redirect = true, accounts_order_path(@order)
-      # redirect_to accounts_order_path(@order)
+      success, redirect = true, @order.pay_url(current_user) # and return
     else
       message = '订单保存失败'
     end
@@ -35,16 +34,16 @@ class Accounts::OrdersController < ApplicationController
   def show
     @order = current_user.orders.find(params[:id]) #where(:trade_no, params[:trade_no])
   end
-
-  def settle
-    @order = current_user.orders.where(:trade_no => params[:trade_no]).first
-    # puts "#{@order.pay_url(current_user)}"
-    if @order
-      redirect_to @order.pay_url(current_user) and return if @order
-      # render :partial => 'alipay_submit', layout: false, locals: {options: options} # and return
-    end
-    render :partial => 'alipay_submit', layout: false, locals: {options: {}}
-  end
+  #
+  #def settle
+  #  @order = current_user.orders.where(:trade_no => params[:trade_no]).first
+  #  # puts "#{@order.pay_url(current_user)}"
+  #  if @order
+  #    redirect_to @order.pay_url(current_user) and return if @order
+  #    # render :partial => 'alipay_submit', layout: false, locals: {options: options} # and return
+  #  end
+  #  render :partial => 'alipay_submit', layout: false, locals: {options: {}}
+  #end
 
   #
   def alipay_notify
@@ -75,6 +74,13 @@ class Accounts::OrdersController < ApplicationController
     else
       render :text => 'error'
     end
+  end
+
+  def check_quantity
+    course = Course.find(params[:goods_id])
+    #render text: success and return unless course.present? # 如果没有查询到，则返回false
+    logger.info "#{((order_params[:quantity].to_i <= course.just_numbers_left) || false).to_s}  ======================== "
+    render text: ((order_params[:quantity].to_i <= course.just_numbers_left) || false).to_s
   end
 
   private

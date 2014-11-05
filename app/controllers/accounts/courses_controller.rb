@@ -45,6 +45,7 @@ class Accounts::CoursesController < ApplicationController
         format.html { render :new }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
+      logger.info @course.errors.inspect
     end
   end
 

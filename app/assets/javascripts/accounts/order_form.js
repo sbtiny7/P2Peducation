@@ -7,9 +7,10 @@ $(function () {
     return $(this).valid();
   });
   $("#account_order_new_form").on('ajax:success', function (event, result) {
-    if(result.success){
+    if (result.success) {
+      console.log(result)
       location = result.redirect;
-    }else{
+    } else {
       alert(result.message);
     }
   });
@@ -29,7 +30,16 @@ $(function () {
       "order[quantity]": {
         required: true,
         digits: true,
-        min: 0
+        min: 0,
+        remote: {
+          url: '/accounts/orders/check_quantity',
+          data: {
+            goods_id: function () {
+              return $("#order_goods_id").val();
+            }
+          },
+          type: 'post'
+        }
       }
     },
     messages: {
@@ -47,14 +57,15 @@ $(function () {
       "order[quantity]": {
         required: "请输入产品数量",
         digits: "请输入有效整数",
-        min: "产品数量不能为负数"
+        min: "产品数量不能为负数",
+        remote: "抱歉，没有那么多的空位啦！"
       }
     },
     success: function (erorr, ele) {
 
     },
     errorPlacement: function (error, ele) {
-
+        console.log(error)
     }
   })
 });
