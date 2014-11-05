@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do
-    get "student"  => "dashboard#student" 
+    get "student/learning"  => "dashboard#learning" 
+    get "student/pending"  => "dashboard#pending" 
+    get "student/favorite"  => "dashboard#favorite"
     root 'main#index'
     get 'config' => 'main#config_account', as: :config
     patch 'update' => 'main#update_account', as: :update
