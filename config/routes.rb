@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do
+    get "student"  => "dashboard#student" 
     root 'main#index'
     get 'config' => 'main#config_account', as: :config
     patch 'update' => 'main#update_account', as: :update
@@ -81,4 +82,5 @@ Rails.application.routes.draw do
   mount ChinaCity::Engine => '/china_city' # 选择地址插件所用
 
   # ↑ 其他（如有优先级需求可以上移） ↑
+
 end
