@@ -2,6 +2,8 @@ class HomeController < ApplicationController
     before_action :authenticate_user!, :only => [:lesson]
 
     def index #首页
+      @open_lessons = Course.limit(3)
+      @live_lessons = Course.limit(5)
     end
 
     def courses #发现课程

@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do
+    get "student/learning"  => "dashboard#learning" 
+    get "student/pending"  => "dashboard#pending" 
+    get "student/favorite"  => "dashboard#favorite"
     root 'main#index'
     get 'config' => 'main#config_account', as: :config
     patch 'update' => 'main#update_account', as: :update
@@ -68,7 +71,7 @@ Rails.application.routes.draw do
 
   # ↓ 主页、课程展示等，未登录用户也能观看的部分 ↓
 
-  get 'course/:course_id' => 'home#course', as: :course
+  get 'course/:course_id' => 'course#show', as: :course
 
   root 'home#index'
   get '/live_class/1'
@@ -81,4 +84,5 @@ Rails.application.routes.draw do
   mount ChinaCity::Engine => '/china_city' # 选择地址插件所用
 
   # ↑ 其他（如有优先级需求可以上移） ↑
+
 end

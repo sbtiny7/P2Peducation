@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require lib/common
 //= require plugins/validate/jquery.validate
 //= require plugins/validate/additional-methods.min.js

@@ -45,6 +45,10 @@ class Course < ActiveRecord::Base
 
     belongs_to :user
     belongs_to :teacher
+
+    has_many :bookmarks
+    has_many :collectors, :through => :bookmarks, :source => :bookmarkable, :source_type => "User"
+
     has_many :lessons
     has_many :studyships
     has_many :students, :through => :studyships
