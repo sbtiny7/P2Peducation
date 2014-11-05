@@ -1,3 +1,8 @@
+//= require jquery
+//= require jquery_ujs
+//= require lib/common
+//= require plugins/validate/jquery.validate
+//= require plugins/validate/additional-methods.min.js
 //= require china_city/jquery.china_city
 
 $(function(){
