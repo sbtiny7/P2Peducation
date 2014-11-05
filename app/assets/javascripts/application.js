@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require lib/common
+//= require bootstrap-sprockets
 // require json2
 // require kindeditor
 // require make_ie_happy
@@ -23,10 +24,9 @@
 // require jquery-ui-timepicker-zh-CN.js
 // require jquery-ui.timepicker
 // require jquery.placeholder.js
-// require jquery.validate
-// require additional-methods.min.js
+// require plugins/validate/jquery.validate
+// require plugins/validate/additional-methods.min.js
 // require jquery.jcrop
-// require bootstrap-sprockets
 // require_tree .
 //$(function(){
 //  $('input, textarea').placeholder();

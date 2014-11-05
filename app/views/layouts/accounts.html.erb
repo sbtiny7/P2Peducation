@@ -7,7 +7,7 @@
   <title><%= content_for?(:title) ? yield(:title) : "教育直播" %></title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "accounts", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "accounts" %>
   <%= yield :head %>
 </head>
 <body>
@@ -17,11 +17,15 @@
   <div class="container our_container">
 
     <div class="row">
-      <div class="col-md-3 sidebar">
-        <%= render "layouts/sidebar" %>
+      <div class="col-md-3">
+        <div class="sidebar">
+          <%= render "layouts/sidebar" %>
+        </div>
       </div>
-      <div class="col-md-9 content">
-        <%= yield %>
+      <div class="col-md-9">
+        <div  class="content">
+          <%= yield %>
+        </div>
       </div>
     </div>
   </div>
