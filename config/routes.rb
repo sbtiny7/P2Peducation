@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get "student/learning"  => "dashboard#learning" 
     get "student/pending"  => "dashboard#pending" 
     get "student/favorite"  => "dashboard#favorite"
+    get "incoming"  => "dashboard#incoming"
+    get "teach"  => "dashboard#teach"
     root 'main#index'
     get 'config' => 'main#config_account', as: :config
     patch 'update' => 'main#update_account', as: :update

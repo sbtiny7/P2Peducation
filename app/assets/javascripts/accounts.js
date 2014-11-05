@@ -2,6 +2,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require lib/common
+//= require plugins/jquery-ui/jquery-ui
+//= require plugins/jquery-ui/jquery.ui.datepicker-zh-CN.js
 //= require plugins/validate/jquery.validate
 //= require plugins/validate/additional-methods.min.js
 //= require china_city/jquery.china_city

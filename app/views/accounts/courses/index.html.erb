@@ -1,27 +1,23 @@
-<h1>Listing courses</h1>
+<div class="accounts_course">
+    <div class="row">
+        <% @courses.each do |course| %>
+            <div class="col-md-4">
+                <div class="full_course">
+                    <div class="course_image">
+                        <%= image_tag course.image.url %>
+                        <div class="course_title">
+                            <%= link_to course.title, accounts_course_path(course) %>
+                        </div>
+                    </div>
+                    <div class="course_detail">
+                        <div>讲师: <%= course.teacher.name %></div>
+                        <div>开课时间: <%= course.start_time %> </div>
+                    </div>
+                </div>
+                <td><% link_to 'Edit', edit_accounts_course_path(course) %></td>
+            </div>
+        <% end %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.title %></td>
-        <td><%= course.user_id %></td>
-        <td><%= link_to 'Show', [:accounts, course] %></td>
-        <td><%= link_to 'Edit', edit_accounts_course_path(course) %></td>
-        <td><%= link_to 'Destroy', [:accounts, course], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Course', new_accounts_course_path %>
+    <%= link_to 'New Course', new_accounts_course_path %>
+</div>
