@@ -12,7 +12,7 @@ class Accounts::DashboardController <  ApplicationController
     render "union_courses.html.erb"
   end
   def favorite
-    @courses = (1..7).to_a
+    @courses = (1..3).to_a
     render "union_courses.html.erb"
   end
 end
