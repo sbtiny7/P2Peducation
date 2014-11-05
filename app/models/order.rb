@@ -26,11 +26,11 @@ class Order < ActiveRecord::Base
   validates_presence_of :trade_no
   before_validation :generate_trade_no
   validate do |order|
-    order.smaller_then_students_max
+    order.smaller_then_or_equal_students_max
   end
 
   after_create :increase_student_count
-
+  # before_destroy :decrease_student_count
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
   belongs_to :resource, class_name: 'Course', foreign_key: :goods_id
   STATUS.each do |status|
@@ -54,13 +54,17 @@ class Order < ActiveRecord::Base
   #   end
   # end
   #
-  # def cancel
-  #   if pendding? or paid?
-  #     puts '取消订单' if paid?
-  #
-  #     update_attribute :status, 'canceled'
-  #   end
-  # end
+  def cancel
+    transaction do  # 在这里需要判断订单的状态
+      decrease_student_count
+      update_attribute :status, 'canceled'
+    end
+    # if pendding? or paid?
+    #   puts '取消订单' if paid?
+    #
+    #   update_attribute :status, 'canceled'
+    # end
+  end
 
   def set_values(course)
     self.goods_id = course.id
@@ -105,12 +109,13 @@ class Order < ActiveRecord::Base
     Digest::MD5.hexdigest "#{Time.now.to_i}#{rand(Time.now.to_i)}"
   end
 
-  def is_smaller_then_students_max?
-    resource.students_count + quantity < resource.students_max
+  # 判断学生数量是否已满
+  def is_smaller_then_or_equal_students_max?
+    resource.present? && (resource.students_count + quantity <= resource.students_max)
   end
 
-  def smaller_then_students_max
-    errors.add(:quantity, '教室已满') unless is_smaller_then_students_max?
+  def smaller_then_or_equal_students_max
+    errors.add(:quantity, '教室已满') unless is_smaller_then_or_equal_students_max?
   end
 
   private
@@ -120,7 +125,12 @@ class Order < ActiveRecord::Base
   end
 
   def increase_student_count
-    resource.update_attribute(:quantity, (resource.students_count || 0) + quantity)
+    resource.update_attribute(:students_count, (resource.students_count || 0) + quantity)
+  end
+
+  def decrease_student_count
+    target = resource.students_count - quantity
+    resource.update_attribute(:students_count, (target < 0 ? 0 : target))
   end
 
 end

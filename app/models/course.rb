@@ -2,24 +2,24 @@
 #
 # Table name: courses # 课程
 #
-#  id             :integer          not null, primary key # 课程
-#  user_id        :integer                                # 所属用户id
-#  teacher_id     :integer                                # 教师id
-#  title          :string(255)                            # 标题
+#  id             :integer          not null, primary key  # 课程
+#  user_id        :integer                                 # 所属用户id
+#  teacher_id     :integer                                 # 教师id
+#  title          :string(255)                             # 标题
 #  token          :string(255)
-#  image          :string(255)                            # 图标
+#  image          :string(255)                             # 图标
 #  tmp_image      :string(255)
-#  category       :string(255)                            # 分类
-#  address        :string(255)                            # 所开地址
-#  course_type    :string(255)                            # 类型
-#  start_time     :datetime                               # 开始时间
-#  end_time       :datetime                               # 结束时间
-#  students_count :integer                                # 学生数量
-#  students_max   :integer                                # 最大学生数量
-#  price          :decimal(15, 3)                         # 价格
+#  category       :string(255)                             # 分类
+#  address        :string(255)                             # 所开地址
+#  course_type    :string(255)                             # 类型
+#  start_time     :datetime                                # 开始时间
+#  end_time       :datetime                                # 结束时间
+#  students_count :integer          default(0), not null   # 学生数量
+#  students_max   :integer          default(0), not null   # 最大学生数量
+#  price          :decimal(15, 3)   default(0.0), not null # 价格
 #  mark_count     :integer
-#  detail         :text                                   # 详细
-#  status         :integer                                # 课程状态
+#  detail         :text                                    # 详细
+#  status         :integer                                 # 课程状态
 #  created_at     :datetime
 #  updated_at     :datetime
 #
@@ -63,8 +63,16 @@ class Course < ActiveRecord::Base
     self.status = 0
   end
 
+  def just_numbers_left
+    students_max - students_count
+  end
+
   def is_ordered_by?(user)
     !user.orders.where(:goods_id => id).empty?
+  end
+
+  def is_jammed?
+    students_count >= students_max
   end
 
   def parse_values

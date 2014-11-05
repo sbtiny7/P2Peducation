@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
   def is_admin?
     self.has_role? :admin
   end
-
-  def is_teacher?
-    self.has_role? :teacher
+  #TODO 这里可以进一步优化?
+  def is_teacher?(teacher = Teacher)
+    self.has_role?(:teacher) || self.has_role?(:teacher, teacher)
   end
 end
