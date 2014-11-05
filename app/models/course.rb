@@ -1,3 +1,4 @@
+# encoding: utf-8
 # == Schema Information
 #
 # Table name: courses
@@ -41,7 +42,7 @@ class Course < ActiveRecord::Base
     acts_as_commentable :chat, :qa # commentable.chat_comments, commentable.qa_comments
 
     attr_accessor :start_time_date, :start_time_hour, :start_time_min, :end_time_date, :end_time_hour, :end_time_min,
-        :address1, :address2, :address3, :address4
+                  :address1, :address2, :address3, :address4
 
     belongs_to :user
     belongs_to :teacher
@@ -54,17 +55,17 @@ class Course < ActiveRecord::Base
     has_many :students, :through => :studyships
     has_many :videos, :as => :videoable
 
-    validates :title,  presence: true #, message: "标题不能为空"
-    validates :price,  presence: true #, message: "标价不能为空"
+    validates :title, presence: true #, message: "标题不能为空"
+    validates :price, presence: true #, message: "标价不能为空"
     validates :detail, presence: true #, message: "详细描述不能为空"
-    validates :course_type, :inclusion  => {
-        :in      => TYPES,
-        :message => "%{value}不能作为课程类型"
+    validates :course_type, :inclusion => {
+      :in => TYPES,
+      :message => "%{value}不能作为课程类型"
     }
 
     before_create :init
-    after_create  :rename_image
-    before_save   :parse_values
+    after_create :rename_image
+    before_save :parse_values
 
     def init
         self.status = 0
