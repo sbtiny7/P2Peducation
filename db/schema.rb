@@ -119,15 +119,16 @@ ActiveRecord::Schema.define(version: 20141030135852) do
 
   add_index "studyships", ["token"], name: "index_studyships_on_token", unique: true, using: :btree
 
-  create_table "teachers", force: true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.string   "sex"
-    t.string   "phone"
-    t.string   "email"
-    t.string   "organ_name"
-    t.text     "organ_detail"
-    t.integer  "agreement_id"
+  create_table "teachers", force: true, comment: "教师" do |t|
+    t.integer  "user_id",                   null: false, comment: "教师的账户id"
+    t.string   "name",                      null: false, comment: "姓名"
+    t.string   "sex",                       null: false, comment: "性别"
+    t.string   "phone",                     null: false, comment: "电话(移动电话)"
+    t.string   "email",                     null: false, comment: "电子邮件"
+    t.string   "organ_name",   default: "", null: false, comment: "所在机构名称"
+    t.text     "organ_detail",              null: false, comment: "所在机构详细介绍"
+    t.integer  "agreement_id",              null: false, comment: "协议id"
+    t.text     "description",               null: false, comment: "教师介绍"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
