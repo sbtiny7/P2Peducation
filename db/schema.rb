@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20141030135852) do
     t.string   "organ_name",   default: "", null: false, comment: "所在机构名称"
     t.text     "organ_detail",              null: false, comment: "所在机构详细介绍"
     t.integer  "agreement_id",              null: false, comment: "协议id"
-    t.text     "description",               null: false, comment: "教师介绍"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

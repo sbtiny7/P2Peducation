@@ -11,7 +11,6 @@
 #  organ_name   :string(255)      default(""), not null # 所在机构名称
 #  organ_detail :text             not null              # 所在机构详细介绍
 #  agreement_id :integer          not null              # 协议id
-#  description  :text             not null              # 教师介绍
 #  created_at   :datetime
 #  updated_at   :datetime
 #

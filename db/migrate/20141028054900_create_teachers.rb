@@ -14,7 +14,7 @@ class CreateTeachers < ActiveRecord::Migration
       t.text :organ_detail, :null => false, :comment => '所在机构详细介绍'
       t.integer :agreement_id, :null => false, :comment => '协议id'
 
-      t.text :description, :null => false, :comment => '教师介绍'
+      #t.text :description, :null => false, :comment => '教师介绍'
 
       t.timestamps
     end
