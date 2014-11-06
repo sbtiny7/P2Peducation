@@ -6,10 +6,6 @@ class HomeController < ApplicationController
       @live_lessons = Course.limit(5)
     end
 
-    def courses #发现课程
-        @courses = Course.where(:status => 1)
-    end
-
     def course #课程信息、报名
         @course = Course.where(:id => params[:course_id], :status => 1).first
     end

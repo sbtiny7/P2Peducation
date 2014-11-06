@@ -64,3 +64,6 @@ end
 
 gem 'execjs'
 gem 'therubyracer'
+
+gem 'kaminari'
+gem 'bootstrap_kaminari'

@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                课程分类
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-info" href="<%= courses_path %>">
+                    全部
+                </a>
+                <% Course::CATEGORIES.each do |category| %>
+                <a class="btn btn-info" href="<%= courses_path(:category => category) %>">
+                    <%= category %>
+                </a>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a class="btn btn-primary" href="<%= courses_path %>">
+                    全部课程
+                    <span class="badge">
+                        100
+                    </span>
+                </a>
+                <% %w(直播课 录播课 公开课).zip(%w(living archived OFFLINE), [24,43,6]).each do |name, value, count| %>
+                <a class="btn btn-primary" href="<%= courses_path(:course_type => value)%>">
+                    <%= name %>
+                    <span class="badge">
+                        <%= count %>
+                    </span>
+                </a>
+                <% end %>
+            </div>
+            <div class="panel-body">
+                <% @courses.each do |course| %>
+                <%= course.title %>
+                <% end %>
+            </div>
+            <div class="panel-footer">
+                <%= paginate @courses %>
+            </div>
+        </div>
+    </div>
+</div>

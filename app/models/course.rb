@@ -47,6 +47,9 @@ class Course < ActiveRecord::Base
     belongs_to :user
     belongs_to :teacher
 
+    has_many :bookmarks
+    has_many :collectors, :through => :bookmarks, :source => :bookmarkable, :source_type => "User"
+
     has_many :lessons
     has_many :studyships
     has_many :students, :through => :studyships
@@ -61,7 +64,7 @@ class Course < ActiveRecord::Base
     }
 
     before_create :init
-    after_create :rename_image
+    #after_create #:rename_image
     before_save :parse_values
 
     def init
@@ -80,6 +83,7 @@ class Course < ActiveRecord::Base
         end
     end
 
+=begin
     def rename_image
         old_str = self.read_attribute(:image)
         str_arr = old_str.split('.')
@@ -87,4 +91,5 @@ class Course < ActiveRecord::Base
         new_str = str_arr.join('.')
         self.update_column(:image, new_str)
     end
+=end
 end

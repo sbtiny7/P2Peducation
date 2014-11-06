@@ -23,13 +23,15 @@ icon {
     cursor: pointer;
 }
 .sidebar {
-    width: 240px;
+    width: 230px;
     text-align: center;
     .avatar {
+        margin: 10px;
         padding: 0px;
         position: relative;
+        width: 200px;//dont change it!
+        height: 200px;
         img {
-            width: 100%;
         }
         icon.upload_avatar {
         }
@@ -110,7 +112,10 @@ input.upload_image {
     filter: alpha(opacity=0);
 }
 img.upload_image, .ie_preview {
-    width: 100%;
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    margin: 9px;
 }
 .ie_preview {
     FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
