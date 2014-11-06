@@ -53,7 +53,8 @@ gem 'carrierwave-azure', :git => 'https://github.com/wanxsb/carrierwave-azure.gi
 gem 'mini_magick'
 gem 'acts_as_commentable', '4.0.2'
 gem 'rqrcode'
-gem 'china_city'
+#gem 'china_city'  # 城市选择空间
+gem 'china_region_fu', '~> 0.0.6'
 gem 'alipay', '~> 0.1.0' # 支付宝支付
 gem 'settingslogic', '~> 2.0.9' # 配置项
 group :development do

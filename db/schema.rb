@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030135852) do
+ActiveRecord::Schema.define(version: 20141106091413) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 20141030135852) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "province_id"
+    t.integer  "level"
+    t.string   "zip_code"
+    t.string   "pinyin"
+    t.string   "pinyin_abbr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["level"], name: "index_cities_on_level", using: :btree
+  add_index "cities", ["name"], name: "index_cities_on_name", using: :btree
+  add_index "cities", ["pinyin"], name: "index_cities_on_pinyin", using: :btree
+  add_index "cities", ["pinyin_abbr"], name: "index_cities_on_pinyin_abbr", using: :btree
+  add_index "cities", ["province_id"], name: "index_cities_on_province_id", using: :btree
+  add_index "cities", ["zip_code"], name: "index_cities_on_zip_code", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -66,6 +84,20 @@ ActiveRecord::Schema.define(version: 20141030135852) do
 
   add_index "courses", ["token"], name: "index_courses_on_token", unique: true, using: :btree
 
+  create_table "districts", force: true do |t|
+    t.string   "name"
+    t.integer  "city_id"
+    t.string   "pinyin"
+    t.string   "pinyin_abbr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
+  add_index "districts", ["name"], name: "index_districts_on_name", using: :btree
+  add_index "districts", ["pinyin"], name: "index_districts_on_pinyin", using: :btree
+  add_index "districts", ["pinyin_abbr"], name: "index_districts_on_pinyin_abbr", using: :btree
+
   create_table "learnships", force: true do |t|
     t.integer  "student_id"
     t.integer  "lesson_id"
@@ -97,6 +129,18 @@ ActiveRecord::Schema.define(version: 20141030135852) do
   end
 
   add_index "orders", ["trade_no"], name: "index_orders_on_trade_no", unique: true, using: :btree
+
+  create_table "provinces", force: true do |t|
+    t.string   "name"
+    t.string   "pinyin"
+    t.string   "pinyin_abbr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "provinces", ["name"], name: "index_provinces_on_name", using: :btree
+  add_index "provinces", ["pinyin"], name: "index_provinces_on_pinyin", using: :btree
+  add_index "provinces", ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

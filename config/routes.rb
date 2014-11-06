@@ -85,7 +85,7 @@ Rails.application.routes.draw do
 
   # ↓ 其他（如有优先级需求可以上移） ↓
 
-  mount ChinaCity::Engine => '/china_city' # 选择地址插件所用
+  #mount ChinaCity::Engine => '/china_city' # 选择地址插件所用
 
   # ↑ 其他（如有优先级需求可以上移） ↑
 end
