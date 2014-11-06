@@ -2,6 +2,11 @@
  * Created by spf on 10/31/14.
  */
 $(function () {
+  $("#order_quantity").blur(function () {
+    // == 0 ? 1 : Number($(this).val())
+    var quantity = Number($(this).val()) , price = Number($("#order_price").val());
+    $(".result").html("￥" + (price * quantity).toFixed(2));
+  })
   $('.submit-order-button').preventMultipleClick();
   $("#account_order_new_form").submit(function (event) {
     return $(this).valid();
@@ -65,7 +70,7 @@ $(function () {
 
     },
     errorPlacement: function (error, ele) {
-        console.log(error)
+      console.log(error)
     }
   })
 });

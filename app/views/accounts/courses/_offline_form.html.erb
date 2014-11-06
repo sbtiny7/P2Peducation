@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index','china_city/jquery.china_city' %>
+<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index', 'china_city/jquery.china_city' %>
 <%= form_for([:accounts, @course], :html => {:id => 'offline_course', :multipart => true}) do |f| %>
   <%= f.hidden_field :course_type %>
   <%= f.hidden_field :user_id %>
@@ -33,10 +33,10 @@
         </div>
       </div>
       <div class="form-group our_form-line">
-        <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
+        <%= f.text_field :price, :class => "form-control", value: '', :placeholder => "请输入价格" %>
       </div>
       <div class="form-group our_form-line">
-        <%= f.text_field :students_max, :class => "form-control", :placeholder => "可容纳学生数量（可选）" %>
+        <%= f.text_field :students_max, :class => "form-control", value: '', :placeholder => "可容纳学生数量（可选）" %>
       </div>
     </div>
     <div class="col-md-6">
@@ -209,18 +209,18 @@
             required: '请填写具体地址'
           }
         }/*,
-        highlight: function (element) {   // <-- fires when element has error
-          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-        },
-        unhighlight: function (element) { // <-- fires when element is valid
-          $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-          $(element).closest('.our_form-line').find('label').remove();
-        },
-        errorPlacement: function (error, element) {
-          if (element.closest('.our_form-line').find('label').length <= 0) {
-            error.appendTo(element.closest('.our_form-line'));
-          }
-        }*/
+         highlight: function (element) {   // <-- fires when element has error
+         $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+         },
+         unhighlight: function (element) { // <-- fires when element is valid
+         $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+         $(element).closest('.our_form-line').find('label').remove();
+         },
+         errorPlacement: function (error, element) {
+         if (element.closest('.our_form-line').find('label').length <= 0) {
+         error.appendTo(element.closest('.our_form-line'));
+         }
+         }*/
       });
     })
   </script>
