@@ -1,20 +1,18 @@
-<%= stylesheet_link_tag "student" %>
-<div class="row">
-  <div class="col-md-3">
-    <div class="sidebar">
-      <%= render "layouts/sidebar" %>
-    </div>
-  </div>
-  <div class="col-md-9">
-    <div class="row lesson_nav">
-      <% [["正在学习", "/accounts/student/learning"], ["待支付", "/accounts/student/pending"], ["收藏", "/accounts/student/favorite" ]].each do |item| %>
-        <div class="col-md-4"><%= link_to item[0], item[1], class: (item[1].include? params[:action]) %></div>
-      <% end %>
-    </div>
-    <div class="row lesson_detail">
-      <% @courses.each do |c| %>
-        <div class="col-md-3">课程</div>
+<div class="row lesson_nav">
+    <% [["正在学习", "/accounts/student/learning"], ["待支付", "/accounts/student/pending"], ["收藏", "/accounts/student/favorite" ]].each do |item| %>
+        <div class="col-md-4">
+            <div class="<%= item[1].include? params[:action] %>">
+                <%= link_to item[0], item[1], class: "btn btn-info" %>
+            </div>
+        </div>
     <% end %>
+</div>
+<div class="lesson_detail accounts_course">
+    <div class="row">
+        <% @courses.each do |c| %>
+            <div class="col-md-4">
+                <%= render partial: 'accounts/shared/single_course', locals: {course: c, path: course_path(c)} %>
+            </div>
+        <% end %>
     </div>
-  </div>
 </div>

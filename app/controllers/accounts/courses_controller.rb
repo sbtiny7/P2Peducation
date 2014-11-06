@@ -7,12 +7,14 @@ class Accounts::CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = current_user.courses.all
+    @courses = current_user.courses.all.includes(:teacher)
   end
 
   # GET /courses/1
   # GET /courses/1.json
   def show
+      @sudents = @course.students
+      @teacher = @course.teacher
   end
 
   # GET /courses/new

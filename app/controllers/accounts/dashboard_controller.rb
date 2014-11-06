@@ -1,18 +1,19 @@
 class Accounts::DashboardController <  ApplicationController
   before_action :authenticate_user!
-  def student
-    @courses = (1..11).to_a
-  end
+  layout "accounts"
   def learning
-    @courses = (1..11).to_a
+    @courses = Course.limit(7)
     render "union_courses.html.erb"
   end
   def pending
-    @courses = (1..7).to_a
+    @courses = Course.limit(3)
     render "union_courses.html.erb"
   end
   def favorite
-    @courses = (1..3).to_a
+    @courses = Course.limit(10)
     render "union_courses.html.erb"
+  end
+  def incoming
+    @courses = current_user.courses
   end
 end

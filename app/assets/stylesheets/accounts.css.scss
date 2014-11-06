@@ -23,16 +23,19 @@ icon {
     cursor: pointer;
 }
 .sidebar {
+    width: 240px;
     text-align: center;
     .avatar {
-        margin: 0px 4px;
         padding: 0px;
-        width: 200px;
-        height: 200px;
         position: relative;
-        icon.upload_avatar {
-
+        img {
+            width: 100%;
         }
+        icon.upload_avatar {
+        }
+    }
+    .my-panel-body {
+        padding: 4px;
     }
 }
 /* main */
@@ -95,6 +98,7 @@ div.upload_image {
     }
 }
 input.upload_image {
+    top: 0px;
     margin: 9px;
     padding: 0;
     position: absolute;
@@ -106,10 +110,7 @@ input.upload_image {
     filter: alpha(opacity=0);
 }
 img.upload_image, .ie_preview {
-    position: absolute;
-    width: 400px;
-    height: 300px;
-    margin: 9px;
+    width: 100%;
 }
 .ie_preview {
     FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
@@ -124,11 +125,8 @@ img.upload_image, .ie_preview {
     background-color: #fffafa;
 }
 div.avatar_preview {
-    width: auto;
-    height: auto;
     max-width: 400px;
     max-height: 400px;
-    margin: auto;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
@@ -167,4 +165,51 @@ img.avatar_preview {
     font-size: 12px;
     float: right;
     margin-right: 20px;
+}
+
+.accounts_course {
+    .course_detail {
+        font-size: 13px;
+    }
+    .course_image {
+        height: 200px;
+        overflow: hidden;
+        img {width: 100%;}
+        position: relative;
+        .course_title {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            color: white;
+            background-color: black;
+            padding: 9px;
+        }
+    }
+    .full_course {
+        border: 1px solid #b9b8b8;
+        padding: 1px;
+        border-radius: 2px;
+        margin-bottom: 10px;
+        .course_detail {
+            padding: 10px;
+        }
+    }
+}
+
+.account_course_show {
+    .image_wrap img {
+        width: 100%;
+    }
+    .button_list {
+        margin-bottom: 20px;
+    }
+}
+
+
+.lesson_nav {
+    padding: 20px;
+    .true {
+        a {background-color: #428bca;}
+    }
 }

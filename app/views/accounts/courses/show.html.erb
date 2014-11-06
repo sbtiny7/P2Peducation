@@ -1,16 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="account_course_show">
+    <h3>
+        <%= @course.title %>
+    </h3>
+    <p>开始时间：<%= @course.start_time %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+    <div class="row">
+        <div class="col-md-9 ">
+            <div class="image_wrap">
+                <%= image_tag @course.image %>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <%= link_to '编辑', edit_accounts_course_path(@course), class: "btn btn-success button_list" %> 
+            <%= link_to '上传公开课视频', "", class: "btn btn-success button_list" %> 
+        </div>
+    </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @course.user_id %>
-</p>
-
-<%= image_tag @course.image %>
-
-<%= link_to 'Edit', edit_accounts_course_path(@course) %> |
-<%= link_to 'Back', accounts_courses_path %>
+    <h3>学员信息</h3>
+    <div>
+        <% if @sudents.blank? %>
+            <p><%= @teacher.name %>真素不好意思，老湿，你的课半个学员都没有</p>
+        <% else %>
+        <% end %>
+    </div>
+</div>
