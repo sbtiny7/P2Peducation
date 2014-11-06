@@ -2,19 +2,7 @@
     <div class="row">
         <% @courses.each do |course| %>
             <div class="col-md-4">
-                <div class="full_course">
-                    <div class="course_image">
-                        <%= image_tag course.image.url %>
-                        <div class="course_title">
-                            <%= link_to course.title, accounts_course_path(course) %>
-                        </div>
-                    </div>
-                    <div class="course_detail">
-                        <div>讲师: <%= course.teacher.name %></div>
-                        <div>开课时间: <%= course.start_time %> </div>
-                    </div>
-                </div>
-                <td><% link_to 'Edit', edit_accounts_course_path(course) %></td>
+                <%= render partial: 'accounts/shared/single_course', locals: {course: course, path: accounts_course_path(course)} %>
             </div>
         <% end %>
     </div>

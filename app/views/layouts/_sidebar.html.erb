@@ -5,7 +5,7 @@
     <div class="my-panel-body">
         <div class="avatar">
             <%= link_to image_tag(@timestamp ? "#{current_user.avatar.url(:crop)}?#{@timestamp}" : current_user.avatar.url(:crop), :width => 200, :height => 200), accounts_config_avatar_path, :class => 'upload_avatar' %>
-            <icon class="upload_avatar">上传头像</icon>
+            <icon class="upload_avatar">设置头像</icon>
         </div>
     </div>
     <div class="list-group">

@@ -35,7 +35,7 @@
           <%= f.submit '提交', class: 'btn btn-danger' %>
         </div>
 
-        <div style="width:100px;height:100px;overflow:hidden;">
+        <div style="width:100px;height:100px;overflow:hidden;margin-left:50px">
           <%= image_tag "#{current_user.avatar.url}?#{@timestamp}", :id => "crop_preview" %>
         </div>
         <%= f.hidden_field :avatar_x, :id => :avatar_x %>

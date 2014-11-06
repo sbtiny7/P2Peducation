@@ -23,6 +23,7 @@ icon {
     cursor: pointer;
 }
 .sidebar {
+    width: 240px;
     text-align: center;
     .avatar {
         padding: 0px;
@@ -202,5 +203,13 @@ img.avatar_preview {
     }
     .button_list {
         margin-bottom: 20px;
+    }
+}
+
+
+.lesson_nav {
+    padding: 20px;
+    .true {
+        a {background-color: #428bca;}
     }
 }
