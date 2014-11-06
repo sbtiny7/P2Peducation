@@ -62,3 +62,5 @@ group :development do
   gem 'annotate', '~> 2.6.5' # 生成model字段注释
 end
 
+gem 'execjs'
+gem 'therubyracer'
