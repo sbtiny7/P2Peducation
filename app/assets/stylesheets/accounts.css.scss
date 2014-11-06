@@ -25,14 +25,16 @@ icon {
 .sidebar {
     text-align: center;
     .avatar {
-        margin: 0px 4px;
         padding: 0px;
-        width: 200px;
-        height: 200px;
         position: relative;
-        icon.upload_avatar {
-
+        img {
+            width: 100%;
         }
+        icon.upload_avatar {
+        }
+    }
+    .my-panel-body {
+        padding: 4px;
     }
 }
 /* main */
@@ -95,6 +97,7 @@ div.upload_image {
     }
 }
 input.upload_image {
+    top: 0px;
     margin: 9px;
     padding: 0;
     position: absolute;
@@ -106,10 +109,7 @@ input.upload_image {
     filter: alpha(opacity=0);
 }
 img.upload_image, .ie_preview {
-    position: absolute;
-    width: 400px;
-    height: 300px;
-    margin: 9px;
+    width: 100%;
 }
 .ie_preview {
     FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);
@@ -174,6 +174,8 @@ img.avatar_preview {
         font-size: 13px;
     }
     .course_image {
+        height: 200px;
+        overflow: hidden;
         img {width: 100%;}
         position: relative;
         .course_title {

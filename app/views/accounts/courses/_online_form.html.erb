@@ -61,7 +61,7 @@
 
   <div class="detail">
     <div class="form-group">
-      <%= f.kindeditor :detail, :class => "form-control", :placeholder => "请填写课程详细信息", :width => 870 %>
+      <%= f.kindeditor :detail, :class => "form-control", :placeholder => "请填写课程详细信息" %>
     </div>
   </div>
 
@@ -112,11 +112,14 @@
             digits: true,
             min: 1
           },
+          //FIXME
+          <% if !@course.image.path %>
           "course[image]": {
             required: true,
             extension: "png|jpe?g|gif",
             accept: "image/*"
           },
+          <% end %>
           "course[detail]": {
             required: true
           }
