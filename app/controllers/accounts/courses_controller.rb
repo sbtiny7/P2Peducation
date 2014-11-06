@@ -13,6 +13,8 @@ class Accounts::CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+      @sudents = @course.students
+      @teacher = @course.teacher
   end
 
   # GET /courses/new
