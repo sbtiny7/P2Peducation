@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'courses/:id' => 'courses#show', :as => 'public_show_course'
     get 'enroll' => 'courses#enroll', :as => 'public_enroll_course'
     post 'enroll' => 'courses#enroll_create', :as => 'enroll_course'
+    get 'test' => 'home#test'
   end
 
   # ↓ 移动端API ↓

@@ -1,0 +1,19 @@
+测试
+<div style="height: 50px;">
+
+</div>
+<%= javascript_include_tag 'jquery.min.js' %>
+<div>
+  <%= region_select :post, [:province, :city, :district], {province_prompt: '--省级--', city_prompt: '--市级--', district_prompt: '--区级--'}, class: 'form-control city-select xxx' %>
+</div>
+<div class="clear"></div>
+<style>
+  .xxx {
+    width: 300px;
+    display: inline;
+  }
+
+  .region {
+    display: inline;
+  }
+</style>
