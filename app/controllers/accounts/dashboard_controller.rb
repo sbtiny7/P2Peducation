@@ -15,5 +15,6 @@ class Accounts::DashboardController <  ApplicationController
   end
   def incoming
     @courses = current_user.courses
+    @user = current_user
   end
 end
