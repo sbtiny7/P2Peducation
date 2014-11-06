@@ -19,21 +19,27 @@ class Accounts::OrdersController < ApplicationController
   def create
     render json: {message: '重复提交'} and return unless check_token
     @course = Course.find(order_params[:goods_id])
-
-    success, redirect, message = false, '', ''
-    @order = current_user.orders.build order_params
-    @order.set_values(@course)
-    if @order.save
-      success, redirect = true, @order.pay_url(current_user) # and return
+    #  现在假设order_params[:quantity]是数字字符串
+    if order_params[:quantity].to_i <= @course.just_numbers_left
+      success, redirect, message = false, '', ''
+      @order = current_user.orders.build order_params
+      @order.set_values(@course)
+      if @order.save
+        success, redirect = true, @order.pay_url(current_user) # and return
+      else
+        message = '订单保存失败'
+      end
     else
-      message = '订单保存失败'
+      message = '抱歉，库存不足'
     end
+
     render json: {success: success, redirect: redirect, message: message}
   end
 
   def show
     @order = current_user.orders.find(params[:id]) #where(:trade_no, params[:trade_no])
   end
+
   #
   #def settle
   #  @order = current_user.orders.where(:trade_no => params[:trade_no]).first
@@ -77,7 +83,7 @@ class Accounts::OrdersController < ApplicationController
   end
 
   def check_quantity
-    course = Course.find(params[:goods_id])
+    course = Course.find(order_params[:goods_id])
     #render text: success and return unless course.present? # 如果没有查询到，则返回false
     logger.info "#{((order_params[:quantity].to_i <= course.just_numbers_left) || false).to_s}  ======================== "
     render text: ((order_params[:quantity].to_i <= course.just_numbers_left) || false).to_s

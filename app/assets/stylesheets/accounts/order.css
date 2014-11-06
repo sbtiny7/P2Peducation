@@ -1,5 +1,15 @@
 .result{
-  font-weight: bold;
-  font-size: 3em;
+  display: inline;
+  /*font-weight: bold;*/
+  font-size: 1.5em;
   color: red;
+}
+.result-container{
+  text-align: right;
+  padding: 3px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #ddd;
+}
+.o-price,.o-discount{
+  display: inline;
 }

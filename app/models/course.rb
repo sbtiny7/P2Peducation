@@ -75,7 +75,7 @@ class Course < ActiveRecord::Base
 
   # 判断是否爆满
   def is_jammed?
-    !(Order.where(goods_id: id).sum(:quantity) <= students_max && students_count <= students_max)
+    Order.where(goods_id: id).sum(:quantity) >= students_max || students_count > students_max
   end
 
   def parse_values

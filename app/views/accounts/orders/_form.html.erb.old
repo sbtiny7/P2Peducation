@@ -1,0 +1,69 @@
+<%= javascript_include_tag 'plugins/validate/index', 'accounts/order_form', 'lib/common' %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'accounts/order' %>
+<% end %>
+<%= form_for [:accounts, @order], html: {id: id, role: 'form'}, remote: true do |f| %>
+
+  <%= token_field %>
+  <%= f.hidden_field :trade_no, class: 'form-control' %>
+  <%= f.hidden_field :goods_id, value: @order.goods_id %>
+  <%= f.hidden_field :discount, value: @order.discount %>
+  <%= f.hidden_field :price, value: @order.price %>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-1 col-md-1 col-sm-2 text-align-right">
+        <%= f.label :price, '商品：', class: 'control-label' %>
+      </div>
+      <div class="col-lg-11 col-md-11 col-sm-10">
+        <%= f.label :price, @order.resource.title, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-1 col-md-1 col-sm-2 text-align-right">
+        <%= f.label :price, '原价：', class: 'control-label' %>
+      </div>
+      <div class="col-lg-11 col-md-11 col-sm-10">
+        <%= f.label :price, @order.price, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-1 col-md-1 col-sm-2 text-align-right">
+        <%= f.label :discount, '优惠价：', class: 'control-label' %>
+      </div>
+      <div class="col-lg-11 col-md-11 col-sm-10">
+        <%= f.label :discount, @order.discount, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-2 text-align-right">
+          <%= f.label :quantity, '数&nbsp;量&nbsp;：'.html_safe, class: 'control-label' %>
+        </div>
+        <div class="col-lg-11 col-md-11 col-sm-10">
+          <%= f.number_field :quantity, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="result col-md-2 col-sm-2 col-md-offset-10 col-sm-offset-10">￥sss</div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit '去结算', class: 'submit-order-button btn btn-success btn-lg' %>
+  </div>
+<% end %>
+
+
