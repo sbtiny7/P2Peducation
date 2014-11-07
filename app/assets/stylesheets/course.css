@@ -1,0 +1,52 @@
+.content .ul-ele-title span {
+  font-family: -webkit-pictograph;
+  font-size: x-large;
+}
+
+.content .teacher-description {
+  margin-top: 30px;
+  padding: 20px 10px;
+}
+
+.content .currency {
+  color: red;
+  font-weight: bold;
+}
+
+.content .ul-ele-title {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+}
+
+.content .ul-ele-label {
+  line-height: 33px;
+}
+
+.numbers-left {
+  color: red;
+  display: inline;
+  font-size: 1em;
+}
+
+.content .teacher-description .face-ul {
+  padding: 0px;
+}
+
+.content .teacher-description .face-ul li {
+  list-style: none;
+  margin: 0px;
+  line-height: 2em;
+}
+
+.content .teacher-description .teacher-avatar {
+  text-align: center;
+}
+
+.content .teacher-description .teacher-avatar img {
+  width: 200px;
+  height: 140px;
+}
+
+.text-align-right {
+  text-align: right;
+}

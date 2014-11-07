@@ -1,0 +1,34 @@
+<script>
+  $(function(){
+    console.log()
+  });
+</script>
+<%= form_tag enroll_course_path, id: id do %>
+  <%= token_field %>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">价格：</span>
+      <input name="price" class="form-control" value="<%= @course.price %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">手机号：</span>
+      <input name="phone" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= number_field_tag :quantity, 1, min: 1, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    是否有座位？
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag '提交', class: 'btn btn-primary btn-lg submit-button' %>
+  </div>
+<% end %>

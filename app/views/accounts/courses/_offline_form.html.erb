@@ -33,10 +33,10 @@
         </div>
       </div>
       <div class="form-group our_form-line">
-        <%= f.text_field :price, :class => "form-control", :placeholder => "请输入价格" %>
+        <%= f.text_field :price, :class => "form-control", value: '', :placeholder => "请输入价格" %>
       </div>
       <div class="form-group our_form-line">
-        <%= f.text_field :students_max, :class => "form-control", :placeholder => "可容纳学生数量（可选）" %>
+        <%= f.text_field :students_max, :class => "form-control", value: '', :placeholder => "可容纳学生数量（可选）" %>
       </div>
     </div>
     <div class="col-md-6">
@@ -52,24 +52,15 @@
     </div>
   </div>
   <div class="row city-group our_form-line">
-    <div class="col-md-2">
+
+    <div class="col-lg-8 col-md-8 col-sm-10">
       <div class="form-group">
-        <%= f.select :address1, options_for_select(["--省份--"] + ChinaCity.list), {}, {:class => "form-control city-select"} %>
+        <%= region_select :c, [:province_id, :city_id, :district_id], {province_id_prompt: '--省份--', city_id_prompt: '--城镇--', district_id_prompt: '--区县--'}, class: 'form-control col-sm-4 col-md-4 city-engine' %>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-lg-4 col-md-4 col-sm-2">
       <div class="form-group">
-        <%= f.select :address2, options_for_select(["--城市--"], disabled: "--城市--"), {}, {:class => "form-control city-select"} %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.select :address3, options_for_select(["--地区--"], disabled: "--地区--"), {}, {:class => "form-control city-select"} %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= f.text_field :address4, :class => "form-control", :placeholder => "请填写详细地址" %>
+        <%= f.text_field :address, :class => "form-control", :placeholder => "请填写详细地址" %>
       </div>
     </div>
   </div>
@@ -209,18 +200,18 @@
             required: '请填写具体地址'
           }
         }/*,
-        highlight: function (element) {   // <-- fires when element has error
-          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-        },
-        unhighlight: function (element) { // <-- fires when element is valid
-          $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
-          $(element).closest('.our_form-line').find('label').remove();
-        },
-        errorPlacement: function (error, element) {
-          if (element.closest('.our_form-line').find('label').length <= 0) {
-            error.appendTo(element.closest('.our_form-line'));
-          }
-        }*/
+         highlight: function (element) {   // <-- fires when element has error
+         $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+         },
+         unhighlight: function (element) { // <-- fires when element is valid
+         $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+         $(element).closest('.our_form-line').find('label').remove();
+         },
+         errorPlacement: function (error, element) {
+         if (element.closest('.our_form-line').find('label').length <= 0) {
+         error.appendTo(element.closest('.our_form-line'));
+         }
+         }*/
       });
     })
   </script>

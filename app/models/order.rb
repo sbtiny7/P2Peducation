@@ -16,7 +16,6 @@
 #
 # Indexes
 #
-#  index_orders_on_goods_id  (goods_id) UNIQUE
 #  index_orders_on_trade_no  (trade_no) UNIQUE
 #
 
@@ -26,8 +25,14 @@ class Order < ActiveRecord::Base
   validates_inclusion_of :status, :in => STATUS
   validates_presence_of :trade_no
   before_validation :generate_trade_no
-  belongs_to :owner, class_name: 'User', foreign_key: :user_id
+  validate do |order|
+    order.smaller_then_or_equal_students_max
+  end
 
+  after_create :increase_student_count
+  # before_destroy :decrease_student_count
+  belongs_to :owner, class_name: 'User', foreign_key: :user_id
+  belongs_to :resource, class_name: 'Course', foreign_key: :goods_id
   STATUS.each do |status|
     define_method "#{status}?" do
       self.status == status
@@ -41,20 +46,31 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def complete
-    if pendding? or paid?
-      puts '订单生效' if pendding?
-
-      update_attribute :status, 'completed'
+  #
+  # def complete
+  #   if pendding? or paid?
+  #     puts '订单生效' if pendding?
+  #
+  #     update_attribute :status, 'completed'
+  #   end
+  # end
+  #
+  def cancel
+    transaction do # 在这里需要判断订单的状态
+      decrease_student_count
+      update_attributes(:status => 'canceled', :quantity => 0)
     end
+    # if pendding? or paid?
+    #   puts '取消订单' if paid?
+    #
+    #   update_attribute :status, 'canceled'
+    # end
   end
 
-  def cancel
-    if pendding? or paid?
-      puts '取消订单' if paid?
-
-      update_attribute :status, 'canceled'
-    end
+  def set_values(course)
+    self.goods_id = course.id
+    self.price = course.price
+    self.trade_no = Order.generate_uuid
   end
 
   # ==============================================================
@@ -80,7 +96,7 @@ class Order < ActiveRecord::Base
         # :logistics_type => 'DIRECT',
         # :logistics_fee => '0',
         # :logistics_payment => 'SELLER_PAY',
-        :return_url => Rails.application.routes.url_helpers.accounts_order_url(self, host: "#{Settings.host}:#{Settings.port}"),
+        :return_url => Rails.application.routes.url_helpers.successful_accounts_orders_url(host: "#{Settings.host}:#{Settings.port}"),
         :notify_url => Rails.application.routes.url_helpers.alipay_notify_accounts_orders_url(host: "#{Settings.host}:#{Settings.port}"),
         :receive_name => 'xxx',
         :receive_address => 'none',
@@ -94,10 +110,28 @@ class Order < ActiveRecord::Base
     Digest::MD5.hexdigest "#{Time.now.to_i}#{rand(Time.now.to_i)}"
   end
 
+  # 判断学生数量是否已满
+  def is_smaller_then_or_equal_students_max?
+    resource.present? && (resource.students_count + quantity <= resource.students_max)
+  end
+
+  def smaller_then_or_equal_students_max
+    errors.add(:quantity, '教室已满') unless is_smaller_then_or_equal_students_max?
+  end
+
   private
 
   def generate_trade_no
     write_attribute :trade_no, Order.generate_uuid unless trade_no.present?
+  end
+
+  def increase_student_count
+    resource.update_attribute(:students_count, (resource.students_count || 0) + quantity)
+  end
+
+  def decrease_student_count
+    target = resource.students_count - quantity
+    resource.update_attribute(:students_count, (target < 0 ? 0 : target))
   end
 
 end
