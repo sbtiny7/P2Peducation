@@ -39,12 +39,13 @@ class Order < ActiveRecord::Base
     end
   end
 
-  # def pay
-  #   if pendding?
-  #     # 订单生效
-  #     update_attribute :status, 'paid'
-  #   end
-  # end
+  def pay
+    if pendding?
+      # 订单生效
+      update_attribute :status, 'paid'
+    end
+  end
+
   #
   # def complete
   #   if pendding? or paid?
@@ -95,7 +96,7 @@ class Order < ActiveRecord::Base
         # :logistics_type => 'DIRECT',
         # :logistics_fee => '0',
         # :logistics_payment => 'SELLER_PAY',
-        :return_url => Rails.application.routes.url_helpers.accounts_order_url(self, host: "#{Settings.host}:#{Settings.port}"),
+        :return_url => Rails.application.routes.url_helpers.successful_accounts_orders_url(host: "#{Settings.host}:#{Settings.port}"),
         :notify_url => Rails.application.routes.url_helpers.alipay_notify_accounts_orders_url(host: "#{Settings.host}:#{Settings.port}"),
         :receive_name => 'xxx',
         :receive_address => 'none',
