@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   layout 'home'
 
   def show
-    @course = Course.find(params[:id])
+    @course = Course.where(status: true).find(params[:id])
   end
 
   def enroll
@@ -15,7 +15,6 @@ class CoursesController < ApplicationController
 
   def enroll_create
     render json: {message: '重复提交'} and return unless check_token
-    puts '============================'
     render json: {success: false}
   end
 
