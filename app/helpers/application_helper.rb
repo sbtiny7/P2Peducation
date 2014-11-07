@@ -13,4 +13,13 @@ module ApplicationHelper
       Digest::MD5.hexdigest((Time.now.to_i + rand(0xffffff)).to_s)[0..39])))
   end
 
+  def get_label_class(type)
+    case type
+      when "ONLINE"
+        "label label-danger"
+      when "OFFLINE"
+        "label label-primary"
+    end
+  end
+
 end
