@@ -1,4 +1,5 @@
 class Accounts::CoursesController < ApplicationController
+  include ChinaRegionFu::Helpers
   before_action :authenticate_user!
   before_action :check_teacher
   before_action :set_course, only: [:show, :edit, :update, :destroy, :complate, :pub]
@@ -35,7 +36,7 @@ class Accounts::CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = Course.new(course_params.merge(params[:c] || {}))
 
     respond_to do |format|
       if @course.save
@@ -125,10 +126,10 @@ class Accounts::CoursesController < ApplicationController
       :students_max,
       :price,
       :detail,
-      :address1,
-      :address2,
-      :address3,
-      :address4
+      :province_id,
+      :city_id,
+      :district_id,
+      :address
     )
   end
 

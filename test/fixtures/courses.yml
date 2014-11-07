@@ -10,6 +10,9 @@
 #  image          :string(255)                             # 图标
 #  tmp_image      :string(255)
 #  category       :string(255)                             # 分类
+#  province_id    :integer          default(0), not null   # 所在省份id
+#  city_id        :integer          default(0), not null   # 所在城镇id
+#  district_id    :integer          default(0), not null   # 所在区县id
 #  address        :string(255)                             # 所开地址
 #  course_type    :string(255)                             # 类型
 #  start_time     :datetime                                # 开始时间

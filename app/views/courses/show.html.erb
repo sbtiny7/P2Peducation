@@ -19,11 +19,11 @@
         <div class="ul-ele-label">
           <span class="">主讲人&nbsp;:&nbsp;</span><span><%= link_to @course.teacher.try(:name), '' %></span>
         </div>
-
-        <div class="ul-ele-label">
-          <span class="">地址&nbsp;:&nbsp;</span><span><%= @course.title %></span>
-        </div>
-
+        <% if 'OFFLINE'.eql? @course.course_type %>
+          <div class="ul-ele-label">
+            <span class="">地址&nbsp;:&nbsp;</span><span><%= @course.address_detail %></span>
+          </div>
+        <% end %>
         <div class="ul-ele-label">
           <span class="">价格&nbsp;:&nbsp;</span><span class="currency"><%= number_to_currency(@course.price, :unit => '￥', :precision => 2) %></span>
         </div>

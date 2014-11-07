@@ -10,6 +10,9 @@
 #  image          :string(255)                             # 图标
 #  tmp_image      :string(255)
 #  category       :string(255)                             # 分类
+#  province_id    :integer          default(0), not null   # 所在省份id
+#  city_id        :integer          default(0), not null   # 所在城镇id
+#  district_id    :integer          default(0), not null   # 所在区县id
 #  address        :string(255)                             # 所开地址
 #  course_type    :string(255)                             # 类型
 #  start_time     :datetime                                # 开始时间
@@ -40,11 +43,13 @@ class Course < ActiveRecord::Base
   mount_uploader :tmp_image, TempUploader
   acts_as_commentable :chat, :qa # commentable.chat_comments, commentable.qa_comments
 
-  attr_accessor :start_time_date, :start_time_hour, :start_time_min, :end_time_date, :end_time_hour, :end_time_min,
-                :address1, :address2, :address3, :address4
+  attr_accessor :start_time_date, :start_time_hour, :start_time_min, :end_time_date, :end_time_hour, :end_time_min
 
   belongs_to :user
   belongs_to :teacher
+  belongs_to :province              #关联省份、城镇、区县
+  belongs_to :city
+  belongs_to :district
   has_many :lessons
   has_many :studyships
   has_many :students, :through => :studyships
@@ -85,9 +90,6 @@ class Course < ActiveRecord::Base
     if end_time_date && end_time_hour && end_time_min
       self.end_time = "#{end_time_date} #{end_time_hour}:#{end_time_min}"
     end
-    if address1 && address2 && address3 && address4
-      self.address = "#{address1} #{address2} #{address3} #{address4}"
-    end
   end
 
   def rename_image
@@ -98,4 +100,8 @@ class Course < ActiveRecord::Base
     self.update_column(:image, new_str)
   end
 
+  def address_detail
+      "#{province.try :name}#{city.try :name}#{district.try :name}#{address}"
+  end
+  
 end

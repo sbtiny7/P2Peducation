@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index', 'china_city/jquery.china_city' %>
+<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index' %>
 <%= form_for([:accounts, @course], :html => {:id => 'offline_course', :multipart => true}) do |f| %>
   <%= f.hidden_field :course_type %>
   <%= f.hidden_field :user_id %>
@@ -52,24 +52,15 @@
     </div>
   </div>
   <div class="row city-group our_form-line">
-    <div class="col-md-2">
+
+    <div class="col-lg-8 col-md-8 col-sm-10">
       <div class="form-group">
-        <%= f.select :address1, options_for_select(["--省份--"] + ChinaCity.list), {}, {:class => "form-control city-select"} %>
+        <%= region_select :c, [:province_id, :city_id, :district_id], {province_id_prompt: '--省份--', city_id_prompt: '--城镇--', district_id_prompt: '--区县--'}, class: 'form-control col-sm-4 col-md-4 city-engine' %>
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-lg-4 col-md-4 col-sm-2">
       <div class="form-group">
-        <%= f.select :address2, options_for_select(["--城市--"], disabled: "--城市--"), {}, {:class => "form-control city-select"} %>
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.select :address3, options_for_select(["--地区--"], disabled: "--地区--"), {}, {:class => "form-control city-select"} %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= f.text_field :address4, :class => "form-control", :placeholder => "请填写详细地址" %>
+        <%= f.text_field :address, :class => "form-control", :placeholder => "请填写详细地址" %>
       </div>
     </div>
   </div>
