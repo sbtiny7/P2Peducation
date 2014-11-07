@@ -1,11 +1,11 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'course' %>
 <% end %>
-<div class="container">
-  <div class="content" style="height:800px; margin:80px 0px;">
+<div class="content" style="margin:80px 0px;">
+  <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8 video-player-container">
-        <video width="750px" height="562px" controls="controls">
+        <video width="550px" height="362px" controls="controls">
           <source src="" type="video/ogg">
           <source src="" type="video/mp4">
         </video>
@@ -36,19 +36,19 @@
             <div class="numbers-left">仅剩下<%= @course.just_numbers_left %>位名额啦</div>
           <% end %>
         </div>
-
-      </div>
-
-    </div>
-
-    <%= render :partial => 'teacher_description' %>
-
-    <div class="course-description">
-      <div>
-        <%= @course.detail.html_safe %>
       </div>
     </div>
-
   </div>
 
+  <div class="jumbotron">
+    <div class="container">
+      <%= render :partial => 'teacher_description' %>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="course-description">
+      <%= @course.detail.html_safe * 50 %>
+    </div>
+  </div>
 </div>

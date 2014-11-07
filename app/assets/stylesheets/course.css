@@ -19,7 +19,7 @@
 }
 
 .content .ul-ele-label {
-  line-height: 33px;
+  line-height: 63px;
 }
 
 .numbers-left {
@@ -49,4 +49,12 @@
 
 .text-align-right {
   text-align: right;
+}
+
+.course-description{
+  border-top: 1px solid #ccc;
+  padding: 30px;
+}
+.content .jumbotron {
+  margin-bottom: 0px;
 }

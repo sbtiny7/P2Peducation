@@ -45,12 +45,14 @@ class Accounts::OrdersController < ApplicationController
     result_params = params.except *request.path_parameters.keys
     if Alipay::Sign.verify?(result_params) && Alipay::Notify.verify?(result_params) # 验证加密方式和支付宝发送的请求
       if result_params['is_success'] === 'T'
-        @order = current_user.orders.find result_params['trade_no']
-        case result_params['trade_status']
+        @order = current_user.orders.where(:trade_no => result_params[:out_trade_no]).first
+        case result_params[:trade_status]
           when 'TRADE_SUCCESS'
-             @order.pay
+            @order.pay
+            render :partial => 'join_info', locals: {order: @order} and return
           when 'TRADE_FINISHED'
-             logger.info '超时'
+            logger.info '超时或者交易失败'
+            redirect_to accounts_course_path(@order) and return
         end
       end
     end
@@ -74,8 +76,8 @@ class Accounts::OrdersController < ApplicationController
     # 先校验消息的真实性
     if Alipay::Sign.verify?(notify_params) && Alipay::Notify.verify?(notify_params)
       # 获取交易关联的订单支付宝异步消息接口
-      @order = current_user.orders.find params[:out_trade_no]
-      logger.info notify_params
+      @order = current_user.orders.where(:trade_no => notify_params[:out_trade_no]).first
+      logger.info "==========#{__method__}==============#{params[:trade_status]}==========================="
       case params[:trade_status]
         when 'WAIT_BUYER_PAY'
           # 交易开启

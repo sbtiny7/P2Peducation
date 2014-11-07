@@ -46,25 +46,26 @@ class Order < ActiveRecord::Base
     end
   end
 
-  #
-  # def complete
-  #   if pendding? or paid?
-  #     puts '订单生效' if pendding?
-  #
-  #     update_attribute :status, 'completed'
-  #   end
-  # end
+
+  def complete
+    if pendding? or paid?
+      puts '订单生效' if pendding?
+
+      update_attribute :status, 'completed'
+    end
+  end
+
   #
   def cancel
     transaction do # 在这里需要判断订单的状态
-      decrease_student_count
-      update_attributes(:status => 'canceled', :quantity => 0)
+      if pendding? or paid?
+        if paid?
+          logger.info '退款...'
+        end
+        decrease_student_count
+        update_attributes(:status => 'canceled', :quantity => 0)
+      end
     end
-    # if pendding? or paid?
-    #   puts '取消订单' if paid?
-    #
-    #   update_attribute :status, 'canceled'
-    # end
   end
 
   def set_values(course)
