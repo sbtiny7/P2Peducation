@@ -13,8 +13,11 @@ class Accounts::CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-      @sudents = @course.students
-      @teacher = @course.teacher
+    @students = @course.students
+    @teacher = @course.teacher
+    if @course.course_type == "ONLINE"
+      render 'online_show.html.erb'
+    end
   end
 
   # GET /courses/new
