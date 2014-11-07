@@ -1,1 +1,38 @@
-还没有收入哇
+<div class="my_income">
+  <h3> 当前余额 0 元 </h3>
+
+  <%= form_for :consumer_record do |f| %>
+      <div class="form-group">
+        <%= f.label :sum, "提取金额" %>
+        <%= f.text_field :sum, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name, "姓名" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :alipay_account, "支付宝账号" %>
+        <%= f.text_field :alipay_account, class: "form-control" %>
+      </div>
+      <div>
+        <%= f.submit "提交申请", class: "btn btn-success" %>
+      </div>
+  <% end %>
+  <br/>
+
+  <h3>收支明细</h3>
+  <%= form_for :course,  path: "/"  do |f| %>
+      按时间查询 <input type="text" placeholder="开始时间" id="start_time" class="js-datepicker"/>
+      <input type="text" placeholder="结束时间" class="js-datepicker"/>
+      <span class="course_name">课程名称 <input type="text" placeholder="输入课程名称"/></span>
+      <%= f.submit "查询", class: "btn btn-success" %>
+  <% end %>
+
+  <script>
+      $('.js-datepicker').datepicker({
+          onSelect: function () {
+              $(this).change();
+          }
+      })
+  </script>
+</div>
