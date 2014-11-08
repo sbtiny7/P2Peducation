@@ -26,6 +26,7 @@
 #  tmp_avatar             :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  authentication_token   :string(255)
 #
 # Indexes
 #
@@ -45,6 +46,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
+
+  before_save :ensure_authentication_token
+
 
   attr_accessor :avatar_x, :avatar_y, :avatar_w, :avatar_h
 
@@ -83,4 +87,18 @@ class User < ActiveRecord::Base
     avatar.recreate_versions! if avatar_x.present?
   end
 
+  def ensure_authentication_token
+      if self.authentication_token.blank?
+          self.authentication_token = generate_authentication_token
+      end
+  end
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
+  end
+
 end
+

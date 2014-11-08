@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030135852) do
+ActiveRecord::Schema.define(version: 20141108153641) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20141030135852) do
     t.string   "tmp_avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
