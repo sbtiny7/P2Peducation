@@ -1,0 +1,54 @@
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'course' %>
+<% end %>
+<div class="content" style="margin:80px 0px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 video-player-container">
+        <video width="550px" height="362px" controls="controls">
+          <source src="" type="video/ogg">
+          <source src="" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="col-md-4 col-sm-4">
+        <div class="ul-ele-title">
+          <span class=""><%= link_to @course.title.truncate(20), @course %></span>
+        </div>
+
+        <div class="ul-ele-label">
+          <span class="">主讲人&nbsp;:&nbsp;</span><span><%= link_to @course.teacher.try(:name), '' %></span>
+        </div>
+        <% if 'OFFLINE'.eql? @course.course_type %>
+          <div class="ul-ele-label">
+            <span class="">地址&nbsp;:&nbsp;</span><span><%= @course.address_detail %></span>
+          </div>
+        <% end %>
+        <div class="ul-ele-label">
+          <span class="">价格&nbsp;:&nbsp;</span><span class="currency"><%= number_to_currency(@course.price, :unit => '￥', :precision => 2) %></span>
+        </div>
+
+        <div class="ul-ele">
+          <% if @course.is_jammed? %>
+            <%= button_tag '没有名额啦', data: {disable_with: "请联系教师..."}, class: 'btn btn-default btn-lg' %>
+          <% else %>
+            <%= link_to "报名#{ 'OFFLINE'.eql?(@course.course_type) ? '线下' : '线上' }课程", new_accounts_order_path(course_id: @course, i: Time.now.to_i), class: 'btn btn-primary btn-lg' %>
+            <div class="numbers-left">仅剩下<%= @course.just_numbers_left %>位名额啦</div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <%= render :partial => 'teacher_description' %>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="course-description">
+      <%= @course.detail.html_safe * 50 %>
+    </div>
+  </div>
+</div>

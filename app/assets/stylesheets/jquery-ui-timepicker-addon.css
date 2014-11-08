@@ -1,0 +1,10 @@
+.ui-datetimepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-datetimepicker-div dl { text-align: left; }
+.ui-datetimepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-datetimepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-datetimepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-datetimepicker-rtl{ direction: rtl; }
+.ui-datetimepicker-rtl dl { text-align: right; }
+.ui-datetimepicker-rtl dl dd { margin: 0 65px 10px 10px; }

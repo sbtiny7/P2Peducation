@@ -1,0 +1,83 @@
+<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index' %>
+<%= form_for(@teacher, :url => teacher_action_accounts_course_path(params[:id]), :html => {:id => 'teacher'}) do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :agreement_id %>
+  <%= f.hidden_field :course_id %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group relative">
+        <%= f.text_field :name, :value => @teacher.name || current_user.username, :class => "form-control", :placeholder => "教师姓名" %>
+      </div>
+      <div class="form-group relative">
+        <%= f.select :sex, options_for_select(['男', '女'], @teacher.sex || "男"), {}, {:class => "form-control"} %>
+      </div>
+      <div class="form-group relative">
+        <%= f.text_field :phone, :value => @teacher.phone || current_user.try(:phone), :class => "form-control", :placeholder => "联系电话" %>
+      </div>
+      <div class="form-group relative">
+        <%= f.text_field :email, :value => @teacher.email || current_user.email, :class => "form-control", :placeholder => "电子邮件" %>
+      </div>
+      <div class="form-group relative">
+        <%= f.text_field :organ_name, :value => @teacher.organ_name, :class => "form-control", :placeholder => "机构名称" %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <%= f.kindeditor :organ_detail, :value => @teacher.organ_detail, :placeholder => '请填写机构详细介绍', :width => '100%', :height => "230px", :simple_mode => true %>
+    </div>
+  </div>
+  <div class="agreement">
+    <%= @agreement.detail %>
+  </div>
+  <div class="actions" style="margin-top: 20px">
+    <%= f.submit '同意协议并提交', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<%= content_for :foot do %>
+  <script type="text/javascript">
+    $(function () {
+      $('form#teacher').validate({
+        rules: {
+          "teacher[name]": {
+            required: true
+          },
+          "teacher[phone]": {
+            required: true,
+            isPhone: true
+          },
+          "teacher[email]": {
+            required: true,
+            email: true
+          },
+          "teacher[organ_name]": {
+            required: true
+          }
+        },
+        messages: {
+          "teacher[name]": {
+            required: '请填写教师姓名'
+          },
+          "teacher[phone]": {
+            required: '请填写联系电话',
+            isPhone: '请填写正确的电话号码（固话含区号）'
+          },
+          "teacher[email]": {
+            required: '请填写电子邮件',
+            email: '请填写正确的电子邮件'
+          },
+          "teacher[organ_name]": {
+            required: '请填写机构名称'
+          }
+        },
+        highlight: function (element) {   // <-- fires when element has error
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        unhighlight: function (element) { // <-- fires when element is valid
+          $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorPlacement: function (error, element) {
+          error.appendTo(element.parent());
+        }
+      });
+    })
+  </script>
+<% end %>

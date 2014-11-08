@@ -1,0 +1,23 @@
+a { cursor: pointer; }
+.relative { position: relative; }
+.left { float: left; }
+.right { float: right; }
+#error_explanation {
+  @extend .alert;
+  @extend .alert-warning;
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.field_with_errors {
+  @extend .form-group
+}
+.region{
+  float: left;
+  display: inline;
+  margin: 0px 5px;
+}
+.city-engine{
+  width: 150px;
+}

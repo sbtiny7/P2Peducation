@@ -1,0 +1,36 @@
+<div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+</div>
+<div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+</div>
+<div class="field">
+    <%= f.label :category %><br>
+    <%= f.select :category, Course::CATEGORIES %>
+</div>
+<div class="field">
+    <%= f.label :course_type %><br>
+    <%= f.select :course_type, Course::TYPES %>
+</div>
+<div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+</div>
+<div class="field">
+    <%= f.label :students_max %><br>
+    <%= f.number_field :students_max %>
+</div>
+<div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.text_field :start_time %>
+</div>
+<div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.text_field :end_time %>
+</div>
+<div class="field">
+    <%= f.label :detail %><br>
+    <%= f.text_area :detail %>
+</div>

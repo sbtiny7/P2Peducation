@@ -1,0 +1,27 @@
+<div class="teacher-description">
+  <div class="row">
+    <% teacher = @course.teacher %>
+    <div class="col-md-3 col-sm-4 teacher-avatar">
+      <%= image_tag 'temp.jpg',style: 'width:200px;height:140px;' %>
+    </div>
+    <div class="cod-md-9 col-sm-8">
+      <ul class="face-ul">
+        <li>
+          <div>姓名：<%= teacher.name %></div>
+        </li>
+        <li>
+          <div>联系电话：<%= teacher.phone %></div>
+        </li>
+        <li>
+          <div>电子邮件：<%= teacher.email %></div>
+        </li>
+        <li>
+          <div>所属机构：<%= teacher.organ_name %></div>
+        </li>
+        <li>
+          <div>机构介绍：<%= teacher.organ_detail.html_safe %></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

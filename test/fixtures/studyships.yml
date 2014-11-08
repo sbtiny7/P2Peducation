@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: studyships
+#
+#  id         :integer          not null, primary key
+#  student_id :integer
+#  course_id  :integer
+#  token      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+# Indexes
+#
+#  index_studyships_on_token  (token) UNIQUE
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  course_id: 1
+
+two:
+  student_id: 1
+  course_id: 1

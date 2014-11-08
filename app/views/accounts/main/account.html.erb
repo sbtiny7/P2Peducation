@@ -1,0 +1,121 @@
+<!--div class="row">
+  <div class="col-md-8"-->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">账户设置</h3>
+  </div>
+  <div class="panel-body">
+    <% if notice && notice == '账号设置成功' %>
+      <div class="alert alert-info" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+    <!--div class="row">
+      <div class="col-md-6 col-md-offset-3"-->
+    <%= form_for(current_user, url: accounts_update_path) do |f| %>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <%= f.label :email, '电子邮件', class: 'btn btn-info' %>
+          </span>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <%= f.label :username, '用户姓名', class: 'btn btn-info' %>
+          </span>
+          <%= f.text_field :username, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <%= f.label :phone, '联系电话', class: 'btn btn-info' %>
+          </span>
+          <%= f.text_field :phone, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group actions text-right">
+        <%= f.submit '提交', class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+    <!--/div>
+  </div-->
+  </div>
+
+  <div class="panel-footer bg-warning">
+    <%= button_to "删除账户", registration_path(:user), data: {confirm: "Are you sure?"}, class: 'btn btn-warning', method: :delete %>
+  </div>
+</div>
+<!--/div>
+  <div class="col-md-4">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">我的头像</h3>
+      </div>
+      <div class="panel-body">
+        <div class="clearfix">
+          <div class="left">
+            <img src="<%#= current_user.avatar.url %>" width="200px" height="200px">
+          </div>
+          <div class="right">
+            <img src="<%#= current_user.avatar.thumb %>" width="32px" height="32px">
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-footer bg-warning text-right">
+        <%#= link_to "更换头像", accounts_upload_avatar_path, class: 'btn btn-success' %>
+      </div>
+    </div>
+  </div>
+</div-->
+<%= content_for :foot do %>
+  <%= javascript_include_tag 'plugins/validate/index' %>
+  <script type="text/javascript">
+    $(function () {
+      $('form').validate({
+        rules: {
+          "user[username]": {
+            required: true
+          },
+          "user[phone]": {
+            required: true,
+            isPhone: true
+          },
+          "user[email]": {
+            required: true,
+            email: true
+          }
+        },
+        messages: {
+          "user[username]": {
+            required: '请填写用户姓名'
+          },
+          "user[phone]": {
+            required: '请填写联系电话',
+            isPhone: '请填写正确的电话号码（固话含区号）'
+          },
+          "user[email]": {
+            required: '请填写电子邮件',
+            email: '请填写正确的电子邮件'
+          }
+        },
+        highlight: function (element) {   // <-- fires when element has error
+          $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+        },
+        unhighlight: function (element) { // <-- fires when element is valid
+          $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+        },
+        errorPlacement: function (error, element) {
+          error.appendTo(element.parent());
+        }
+      });
+    })
+  </script>
+<% end %>

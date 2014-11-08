@@ -1,0 +1,31 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><%= current_user.username %></h3>
+    </div>
+    <div class="my-panel-body">
+        <div class="avatar">
+            <%= link_to image_tag(@timestamp ? "#{current_user.avatar.url(:crop)}?#{@timestamp}" : current_user.avatar.url(:crop), :width => 200, :height => 200), accounts_config_avatar_path, :class => 'upload_avatar' %>
+            <icon class="upload_avatar">设置头像</icon>
+        </div>
+    </div>
+    <div class="list-group">
+        <a href='<%= accounts_config_path %>' class='list-group-item<% if ['config_account', 'update_account'].include?(action_name) %> active<% end %>'>个人设置</a>
+        <a href='<%= edit_user_registration_path %>' class='list-group-item<% if controller_name == 'registrations' %> active<% end %>'>修改密码</a>
+        <%= link_to '我的课程', "/accounts/student/learning", :class => "list-group-item" %>
+        <a href='<%= new_accounts_course_path %>' class='list-group-item<% if controller_name == 'courses' and !['index', 'edit'].include?(action_name) %> active<% end %>'>开设课程</a>
+        <%= link_to '学堂管理', accounts_courses_path, :class => "list-group-item" %>
+        <%= link_to '我的收入', '/accounts/incoming', :class => "list-group-item" %>
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+    $('.avatar').mouseover(function(){
+        $('icon.upload_avatar').show();
+    }).mouseout(function(){
+        $('icon.upload_avatar').hide();
+    })
+    $('icon.upload_avatar').click(function(){
+        window.location.href = $('a.upload_avatar').attr('href');
+    })
+})
+</script>

@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: learnships
+#
+#  id         :integer          not null, primary key
+#  student_id :integer
+#  lesson_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  lesson_id: 1
+
+two:
+  student_id: 1
+  lesson_id: 1

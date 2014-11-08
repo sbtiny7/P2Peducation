@@ -1,0 +1,218 @@
+<%= javascript_include_tag 'kindeditor', 'plugins/validate/index', 'plugins/jquery-ui/index' %>
+<%= form_for([:accounts, @course], :html => {:id => 'offline_course', :multipart => true}) do |f| %>
+  <%= f.hidden_field :course_type %>
+  <%= f.hidden_field :user_id %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group our_form-line">
+        <%= f.text_field :title, :class => "form-control", :placeholder => "请输入标题" %>
+      </div>
+      <div class="form-group our_form-line">
+        <%= f.select :category, options_for_select(Course::CATEGORIES, @course.category), {}, {:class => "form-control"} %>
+      </div>
+      <div class="row">
+        <div class="form-group our_form-line col-md-6">
+          <%= f.text_field 'start_time_date', :value => @course.start_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "开始时间" %>
+        </div>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'start_time_hour', options_for_select((0..23).map { |x| [double(x), x] }, @course.start_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
+        </div>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'start_time_min', options_for_select((0..59).map { |x| [double(x), x] }, @course.start_time.try(:min) || 0), {}, {:class => "form-control"} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group our_form-line col-md-6">
+          <%= f.text_field 'end_time_date', :value => @course.end_time.try(:to_s, :date) || '', :class => "form-control datetime js-datepicker", :placeholder => "结束时间" %>
+        </div>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'end_time_hour', options_for_select((0..23).map { |x| [double(x), x] }, @course.end_time.try(:hour) || Time.now.hour), {}, {:class => "form-control"} %>
+        </div>
+        <div class="form-group our_form-line col-md-3">
+          <%= f.select 'end_time_min', options_for_select((0..59).map { |x| [double(x), x] }, @course.end_time.try(:min) || 0), {}, {:class => "form-control"} %>
+        </div>
+      </div>
+      <div class="form-group our_form-line">
+        <%= f.text_field :price, :class => "form-control", value: '', :placeholder => "请输入价格" %>
+      </div>
+      <div class="form-group our_form-line">
+        <%= f.text_field :students_max, :class => "form-control", value: '', :placeholder => "可容纳学生数量（可选）" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="upload_image form-group our_form-line">
+        <div class="ie_preview_wrapper">
+          <div class="ie_preview">
+          </div>
+        </div>
+        <img src="<%= @course.image.url %>" class="upload_image" alt="上传图像"/>
+        <%= f.file_field :image, :class => "form-control upload_image" %>
+        <icon class="upload_image">上传图像</icon>
+      </div>
+    </div>
+  </div>
+  <div class="row city-group our_form-line">
+
+    <div class="col-lg-8 col-md-8 col-sm-10">
+      <div class="form-group">
+        <%= region_select :c, [:province_id, :city_id, :district_id], {province_id_prompt: '--省份--', city_id_prompt: '--城镇--', district_id_prompt: '--区县--'}, class: 'form-control col-sm-4 col-md-4 city-engine' %>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-2">
+      <div class="form-group">
+        <%= f.text_field :address, :class => "form-control", :placeholder => "请填写详细地址" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail">
+    <div class="form-group our_form-line">
+      <%= f.kindeditor :detail, :class => "form-control", :placeholder => "请填写课程详细信息", :width => 870 %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit '提交', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<%= content_for :foot do %>
+  <script type="text/javascript">
+    $(function () {
+
+      $('input.datetime').datepicker({
+        onSelect: function () {
+          $(this).change();
+        }
+      });
+
+      $('form#offline_course').validate({
+        rules: {
+          "course[title]": {
+            required: true
+          },
+          "course[category]": {
+            required: true
+          },
+          "course[start_time_date]": {
+            required: true
+          },
+          "course[start_time_hour]": {
+            required: true
+          },
+          "course[start_time_min]": {
+            required: true
+          },
+          "course[end_time_date]": {
+            required: true
+          },
+          "course[end_time_hour]": {
+            required: true
+          },
+          "course[end_time_min]": {
+            required: true
+          },
+          "course[price]": {
+            required: true,
+            number: true
+          },
+          "course[students_max]": {
+            digits: true,
+            min: 1
+          },
+          "course[image]": {
+            required: true,
+            extension: "png|jpe?g|gif",
+            accept: "image/*"
+          },
+          "course[detail]": {
+            required: true
+          },
+          "course[address1]": {
+            required: true,
+            notEqual: "--省份--"
+          },
+          "course[address2]": {
+            required: true,
+            notEqual: "--城市--"
+          },
+          "course[address3]": {
+            required: true,
+            notEqual: "--地区--"
+          },
+          "course[address4]": {
+            required: true
+          }
+        },
+        messages: {
+          "course[title]": {
+            required: '请输入课程标题'
+          },
+          "course[category]": {
+            required: '请选择课程分类'
+          },
+          "course[start_time_date]": {
+            required: '请填写开始日期'
+          },
+          "course[start_time_hour]": {
+            required: '请填写开始时间'
+          },
+          "course[start_time_min]": {
+            required: '请填写开始时间'
+          },
+          "course[end_time_date]": {
+            required: '请填写结束日期'
+          },
+          "course[end_time_hour]": {
+            required: '请填写结束时间'
+          },
+          "course[end_time_min]": {
+            required: '请填写结束时间'
+          },
+          "course[price]": {
+            required: '请填写课程价格',
+            number: '请填写具体数字'
+          },
+          "course[students_max]": {
+            digits: '请填写具体整数',
+            min: '请填写大于零的整数'
+          },
+          "course[image]": {
+            required: '请选择缩略图',
+            accept: '上传文件必须为图片类型',
+            extension: '只能上传后缀名为jpg、jpeg、png、gif的文件'
+          },
+          "course[detail]": {
+            required: '请填写课程详细信息'
+          },
+          "course[address1]": {
+            required: '请选择正确的地区',
+            notEqual: '请选择正确的地区'
+          },
+          "course[address2]": {
+            required: '请选择正确的地区',
+            notEqual: '请选择正确的地区'
+          },
+          "course[address3]": {
+            required: '请选择正确的地区',
+            notEqual: '请选择正确的地区'
+          },
+          "course[address4]": {
+            required: '请填写具体地址'
+          }
+        }/*,
+         highlight: function (element) {   // <-- fires when element has error
+         $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+         },
+         unhighlight: function (element) { // <-- fires when element is valid
+         $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+         $(element).closest('.our_form-line').find('label').remove();
+         },
+         errorPlacement: function (error, element) {
+         if (element.closest('.our_form-line').find('label').length <= 0) {
+         error.appendTo(element.closest('.our_form-line'));
+         }
+         }*/
+      });
+    })
+  </script>
+<% end %>

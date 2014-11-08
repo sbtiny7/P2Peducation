@@ -1,0 +1,6 @@
+== README
+
+#=========================导入城镇数据==============================
+#详细内容可以参考：https://github.com/Xuhao/china_region_fu
+    开发环境： rake region:import
+    生产环境： rake region:import RAILS_ENV='production'

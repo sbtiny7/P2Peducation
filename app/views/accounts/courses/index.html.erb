@@ -1,0 +1,11 @@
+<div class="accounts_course">
+    <div class="row">
+        <% @courses.each do |course| %>
+            <div class="col-md-4">
+                <%= render partial: 'accounts/shared/single_course', locals: {course: course, path: accounts_course_path(course)} %>
+            </div>
+        <% end %>
+    </div>
+
+    <%= link_to 'New Course', new_accounts_course_path %>
+</div>

@@ -1,0 +1,17 @@
+<div class="row">
+  <% courses.each do |c|%>
+    <div class="col-md-4">
+      <div class="course">
+        <div class="poster">
+          <%= image_tag "top.jpg", :width => "100%" %>
+        </div>
+        <div class="title">
+          <%= link_to c.title, course_path(c) %>
+          <div class="time">
+            9-30 21:00
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
