@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "common";
 
 .our_container {
     margin-top: 50px;
@@ -42,4 +43,10 @@
 
 .main_body {
     margin-top: 80px;
+}
+
+.caption {
+    p {
+        text-align: right;
+    }
 }
