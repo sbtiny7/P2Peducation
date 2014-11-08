@@ -17,3 +17,42 @@
     display: inline;
   }
 </style>
+<%= javascript_include_tag 'jquery-ui' %>
+<%= stylesheet_link_tag 'jquery-ui' %>
+<div>
+  <input class="test-jquery-ui-auto-complete" name="test">
+</div>
+<script>
+  $(function () {
+    var provinces = <%= raw Province.all.order('id').collect{|p| [p.id,p.name,p.pinyin]} %>;
+    console.log(provinces);
+    var CITYTITLELABEL = ['ABCDE', 'FGHIJ', 'KLMNO', 'PQRST', 'UVWXYZ'], RESULT = [];
+    for (var i = 0; i < CITYTITLELABEL.length; i++) {
+      console.log(CITYTITLELABEL[i]);
+      RESULT[CITYTITLELABEL[i]] = [];
+      for (var j = 0; j < CITYTITLELABEL[i].length; j++) {
+        console.log('===================' + CITYTITLELABEL[i][j] + '==========')
+
+        $.each(provinces, function (index, data) {
+          //2,甘肃省,gansu
+          if (data[data.length - 1][0].toUpperCase() == CITYTITLELABEL[i][j]) {
+            RESULT[CITYTITLELABEL[i]][CITYTITLELABEL[i][j]] = data
+//            continue
+          }
+        })
+
+      }
+//      RESULT.push(RESULT[CITYTITLELABEL[i]]);
+    }
+
+    console.log(RESULT)
+    $("#test-jquery-ui-auto-complete").append()
+
+    $(".test-jquery-ui-auto-complete").autocomplete({
+      source: [
+        "sdfds", "sfdsfds", "fdsafdsafdsa"
+      ]
+    })
+
+  })
+</script>

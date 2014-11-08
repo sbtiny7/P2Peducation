@@ -13,4 +13,14 @@ module ApplicationHelper
       Digest::MD5.hexdigest((Time.now.to_i + rand(0xffffff)).to_s)[0..39])))
   end
 
+  def city_region(object, methods, options ={}, html_options={})
+    return unless object.present?
+    if Array === methods
+      # 数组参数
+    else
+      # 一个参数
+
+    end
+  end
+
 end
