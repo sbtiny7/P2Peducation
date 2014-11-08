@@ -37,7 +37,7 @@ class Accounts::CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
-    @course = Course.new(course_params.merge(params[:c] || {}))
+    @course = Course.new(course_params)
 
     respond_to do |format|
       if @course.save
@@ -131,7 +131,7 @@ class Accounts::CoursesController < ApplicationController
       :city_id,
       :district_id,
       :address
-    )
+    ).merge(params[:c] || {})
   end
 
   def teacher_params
