@@ -1,8 +1,9 @@
 class Accounts::SessionsController < Devise::SessionsController
     prepend_before_filter :require_no_authentication, only: [ :new, :create ]
     prepend_before_filter :allow_params_authentication!, only: :create
-    prepend_before_filter :verify_signed_out_user, only: :destroy
     prepend_before_filter only: [ :create, :destroy ] { request.env["devise.skip_timeout"] = true }
+    skip_before_filter :verify_signed_out_user, :if => Proc.new { |c| c.request.format == 'application/json' }
+
     before_filter :set_request_format, :only => [:new]
 
     def create
@@ -17,6 +18,17 @@ class Accounts::SessionsController < Devise::SessionsController
             }
         end
     end
+
+    def destroy
+        respond_to do |f|
+            f.html  { super }
+            f.json {
+                current_user.reset_authentication_token!  if current_user
+                render json: {success: true}
+            }
+        end
+    end
+
     private
     def set_request_format
         if is_mobile_device?
