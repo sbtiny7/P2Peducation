@@ -16,6 +16,33 @@
   .region {
     display: inline;
   }
+
+  .city-region-engine-item {
+    padding: 4px 10px 0px;
+    color: #8F00FF;
+    border: 1px solid #cccccc;
+    cursor: pointer;
+    display: inline;
+    border-radius: 10px 10px 0px 0px;
+  }
+  .city-region-engine-item-hover{
+    background-color: #fcefa1;
+  }
+  .city-region-engine-body{
+    border: 1px solid #363636;
+    width: 540px;
+    height: 200px;
+    overflow: auto;
+  }
+  .city-region-engine-ele{
+    display: inline;
+    width: 120px;
+    line-height: 1.5em;
+  }
+  .city-region-engine-ele{
+    margin: 3px;
+    padding: 2px 5px;
+  }
 </style>
 <%= javascript_include_tag 'jquery-ui' %>
 <%= stylesheet_link_tag 'jquery-ui' %>
@@ -24,29 +51,67 @@
 </div>
 <script>
   $(function () {
-    var provinces = <%= raw Province.all.order('id').collect{|p| [p.id,p.name,p.pinyin]} %>;
+    var provinces = <%= raw City.all.order('id').collect{|p| [p.id,p.name,p.pinyin]} %>;
+//    var provinces =  [[1, "北京市", "beijing"], [2, "天津市", "tianjin"], [3, "河北省", "hebei"], [4, "山西省", "shanxi"], [5, "内蒙古自治区", "neimenggu"], [6, "辽宁省", "liaoning"], [7, "吉林省", "jilin"], [8, "黑龙江省", "heilongjiang"], [9, "上海市", "shanghai"], [10, "江苏省", "jiangsu"], [11, "浙江省", "zhejiang"], [12, "安徽省", "anhui"], [13, "福建省", "fujian"], [14, "江西省", "jiangxi"], [15, "山东省", "shandong"], [16, "河南省", "henan"], [17, "湖北省", "hubei"], [18, "湖南省", "hunan"], [19, "广东省", "guangdong"], [20, "广西壮族自治区", "guangxi"], [21, "海南省", "hainan"], [22, "重庆市", "chongqing"], [23, "四川省", "sichuan"], [24, "贵州省", "guizhou"], [25, "云南省", "yunnan"], [26, "西藏自治区", "xizang"], [27, "陕西省", "shanxi"], [28, "甘肃省", "gansu"], [29, "青海省", "qinghai"], [30, "宁夏回族自治区", "ningxia"], [31, "新疆维吾尔自治区", "xinjiang"], [32, "香港特别行政区", "xianggang"], [33, "澳门特别行政区", "aomen"], [34, "台湾省", "taiwan"]];
     console.log(provinces);
     var CITYTITLELABEL = ['ABCDE', 'FGHIJ', 'KLMNO', 'PQRST', 'UVWXYZ'], RESULT = [];
+    var cities = {};
     for (var i = 0; i < CITYTITLELABEL.length; i++) {
-      console.log(CITYTITLELABEL[i]);
-      RESULT[CITYTITLELABEL[i]] = [];
+      var p = cities[CITYTITLELABEL[i]] = {};
       for (var j = 0; j < CITYTITLELABEL[i].length; j++) {
-        console.log('===================' + CITYTITLELABEL[i][j] + '==========')
-
+        var c = p[CITYTITLELABEL[i][j]] = [];
         $.each(provinces, function (index, data) {
           //2,甘肃省,gansu
           if (data[data.length - 1][0].toUpperCase() == CITYTITLELABEL[i][j]) {
-            RESULT[CITYTITLELABEL[i]][CITYTITLELABEL[i][j]] = data
-//            continue
+            c.push(data)
           }
         })
-
       }
-//      RESULT.push(RESULT[CITYTITLELABEL[i]]);
     }
+    var city_div = document.createElement("div"),
+      title = document.createElement("div"),
+      body = document.createElement("div"),
+      footer = document.createElement("div");
 
-    console.log(RESULT)
-    $("#test-jquery-ui-auto-complete").append()
+    $(title).addClass('city-region-engine-title'), $(body).addClass('city-region-engine-body'), $(footer).addClass('city-region-engine-footer');
+    $(city_div).attr('id', 'city-region-engine-container'), $(city_div).append(title), $(city_div).append(body), $(city_div).append(footer);
+    for (var i in cities) {
+      var titleLabel = document.createElement('div');
+      $(title).append(titleLabel);
+      $(titleLabel).addClass('city-region-engine-item city-region-engine-' + i.toLowerCase()),
+        $(titleLabel).html(i);
+      $(titleLabel).on('click', function () {
+       for(var ele in CITYTITLELABEL){
+         if($(this).html() == CITYTITLELABEL[ele]){
+           $("."+CITYTITLELABEL[ele].toLowerCase()).show()
+         }else{
+           $("."+CITYTITLELABEL[ele].toLowerCase()).hide()
+         }
+       }
+      });
+      $(titleLabel).mouseover(function () {
+        $(this).addClass('city-region-engine-item-hover')
+      });
+      $(titleLabel).mouseleave(function () {
+        $(this).removeClass('city-region-engine-item-hover')
+      })
+      var div = document.createElement('div');
+      $(title).append(titleLabel);
+      $(body).append(div), $(div).addClass(i.toLowerCase());
+      if (i != 'ABCDE')$(div).css('display', 'none');
+      for (var j in cities[i]) {
+        var cs = cities[i][j], csDiv = document.createElement('div');
+        $(div).append(csDiv);
+        $(csDiv).addClass('group');
+        $(csDiv).append('<div class="city-region-engine-item-label">' + j + '</div>')
+        for (var ii in cs) {
+          $(csDiv).append('<div class="city-region-engine-ele" value="' + cs[ii][0] + '">' + cs[ii][1] + '</div>')
+        }
+      }
+    }
+    console.log(cities)
+    $(".test-jquery-ui-auto-complete").after(jQuery(city_div));
+    $("#city-region-engine-container").hide();
 
     $(".test-jquery-ui-auto-complete").autocomplete({
       source: [
@@ -54,5 +119,14 @@
       ]
     })
 
+    $(".test-jquery-ui-auto-complete").focus(function () {
+      $("#city-region-engine-container").show();
+    })
+    $(".test-jquery-ui-auto-complete").blur(function () {
+//      $("#city-region-engine-container").hide();
+    })
+    function initElement() {
+
+    }
   })
 </script>
