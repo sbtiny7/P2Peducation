@@ -3,7 +3,6 @@ class Accounts::OrdersController < ApplicationController
 
   before_action :authenticate_user!, :except => [:alipay_notify]
   skip_before_action :verify_authenticity_token, :only => [:alipay_notify]
-  layout 'accounts'
 
   def index
 
@@ -14,7 +13,7 @@ class Accounts::OrdersController < ApplicationController
     @course = Course.find(params[:course_id])
     @order = current_user.orders.build
     @order.set_values @course
-    render 'new', layout: 'home'
+    render 'new'
   end
 
   def create
