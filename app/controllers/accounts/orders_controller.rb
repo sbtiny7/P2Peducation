@@ -2,6 +2,7 @@
 class Accounts::OrdersController < ApplicationController
 
   before_action :authenticate_user!, :except => [:alipay_notify]
+  skip_before_action :verify_authenticity_token, :only => [:alipay_notify]
   layout 'accounts'
 
   def index
@@ -76,7 +77,8 @@ class Accounts::OrdersController < ApplicationController
     # 先校验消息的真实性
     if Alipay::Sign.verify?(notify_params) && Alipay::Notify.verify?(notify_params)
       # 获取交易关联的订单支付宝异步消息接口
-      @order = current_user.orders.where(:trade_no => notify_params[:out_trade_no]).first
+      #@order = current_user.orders.where(:trade_no => notify_params[:out_trade_no]).first
+      @order = Order.where(:trade_no => notify_params[:out_trade_no]).first
       logger.info "==========#{__method__}==============#{params[:trade_status]}==========================="
       case params[:trade_status]
         when 'WAIT_BUYER_PAY'
