@@ -52,4 +52,11 @@ module ApplicationHelper
       end
   end
 
+  def left_content(count)
+    if count < 10
+      "只剩下#{count}名额"
+    else
+      "还有#{count}名额"
+    end
+  end
 end

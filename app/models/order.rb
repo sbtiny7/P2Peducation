@@ -120,6 +120,9 @@ class Order < ActiveRecord::Base
     errors.add(:quantity, '教室已满') unless is_smaller_then_or_equal_students_max?
   end
 
+  def expired_duration
+    60 * 20
+  end
   private
 
   def generate_trade_no
@@ -134,5 +137,6 @@ class Order < ActiveRecord::Base
     target = resource.students_count - quantity
     resource.update_attribute(:students_count, (target < 0 ? 0 : target))
   end
+
 
 end

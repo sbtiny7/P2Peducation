@@ -90,4 +90,11 @@ class User < ActiveRecord::Base
     ids.include?  course_id
   end
 
+  def bougth_courses
+    self.orders.where(status: 'paid').includes(:resource).map {|x| x.resource}
+  end
+
+  def learning_courses
+    self.orders.where(status: 'pending').includes(:resource).map {|x| x.resource}
+  end
 end

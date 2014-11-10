@@ -2,11 +2,11 @@ class Accounts::DashboardController <  ApplicationController
   before_action :authenticate_user!
   layout "accounts"
   def learning
-    @courses = Course.limit(7)
+    @courses = current_user.bougth_courses
     render "union_courses.html.erb"
   end
   def pending
-    @courses = Course.limit(3)
+    @courses = current_user.learning_courses
     render "union_courses.html.erb"
   end
   def favorite
