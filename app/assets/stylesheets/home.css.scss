@@ -1,8 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "common";
 
 .our_container {
     margin-top: 50px;
+    padding: 20px 0;
 }
 .top_banner {
     margin-top: 50px;
@@ -41,4 +43,10 @@
 
 .main_body {
     margin-top: 80px;
+}
+
+.caption {
+    p {
+        text-align: right;
+    }
 }

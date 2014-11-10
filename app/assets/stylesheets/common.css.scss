@@ -2,6 +2,7 @@ a { cursor: pointer; }
 .relative { position: relative; }
 .left { float: left; }
 .right { float: right; }
+.clear { clear: both; }
 #error_explanation {
   @extend .alert;
   @extend .alert-warning;

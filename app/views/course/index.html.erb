@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                课程分类
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-info" href="<%= courses_path %>">
+                    全部
+                </a>
+                <% Course::CATEGORIES.each do |category| %>
+                <a class="btn btn-info" href="<%= courses_path(:category => category) %>">
+                    <%= category %>
+                </a>
+                <% end %>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-9">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="left">
+                <a class="btn btn-primary" href="<%= courses_path %>">
+                    全部课程
+                    <span class="badge">
+                        100
+                    </span>
+                </a>
+                <% %w(直播课 录播课 公开课).zip(%w(living archived OFFLINE), [24,43,6]).each do |name, value, count| %>
+                <a class="btn btn-primary" href="<%= courses_path(:course_type => value)%>">
+                    <%= name %>
+                    <span class="badge">
+                        <%= count %>
+                    </span>
+                </a>
+                <% end %>
+            </div>
+            <div class="right">
+                <%= form_tag courses_path, :class => "form-inline", :id => "search", :method => "get" do %>
+                <div class="form-group">
+                    <div class="input-group">
+                        <%= text_field_tag :keyword, params[:keyword], :placeholder => "搜索关键词", :class => "form-control" %>
+                        <span class="input-group-btn">
+                            <a class="btn btn-warning" onclick="$('form#search').submit()"><span class='glyphicon glyphicon-search'></span></a>
+                        </span>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="panel-body">
+            <% @courses.each_with_index do |course, index| %>
+            <% if index % 3 == 0 %><div class="row"><% end %>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <%= image_tag course.image.url %>
+                    <div class="caption">
+                        <h3><%= course.title %></h3>
+                        <p>开始时间：<%= course.start_time.to_s %></p>
+                        <p><a href="<%= course_path(course) %>" class="btn btn-primary" role="button">详细</a></p>
+                    </div>
+
+                </div>
+            </div>
+            <% if index % 3 == 2 || index == (@courses.length - 1) %></div><% end %>
+            <% end %>
+        </div>
+        <div class="panel-footer">
+            <%= paginate @courses %>
+        </div>
+    </div>
+</div>
+</div>

@@ -67,13 +67,13 @@ Rails.application.routes.draw do
   # ↓ 基于DEVISE的用户账号管理 ↓
 
   devise_for :users, path: "accounts",
-             controllers: {
-               sessions: "accounts/sessions",
-               registrations: "accounts/registrations",
-               confirmations: "accounts/confirmations",
-               passwords: "accounts/passwords",
-               unlocks: "accounts/unlocks"
-             }
+  controllers: {
+    sessions: "accounts/sessions",
+    registrations: "accounts/registrations",
+    confirmations: "accounts/confirmations",
+    passwords: "accounts/passwords",
+    unlocks: "accounts/unlocks"
+  }
 
   # ↑ 基于DEVISE的用户账号管理 ↑
 
@@ -81,6 +81,7 @@ Rails.application.routes.draw do
   # ↓ 主页、课程展示等，未登录用户也能观看的部分 ↓
 
   get 'course/:course_id' => 'course#show', as: :course
+  get 'courses' => 'course#index', as: :courses
 
   root 'home#index'
   get '/live_class/1'

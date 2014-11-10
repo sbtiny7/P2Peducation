@@ -61,7 +61,7 @@ class Course < ActiveRecord::Base
         :message => "%{value}不能作为课程类型"
     }
 
-    after_create :rename_image
+    before_create :init
     before_save :parse_values
 
     # 返回剩下的空座位的数量
@@ -88,6 +88,7 @@ class Course < ActiveRecord::Base
         end
     end
 
+=begin
     def rename_image
         old_str = self.read_attribute(:image)
         str_arr = old_str.split('.')
@@ -96,8 +97,13 @@ class Course < ActiveRecord::Base
         self.update_column(:image, new_str)
     end
 
+
+=end
     def address_detail
         "#{province.try :name}#{city.try :name}#{district.try :name}#{address}"
     end
 
+    def init
+        self.status = 0
+    end
 end

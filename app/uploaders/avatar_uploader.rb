@@ -55,9 +55,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  def filename
-    "#{model.class.to_s.underscore}_#{mounted_as}_#{model.id}.#{file.extension}" if original_filename
-  end
+  #def filename
+  #  "#{model.class.to_s.underscore}_#{mounted_as}_#{model.id}.#{file.extension}" if original_filename
+  #end
 
   def crop
     Rails.logger.info("before the avatar crop, avatar_x: #{model.avatar_x} ==================================")
