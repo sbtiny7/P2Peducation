@@ -19,3 +19,7 @@
 ./config/app_config.yml
 *.DS_Store
 /public/
+
+# Ignore temp files for Vim
+*.swp
+*.swo

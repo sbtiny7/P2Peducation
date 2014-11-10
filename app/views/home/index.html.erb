@@ -1,33 +1,17 @@
-<div class="top_banner"></div>
-<br/>
+<%= render :partial => 'banner' %>
 
-<ul class="nav nav-tabs">
-  <li class="active">
-    <a href="#abc" data-toggle="tab">直播课</a>
-  </li>
-  <li>
-    <a href="#bcd" data-toggle="tab">录播课</a>
-  </li>
-</ul>
-<br/>
-<div class="tab-content">
-  <div class="tab-pane fade active in" id="abc">
-    <%= render partial: "live_classes", locals: {courses: @live_lessons }%>
-  </div>
-  <div class="tab-pane fade" id="bcd">
-    <%= render partial: "vod_classes" %>
-  </div>
-</div>
-
-
-<ul class="nav nav-tabs">
-  <li class="active">
-  <a href="#abc" data-toggle="tab">公开课</a>
-  </li>
+<ul id="course_category_list" class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#live_courses" role="tab" data-toggle="tab">直播课</a>
+    </li>
+    <li role="presentation">
+        <a href="#record_courses" role="tab" data-toggle="tab">录播课</a>
+    </li>
 </ul>
 
-<div class="tab-content">
-  <div class="tab-pane fade active in" id="abc">
-    <%= render partial: "live_classes", locals: {courses: @open_lessons }%>
-  </div>
+<div class="tab-content" id="course_list">
+    <%= render :partial => 'live_courses' %>
+    <%= render :partial => 'recorded_courses' %>
 </div>
+
+<%= render :partial => 'public_courses' %>
