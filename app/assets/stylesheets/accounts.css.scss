@@ -168,6 +168,14 @@ img.avatar_preview {
 }
 
 .accounts_course {
+    .course_type {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+    .new_course {
+        margin-bottom: 10px;
+    }
     .course_detail {
         font-size: 13px;
     }
@@ -203,6 +211,7 @@ img.avatar_preview {
     }
     .button_list {
         margin-bottom: 20px;
+        display: block;
     }
 }
 

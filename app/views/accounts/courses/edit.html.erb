@@ -1,3 +1,6 @@
 <h3>编辑课程</h3>
-<%#= render 'form' %>
-<%= render "online_form.html.erb" %>      
+<% if @course.course_type == "ONLINE" %>
+    <%= render "online_form.html.erb" %>
+<% else %>
+    <%= render "offline_form.html.erb" %>
+<% end %>

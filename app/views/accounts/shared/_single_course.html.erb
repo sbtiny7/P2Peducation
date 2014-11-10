@@ -1,6 +1,11 @@
 <div class="full_course">
     <div class="course_image">
         <%= image_tag course.image.url %>
+        <div class="course_type">
+            <div class="<%= get_label_class(course.course_type) %>">
+                <%= t course.course_type, scope: "accounts" %>
+            </div>
+        </div>
         <div class="course_title">
             <%= link_to course.title, path %>
         </div>

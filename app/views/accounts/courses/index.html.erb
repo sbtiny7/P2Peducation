@@ -1,4 +1,8 @@
 <div class="accounts_course">
+    <div class="new_course">
+        <%= link_to '开设新课程', new_accounts_course_path, class: "btn btn-success" %>
+    </div>
+
     <div class="row">
         <% @courses.each do |course| %>
             <div class="col-md-4">
@@ -6,6 +10,4 @@
             </div>
         <% end %>
     </div>
-
-    <%= link_to 'New Course', new_accounts_course_path %>
 </div>

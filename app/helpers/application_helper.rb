@@ -43,4 +43,13 @@ module ApplicationHelper
     end
   end
 
+  def get_label_class(type)
+      case type
+      when "ONLINE"
+          "label label-danger"
+      when "OFFLINE"
+          "label label-primary"
+      end
+  end
+
 end

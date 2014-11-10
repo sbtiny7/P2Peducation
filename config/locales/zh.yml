@@ -1,4 +1,7 @@
 zh:
+  accounts:
+    OFFLINE: 线下课程
+    ONLINE: 线上课程
   date:
     abbr_day_names:
     - 日
