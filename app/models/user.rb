@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
+
   attr_accessor :avatar_x, :avatar_y, :avatar_w, :avatar_h
 
   #NOTICE
@@ -81,6 +82,12 @@ class User < ActiveRecord::Base
       Rails.logger.info "model.avatar_#{a}: #{self.send("avatar_#{a}")}"
     end
     avatar.recreate_versions! if avatar_x.present?
+  end
+
+
+  def has_bought?(course_id)
+    ids = self.orders.where(status: 'paid').includes(:resource).map {|x| x.resource.id}
+    ids.include?  course_id
   end
 
 end

@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.where(status: true).find(params[:id])
+    @tieckts_bought = current_user.has_bought? @course.id
   end
 
   def enroll
