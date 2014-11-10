@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :orders, :only => [:index, :show, :new, :create] do
       collection do
         get :successful
-        get :alipay_notify
+        post :alipay_notify
         post :check_quantity
       end
     end
