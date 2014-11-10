@@ -30,7 +30,7 @@
 
         <div class="ul-ele">
           <% if @tieckts_bought %>
-            <%= button_tag '已购买', "", class: 'btn btn-info btn-lg' %>
+            <%= button_tag '已购买', data: {disable_with: "已购买..."}, class: 'btn btn-info btn-lg' %>
           <% elsif @course.is_jammed? %>
             <%= button_tag '没有名额啦', data: {disable_with: "请联系教师..."}, class: 'btn btn-default btn-lg' %>
           <% else %>

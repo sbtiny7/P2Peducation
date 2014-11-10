@@ -2,9 +2,22 @@
 class CoursesController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:enroll_create]
-  layout 'home'
+
+  def index
+    conditions = {:status => 1}
+    conditions = conditions.merge(:course_type => params[:course_type]) if params[:course_type] # TODO 讨论：是否在直播中的状态？预告状态？
+    conditions = conditions.merge(:category => params[:category]) if params[:category]
+    sp_conditions = []
+    sp_conditions = ["title like ?", "%#{params[:keyword]}%"] if params[:keyword]
+    @courses = Course.where(conditions).where(sp_conditions).page(params[:page]).per(per_page)
+  end
 
   def show
+    @course = Course.where(status: true).find(params[:id])
+    @tieckts_bought = current_user.has_bought? @course.id
+  end
+
+  def show_after_bought
     @course = Course.where(status: true).find(params[:id])
     @tieckts_bought = current_user.has_bought? @course.id
   end
@@ -19,4 +32,8 @@ class CoursesController < ApplicationController
     render json: {success: false}
   end
 
+  private
+  def per_page
+    15
+  end
 end
