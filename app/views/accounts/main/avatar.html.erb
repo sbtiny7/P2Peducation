@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <% if notice && notice == '头像上传成功' %>
+        <% if notice %>
         <div class="alert alert-info" role="alert">
           <%= notice %>
         </div>
@@ -123,9 +123,10 @@
   </div>
 
   <div class="panel-footer bg-warning">
-    <%= button_to "删除头像", accounts_upload_avatar_path, data: { confirm: "是否确定删除头像？" }, class: 'btn btn-warning', method: :post %>
+    <%= button_to "删除头像", accounts_delete_avatar_path, data: { confirm: "是否确定删除头像？" }, class: 'btn btn-warning', method: :post %>
   </div>
 </div>
+
 
 <script type="text/javascript">
 var jcrop_api;

@@ -32,11 +32,16 @@ class Accounts::MainController < ApplicationController
             end
             current_user.save
             flash.now[:notice] = '头像上传成功'
-        else
-            current_user.avatar = nil
-            current_user.save
-            flash.now[:notice] = '头像删除成功'
         end
+        render "avatar"
+    end
+
+    def delete_avatar
+        Rails.logger.info("current_user.avatar_url: #{current_user.avatar_url}")
+        current_user.avatar = nil
+        Rails.logger.info("current_user.avatar_url: #{current_user.avatar_url}")
+        current_user.save
+        flash.now[:notice] = '头像删除成功'
         render "avatar"
     end
 
