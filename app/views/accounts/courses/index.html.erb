@@ -16,7 +16,7 @@
         <td><%= course.user_id %></td>
         <td><%= link_to 'Show', [:accounts, course] %></td>
         <td><%= link_to 'Edit', edit_accounts_course_path(course) %></td>
-        <td><%= link_to 'Destroy', [:accounts, course], method: :delete, data: { cirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [:accounts, course], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
