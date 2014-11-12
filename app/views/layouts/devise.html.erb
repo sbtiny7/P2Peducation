@@ -8,11 +8,14 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "home", :media => "all" %>
   <%= javascript_include_tag "application" %>
+    <%= yield :head %>
 </head>
 <body>
 <%#= bootstrap_flash %>
 <%= render "layouts/header.html.erb" %>
-<%= yield %>
+<div class="container our_container">
+    <%= yield %>
+</div>
 <%= render "layouts/footer.html.erb" %>
 
 </body>
