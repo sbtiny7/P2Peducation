@@ -28,10 +28,10 @@ Rails.application.routes.draw do
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do
-    get "student/learning"  => "dashboard#learning" 
+    get "student/learning"  => "dashboard#learning", :as => :learning
     get "student/pending"  => "dashboard#pending" 
     get "student/favorite"  => "dashboard#favorite"
-    get "incoming"  => "dashboard#incoming"
+    get "incoming"  => "dashboard#incoming", :as => :incoming
     get "teach"  => "dashboard#teach"
     root 'main#index'
     get 'config' => 'main#config_account', as: :config
