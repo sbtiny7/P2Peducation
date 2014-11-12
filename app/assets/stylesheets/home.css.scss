@@ -41,12 +41,79 @@
     margin-right: 20px;
 }
 
-.main_body {
-    margin-top: 80px;
-}
 
 .caption {
     p {
         text-align: right;
     }
 }
+
+//jingtianxiaozhi
+.register{
+  height:870px;
+  background-image: url('/assets/register_back.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+.register .border{
+  width: 300px;
+  height:320px;
+  position:relative;
+  top:100px;
+  right:-1100px;
+  background-color:#FFF;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.register .border .form{
+  position:relative;
+  left:20px;
+  top:20px;
+}
+
+.register .border .form .input{
+  width: 80%;
+}
+
+
+.myfoot{
+  position: relative;
+  top:20px;
+}
+
+
+.login{
+  height:870px;
+  background-image: url('/assets/login_back.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+.login .border{
+  width: 300px;
+  height:300px;
+  position:relative;
+  top:100px;
+  right:-1100px;
+  background-color:#FFF;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.login .border .form{
+  position:relative;
+  left:20px;
+  top:20px;
+}
+
+.login .border .form .input{
+  width: 80%;
+}
+
+

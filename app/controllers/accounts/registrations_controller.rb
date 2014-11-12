@@ -9,6 +9,8 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
     def set_layout
         if ["edit", "update"].include? action_name
             return 'accounts'
+        else
+          return 'devise'
         end
     end
 end
