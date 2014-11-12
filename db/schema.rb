@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106091413) do
+ActiveRecord::Schema.define(version: 20141110131943) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20141106091413) do
     t.string   "status",                              default: "pendding", null: false, comment: "订单状态"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "expired_at",                                                            comment: "订单作废时间"
   end
 
   add_index "orders", ["trade_no"], name: "index_orders_on_trade_no", unique: true, using: :btree

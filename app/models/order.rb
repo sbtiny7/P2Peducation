@@ -13,6 +13,7 @@
 #  status     :string(255)      default("pendding"), not null # 订单状态
 #  created_at :datetime
 #  updated_at :datetime
+#  expired_at :datetime                                       # 订单作废时间
 #
 # Indexes
 #
@@ -134,5 +135,6 @@ class Order < ActiveRecord::Base
     target = resource.students_count - quantity
     resource.update_attribute(:students_count, (target < 0 ? 0 : target))
   end
+
 
 end

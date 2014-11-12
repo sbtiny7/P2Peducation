@@ -16,6 +16,6 @@
 /tmp
 /public/uploads
 /.idea/*
-./config/app_config.yml
+config/*.yml
 *.DS_Store
 public/assets/

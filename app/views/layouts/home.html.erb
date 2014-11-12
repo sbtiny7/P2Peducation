@@ -13,7 +13,9 @@
 <body>
   <%#= bootstrap_flash %>
   <%= render "layouts/header.html.erb" %>
-  <%= yield %>
+  <div class="">
+    <%= yield %>
+  </div>
   <%= render "layouts/footer.html.erb" %>
   <%= yield :foot %>
 </body>

@@ -8,7 +8,7 @@
   <%= hidden_field_tag 'order[goods_id]', @order.resource.id %>
   <table class="table">
     <thead>
-    <th>商品</th>
+    <th>商品<span class="expired_tip">(请尽快完成支付，订单在<%= expired_duration %>后失效)</span></th>
     <th>价格</th>
     <th>优惠</th>
     <th>数量</th>

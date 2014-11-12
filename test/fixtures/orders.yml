@@ -12,6 +12,7 @@
 #  status     :string(255)      default("pendding"), not null # 订单状态
 #  created_at :datetime
 #  updated_at :datetime
+#  expired_at :datetime                                       # 订单作废时间
 #
 # Indexes
 #
