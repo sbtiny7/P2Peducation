@@ -13,6 +13,7 @@
 #  status     :string(255)      default("pendding"), not null # 订单状态
 #  created_at :datetime
 #  updated_at :datetime
+#  expired_at :datetime                                       # 订单作废时间
 #
 # Indexes
 #
@@ -120,9 +121,6 @@ class Order < ActiveRecord::Base
     errors.add(:quantity, '教室已满') unless is_smaller_then_or_equal_students_max?
   end
 
-  def expired_duration
-    60 * 20
-  end
   private
 
   def generate_trade_no

@@ -23,6 +23,7 @@ class Accounts::OrdersController < ApplicationController
     if order_params[:quantity].to_i <= @course.just_numbers_left
       success, redirect, message = false, '', ''
       @order = current_user.orders.build order_params
+      @order.expired_at = Time.now + Settings.expired_duration
       @order.set_values(@course)
       if @order.save
         success, redirect = true, @order.pay_url(current_user) # and return
