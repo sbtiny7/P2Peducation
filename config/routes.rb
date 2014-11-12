@@ -39,6 +39,10 @@ Rails.application.routes.draw do
     get   'config_avatar' => 'main#config_avatar', as: :config_avatar
     match 'upload_avatar' => 'main#upload_avatar', as: :upload_avatar, via: [:post, :patch]
     post 'delete_avatar' => 'main#delete_avatar', as: :delete_avatar
+
+    get 'courses/:id/publish' => 'courses#publish_course', as: :publish_course
+    get 'cosrses/:id/cancel_publish' => 'courses#cancel_publish_course', as: :cancel_publish_course
+
     resources :courses do
       resources :lessons
       member do

@@ -1,7 +1,8 @@
 class Accounts::CoursesController < ApplicationController
   include ChinaRegionFu::Helpers
   before_action :authenticate_user!
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :complate, :pub]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :complate, :pub,
+      :publish_course, :cancel_publish_course]
 
   layout 'accounts'
 
@@ -19,6 +20,19 @@ class Accounts::CoursesController < ApplicationController
     if @course.course_type == "ONLINE"
       render 'online_show.html.erb'
     end
+  end
+
+  def publish_course
+    @course.status = 1
+    @course.save
+    redirect_to accounts_course_path(@course)
+  end
+
+  def cancel_publish_course
+        @course.status = 0
+        Rails.logger.info("course: #{@course}")
+        @course.save
+    redirect_to accounts_course_path(@course)
   end
 
   # GET /courses/new

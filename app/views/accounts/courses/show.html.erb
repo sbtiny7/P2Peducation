@@ -1,8 +1,18 @@
 <div class="account_course_show">
-    <h3>
-        <%= @course.title %>
-    </h3>
-    <p>开始时间：<%= @course.start_time %></p>
+    <h3><%= @course.title %></h3>
+    <p>
+        课程发布状态：
+        <% if @course.status != 0 %>
+            已发布
+            <%= link_to '（取消发布）', accounts_cancel_publish_course_path %>
+        <% else %>
+            未发布
+            <%= link_to "（发布课程）", accounts_publish_course_path %>
+        <% end %>
+    </p>
+    <p>
+        开始时间：<%= @course.start_time %>
+    </p>
 
     <div class="row">
         <div class="col-md-9 ">
