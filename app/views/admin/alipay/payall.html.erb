@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag "stylesheets/admin/payout", :media => "all" %>
+
+<div class="col-md-12 payout" >
+  <table class="table table-bordered">
+
+    <thead>
+        <tr>
+          <th>序号</th>
+          <th>客户姓名</th>
+          <th>提取现金</th>
+          <th>支付宝账号</th>
+          <th>处理状态</th>
+          <th>立刻处理</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @cash.each do |cash| %>
+            <tr>
+              <td><%= cash.id %></td>
+              <td><%= cash.name %></td>
+              <td><%= cash.sum %></td>
+              <td><%= cash.alipay_account %></td>
+              <td><%= cash.finished %></td>
+              <td>
+                  <button type="button" class="btn btn-info">完成处理</button>
+              </td>
+            </tr>
+        <% end %>
+    </tbody>
+
+  </table>
+</div>

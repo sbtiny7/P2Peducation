@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # ↓ 咱们用的后台管理 ↓
 
   namespace :admin do
+    #jingtianxiaozhi
+    get "alipay/payall"  => "alipay#payall"
+
     resources :lessons
     resources :courses
     resources :users
@@ -33,6 +36,11 @@ Rails.application.routes.draw do
     get "student/favorite"  => "dashboard#favorite"
     get "incoming"  => "dashboard#incoming"
     get "teach"  => "dashboard#teach"
+
+    #jingtianxiaozhi
+    post "dashboard/cashout"  => "dashboard#cashout"
+
+
     root 'main#index'
     get 'config' => 'main#config_account', as: :config
     patch 'update' => 'main#update_account', as: :update
@@ -59,6 +67,9 @@ Rails.application.routes.draw do
         post :check_quantity
       end
     end
+
+    #resources:consumer_record
+
   end
 
   # ↑ 用户使用的管理页面 ↑

@@ -1,29 +1,26 @@
 # encoding: utf-8
 # == Schema Information
 #
-# Table name: courses # 课程
+# Table name: courses
 #
-#  id             :integer          not null, primary key  # 课程
-#  user_id        :integer                                 # 所属用户id
-#  teacher_id     :integer                                 # 教师id
-#  title          :string(255)                             # 标题
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  teacher_id     :integer
+#  title          :string(255)
 #  token          :string(255)
-#  image          :string(255)                             # 图标
+#  image          :string(255)
 #  tmp_image      :string(255)
-#  category       :string(255)                             # 分类
-#  province_id    :integer          default(0), not null   # 所在省份id
-#  city_id        :integer          default(0), not null   # 所在城镇id
-#  district_id    :integer          default(0), not null   # 所在区县id
-#  address        :string(255)                             # 所开地址
-#  course_type    :string(255)                             # 类型
-#  start_time     :datetime                                # 开始时间
-#  end_time       :datetime                                # 结束时间
-#  students_count :integer          default(0), not null   # 学生数量
-#  students_max   :integer          default(0), not null   # 最大学生数量
-#  price          :decimal(15, 3)   default(0.0), not null # 价格
+#  category       :string(255)
+#  address        :string(255)
+#  course_type    :string(255)
+#  start_time     :datetime
+#  end_time       :datetime
+#  students_count :integer
+#  students_max   :integer
+#  price          :decimal(15, 3)
 #  mark_count     :integer
-#  detail         :text                                    # 详细
-#  status         :integer          default(0), not null   # 课程状态
+#  detail         :text
+#  status         :integer
 #  created_at     :datetime
 #  updated_at     :datetime
 #

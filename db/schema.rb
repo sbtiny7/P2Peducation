@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106091413) do
+ActiveRecord::Schema.define(version: 20141111092925) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20141106091413) do
     t.integer  "user_id"
     t.integer  "bookmarkable_id"
     t.string   "bookmarkable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cashes", force: true do |t|
+    t.string   "sum"
+    t.string   "name"
+    t.string   "alipay_account"
+    t.boolean  "finished"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,27 +69,24 @@ ActiveRecord::Schema.define(version: 20141106091413) do
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "courses", force: true, comment: "课程" do |t|
-    t.integer  "user_id",                                                            comment: "所属用户id"
-    t.integer  "teacher_id",                                                         comment: "教师id"
-    t.string   "title",                                                              comment: "标题"
+  create_table "courses", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "teacher_id"
+    t.string   "title"
     t.string   "token"
-    t.string   "image",                                                              comment: "图标"
+    t.string   "image"
     t.string   "tmp_image"
-    t.string   "category",                                                           comment: "分类"
-    t.integer  "province_id",                             default: 0,   null: false, comment: "所在省份id"
-    t.integer  "city_id",                                 default: 0,   null: false, comment: "所在城镇id"
-    t.integer  "district_id",                             default: 0,   null: false, comment: "所在区县id"
-    t.string   "address",                                                            comment: "所开地址"
-    t.string   "course_type",                                                        comment: "类型"
-    t.datetime "start_time",                                                         comment: "开始时间"
-    t.datetime "end_time",                                                           comment: "结束时间"
-    t.integer  "students_count",                          default: 0,   null: false, comment: "学生数量"
-    t.integer  "students_max",                            default: 0,   null: false, comment: "最大学生数量"
-    t.decimal  "price",          precision: 15, scale: 3, default: 0.0, null: false, comment: "价格"
+    t.string   "category"
+    t.string   "address"
+    t.string   "course_type"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "students_count"
+    t.integer  "students_max"
+    t.decimal  "price",          precision: 15, scale: 3
     t.integer  "mark_count"
-    t.text     "detail",                                                             comment: "详细"
-    t.integer  "status",                                  default: 0,   null: false, comment: "课程状态"
+    t.text     "detail"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -131,6 +137,7 @@ ActiveRecord::Schema.define(version: 20141106091413) do
     t.datetime "updated_at"
   end
 
+  add_index "orders", ["goods_id"], name: "index_orders_on_goods_id", unique: true, using: :btree
   add_index "orders", ["trade_no"], name: "index_orders_on_trade_no", unique: true, using: :btree
 
   create_table "provinces", force: true do |t|
@@ -166,15 +173,15 @@ ActiveRecord::Schema.define(version: 20141106091413) do
 
   add_index "studyships", ["token"], name: "index_studyships_on_token", unique: true, using: :btree
 
-  create_table "teachers", force: true, comment: "教师" do |t|
-    t.integer  "user_id",                   null: false, comment: "教师的账户id"
-    t.string   "name",                      null: false, comment: "姓名"
-    t.string   "sex",                       null: false, comment: "性别"
-    t.string   "phone",                     null: false, comment: "电话(移动电话)"
-    t.string   "email",                     null: false, comment: "电子邮件"
-    t.string   "organ_name",   default: "", null: false, comment: "所在机构名称"
-    t.text     "organ_detail",              null: false, comment: "所在机构详细介绍"
-    t.integer  "agreement_id",              null: false, comment: "协议id"
+  create_table "teachers", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "sex"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "organ_name"
+    t.text     "organ_detail"
+    t.integer  "agreement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

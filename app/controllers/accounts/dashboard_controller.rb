@@ -17,4 +17,17 @@ class Accounts::DashboardController <  ApplicationController
     @courses = current_user.courses
     @user = current_user
   end
+
+  #jingtianxiaozhi
+  def cashout
+    @cash=Cash.new(cash_params)
+    @cash.finished=false;
+    @cash.save
+  end
+
+  private
+  def cash_params
+    #白名单
+    params.require(:cash).permit(:sum, :name , :alipay_account)
+  end
 end

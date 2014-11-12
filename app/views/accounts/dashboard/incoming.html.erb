@@ -1,7 +1,7 @@
 <div class="my_income">
   <h3> 当前余额 0 元 </h3>
 
-  <%= form_for :consumer_record do |f| %>
+  <%= form_for :cash, url:accounts_dashboard_cashout_path do |f| %>
       <div class="form-group">
         <%= f.label :sum, "提取金额" %>
         <%= f.text_field :sum, class: "form-control" %>

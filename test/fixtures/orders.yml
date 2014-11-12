@@ -15,6 +15,7 @@
 #
 # Indexes
 #
+#  index_orders_on_goods_id  (goods_id) UNIQUE
 #  index_orders_on_trade_no  (trade_no) UNIQUE
 #
 
