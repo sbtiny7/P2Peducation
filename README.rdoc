@@ -6,8 +6,9 @@
     生产环境： rake region:import RAILS_ENV='production'
 
 
-###layout 改动
-home layout 只有主页 用
-accounts 只有包含左侧边栏的页面用
-其余有特殊需求的创建自己的layout
-通用页面使用 application layout
+=== layout 改动
+
+* home layout 只有主页 用
+* accounts 只有包含左侧边栏的页面用
+* 其余有特殊需求的创建自己的layout
+* 通用页面使用 application layout
