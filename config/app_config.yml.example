@@ -1,7 +1,7 @@
 default: &default
-  partner_id: ''
-  key: ''
-  email: ''
+  partner_id: '2088511484087918'
+  key: 'buhas6b3dxixaipc303rtgiu77s38rky'
+  email: 'bjmirrorfan@gmail.com'
   host: abc.com
   port: 3002
 
