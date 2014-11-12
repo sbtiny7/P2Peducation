@@ -94,11 +94,10 @@
 }
 
 .login .border{
-  width: 300px;
+  width: 100%;
   height:300px;
   position:relative;
   top:100px;
-  right:-1100px;
   background-color:#FFF;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -117,3 +116,12 @@
 }
 
 
+
+.sign_in_form {
+    background-color:#FFF;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding: 10px;
+}
