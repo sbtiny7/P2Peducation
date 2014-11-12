@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
 
 
   attr_accessor :avatar_x, :avatar_y, :avatar_w, :avatar_h
@@ -88,6 +88,11 @@ class User < ActiveRecord::Base
   def has_bought?(course_id)
     ids = self.orders.where(status: 'paid').includes(:resource).map {|x| x.resource.id}
     ids.include?  course_id
+  end
+
+  def pending_order(course_id)
+    orders = self.orders.where(status: 'pendding').not_expired.includes(:resource)
+    orders.select {|o| o.resource.id == course_id}.last
   end
 
   def bougth_courses

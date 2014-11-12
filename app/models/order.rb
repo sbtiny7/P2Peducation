@@ -34,6 +34,9 @@ class Order < ActiveRecord::Base
   # before_destroy :decrease_student_count
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
   belongs_to :resource, class_name: 'Course', foreign_key: :goods_id
+
+  scope :not_expired, -> { where("expired_at > ?", Time.now) }
+
   STATUS.each do |status|
     define_method "#{status}?" do
       self.status == status

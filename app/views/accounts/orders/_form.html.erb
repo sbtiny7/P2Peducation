@@ -1,50 +1,53 @@
 <%= javascript_include_tag 'plugins/validate/index', 'lib/common', 'accounts/order_form' %>
 <%= content_for :head do %>
-  <%= stylesheet_link_tag 'accounts/order' %>
+    <%= stylesheet_link_tag 'accounts/order' %>
 <% end %>
 <div>
-  <%= token_field %>
-  <%= hidden_field_tag 'order[trade_no]', @order.trade_no %>
-  <%= hidden_field_tag 'order[goods_id]', @order.resource.id %>
-  <table class="table">
-    <thead>
-    <th>商品<span class="expired_tip">(请尽快完成支付，订单在<%= expired_duration %>后失效)</span></th>
-    <th>价格</th>
-    <th>优惠</th>
-    <th>数量</th>
-    <th>操作</th>
-    </thead>
-    <tbody>
-    <tr>
-      <td class="col-lg-4 col-md-4 col-sm-8">
-        <div>
-          <%= link_to @order.resource do %>
-            <%= image_tag @order.resource.image.url %>
-          <% end %>
-          <%= link_to "#{@order.resource.title}".html_safe, @order.resource %></div>
-      </td>
-      <td class="col-lg-2 col-md-2 col-sm-1">￥
-        <div class="o-price"><%= number_to_currency @order.price, :unit => '', :precision => 2 %></div>
-      </td>
-      <td class="col-lg-2 col-md-2 col-sm-1">￥
-        <div class="o-discount"><%= number_to_currency @order.discount, :unit => '', :precision => 2 %></div>
-      </td>
-      <td class="col-lg-2 col-md-2 col-sm-1">
-        <div class="o-quantity"><%= number_field_tag 'order[quantity]', @order.quantity, min: 1, style: 'width:50px;text-align: center;' %></div>
-      </td>
-      <td class="col-lg-2 col-md-2 col-sm-1">删除</td>
-    </tr>
-    </tbody>
-  </table>
-  <div style="" class="result-container">
-    <div class="result"></div>
-    <%= submit_tag '去结算 >', class: 'submit-order-button btn btn-success btn-lg' %>
-  </div>
-  <%= content_for :foot do %>
-    <script>
-      $(function () {
+    <%= token_field %>
+    <%= hidden_field_tag 'order[trade_no]', @order.trade_no %>
+    <%= hidden_field_tag 'order[goods_id]', @order.resource.id %>
+    <table class="table">
+        <thead>
+        <th>商品<span class="expired_tip">(请尽快完成支付，订单在<%= expired_duration %>后失效)</span></th>
+        <th>价格</th>
+        <th>优惠</th>
+        <th>数量</th>
+        <th>操作</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="col-lg-4 col-md-4 col-sm-8">
+                <div>
+                    <%= link_to @order.resource do %>
+                        <%= image_tag @order.resource.image.url %>
+                    <% end %>
+                    <%= link_to "#{@order.resource.title}".html_safe, @order.resource %></div>
+            </td>
+            <td class="col-lg-2 col-md-2 col-sm-1">￥
+                <div class="o-price"><%= number_to_currency @order.price, :unit => '', :precision => 2 %></div>
+            </td>
+            <td class="col-lg-2 col-md-2 col-sm-1">￥
+                <div class="o-discount"><%= number_to_currency @order.discount, :unit => '', :precision => 2 %></div>
+            </td>
+            <td class="col-lg-2 col-md-2 col-sm-1">
+                <div class="o-quantity"><%= number_field_tag 'order[quantity]', @order.quantity, min: 1, style: 'width:50px;text-align: center;' %></div>
+            </td>
+            <td class="col-lg-2 col-md-2 col-sm-1">删除</td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="" class="result-container">
+        <div class="result"></div>
+        <%= submit_tag '去结算 >', class: 'submit-order-button btn btn-success btn-lg' %>
+        <% if @pending_order %>
+            <div> 有一个尚未支付的订单，<%= link_to "去支付"  %> </div>
+        <% end %>
+    </div>
+    <%= content_for :foot do %>
+        <script>
+            $(function () {
 
-      })
-    </script>
-  <% end %>
+            })
+        </script>
+    <% end %>
 </div>

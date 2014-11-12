@@ -13,6 +13,7 @@ class Accounts::OrdersController < ApplicationController
     @course = Course.find(params[:course_id])
     @order = current_user.orders.build
     @order.set_values @course
+    @pending_order = current_user.pending_order @course.id
     render 'new'
   end
 
