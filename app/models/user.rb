@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
   end
 
   def pending_order(course_id)
-    orders = self.orders.where(status: 'pendding').not_expired.includes(:resource)
+    orders = self.orders.where(status: 'pending').not_expired.includes(:resource)
     orders.select {|o| o.resource.id == course_id}.last
   end
 

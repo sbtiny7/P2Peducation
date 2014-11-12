@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112092809) do
+ActiveRecord::Schema.define(version: 20141112095416) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -120,16 +120,17 @@ ActiveRecord::Schema.define(version: 20141112092809) do
   add_index "lessons", ["token"], name: "index_lessons_on_token", unique: true, using: :btree
 
   create_table "orders", force: true, comment: "订单" do |t|
-    t.integer  "user_id",                                                 null: false, comment: "订单所属用户id"
-    t.integer  "goods_id",                                                null: false, comment: "商品id"
-    t.integer  "quantity",                            default: 1,         null: false, comment: "数量"
-    t.decimal  "price",      precision: 16, scale: 2, default: 0.0,       null: false, comment: "价格(元)"
-    t.decimal  "discount",   precision: 16, scale: 2, default: 0.0,       null: false, comment: "打折后的价格(元)"
-    t.string   "trade_no",                                                null: false, comment: "交易号"
-    t.string   "status",                              default: "pending", null: false, comment: "订单状态"
+    t.integer  "user_id",                                                    null: false, comment: "订单所属用户id"
+    t.integer  "goods_id",                                                   null: false, comment: "商品id"
+    t.integer  "quantity",                               default: 1,         null: false, comment: "数量"
+    t.decimal  "price",         precision: 16, scale: 2, default: 0.0,       null: false, comment: "价格(元)"
+    t.decimal  "discount",      precision: 16, scale: 2, default: 0.0,       null: false, comment: "打折后的价格(元)"
+    t.string   "trade_no",                                                   null: false, comment: "交易号"
+    t.string   "status",                                 default: "pending", null: false, comment: "订单状态"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "expired_at",                                                           comment: "订单作废时间"
+    t.datetime "expired_at",                                                              comment: "订单作废时间"
+    t.text     "full_pay_path"
   end
 
   add_index "orders", ["trade_no"], name: "index_orders_on_trade_no", unique: true, using: :btree

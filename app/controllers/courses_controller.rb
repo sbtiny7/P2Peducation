@@ -14,8 +14,10 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.where(status: true).find(params[:id])
-    @tieckts_bought = current_user.has_bought? @course.id
-    @course_owner = (current_user.id == @course.user.id)
+    if user_signed_in?
+      @tickets_bought = current_user.has_bought? @course.id
+      @course_owner = (current_user.id == @course.user.id)
+    end
   end
 
   def show_after_bought

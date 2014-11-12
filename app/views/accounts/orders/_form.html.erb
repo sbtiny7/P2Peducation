@@ -40,7 +40,7 @@
         <div class="result"></div>
         <%= submit_tag '去结算 >', class: 'submit-order-button btn btn-success btn-lg' %>
         <% if @pending_order %>
-            <div> 有一个尚未支付的订单，<%= link_to "去支付"  %> </div>
+            <div> 有一个尚未支付的订单，<%= link_to "去支付", @pending_order.full_pay_path  %> </div>
         <% end %>
     </div>
     <%= content_for :foot do %>
