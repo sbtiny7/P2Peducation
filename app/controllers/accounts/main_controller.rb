@@ -23,6 +23,14 @@ class Accounts::MainController < ApplicationController
         render "avatar"
     end
 
+
+    def delete_avatar
+        user = current_user
+        user.remove_avatar!
+        user.save
+        redirect_to :back
+    end
+
     def upload_avatar
         @timestamp = Time.now.to_i
         if user_params

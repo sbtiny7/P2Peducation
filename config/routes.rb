@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     patch 'update' => 'main#update_account', as: :update
     get   'config_avatar' => 'main#config_avatar', as: :config_avatar
     match 'upload_avatar' => 'main#upload_avatar', as: :upload_avatar, via: [:post, :patch]
+    match 'upload_avatar' => 'main#delete_avatar', as: :delete_avatar, via: [:delete]
     resources :courses do
       resources :lessons
       member do
