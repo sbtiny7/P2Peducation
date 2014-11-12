@@ -26,6 +26,7 @@
 #  tmp_avatar             :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  authentication_token   :string(255)
 #
 # Indexes
 #
