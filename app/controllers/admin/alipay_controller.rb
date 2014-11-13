@@ -7,6 +7,15 @@ class Admin::AlipayController <  ApplicationController
     @cash=Cash.all
   end
 
+
+  def edit
+    @cash=Cash.find(params[:id])
+    @cash.finished=true;
+    @cash.save
+    redirect_to admin_alipay_payall_path
+  end
+
+
   private
   def set_layout
     return 'admin'

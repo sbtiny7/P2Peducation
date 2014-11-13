@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     #jingtianxiaozhi
     get "alipay/payall"  => "alipay#payall"
 
+    resources :alipay
+
     resources :lessons
     resources :courses
     resources :users
