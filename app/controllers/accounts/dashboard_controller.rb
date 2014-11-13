@@ -10,7 +10,7 @@ class Accounts::DashboardController <  ApplicationController
     render "union_courses.html.erb"
   end
   def favorite
-    @courses = Course.limit(10)
+    @courses = current_user.marked_courses
     render "union_courses.html.erb"
   end
   def incoming

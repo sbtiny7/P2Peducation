@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 
   get 'course/:course_id' => 'course#show', as: :course
   get 'courses' => 'course#index', as: :courses
+  get 'courses/:id/mark' => 'courses#mark_course', as: :mark_course
 
   root 'home#index'
   get '/live_class/1'

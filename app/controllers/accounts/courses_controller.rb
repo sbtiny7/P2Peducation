@@ -22,19 +22,6 @@ class Accounts::CoursesController < ApplicationController
     end
   end
 
-  def publish_course
-    @course.status = 1
-    @course.save
-    redirect_to accounts_course_path(@course)
-  end
-
-  def cancel_publish_course
-        @course.status = 0
-        Rails.logger.info("course: #{@course}")
-        @course.save
-    redirect_to accounts_course_path(@course)
-  end
-
   # GET /courses/new
   def new
   end
@@ -118,6 +105,18 @@ class Accounts::CoursesController < ApplicationController
   def pub
     @course.update_column(:status, 1)
     redirect_to course_path(@course)
+  end
+
+  def publish_course
+    @course.status = 1
+    @course.save
+    redirect_to accounts_course_path(@course)
+  end
+
+  def cancel_publish_course
+    @course.status = 0
+    @course.save
+    redirect_to accounts_course_path(@course)
   end
 
 
