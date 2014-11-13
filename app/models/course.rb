@@ -51,6 +51,7 @@ class Course < ActiveRecord::Base
     belongs_to :province              #关联省份、城镇、区县
     belongs_to :city
     belongs_to :district
+    has_many :orders , foreign_key: :goods_id
     has_many :lessons
     has_many :studyships
     has_many :students, :through => :studyships
@@ -66,7 +67,17 @@ class Course < ActiveRecord::Base
 
     # 返回剩下的空座位的数量
     def just_numbers_left
-        students_max - students_count
+        self.students_max -  self.paid_orders.count -
+            self.orders.where("status = ? AND expired_at > ?", "pending", Time.now).count
+    end
+
+    def paid_orders
+        self.orders.where(status: "paid")
+    end
+
+    def left_courses_count
+        self.students_max -  @course.paid_orders.count -
+            @course.orders.where("status = ? AND expired_at > ?", "pending", Time.now).count
     end
 
     # 用户是否已经下过订单

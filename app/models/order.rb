@@ -3,17 +3,18 @@
 #
 # Table name: orders # 订单
 #
-#  id         :integer          not null, primary key         # 订单
-#  user_id    :integer          not null                      # 订单所属用户id
-#  goods_id   :integer          not null                      # 商品id
-#  quantity   :integer          default(1), not null          # 数量
-#  price      :decimal(16, 2)   default(0.0), not null        # 价格(元)
-#  discount   :decimal(16, 2)   default(0.0), not null        # 打折后的价格(元)
-#  trade_no   :string(255)      not null                      # 交易号
-#  status     :string(255)      default("pendding"), not null # 订单状态
-#  created_at :datetime
-#  updated_at :datetime
-#  expired_at :datetime                                       # 订单作废时间
+#  id            :integer          not null, primary key        # 订单
+#  user_id       :integer          not null                     # 订单所属用户id
+#  goods_id      :integer          not null                     # 商品id
+#  quantity      :integer          default(1), not null         # 数量
+#  price         :decimal(16, 2)   default(0.0), not null       # 价格(元)
+#  discount      :decimal(16, 2)   default(0.0), not null       # 打折后的价格(元)
+#  trade_no      :string(255)      not null                     # 交易号
+#  status        :string(255)      default("pending"), not null # 订单状态
+#  created_at    :datetime
+#  updated_at    :datetime
+#  expired_at    :datetime                                      # 订单作废时间
+#  full_pay_path :text
 #
 # Indexes
 #
@@ -22,7 +23,7 @@
 
 class Order < ActiveRecord::Base
 
-  STATUS = %w(pendding paid completed canceled)
+  STATUS = %w(pending paid completed canceled)
   validates_inclusion_of :status, :in => STATUS
   validates_presence_of :trade_no
   before_validation :generate_trade_no
@@ -34,6 +35,9 @@ class Order < ActiveRecord::Base
   # before_destroy :decrease_student_count
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
   belongs_to :resource, class_name: 'Course', foreign_key: :goods_id
+
+  scope :not_expired, -> { where("expired_at > ?", Time.now) }
+
   STATUS.each do |status|
     define_method "#{status}?" do
       self.status == status
@@ -41,7 +45,7 @@ class Order < ActiveRecord::Base
   end
 
   def pay
-    if pendding?
+    if pending?
       # 订单生效
       update_attribute :status, 'paid'
     end
@@ -49,8 +53,8 @@ class Order < ActiveRecord::Base
 
 
   def complete
-    if pendding? or paid?
-      puts '订单生效' if pendding?
+    if pending? or paid?
+      puts '订单生效' if pending?
 
       update_attribute :status, 'completed'
     end
@@ -59,7 +63,7 @@ class Order < ActiveRecord::Base
   #
   def cancel
     transaction do # 在这里需要判断订单的状态
-      if pendding? or paid?
+      if pending? or paid?
         if paid?
           logger.info '退款...'
         end

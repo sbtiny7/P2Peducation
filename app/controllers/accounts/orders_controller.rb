@@ -13,6 +13,7 @@ class Accounts::OrdersController < ApplicationController
     @course = Course.find(params[:course_id])
     @order = current_user.orders.build
     @order.set_values @course
+    @pending_order = current_user.pending_order @course.id
     render 'new'
   end
 
@@ -25,8 +26,10 @@ class Accounts::OrdersController < ApplicationController
       @order = current_user.orders.build order_params
       @order.expired_at = Time.now + Settings.expired_duration
       @order.set_values(@course)
+      pay_url = @order.pay_url(current_user)
+      @order.full_pay_path = pay_url
       if @order.save
-        success, redirect = true, @order.pay_url(current_user) # and return
+        success, redirect = true, pay_url
       else
         message = '订单保存失败'
       end
@@ -112,7 +115,7 @@ class Accounts::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:quantity, :trade_no, :goods_id)
+    params.require(:order).permit(:quantity, :trade_no, :goods_id, :full_pay_path)
   end
 
 end
