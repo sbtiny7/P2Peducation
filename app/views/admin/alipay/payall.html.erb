@@ -23,7 +23,8 @@
               <td><%= cash.alipay_account %></td>
               <td><%= cash.finished %></td>
               <td>
-                  <button type="button" class="btn btn-info">完成处理</button>
+                <a href="editstatus/<%= cash.id %>"><button type="button" class="btn btn-info">完成处理</button></a>
+                <%= link_to '完成处理', edit_admin_alipay_path(cash),:class=>'btn btn-info' ,:role=>'button' %>
               </td>
             </tr>
         <% end %>

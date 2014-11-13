@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   namespace :admin do
     #jingtianxiaozhi
     get "alipay/payall"  => "alipay#payall"
+    get "alipay/editstatus/:id"  => "alipay#editstatus"
+
+    resources :alipay
 
     resources :lessons
     resources :courses
