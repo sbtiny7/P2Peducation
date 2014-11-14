@@ -29,4 +29,9 @@ class CoursesController < ApplicationController
       redirect_to public_show_course_path(course)
   end
 
+  def cancel_marked_course
+      course = Course.find(params[:id])
+      current_user.bookmarks.where(bookmarkable_id: course.id, bookmarkable_type: "Course").delete_all
+      redirect_to :back
+  end
 end

@@ -32,7 +32,11 @@
           <% if @course.is_jammed? %>
             <%= button_tag '没有名额啦', data: {disable_with: "请联系教师..."}, class: 'btn btn-default btn-lg' %>
           <% else %>
-              <%= link_to "#{ @marked ? "已" : ""}收藏", mark_course_path, class: 'btn btn-primary btn-lg' %>
+            <% if !@marked %>
+                <%= link_to "收藏", mark_course_path, class: "btn btn-primary btn-lg" %>
+            <% else %>
+                <%= link_to "取消收藏", cancel_marked_course_path, class: "btn btn-primary btn-lg" %>
+            <% end %>
             <%= link_to "报名#{ 'OFFLINE'.eql?(@course.course_type) ? '线下' : '线上' }课程", new_accounts_order_path(course_id: @course, i: Time.now.to_i), class: 'btn btn-primary btn-lg' %>
             <div class="numbers-left">仅剩下<%= @course.just_numbers_left %>位名额啦</div>
           <% end %>
