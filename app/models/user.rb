@@ -48,6 +48,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
+  before_save :ensure_authentication_token
+
+
   attr_accessor :avatar_x, :avatar_y, :avatar_w, :avatar_h
 
   #NOTICE
@@ -103,4 +106,23 @@ class User < ActiveRecord::Base
   def learning_courses
     self.orders.where(status: 'pending').includes(:resource).map {|x| x.resource}
   end
+
+  def ensure_authentication_token
+      if self.authentication_token.blank?
+          self.authentication_token = generate_authentication_token
+      end
+  end
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
+  end
+
+  def reset_authentication_token!
+      self.authentication_token = generate_authentication_token
+      self.save
+  end
 end
+
