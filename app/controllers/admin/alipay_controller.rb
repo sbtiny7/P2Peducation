@@ -4,8 +4,9 @@ class Admin::AlipayController <  ApplicationController
 
 
   def payall
-    @cash=Cash.all
+    @cashes=Cash.all
   end
+
 
 
   def edit

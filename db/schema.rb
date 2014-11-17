@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111092925) do
+ActiveRecord::Schema.define(version: 20141114095831) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -28,12 +28,13 @@ ActiveRecord::Schema.define(version: 20141111092925) do
   end
 
   create_table "cashes", force: true do |t|
-    t.string   "sum"
     t.string   "name"
     t.string   "alipay_account"
+    t.string   "sum"
     t.boolean  "finished"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "cities", force: true do |t|

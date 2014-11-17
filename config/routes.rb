@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
     resources :alipay
 
+
     resources :lessons
     resources :courses
     resources :users
@@ -41,7 +42,7 @@ Rails.application.routes.draw do
 
     #jingtianxiaozhi
     post "dashboard/cashout"  => "dashboard#cashout"
-
+    post "dashboard/cash/detail"  => "dashboard#cash_detail"
 
     root 'main#index'
     get 'config' => 'main#config_account', as: :config

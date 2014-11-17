@@ -1,7 +1,7 @@
 <div class="my_income">
   <h3> 当前余额 0 元 </h3>
 
-  <%= form_for :cash, url:accounts_dashboard_cashout_path do |f| %>
+  <%= form_for :cash, url: accounts_dashboard_cashout_path do |f| %>
       <div class="form-group">
         <%= f.label :sum, "提取金额" %>
         <%= f.text_field :sum, class: "form-control" %>
@@ -21,13 +21,60 @@
   <br/>
 
   <h3>收支明细</h3>
-  <%= form_for :course,  path: "/"  do |f| %>
-      按时间查询 <input type="text" placeholder="开始时间" id="start_time" class="js-datepicker"/>
-      <input type="text" placeholder="结束时间" class="js-datepicker"/>
-      <span class="course_name">课程名称 <input type="text" placeholder="输入课程名称"/></span>
+  <%= form_for :course, url: accounts_dashboard_cash_detail_path do |f| %>
+      按时间查询
+      <input type="text" name="start_time" placeholder="开始时间" id="start_time" class="js-datepicker"/>
+      <input type="text" name="end_time" placeholder="结束时间" class="js-datepicker"/>
+      <span class="course_name">
+        课程名称
+        <input type="text" placeholder="输入课程名称"/>
+      </span>
       <%= f.submit "查询", class: "btn btn-success" %>
   <% end %>
+<%if @cashes!=nil%>
+  <div class="col-md-12 payout">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>序号</th>
+        <th>客户姓名</th>
+        <th>支付宝账号</th>
+        <th>提取现金</th>
+        <th>申请时间</th>
+        <th>处理时间</th>
+        <th>处理状态</th>
+      </tr>
+      </thead>
 
+      <tbody>
+      <% @cashes.each do |cash| %>
+          <tr>
+            <td><%= cash.id %></td>
+            <td><%= cash.name %></td>
+            <td><%= cash.alipay_account %></td>
+            <td><%= cash.sum %></td>
+            <td><%= cash.created_at %></td>
+            <td>
+              <% if !cash.finished %>
+                  无
+              <% else %>
+                  <%= cash.updated_at %>
+              <% end %>
+            </td>
+            <td>
+              <% if cash.finished %>
+                  已经处理
+              <% else %>
+                  尚未处理
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+
+    </table>
+  </div>
+<%end%>
   <script>
       $('.js-datepicker').datepicker({
           onSelect: function () {

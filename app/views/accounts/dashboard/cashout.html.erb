@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%=@id%>
 <html>
 <head>
     <title></title>
@@ -13,6 +14,7 @@
               <th>客户姓名</th>
               <th>提取现金</th>
               <th>支付宝账号</th>
+              <th>处理状态</th>
             </tr>
         </thead>
 
@@ -22,6 +24,7 @@
               <td><%=@cash.name%></td>
               <td><%=@cash.sum%></td>
               <td><%=@cash.alipay_account%></td>
+              <td>未处理</td>
             </tr>
         </tbody>
 
