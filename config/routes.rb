@@ -12,6 +12,13 @@ Rails.application.routes.draw do
 
   # ↑ 移动端API ↑
 
+  namespace :api do
+    post "stream/auth"
+    post "stream/stream_start"
+    post "stream/stream_stop"
+    post "stream/change_archived_url"
+  end
+
 
   # ↓ 咱们用的后台管理 ↓
 
