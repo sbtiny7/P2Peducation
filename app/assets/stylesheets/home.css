@@ -1,0 +1,57 @@
+/* banner */
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#banner {
+  background-image: url("sunset.jpg");
+  margin-top: 10px;
+  height: 406px;
+  text-align: center;
+}
+
+#watchVideo {
+  padding: 10px;
+}
+
+#banner form {
+  margin-top: 40px;
+  padding: 10px;
+}
+
+/* topic */
+
+.helpout {
+  margin: 10px 30px;
+  padding: 0px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.info {
+  height: 40px;
+  text-align: center;
+  margin-top: 260px;
+  color: white;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.bg-image-lg {
+  background-image: url("sunset.jpg");
+}
+
+.bg-image-sm {
+  background-image: url("cooking.jpg");
+}
+
+/* category */
+
+#category {
+  text-align: center;
+}
+
+#category-list span {
+  font-size: 3em;
+  margin: 20px;
+}
