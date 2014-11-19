@@ -4,6 +4,20 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
 #banner {
   background-image: url("sunset.jpg");
   margin-top: 10px;
@@ -20,13 +34,28 @@
   padding: 10px;
 }
 
+#introduction {
+  width: 350px;
+  height: 250px;
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  top: 70px;
+  left: 100px;
+}
+
+#introduction img {
+  position: relative;
+  left: -80px;
+}
+
 /* topic */
 
 .helpout {
   margin: 10px 30px;
   padding: 0px;
   height: 300px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .info {
@@ -48,10 +77,40 @@
 /* category */
 
 #category {
+  background-color: rgb(220, 220, 220);
+}
+
+#category {
   text-align: center;
 }
 
 #category-list span {
   font-size: 3em;
   margin: 20px;
+}
+
+.category-helpout {
+  width: 350px;
+  height: 350px;
+  background-color: white;
+  margin: 10px;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+.category-helpout-course {
+  height: 200px;
+}
+
+.category-helpout-course span {
+  font-size: 2em;
+  position: relative;
+  top: 150px;
+  left: 50px;
+}
+
+.category-helpout-avatar img {
+  position: relative;
+  top: -40px;
+  left: -90px;
 }

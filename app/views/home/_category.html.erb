@@ -1,4 +1,4 @@
-<div id="category" class="panel panel-default">
+<div id="category" class="container panel panel-default">
   <div class="panel-body">
     <div>
       <h2>Helpouts by category</h2>
@@ -16,6 +16,33 @@
       <span class="glyphicon glyphicon-camera" data-toggle="toggletip"
         data-placement="top" title="Camera"></span>
     </div>
+
+    <div class="row">
+      <a href="#"><span class="left">MUSIC</span></a>
+      <a href="#"><span class="right">VIEW ALL</span></a>
+    </div>
+
+    <% 2.times do %>
+      <div class="row">
+        <% 3.times do %>
+          <div class="category-helpout col-lg-3">
+            <div class="category-helpout-course bg-image-sm">
+              <span>Cooking</span>
+            </div>
+            <a class="category-helpout-avatar" href="#">
+              <%= image_tag "people.jpg", class: "avatar" %>
+              Alice
+            </a>
+            <div>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span>￥20</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
 
   </div>
 </div>
