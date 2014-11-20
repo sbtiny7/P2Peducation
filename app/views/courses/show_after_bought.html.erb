@@ -1,5 +1,21 @@
+<script>
+</script>
+
+</script>
 <h1>
   <%= @course.title %>
 </h1>
 
+<div id="chat_box">
+</div>
+
+<input id="message" type="text"/>
+<button id="send_message">发送</button>
 <%= image_tag @course.image, :width => 400 %>
+
+<%= javascript_include_tag "http://#{Settings.host}:9292/faye/faye.js"%>
+<script>
+var faye_server = "http://<%= Settings.host %>:9292/faye"
+var chat_channel = "<%= @chat_channel %>"
+</script>
+<%= javascript_include_tag "chat"%>
