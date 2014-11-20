@@ -117,4 +117,8 @@ class Course < ActiveRecord::Base
     def init
         self.status = 0
     end
+
+    def chat_channel
+        "/chat/#{self.id}"
+    end
 end

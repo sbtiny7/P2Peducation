@@ -23,6 +23,7 @@ class CoursesController < ApplicationController
   def show_after_bought
     @course = Course.where(status: true).find(params[:id])
     @tieckts_bought = current_user.has_bought? @course.id
+    @chat_channel = @course.chat_channel
   end
 
   def enroll
