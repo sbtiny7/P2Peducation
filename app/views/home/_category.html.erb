@@ -1,5 +1,5 @@
-<div id="category" class="container panel panel-default">
-  <div class="panel-body">
+<div id="category" class="panel panel-default">
+  <div class="container panel-body">
     <div>
       <h2>Helpouts by category</h2>
     </div>
@@ -18,8 +18,8 @@
     </div>
 
     <div class="row">
-      <a href="#"><span class="left">MUSIC</span></a>
-      <a href="#"><span class="right">VIEW ALL</span></a>
+      <a href="#"><span class="left font-2x">MUSIC</span></a>
+      <a href="#"><span class="right font-2x">VIEW ALL</span></a>
     </div>
 
     <% 2.times do %>
@@ -30,14 +30,16 @@
               <span>Cooking</span>
             </div>
             <a class="category-helpout-avatar" href="#">
-              <%= image_tag "people.jpg", class: "avatar" %>
+              <div class="avatar-bg category-avatar">
+                <%= image_tag "people.jpg", class: "avatar" %>
+              </div>
               Alice
             </a>
             <div>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span>￥20</span>
+              <% 5.times do %>
+                <span class="glyphicon glyphicon-star green"></span>
+              <% end %>
+              <span>￥19.99</span>
             </div>
           </div>
         <% end %>

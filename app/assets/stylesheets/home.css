@@ -1,22 +1,25 @@
-/* banner */
-
-.bg-black {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.left {
-  text-align: left;
-}
-
-.right {
-  text-align: right;
-}
-
+/* common */
 .avatar {
   width: 80px;
   height: 80px;
   border-radius: 100%;
+  position: relative;
+  top: 2px;
+  left: 0px;
 }
+
+.avatar-bg {
+  background-color: white;
+  width: 84px;
+  height: 84px;
+  border-radius: 100%;
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* banner */
 
 #banner {
   background-image: url("sunset.jpg");
@@ -25,13 +28,38 @@
   text-align: center;
 }
 
-#watchVideo {
-  padding: 10px;
+#banner-title {
+  margin-top: 50px;
 }
 
-#banner form {
-  margin-top: 40px;
+#watchVideo {
+  margin-top: 30px;
+}
+
+#watchVideo span {
   padding: 10px;
+  border-radius: 5px;
+}
+
+#searchForm {
+  margin-top: 40px;
+}
+
+#searchForm div.bg-black {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#searchForm input {
+  width: 400px;
+  height: 40px;
+}
+
+#searchForm span {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 #introduction {
@@ -41,18 +69,37 @@
   border-radius: 5px;
   position: relative;
   top: 70px;
-  left: 100px;
+  left: 150px;
 }
 
-#introduction img {
+#introduction div.bg-green {
+  height: 100px;
+}
+
+.banner-avatar {
+  float: left;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.indicator {
   position: relative;
-  left: -80px;
+  top: 100px;
+  left: 270px;
+}
+
+.indicator div {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  float: left;
+  margin-left: 20px;
 }
 
 /* topic */
 
 .helpout {
-  margin: 10px 30px;
+  margin: 10px 48px;
   padding: 0px;
   height: 300px;
   border-radius: 5px;
@@ -109,8 +156,8 @@
   left: 50px;
 }
 
-.category-helpout-avatar img {
+.category-avatar {
   position: relative;
-  top: -40px;
-  left: -90px;
+  top: -42px;
+  left: 20px;
 }

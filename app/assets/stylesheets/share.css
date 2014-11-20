@@ -1,0 +1,112 @@
+.container-fluid {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Background color */
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.bg-green {
+  background-color: #53a93f;
+}
+
+.bg-gray {
+  background-color: rgb(100, 100, 100);
+}
+
+.bg-white {
+  background-color: white;
+}
+
+/* Font color */
+.white {
+  color: white;
+}
+
+.green {
+  color: #53a93f;
+}
+
+.gray {
+  color: rgb(100, 100, 100);
+}
+
+/* Font size */
+.font-2x {
+  font-size: 2em;
+}
+
+.font-3x {
+  font-size: 3em;
+}
+
+/* Header */
+
+/* head top */
+#header-top {
+  text-align: center;
+  color: white;
+  padding: 2px 0px;
+}
+
+#header-top a {
+  color: white;
+  text-decoration: none;
+}
+
+/* header mid */
+#header-mid div.left {
+  margin-left: 30px;
+}
+
+#header-mid div.right {
+  margin-right: 30px;
+  line-height: 63px;
+}
+
+hr {
+  margin: 0px 0px 20px;
+}
+
+/* header bottom */
+#header-bottom > div.left {
+  margin-left: 30px;
+}
+
+#header-bottom > div.right {
+  margin-right: 30px;
+}
+
+#header-bottom > div.right > * {
+  margin-left: 10px;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+}
+
+#footer-top {
+  color: white;
+  padding: 2px 0px;
+}
+
+#footer-top a {
+  color: white;
+  text-decoration: none;
+}
+
+footer div.btn-group {
+  margin: 20px 0px;
+}
+
+#footer-bottom span {
+  font-size: 1.5em;
+}
+
+#footer-bottom {
+  margin-bottom: 30px;
+}

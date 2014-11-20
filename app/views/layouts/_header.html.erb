@@ -1,11 +1,11 @@
-<header>
+<header class="container-fluid">
   <div id="header-top" class="bg-green">
     Introducing Helpouts on Partner Sites -- A new way to get expert Help and advice when you need it most.
     <%= link_to "Learn more", "" %>
   </div>
 
   <div class="row" id="header-mid">
-    <div class="col-lg-2">
+    <div class="left">
       <h2>Helpouts</h2>
     </div>
     
@@ -13,21 +13,21 @@
       <div>Search</div>
     <% end %>
     
-    <div class="col-lg-3 col-lg-offset-7">
-      name
-      <span class="glyphicon glyphicon-th"></span>
-      <span class="glyphicon glyphicon-bell"></span>
-      <span class="glyphicon glyphicon-plus"></span>
-      <span class="glyphicon glyphicon-user"></span>
+    <div class="right">
+      <span class="glyphicon glyphicon-th font-2x gray"></span>
+      <span class="glyphicon glyphicon-bell font-2x gray"></span>
+      <span class="glyphicon glyphicon-plus font-2x gray"></span>
+      <span class="glyphicon glyphicon-user font-2x gray"></span>
     </div>
   </div>
 
   <hr>
 
   <div id="header-bottom" class="row">
-    <div class="dropdown col-lg-2">
+    <div class="dropdown left">
       <button class="btn btn-default dropdown-toggle" type="button" 
         id="browsehelpouts" data-toggle="dropdown" aria-expanded="true">
+        <%= image_tag "home.png" %>
         Browse helpouts
         <span class="caret"></span>
       </button>
@@ -41,9 +41,10 @@
       </ul>
     </div>
 
-    <div class="dropdown col-lg-2">
+    <div class="dropdown left">
       <button class="btn btn-default dropdown-toggle" type="button" 
         id="yourhelpouts" data-toggle="dropdown" aria-expanded="true">
+        <%= image_tag "helpout.png" %>
         Your Helpouts
         <span class="caret"></span>
       </button>
@@ -57,11 +58,11 @@
       </ul>
     </div>
 
-    <div class="col-lg-4 col-lg-offset-4">
+    <div class="right">
       <button type="button" class="btn btn-default">About Helpouts</button>
       <button type="button" class="btn bg-green">Give your own Helpouts</button>
-      <a href="#"><span class="glyphicon glyphicon-question-sign"></span></a>
-      <a href="#"><span class="glyphicon glyphicon-cog"></span></a>
+      <a href="#"><span class="glyphicon glyphicon-question-sign font-2x gray"></span></a>
+      <a href="#"><span class="glyphicon glyphicon-cog font-2x gray"></span></a>
     </div>
   </div>
 </header>

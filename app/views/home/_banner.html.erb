@@ -1,28 +1,58 @@
-<div id="banner" class="row">
-  <div class="col-lg-6">
-    <div class="white">
-      <h2>Get help from an expert over live video</h2>
-    </div>
-
-    <div class="bg-black" id="watchVideo">
-      <a class="white" href="#">Watch a short video</a>
-    </div>
-
-    <form class="bg-black">
-      <input type="text" id="searchInput" 
-        placeholder="I need help with...">
-        <button type="submit" id="searchButton">
-          <span class="glyphicon glyphicon-search"></span>
-        </button>
-    </form>
-  </div>
-
-  <div class="col-lg-6">
-    <div id="introduction">
-      <div class="bg-green">
-        <%= image_tag "people.jpg", class: "avatar" %>
-        <span></span>
+<div id="banner" class="container-fluid">
+  <div class="row">
+    <div class="col-lg-5 col-lg-offset-1">
+      <div class="white" id="banner-title">
+        <span class="font-3x text-shadow">Get help from an expert over live video</span>
       </div>
+
+      <div id="watchVideo">
+        <span class="bg-black">
+          <a class="white" href="#">Watch a short video</a>
+        </span>
+      </div>
+
+      <form id="searchForm">
+        <div class="bg-black">
+          <input type="text" id="searchInput" 
+            placeholder="I need help with...">
+
+          <%# replace with button? %>
+          <span class="glyphicon glyphicon-search 
+            bg-green white font-2x"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-5">
+      <div id="introduction">
+        <div class="bg-green white">
+          <div class="avatar-bg banner-avatar">
+            <%= image_tag "people.jpg", class: "avatar" %>
+          </div>
+          <span class="font-2x">Cooking</span> <br>
+          <span>Alice</span>
+        </div>
+
+        <div>
+          <span class="font-2x">"Living is eating. Eating needs cooking."</span>
+        </div>
+
+        <div>
+          <% 5.times do %>
+            <span class="glyphicon glyphicon-star green"></span>
+          <% end %>
+        </div>
+        
+        <div>
+          <span>-Bob-</span>
+        </div>
+      </div>
+
+      <div class="indicator">
+        <div class="bg-white"></div>
+        <div class="bg-gray"></div>
+      </div>
+
     </div>
   </div>
 </div>
