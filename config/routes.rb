@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
 
+
   scope path: '/public' do
     get 'courses/:id' => 'courses#show', :as => 'public_show_course'
     get 'enroll' => 'courses#enroll', :as => 'public_enroll_course'
     post 'enroll' => 'courses#enroll_create', :as => 'enroll_course'
   end
+
+
+  # ↓ 网页端API ↓
+
+  namespace :api do
+    post 'upload_video(.:format)' => 'server#upload_video'
+  end
+
+  # ↑ 网页端API ↑
+
 
   # ↓ 移动端API ↓
 
@@ -40,7 +51,10 @@ Rails.application.routes.draw do
     match 'upload_avatar' => 'main#upload_avatar', as: :upload_avatar, via: [:post, :patch]
     match 'upload_avatar' => 'main#delete_avatar', as: :delete_avatar, via: [:delete]
     resources :courses do
-      resources :lessons
+      resources :lessons do
+        resources :videos
+      end
+      resources :videos
       member do
         get 'teacher'
         match 'teacher_action', via: [:put, :post, :patch]

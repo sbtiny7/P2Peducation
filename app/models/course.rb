@@ -46,6 +46,12 @@ class Course < ActiveRecord::Base
 
     attr_accessor :start_time_date, :start_time_hour, :start_time_min, :end_time_date, :end_time_hour, :end_time_min
 
+    scope :offline,   -> { where(:course_type => 'OFFLINE') }
+    scope :living,    -> { where(:course_type => 'ONLINE') }
+    scope :archived,  -> { where(:course_type => 'ONLINE') }
+    scope :online,    -> { where(:course_type => 'ONLINE') }
+    scope :published, -> { where(:status => 1) }
+
     belongs_to :user
     belongs_to :teacher
     belongs_to :province              #关联省份、城镇、区县

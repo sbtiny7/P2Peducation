@@ -1,0 +1,154 @@
+<% content_for :head do %>
+<%= javascript_include_tag FayeServer::Common.faye_js_url %>
+<% end %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">为《<%= @videoable.title %>》上传视频</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for @video, :url => @upload_url, :html => {:multipart => true, :id => "upload_video_form"}, :remote => true do |f| %>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <%= label_tag :file, '选择文件', class: 'btn btn-info' %>
+        </span>
+        <%= file_field_tag :file, class: "form-control", id: "avatar" %>
+      </div>
+    </div>
+    <div class="form-group text-right">
+      <a class="btn btn-primary" onclick="begin_upload()" %>上传</a>
+    </div>
+    <%= f.hidden_field :stream_name %>
+    <%= f.hidden_field :videoable_type %>
+    <%= f.hidden_field :videoable_id %>
+    <% end %>
+    <div id="pro_div">
+      <div>上传进度<span id="upload_progress_info" style="display:none">(<span id="upload_now_span"></span>/<span id="upload_all_span"></span>)</span></div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-warning progress-bar-striped active" id="upload_progress" style="width: 0%"></div>
+      </div>
+      <div id="ffmpeg_progress_div" style="display:none;">
+        <div>处理中...</div>
+        <div class="progress">
+          <div id="ffmpeg_bar" class="progress-bar progress-bar-success progress-bar-striped active" style="width: 100%"></div>
+        </div>
+      </div>
+      <button class="btn" onclick="window.location.reload();">取消上传</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+var upload_suc_flag = ffmpeg_suc_flag = false;
+var upload_timer;
+var ffmpeg_timer;
+var upload_now_width = ffmpeg_now_width = 0.0;
+function begin_upload() {
+  if($("#upload_video_form").valid()){
+    $("#upload_video_form").submit();
+  }
+}
+/*
+function update_upload_bar() {
+  upload_now_width += 0.5;
+  if (!upload_suc_flag && upload_now_width > 95) {
+    clearInterval(upload_timer);
+  } else {
+    $("#upload_bar").css("width", upload_now_width + "%");
+  }
+}
+*/
+function update_upload_bar() {
+  $.getJSON("/api/upload_video_progress.json?X-Progress-ID=<%= @video.stream_name %>",function(value){
+    console.log(value);
+    if (value.state == 'done' || value.state == 'uploading') {
+      upload_now_width = 100 * value.received / value.size;
+      $("#upload_progress").css("width", upload_now_width + "%");
+      $("#upload_now_span").html(value.received);
+      $("#upload_all_span").html(value.size);
+      $("#upload_progress_info").show();
+    }
+    if (value.state == 'done') {
+      clearInterval(upload_timer);
+      setTimeout('complate_upload()', 1000); 
+    }
+  });
+}
+/*
+function update_ffmpeg_bar() {
+  ffmpeg_now_width += 1;
+  if (!ffmpeg_suc_flag && ffmpeg_now_width > 95) {
+    clearInterval(ffmpeg_timer);
+  } else {
+    $("#ffmpeg_bar").css("width", ffmpeg_now_width + "%");
+  }
+}
+*/
+function update_ffmpeg_bar() {
+  clearInterval(ffmpeg_timer);
+  $("#ffmpeg_bar").css("width", "100%");
+}
+var faye_url = "<%= FayeServer::Common.faye_url %>";
+var client = new Faye.Client(faye_url);
+client.subscribe("<%= @video.faye_channel %>", function(data) {
+  console.log("in there");
+  console.log(data);
+  if (data.result == "upload_suc") {
+    upload_suc_flag = true;
+    upload_now_width = 100;
+    clearInterval(upload_timer);
+    setTimeout('complate_upload('+data.id+')', 1000);    
+  } else if (data.result == "ffmpeg_suc") {
+    //ffmpeg_suc_flag = true;
+    //ffmpeg_now_width = 100;
+    //clearInterval(ffmpeg_timer);
+    setTimeout('complate_ffmpeg('+data.id+')', 1000);    
+  }
+});
+function complate_upload() {
+  $("#upload_progress").css("width", "100%");
+  $("#upload_progress").removeClass("active");
+  $("#upload_progress").removeClass("progress-bar-striped");
+  //ffmpeg_timer = setInterval(function(){update_ffmpeg_bar()},1000);
+  $("#ffmpeg_progress_div").show();
+}
+function complate_ffmpeg(id) {
+  //$("#ffmpeg_bar").css("width", "100%").delay(3000).queue(function() {
+    window.location.href="<%= polymorphic_path([:accounts, @course, @lesson, Video].compact) %>"+id;
+  //});;
+}
+$(document).ready(function(){
+
+  $('#upload_video_form').submit(function(){
+    $('#pro_div').show(function(){
+      upload_timer = setInterval(function(){update_upload_bar()},1000);
+    });
+  });
+
+  $('#upload_video_form').validate({
+    rules: {
+      file: {
+        required: true,
+        extension: "mp4",
+        accept: "video/*"
+      }
+    },
+    messages: {
+      file: {
+        required: '请选择上传视频',
+        accept: '上传文件必须为视频类型',
+        extension: '只能上传后缀名为mp4的文件'
+      }
+    },
+    errorPlacement: function(error, element) {
+      console.log(error);
+      console.log(element);
+      error.appendTo( element.parent() );
+    }
+  });
+});
+</script>

@@ -1,0 +1,1 @@
+FayeConfig = YAML.load_file(File.join(Rails.root, "config", "faye_config.yml"))[Rails.env]

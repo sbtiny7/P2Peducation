@@ -103,6 +103,13 @@ class Accounts::CoursesController < ApplicationController
 
   def pub
     @course.update_column(:status, 1)
+    CachedSettings.courses_counts = {
+      :all      => Course.published.count,
+      :living   => Course.living.count,
+      :archived => Course.archived.count,
+      :online   => Course.online.count,
+      :offline  => Course.offline.count
+    }
     redirect_to course_path(@course)
   end
 

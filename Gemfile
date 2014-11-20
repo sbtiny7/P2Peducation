@@ -68,3 +68,9 @@ gem 'therubyracer'
 
 gem 'kaminari'
 gem 'bootstrap_kaminari'
+
+gem "rails-settings-cached", "0.4.1"
+
+gem "faye"
+gem "eventmachine"
+gem 'remotipart', '~> 1.2' #remote上传multipart文件

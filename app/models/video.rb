@@ -11,10 +11,17 @@
 #
 
 class Video < ActiveRecord::Base
-  belongs_to :videoable, :polymorphic => true
+    belongs_to :videoable, :polymorphic => true
 
-  def url(type)
+    def url(type)
     # case type.to_s
     # end
-  end
+    end
+
+    def faye_channel
+        "/channel/video/#{stream_name}"
+    end
+    def self.faye_channel
+        "/channel/video/*"
+    end
 end

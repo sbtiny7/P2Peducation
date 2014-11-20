@@ -38,3 +38,5 @@ module Jiaoyu
     }
   end
 end
+
+require File.join(Rails.root, "lib", "faye_server.rb")
