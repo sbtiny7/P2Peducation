@@ -26,6 +26,7 @@
   margin-top: 10px;
   height: 406px;
   text-align: center;
+  /* transition: all 1s linear; */
 }
 
 #banner-title {

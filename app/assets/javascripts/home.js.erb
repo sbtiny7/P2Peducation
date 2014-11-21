@@ -1,0 +1,35 @@
+var home = {};
+home.index = 0;
+
+$(function() {
+  $('.indicator div').click(function() {
+    if (home.handler)  clearTimeout(home.handler);
+    home.index = parseInt($(this).data("index"));
+    banner_switch(home.index);
+  });
+  home.handler = setTimeout(next, 5000);
+
+  $('#category-list span').tooltip();
+});
+
+function banner_switch(index) {
+  $(".indicator div.bg-white").removeClass("bg-white").addClass("bg-gray");
+  home.s = ".indicator div:nth-child(" + (index+1) + ")";
+  $this = $(home.s);
+  $this.removeClass("bg-gray").addClass("bg-white");
+
+  if (index == 0) {
+    $("#banner").css("background-image", 'url("assets/sunset.jpg")');
+  }
+  else if (index == 1) {
+    $("#banner").css("background-image", 'url("assets/shop.jpg")');
+  }
+
+  home.handler = setTimeout(next, 5000);
+}
+
+function next() {
+  home.index++;
+  home.index %= 2;
+  banner_switch(home.index);
+}
