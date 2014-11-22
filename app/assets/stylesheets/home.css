@@ -27,6 +27,7 @@
   height: 406px;
   text-align: center;
   /* transition: all 1s linear; */
+  clear: both;
 }
 
 #banner-title {
@@ -114,12 +115,16 @@
   border-radius: 0px 0px 10px 10px;
 }
 
-.bg-image-lg {
+.bg-image-sunset {
   background-image: url("sunset.jpg");
 }
 
-.bg-image-sm {
+.bg-image-cooking {
   background-image: url("cooking.jpg");
+}
+
+.bg-image-photograph {
+  background-image: url("photograph.jpg");
 }
 
 /* category */
@@ -128,37 +133,63 @@
   background-color: rgb(220, 220, 220);
 }
 
-#category {
-  text-align: center;
-}
-
 #category-list span {
   font-size: 3em;
   margin: 20px;
 }
 
-.category-helpout {
-  width: 350px;
-  height: 350px;
+.category-course {
+  width: 300px;
+  height: 250px;
   background-color: white;
   margin: 10px;
   padding: 0px;
   border-radius: 5px;
 }
 
-.category-helpout-course {
-  height: 200px;
+.category-course-image {
+  height: 150px;
 }
 
-.category-helpout-course span {
-  font-size: 2em;
+.category-course-info {
   position: relative;
-  top: 150px;
-  left: 50px;
+  top: -42px;
+}
+
+.category-course-teacher {
+  position: relative;
 }
 
 .category-avatar {
+  float: left;
+  margin-left: 20px;
+}
+
+.category-course hr {
+  clear: both;
+}
+
+.pre-next-btn {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 100%;
   position: relative;
-  top: -42px;
-  left: 20px;
+  top: 225px;
+}
+
+.pre-next-btn span {
+  margin-top: 25px;
+}
+
+.active {
+  display: block;
+}
+
+.inactive {
+  display: none;
+}
+
+.category-tab {
+  float: left;
 }

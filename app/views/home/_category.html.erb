@@ -1,4 +1,4 @@
-<div id="category" class="panel panel-default">
+<div id="category" class="panel panel-default text-center">
   <div class="container panel-body">
     <div>
       <h2>Helpouts by category</h2>
@@ -22,29 +22,77 @@
       <a href="#"><span class="right font-2x">VIEW ALL</span></a>
     </div>
 
-    <% 2.times do %>
-      <div class="row">
-        <% 3.times do %>
-          <div class="category-helpout col-lg-3">
-            <div class="category-helpout-course bg-image-sm">
-              <span>Cooking</span>
-            </div>
-            <a class="category-helpout-avatar" href="#">
-              <div class="avatar-bg category-avatar">
-                <%= image_tag "people.jpg", class: "avatar" %>
-              </div>
-              Alice
-            </a>
-            <div>
-              <% 5.times do %>
-                <span class="glyphicon glyphicon-star green"></span>
-              <% end %>
-              <span>￥19.99</span>
-            </div>
-          </div>
-        <% end %>
+    <div class="row">
+      <div class="pre-next-btn col-lg-1">
+        <span class="glyphicon glyphicon-chevron-left font-2x green"></span>
       </div>
-    <% end %>
+
+      <div class="col-lg-10">
+        <div class="category-tab active">
+          <% 2.times do %>
+            <div class="row">
+              <% 3.times do %>
+
+                <div class="category-course col-lg-3">
+                  <div class="category-course-image bg-image-cooking"> </div>
+                  <div class="category-course-info">
+                    <div class="category-course-teacher">
+                      <div class="avatar-bg category-avatar">
+                        <%= image_tag "alice.jpg", class: "avatar" %>
+                      </div>
+                      <span class="font-2x">Cooking</span><br>
+                      <span>Alice</span>
+                    </div>
+                    <hr>
+                    <div>
+                      <% 5.times do %>
+                        <span class="glyphicon glyphicon-star green"></span>
+                      <% end %>
+                      <span>￥19.99</span>
+                    </div>
+                  </div>
+                </div>
+
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="category-tab inactive">
+          <% 2.times do %>
+            <div class="row">
+              <% 3.times do %>
+
+                <div class="category-course col-lg-3">
+                  <div class="category-course-image bg-image-photograph"> </div>
+                  <div class="category-course-info">
+                    <div class="category-course-teacher">
+                      <div class="avatar-bg category-avatar">
+                        <%= image_tag "kyle.jpg", class: "avatar" %>
+                      </div>
+                      <span class="font-2x">Photograph</span><br>
+                      <span>Kyle</span>
+                    </div>
+                    <hr>
+                    <div>
+                      <% 5.times do %>
+                        <span class="glyphicon glyphicon-star green"></span>
+                      <% end %>
+                      <span>￥19.99</span>
+                    </div>
+                  </div>
+                </div>
+
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="pre-next-btn col-lg-1">
+        <span class="glyphicon glyphicon-chevron-right font-2x green"></span>
+      </div>
+    </div>
 
   </div>
 </div>

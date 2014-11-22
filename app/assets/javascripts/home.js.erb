@@ -10,6 +10,14 @@ $(function() {
   home.handler = setTimeout(next, 5000);
 
   $('#category-list span').tooltip();
+
+  var w = $(".category-tab").width();
+  <%# console.log(w); %>
+
+  $(".pre-next-btn").click(function() {
+    $(".category-tab").toggleClass("inactive");
+    <%# console.log("pre-next-btn"); %>
+  });
 });
 
 function banner_switch(index) {

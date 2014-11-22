@@ -44,43 +44,9 @@
 
 /* Header */
 
-/* head top */
-#header-top {
-  text-align: center;
-  color: white;
-  padding: 2px 0px;
-}
-
-#header-top a {
-  color: white;
-  text-decoration: none;
-}
-
-/* header mid */
-#header-mid div.left {
-  margin-left: 30px;
-}
-
-#header-mid div.right {
-  margin-right: 30px;
-  line-height: 63px;
-}
-
-hr {
-  margin: 0px 0px 20px;
-}
-
-/* header bottom */
-#header-bottom > div.left {
-  margin-left: 30px;
-}
-
-#header-bottom > div.right {
-  margin-right: 30px;
-}
-
-#header-bottom > div.right > * {
-  margin-left: 10px;
+#header-nav {
+  margin: 10px 0px;
+  height: 35px;
 }
 
 /* Footer */

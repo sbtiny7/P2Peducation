@@ -1,31 +1,13 @@
-<header class="container-fluid">
-  <div id="header-top" class="bg-green">
+<header>
+  <div class="bg-green text-center white">
     Introducing Helpouts on Partner Sites -- A new way to get expert Help and advice when you need it most.
-    <%= link_to "Learn more", "" %>
+    <%= link_to "Learn more", "", class: "white" %>
   </div>
 
-  <div class="row" id="header-mid">
-    <div class="left">
-      <h2>Helpouts</h2>
-    </div>
-    
-    <% if false %>
-      <div>Search</div>
-    <% end %>
-    
-    <div class="right">
-      <span class="glyphicon glyphicon-th font-2x gray"></span>
-      <span class="glyphicon glyphicon-bell font-2x gray"></span>
-      <span class="glyphicon glyphicon-plus font-2x gray"></span>
-      <span class="glyphicon glyphicon-user font-2x gray"></span>
-    </div>
-  </div>
-
-  <hr>
-
-  <div id="header-bottom" class="row">
+  <div id="header-nav">
+    <button type="button" class="btn btn-link left"><strong>Helpouts</strong></button>
     <div class="dropdown left">
-      <button class="btn btn-default dropdown-toggle" type="button" 
+      <button class="btn btn-link dropdown-toggle" type="button" 
         id="browsehelpouts" data-toggle="dropdown" aria-expanded="true">
         <%= image_tag "home.png" %>
         Browse helpouts
@@ -42,7 +24,7 @@
     </div>
 
     <div class="dropdown left">
-      <button class="btn btn-default dropdown-toggle" type="button" 
+      <button class="btn btn-link dropdown-toggle" type="button" 
         id="yourhelpouts" data-toggle="dropdown" aria-expanded="true">
         <%= image_tag "helpout.png" %>
         Your Helpouts
@@ -59,10 +41,8 @@
     </div>
 
     <div class="right">
-      <button type="button" class="btn btn-default">About Helpouts</button>
       <button type="button" class="btn bg-green">Give your own Helpouts</button>
-      <a href="#"><span class="glyphicon glyphicon-question-sign font-2x gray"></span></a>
-      <a href="#"><span class="glyphicon glyphicon-cog font-2x gray"></span></a>
+      <button type="button" class="btn btn-link">Sign in</button>
     </div>
   </div>
 </header>
