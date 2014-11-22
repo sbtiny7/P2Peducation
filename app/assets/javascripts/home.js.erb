@@ -11,9 +11,7 @@ $(function() {
 
   $('#category-list span').tooltip();
 
-  var w = $(".category-tab").width();
-  <%# console.log(w); %>
-
+  category_init();
   $(".pre-next-btn").click(function() {
     $(".category-tab").toggleClass("inactive");
     <%# console.log("pre-next-btn"); %>
@@ -40,4 +38,12 @@ function next() {
   home.index++;
   home.index %= 2;
   banner_switch(home.index);
+}
+
+function category_init() {
+  var width = $(".category-tab").width();
+  var height = $(".category-tab").height();
+  console.log(width, height);
+  $(".inactive").css("top", -height);
+  $(".inactive").css("left", width);
 }

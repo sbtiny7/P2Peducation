@@ -26,7 +26,7 @@
   margin-top: 10px;
   height: 406px;
   text-align: center;
-  /* transition: all 1s linear; */
+  transition: all 1s linear;
   clear: both;
 }
 
@@ -71,7 +71,6 @@
   border-radius: 5px;
   position: relative;
   top: 70px;
-  left: 150px;
 }
 
 #introduction div.bg-green {
@@ -87,7 +86,7 @@
 .indicator {
   position: relative;
   top: 100px;
-  left: 270px;
+  left: 135px;
 }
 
 .indicator div {
@@ -101,10 +100,15 @@
 /* topic */
 
 .helpout {
-  margin: 10px 48px;
+  margin: 10px 45px 10px 0px;
   padding: 0px;
   height: 300px;
   border-radius: 5px;
+  background-repeat: no-repeat;
+}
+
+.helpout:hover {
+  box-shadow: 0 0 10px #aaa;
 }
 
 .info {
@@ -139,7 +143,7 @@
 }
 
 .category-course {
-  width: 300px;
+  width: 285px;
   height: 250px;
   background-color: white;
   margin: 10px;
@@ -188,8 +192,10 @@
 
 .inactive {
   display: none;
+  position: relative;
+  
 }
 
 .category-tab {
-  float: left;
+  
 }
