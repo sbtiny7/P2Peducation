@@ -85,6 +85,7 @@ Rails.application.routes.draw do
   get 'courses' => 'courses#index', as: :courses
 
   root 'home#index'
+  get 'teach' => "teach#index"
 
   #for api
   get 'home/index'

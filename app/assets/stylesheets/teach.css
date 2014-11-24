@@ -1,0 +1,41 @@
+.no-padding {
+  padding: 0px;
+}
+
+#teach-banner {
+  margin-top: 20px;
+  height: 400px;
+}
+
+.banner-bg {
+  position: absolute;
+  height: 400px;
+  width: 100%;
+  transition: all 1s linear;
+}
+
+.bg-active {
+  opacity: 1;
+}
+
+.bg-inactive {
+  opacity: 0;
+}
+
+#banner-bg-1 {
+  background-image: url("sunset.jpg");
+}
+
+#banner-bg-2 {
+  background-image: url("shop.jpg");
+}
+
+#banner-text {
+  position: absolute;
+  top: 200px;
+}
+
+#choice-list {
+  padding: 20px 0;
+  margin-bottom: 100px;
+}

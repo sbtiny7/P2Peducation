@@ -19,3 +19,4 @@
 config/*.yml
 *.DS_Store
 public/assets/
+*.swp

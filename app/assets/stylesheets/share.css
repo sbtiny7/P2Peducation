@@ -21,6 +21,10 @@
   background-color: rgb(100, 100, 100);
 }
 
+.bg-light-gray {
+  background-color: rgb(220, 220, 220);
+}
+
 .bg-white {
   background-color: white;
 }
