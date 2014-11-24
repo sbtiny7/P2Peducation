@@ -2,6 +2,11 @@ var home = {};
 home.index = 0;
 
 $(function() {
+  home.category_tab_width = parseInt($(".category-tab").width()) + 10;
+  home.category_tab_height = parseInt($(".category-tab").height());
+  console.log("category tab width: " + home.category_tab_width);
+  console.log("category tab height: " + home.category_tab_height);
+
   $('.indicator div').click(function() {
     if (home.handler)  clearTimeout(home.handler);
     home.index = parseInt($(this).data("index"));
@@ -12,10 +17,13 @@ $(function() {
   $('#category-list span').tooltip();
 
   category_init();
-  $(".pre-next-btn").click(function() {
-    $(".category-tab").toggleClass("inactive");
-    <%# console.log("pre-next-btn"); %>
+  $(".pre-btn").click(function() {
+    horizonal_offset(".category-tabs", home.category_tab_width);
   });
+
+  $(".next-btn").click(function() {
+    horizonal_offset(".category-tabs", -home.category_tab_width);
+  })
 });
 
 function banner_switch(index) {
@@ -41,9 +49,13 @@ function next() {
 }
 
 function category_init() {
-  var width = $(".category-tab").width();
-  var height = $(".category-tab").height();
-  console.log(width, height);
-  $(".inactive").css("top", -height);
-  $(".inactive").css("left", width);
+  $(".category-slider").height(home.category_tab_height);
+  $(".inactive").css("top", -home.category_tab_height);
+  $(".inactive").css("left", home.category_tab_width);
+}
+
+function horizonal_offset(selector, offset) {
+  var old_val = parseInt($(selector).css("left"));
+  var new_val = old_val + offset;
+  $(selector).css("left", new_val);
 }

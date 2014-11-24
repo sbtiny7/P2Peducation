@@ -26,8 +26,8 @@
   margin-top: 10px;
   height: 406px;
   text-align: center;
-  transition: all 1s linear;
-  clear: both;
+  /* transition: all 1s linear; */
+  /* clear: both; */
 }
 
 #banner-title {
@@ -142,8 +142,53 @@
   margin: 20px;
 }
 
+.category-slider {
+
+}
+
+.pre-next-hover {
+  background-color: rgb(220, 220, 220);
+  height: 200px;
+  z-index: 99;
+}
+
+.pre-next-btn {
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 100%;
+  position: relative;
+  top: 225px;
+}
+
+.pre-next-btn span {
+  margin-top: 25px;
+}
+
+.category-viewport {
+  overflow: hidden;
+  height: 540px;
+}
+
+.category-tabs {
+  position: absolute;
+  transition: all .6s ease;
+}
+
+.category-tab {
+  /* position: static; */
+}
+
+.active {
+  /* position: absolute; */
+}
+
+.inactive {
+  position: relative;
+}
+
 .category-course {
-  width: 285px;
+  width: 270px;
   height: 250px;
   background-color: white;
   margin: 10px;
@@ -171,31 +216,4 @@
 
 .category-course hr {
   clear: both;
-}
-
-.pre-next-btn {
-  width: 80px;
-  height: 80px;
-  background-color: white;
-  border-radius: 100%;
-  position: relative;
-  top: 225px;
-}
-
-.pre-next-btn span {
-  margin-top: 25px;
-}
-
-.active {
-  display: block;
-}
-
-.inactive {
-  display: none;
-  position: relative;
-  
-}
-
-.category-tab {
-  
 }
