@@ -2,8 +2,10 @@ var home = {};
 home.index = 0;
 
 $(function() {
-  home.category_tab_width = parseInt($(".category-tab").width()) + 10;
-  home.category_tab_height = parseInt($(".category-tab").height());
+  <%# home.category_tab_width = parseInt($(".category-tab").width()); %>
+  <%# home.category_tab_height = parseInt($(".category-tab").height()); %>
+  home.category_tab_width = 840;
+  home.category_tab_height = 540;
   console.log("category tab width: " + home.category_tab_width);
   console.log("category tab height: " + home.category_tab_height);
 
@@ -18,11 +20,11 @@ $(function() {
 
   category_init();
   $(".pre-btn").click(function() {
-    horizonal_offset(".category-tabs", home.category_tab_width);
+    horizonal_offset(".category-tabs", home.category_tab_width + 10);
   });
 
   $(".next-btn").click(function() {
-    horizonal_offset(".category-tabs", -home.category_tab_width);
+    horizonal_offset(".category-tabs", -home.category_tab_width - 10);
   })
 });
 
@@ -32,12 +34,8 @@ function banner_switch(index) {
   $this = $(home.s);
   $this.removeClass("bg-gray").addClass("bg-white");
 
-  if (index == 0) {
-    $("#banner").css("background-image", 'url("assets/sunset.jpg")');
-  }
-  else if (index == 1) {
-    $("#banner").css("background-image", 'url("assets/shop.jpg")');
-  }
+  // temporary for two background image
+  $(".banner-bg").toggleClass("bg-active").toggleClass("bg-inactive");
 
   home.handler = setTimeout(next, 5000);
 }
@@ -50,8 +48,11 @@ function next() {
 
 function category_init() {
   $(".category-slider").height(home.category_tab_height);
+  $(".category-viewport").width(home.category_tab_width);
+  $(".category-tabs").height(home.category_tab_height);
+  $(".category-tabs").width(10000);
   $(".inactive").css("top", -home.category_tab_height);
-  $(".inactive").css("left", home.category_tab_width);
+  $(".inactive").css("left", home.category_tab_width+10);
 }
 
 function horizonal_offset(selector, offset) {

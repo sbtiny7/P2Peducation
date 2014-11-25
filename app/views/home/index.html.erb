@@ -1,3 +1,8 @@
+<%= content_for :head do %>
+  <%= javascript_include_tag "home" %>
+  <%= stylesheet_link_tag "home" %>
+<% end %>
+
 <%= render "banner" %>
 <%= render "topic" %>
 <%= render "category" %>

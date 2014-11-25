@@ -5,8 +5,11 @@
   </div>
 
   <div id="header-nav">
-    <button type="button" class="btn btn-link left"><strong>Helpouts</strong></button>
-    <div class="dropdown left">
+    <a href="<%= home_path %>">
+      <button type="button" class="btn btn-link pull-left"><strong>Helpouts</strong></button>
+    </a>
+    
+    <div class="dropdown pull-left">
       <button class="btn btn-link dropdown-toggle" type="button" 
         id="browsehelpouts" data-toggle="dropdown" aria-expanded="true">
         <%= image_tag "home.png" %>
@@ -23,7 +26,7 @@
       </ul>
     </div>
 
-    <div class="dropdown left">
+    <div class="dropdown pull-left">
       <button class="btn btn-link dropdown-toggle" type="button" 
         id="yourhelpouts" data-toggle="dropdown" aria-expanded="true">
         <%= image_tag "helpout.png" %>
@@ -40,8 +43,10 @@
       </ul>
     </div>
 
-    <div class="right">
-      <button type="button" class="btn bg-green">Give your own Helpouts</button>
+    <div class="pull-right">
+      <a href="<%= teach_path %>" class="white">
+        <button type="button" class="btn bg-green">Give your own Helpouts</button>
+      </a>
       <button type="button" class="btn btn-link">Sign in</button>
     </div>
   </div>

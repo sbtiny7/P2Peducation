@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require lib/common
 //= require bootstrap-sprockets
-//= require_tree .
+//= require share
+// require_tree .
 // require json2
 // require kindeditor
 // require make_ie_happy

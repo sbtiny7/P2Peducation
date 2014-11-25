@@ -84,8 +84,8 @@ Rails.application.routes.draw do
   get 'course/:id' => 'courses#show_after_bought', as: :course
   get 'courses' => 'courses#index', as: :courses
 
-  root 'home#index'
-  get 'teach' => "teach#index"
+  root 'home#index', as: :home
+  get 'teach' => "teach#index", as: :teach
 
   #for api
   get 'home/index'

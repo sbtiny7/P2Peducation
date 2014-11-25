@@ -15,19 +15,36 @@
   border-radius: 100%;
 }
 
-.text-shadow {
-  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7);
-}
-
 /* banner */
 
 #banner {
-  background-image: url("sunset.jpg");
   margin-top: 10px;
-  height: 406px;
+  height: 400px;
   text-align: center;
-  /* transition: all 1s linear; */
-  /* clear: both; */
+  padding-left: 0px;
+}
+
+.banner-bg {
+  position: absolute;
+  height: 400px;
+  width: 100%;
+  transition: all 1s linear;
+}
+
+.bg-active {
+  opacity: 1;
+}
+
+.bg-inactive {
+  opacity: 0;
+}
+
+#banner-bg-1 {
+  background-image: url("sunset.jpg");
+}
+
+#banner-bg-2 {
+  background-image: url("shop.jpg");
 }
 
 #banner-title {
@@ -102,7 +119,7 @@
 .helpout {
   margin: 10px 45px 10px 0px;
   padding: 0px;
-  height: 300px;
+  height: 240px;
   border-radius: 5px;
   background-repeat: no-repeat;
 }
@@ -114,7 +131,7 @@
 .info {
   height: 40px;
   text-align: center;
-  margin-top: 260px;
+  margin-top: 200px;
   color: white;
   border-radius: 0px 0px 10px 10px;
 }
@@ -168,15 +185,18 @@
 .category-viewport {
   overflow: hidden;
   height: 540px;
+  padding: 0px;
 }
 
 .category-tabs {
   position: absolute;
+  left: 0px;
   transition: all .6s ease;
 }
 
 .category-tab {
-  /* position: static; */
+  width: 840px;
+  height: 540px;
 }
 
 .active {
@@ -214,6 +234,14 @@
   margin-left: 20px;
 }
 
+.teacher-name {
+  margin: 10px 0px 0px 10px;
+}
+
 .category-course hr {
   clear: both;
+}
+
+.course-review {
+  margin: 0px 10px;
 }
