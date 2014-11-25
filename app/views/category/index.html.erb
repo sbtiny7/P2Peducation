@@ -1,0 +1,40 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "category" %>
+<% end %>
+
+<div class="container-fluid bg-light-gray">
+  <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-2">
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <h2>Browse by category</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <select name="category-filter" id="search-category-filter">
+          <option value="art">Art</option>
+          <option value="cooking">Cooking</option>
+        </select>
+      </div>
+
+      <div class="col-lg-6 col-md-6">
+        <div>
+          Sort by
+          <select name="search-sort" id="">
+            <option value="b">Best match</option>
+            <option value="t">Soonest available</option>
+            <option value="p">Lowest price</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+      </div>
+    </div>
+
+  </div>
+</div>

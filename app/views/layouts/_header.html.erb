@@ -17,12 +17,24 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="browsehelpouts">
-        <li role="presentation"><a role="menuitem" tabindex="-1"
-          href="#">Home</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1"
-          href="#">Art</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1"
-          href="#">Cooking</a></li>
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="#">
+            <%= image_tag "home.png" %>
+            Home
+          </a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="<%= category_path %>">
+            <%= image_tag "cooking.png" %>
+            Cooking
+          </a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="<%= category_path %>">
+            <%= image_tag "art.png" %>
+            Art
+          </a>
+        </li>
       </ul>
     </div>
 
