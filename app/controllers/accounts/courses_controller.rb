@@ -5,6 +5,9 @@ class Accounts::CoursesController < ApplicationController
 
   layout 'accounts'
 
+  def publish
+    render layout: "application"
+  end
   # GET /courses
   # GET /courses.json
   def index

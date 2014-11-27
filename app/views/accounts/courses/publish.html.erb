@@ -1,0 +1,25 @@
+<div id="flashContent"></div>
+<%= javascript_include_tag "swfobject" %>
+<script type="text/javascript">
+    var swfVersionStr = "11.1.0";
+    var xiSwfUrlStr = "playerProductInstall.swf";
+    var flashvars = {};
+    flashvars.stream_name = "abc";
+    //flashvars.server_url = "rtmp://yishizhibo.com:1937/live";
+    flashvars.server_url = "rtmp://127.0.0.1:1935/live";
+    var params = {};
+    params.quality = "high";
+    params.bgcolor = "#ffffff";
+    params.allowscriptaccess = "sameDomain";
+    params.allowfullscreen = "true";
+    var attributes = {};
+    attributes.id = "DeviceList";
+    attributes.name = "DeviceList";
+    attributes.align = "middle";
+    swfobject.embedSWF(
+            "/streamer.swf", "flashContent",
+            "480", "600",
+            swfVersionStr, xiSwfUrlStr,
+            flashvars, params, attributes);
+    swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+</script>
