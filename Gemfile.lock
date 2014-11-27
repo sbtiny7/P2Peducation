@@ -84,6 +84,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.2)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     hike (1.2.3)
     httparty (0.13.3)
       json (~> 1.8)
@@ -151,6 +156,7 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     ref (1.0.5)
+    request_store (1.1.0)
     responders (1.1.1)
       railties (>= 3.2, < 4.2)
     rolify (3.4.1)
@@ -215,6 +221,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   execjs
+  gon (~> 5.2.3)
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails

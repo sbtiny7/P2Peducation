@@ -1,7 +1,7 @@
 # encoding: utf-8
 class CoursesController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:enroll_create]
+  before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
     conditions = {:status => 1}
@@ -23,6 +23,12 @@ class CoursesController < ApplicationController
   def show_after_bought
     @course = Course.where(status: true).find(params[:id])
     @tieckts_bought = current_user.has_bought? @course.id
+    @chat_channel = @course.chat_channel
+    @user = current_user
+    gon.faye_server = "http://#{Settings.host}:9292/faye"
+    gon.chat_channel = @chat_channel
+    gon.user_id =  @user.id 
+    gon.comment_token =  @course.comment_token 
   end
 
   def enroll

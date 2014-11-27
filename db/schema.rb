@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112095416) do
+ActiveRecord::Schema.define(version: 20141120085118) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20141112095416) do
     t.integer  "status",                                  default: 0,   null: false, comment: "课程状态"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment_token"
   end
 
   add_index "courses", ["token"], name: "index_courses_on_token", unique: true, using: :btree
