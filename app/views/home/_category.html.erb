@@ -1,113 +1,96 @@
-<div id="category" class="panel panel-default text-center">
-  <div class="container-fluid panel-body">
-    <div>
-      <h2>Helpouts by category</h2>
+<div class="bg-gray">
+  <div class="category-container">
+    <h2 class="category-head">Helpouts by category</h2>
+
+    <div class="category-list">
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Art" id="category-icon-1"></div>
+      </a>
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Computer" id="category-icon-2"></div>
+      </a>
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Cooking" id="category-icon-3"></div>
+      </a>
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Book" id="category-icon-4"></div>
+      </a>
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Fashion" id="category-icon-5"></div>
+      </a>
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Fitness" id="category-icon-6"></div>
+      </a>
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Health" id="category-icon-7"></div>
+      </a>
+      <a class="category-icon-container" href="#">
+        <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Garden" id="category-icon-8"></div>
+      </a>
     </div>
 
-    <div id="category-list">
-      <span class="glyphicon glyphicon-headphones" data-toggle="toggletip"
-        data-placement="top" title="Music"></span>
-      <span class="glyphicon glyphicon-book" data-toggle="toggletip"
-        data-placement="top" title="Book"></span>
-      <span class="glyphicon glyphicon-heart" data-toggle="toggletip"
-        data-placement="top" title="Heart"></span>
-      <span class="glyphicon glyphicon-star" data-toggle="toggletip"
-        data-placement="top" title="Star"></span>
-      <span class="glyphicon glyphicon-camera" data-toggle="toggletip"
-        data-placement="top" title="Camera"></span>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-2 col-lg-offset-2">
-        <a href="#"><span class="pull-left font-2x">MUSIC</span></a>
-      </div>
-      <div class="col-lg-2 col-lg-offset-4">
-        <a href="#"><span class="pull-right font-2x">VIEW ALL</span></a>
-      </div>
-    </div>
-
-    <div class="row category-slider">
-      <div class="col-lg-1 col-md-1 pre-next-hover"></div>
-      <div class="col-lg-1 col-md-1 pre-next-hover">
-        <div class="pre-next-btn pre-btn">
-          <span class="glyphicon glyphicon-chevron-left font-2x green"></span>
-        </div>
+    <div class="category-content">
+      <div class="pre-next-button" id="pre-button">
+        <div class="pre-button-image"></div>
       </div>
 
-      <div class="col-lg-8 col-md-8 category-viewport">
-        <div class="category-tabs">
-          <div class="category-tab active">
-            <% 2.times do %>
-              <div class="row">
-                <% 3.times do %>
-
-                  <div class="category-course col-lg-2 col-md-2">
-                    <div class="category-course-image bg-image-cooking"> </div>
-                    <div class="category-course-info">
-                      <div class="category-course-teacher">
-                        <div class="avatar-bg category-avatar">
-                          <%= image_tag "alice.jpg", class: "avatar" %>
-                        </div>
-                        <span class="white text-shadow font-2x">Cooking</span><br>
-                        <span class="pull-left teacher-name">Alice</span>
-                      </div>
-                      <hr>
-                      <div class="course-review">
-                        <div class="pull-left">
-                          <% 5.times do %>
-                            <span class="glyphicon glyphicon-star green"></span>
-                          <% end %>
-                        </div>
-                        <span class="pull-right">￥19.99</span>
-                      </div>
-                    </div>
-                  </div>
-
-                <% end %>
-              </div>
-            <% end %>
+      <div class="category-slider text-center">
+        <div class="category-slider-head">
+          <div class="current-category">
+            <a class="green" href="#">ART & MUSIC</a>
           </div>
-        
-          <div class="category-tab inactive">
-            <% 2.times do %>
-              <div class="row">
-                <% 3.times do %>
 
-                  <div class="category-course col-lg-2 col-md-2">
-                    <div class="category-course-image bg-image-photograph"> </div>
-                    <div class="category-course-info">
-                      <div class="category-course-teacher">
-                        <div class="avatar-bg category-avatar">
-                          <%= image_tag "kyle.jpg", class: "avatar" %>
-                        </div>
-                        <span class="white text-shadow font-2x">Photograph</span><br>
-                        <span class="pull-left teacher-name">Kyle</span>
+          <div id="view-all">
+            <a class="green" href="#">VIEW ALL</a>
+          </div>
+        </div>
+
+        <div class="category-slider-viewport">
+          <div class="category-slider-container">
+            <% 12.times do %>
+
+              <div class="category-col">
+                <% 2.times do %>
+                  <div class="category-item bg-white">
+                    <div class="category-course-image">
+                      <%= image_tag "category-course-image.png" %>
+                    </div>
+                    
+                    <a href="#">
+                      <%= image_tag "people-3.jpg", class: "category-avatar" %>
+                    </a>
+
+                    <div class="category-course-intro-container">
+                      <span class="category-course-intro">Have Fun with Voice Lesson</span>
+                    </div>
+
+                    <div class="category-teacher-container">
+                      <span class="category-teacher">David</span>
+                    </div>
+
+                    <div class="category-review-container">
+                      <div class="stars">
+                        <% 5.times do %>
+                          <span class="glyphicon glyphicon-star green"></span>
+                        <% end %>
                       </div>
-                      <hr>
-                      <div class="course-review">
-                        <div class="pull-left">
-                          <% 5.times do %>
-                            <span class="glyphicon glyphicon-star green"></span>
-                          <% end %>
-                        </div>
-                        <span class="pull-right">￥19.99</span>
+                      <div class="price">
+                        $19.99
                       </div>
                     </div>
                   </div>
-
+                
                 <% end %>
               </div>
+            
             <% end %>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-1 col-md-1 pre-next-hover">
-        <div class="pre-next-btn next-btn">
-          <span class="glyphicon glyphicon-chevron-right font-2x green"></span>
-        </div>
+      <div class="pre-next-button mirror" id="next-button">
+        <div class="pre-button-image"></div>
       </div>
-      <div class="col-lg-1 col-md-1 pre-next-hover"></div>
     </div>
 
   </div>

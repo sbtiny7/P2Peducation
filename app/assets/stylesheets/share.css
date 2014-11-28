@@ -1,13 +1,8 @@
-/* Component */
-.container-fluid {
-  padding: 0px;
-  margin: 0px;
+body {
+  min-width: 1200px;
 }
 
-.row {
-  padding: 0px;
-  margin: 0px;
-}
+/* Component */
 
 .btn-link:hover {
   text-decoration: none;
@@ -16,25 +11,21 @@
   border-radius: 3px;
 }
 
-/* Background color */
-.bg-black {
-  background-color: rgba(0, 0, 0, 0.3);
+a {
+  text-decoration: none;
 }
 
+/* Background color */
 .bg-green {
   background-color: #53a93f;
 }
 
 .bg-gray {
-  background-color: rgb(100, 100, 100);
-}
-
-.bg-light-gray {
-  background-color: rgb(220, 220, 220);
+  background-color: #eee;
 }
 
 .bg-white {
-  background-color: white;
+  background-color: #fff;
 }
 
 /* Font color */
@@ -64,32 +55,52 @@
 }
 
 /* Header */
+.header-top {
+  border-bottom: 1px solid #008000;
+  font-size: 13px;
+  padding: 4px 0;
+}
 
 #header-nav {
   margin: 10px 0px;
   height: 35px;
 }
+
+a#teach, a#teach:hover {
+  color: white;
+}
+
 /* Footer */
 
 footer {
-  text-align: center;
-  padding: 50px 0px;
+  height: 180px;
+  width: 100%;
 }
 
 #footer-top {
-  color: white;
-  padding: 2px 0px;
+  font-size: 12px;
+  height: 25px;
+  line-height: 25px;
 }
 
-#footer-top a {
-  color: white;
-  text-decoration: none;
+.footer-top-container {
+  position: relative;
+  top: -13px;
 }
 
-footer div.btn-group {
-  margin: 20px 0px;
+footer ul {
+  height: 80px;
+  line-height: 80px;
+  list-style: outside none none;
 }
+
+footer li {
+  display: inline-block;
+  padding: 0 15px;
+}
+
 
 #footer-bottom span {
   font-size: 1.5em;
+  margin-right: 20px;
 }

@@ -1,16 +1,20 @@
-.no-padding {
-  padding: 0px;
+.teach-container {
+  margin: 0 auto;
+  padding: 40px 0 60px;
+  width: 900px;
 }
 
 #banner {
-  margin-top: 20px;
-  height: 400px;
+  /* helpouts's width si 400px */
+  height: 350px;
+  width: 100%;
+  position: relative;
 }
 
 .banner-bg {
   position: absolute;
-  height: 400px;
-  width: 100%;
+  height: 350px;
+  width: 900px;
   transition: all 1s linear;
 }
 
@@ -23,19 +27,27 @@
 }
 
 #banner-bg-1 {
-  background-image: url("sunset.jpg");
+  background-image: url("home-banner-bg-image-1.jpg");
 }
 
 #banner-bg-2 {
-  background-image: url("shop.jpg");
+  background-image: url("home-banner-bg-image-2.jpg");
 }
 
-#banner-text {
+.banner-text {
   position: absolute;
-  top: 200px;
+  bottom: 100px;
+  padding: 0 100px;
 }
 
-#choice-list {
-  padding: 20px 0;
-  margin-bottom: 100px;
+.choice-list {
+  width: 900px;
+  padding: 40px 0;
+}
+
+.choice {
+  /* why is 300px wrong? */
+  width: 295px;
+  padding: 0 20px;
+  display: inline-block;
 }
