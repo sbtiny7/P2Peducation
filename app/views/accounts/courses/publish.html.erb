@@ -4,9 +4,10 @@
     var swfVersionStr = "11.1.0";
     var xiSwfUrlStr = "playerProductInstall.swf";
     var flashvars = {};
-    flashvars.stream_name = "abc";
+    flashvars.stream_name = "<%= @course.comment_token %>";
     //flashvars.server_url = "rtmp://yishizhibo.com:1937/live";
     flashvars.server_url = "rtmp://127.0.0.1:1935/live";
+    flashvars.my_server_url = "http://127.0.0.1:3000/api/stream";
     var params = {};
     params.quality = "high";
     params.bgcolor = "#ffffff";
