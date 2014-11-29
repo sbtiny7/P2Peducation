@@ -1,0 +1,77 @@
+h1 {
+  font-size: 28px;
+  font-weight: 300px;
+  line-height: 1.3em;
+  margin: 0 0 0.3em;
+}
+
+.box-shadow {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.view-container {
+  margin: 40px auto 60px;
+  width: 900px;
+}
+
+.title {
+  position: relative;
+
+  .sort-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.course-container {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  margin: 10px 0 20px;
+  width: 900px;
+
+  &:hover {
+    @extend .box-shadow;
+  }
+
+  .course-card {
+    height: 160px;
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+
+    .course-image {
+      position: absolute;
+      width: 284px;
+      height: 160px;
+      margin: 0;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .course-teacher {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: solid 2px #fff;
+      position: absolute;
+      left: 234px;
+      top: 30px;
+    }
+
+    .course-intro {
+      width: 365px;
+      height: 160px;
+      position: absolute;
+      left: 335px;
+      top: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+}

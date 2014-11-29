@@ -2,39 +2,35 @@
   <%= stylesheet_link_tag "category" %>
 <% end %>
 
-<div class="container-fluid bg-light-gray">
-  <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-2">
+<div class="view-container">
+  <div class="title">
+    <h1>Browse by category</h1>
 
-    <div class="row">
-      <div class="col-lg-12 col-md-12">
-        <h2>Browse by category</h2>
-      </div>
+    <select name="category-filter" id="search-category-filter">
+      <option value="art">Art</option>
+      <option value="cooking">Cooking</option>
+    </select>
+  
+    <div class="sort-wrapper">
+      Sort by
+      <select name="search-sort" id="">
+        <option value="b">Best match</option>
+        <option value="t">Soonest available</option>
+        <option value="p">Lowest price</option>
+      </select>
     </div>
-
-    <div class="row">
-      <div class="col-lg-6 col-md-6">
-        <select name="category-filter" id="search-category-filter">
-          <option value="art">Art</option>
-          <option value="cooking">Cooking</option>
-        </select>
+  </div>
+  
+  <div class="course-container">
+    <div class="course-card">
+      <%= image_tag "category-course-image.png", class: "course-image" %>
+      <%= image_tag "people-6.jpg", class: "course-teacher" %>
+      <div class="course-intro">
+        
       </div>
-
-      <div class="col-lg-6 col-md-6">
-        <div>
-          Sort by
-          <select name="search-sort" id="">
-            <option value="b">Best match</option>
-            <option value="t">Soonest available</option>
-            <option value="p">Lowest price</option>
-          </select>
-        </div>
-      </div>
+      
     </div>
-
-    <div class="row">
-      <div class="col-lg-12 col-md-12">
-      </div>
-    </div>
-
+    
   </div>
 </div>
+
