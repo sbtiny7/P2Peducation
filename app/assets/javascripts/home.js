@@ -28,7 +28,7 @@ $(function() {
 
 function banner_switch(index) {
   // background switch
-  $(".banner-bg.bg-active").removeClass("bg-active").addClass("bg-inactive");
+  $(".banner-bgs .bg-active").removeClass("bg-active").addClass("bg-inactive");
   s = ".banner-bgs .banner-bg:nth-child(" + (index+1) + ")";
   $(s).removeClass("bg-inactive").addClass("bg-active");
 

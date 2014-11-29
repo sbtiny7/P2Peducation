@@ -3,53 +3,39 @@
 #banner {
   height: 350px;
   position: relative;
-}
 
-.banner-bgs {
-  position: absolute;
-  height: 350px;
-  width: 100%;
-}
+  .banner-bgs {
+    position: absolute;
+    height: 350px;
+    width: 100%;
 
-.banner-bg {
-  position: absolute;
-  height: 350px;
-  width: 100%;
-  transition-duration: 1.5s;
-}
+    .banner-bg {
+      position: absolute;
+      height: 350px;
+      width: 100%;
+      transition-duration: 1.5s;
+    }
 
-.bg-active {
-  opacity: 1;
-}
+    .bg-active {
+      opacity: 1;
+    }
 
-.bg-inactive {
-  opacity: 0;
-}
+    .bg-inactive {
+      opacity: 0;
+    }
 
-#banner-bg-1 {
-  background-image: url("home-banner-bg-image-1.jpg");
-}
+    @for $i from 1 through 5 {
+      #bg-image-#{$i} {
+        background-image: url("home-banner-bg-image-#{$i}.jpg");
+      }
+    }
+  }
 
-#banner-bg-2 {
-  background-image: url("home-banner-bg-image-2.jpg");
-}
-
-#banner-bg-3 {
-  background-image: url("home-banner-bg-image-3.jpg");
-}
-
-#banner-bg-4 {
-  background-image: url("home-banner-bg-image-4.jpg");
-}
-
-#banner-bg-5 {
-  background-image: url("home-banner-bg-image-5.jpg");
-}
-
-.banner-content {
-  width: 900px;
-  margin: 0 auto;
-  position: relative;
+  .banner-content {
+    width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
 }
 
 .banner-title {
