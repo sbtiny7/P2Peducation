@@ -1,62 +1,65 @@
 <header>
-  <div class="top">
+  <div class="header-top">
     <b>Introducing Helpouts on Partner Sites -- </b>
     A new way to get expert Help and advice when you need it most.
     <%= link_to "Learn more", "" %>
   </div>
 
-  <div class="nav">
-    <a href="<%= home_path %>">
-      <button type="button" class="btn btn-link pull-left"><strong>Helpouts</strong></button>
-    </a>
-    
-    <div class="dropdown pull-left">
-      <button class="btn btn-link dropdown-toggle" type="button" 
-        id="browsehelpouts" data-toggle="dropdown" aria-expanded="true">
-        <%= image_tag "home.png" %>
-        Browse helpouts
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="browsehelpouts">
-        <li role="presentation">
-          <a role="menuitem" tabindex="-1" href="#">
-            <%= image_tag "home.png" %>
-            Home
-          </a>
-        </li>
-        <li role="presentation">
-          <a role="menuitem" tabindex="-1" href="<%= category_path %>">
-            <%= image_tag "cooking.png" %>
-            Cooking
-          </a>
-        </li>
-        <li role="presentation">
-          <a role="menuitem" tabindex="-1" href="<%= category_path %>">
-            <%= image_tag "art.png" %>
-            Art
-          </a>
-        </li>
-      </ul>
+  <div class="header-nav">
+    <div class="header-nav-left">
+      <a href="<%= home_path %>">
+        <button type="button" class="btn btn-link"><strong>Helpouts</strong></button>
+      </a>
+      
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle" type="button" 
+          id="browsehelpouts" data-toggle="dropdown" aria-expanded="true">
+          <%= image_tag "home.png" %>
+          Browse helpouts
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="browsehelpouts">
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">
+              <%= image_tag "home.png" %>
+              Home
+            </a>
+          </li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="<%= category_path %>">
+              <%= image_tag "cooking.png" %>
+              Cooking
+            </a>
+          </li>
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="<%= category_path %>">
+              <%= image_tag "art.png" %>
+              Art
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle" type="button" 
+          id="yourhelpouts" data-toggle="dropdown" aria-expanded="true">
+          <%= image_tag "helpout.png" %>
+          Your Helpouts
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="yourhelpouts">
+          <li role="presentation"><a role="menuitem" tabindex="-1"
+            href="#">Upcoming Helpouts</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1"
+            href="#">Past Helpouts</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1"
+            href="#">Referrals</a></li>
+        </ul>
+      </div>
+      
     </div>
 
-    <div class="dropdown pull-left">
-      <button class="btn btn-link dropdown-toggle" type="button" 
-        id="yourhelpouts" data-toggle="dropdown" aria-expanded="true">
-        <%= image_tag "helpout.png" %>
-        Your Helpouts
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="yourhelpouts">
-        <li role="presentation"><a role="menuitem" tabindex="-1"
-          href="#">Upcoming Helpouts</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1"
-          href="#">Past Helpouts</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1"
-          href="#">Referrals</a></li>
-      </ul>
-    </div>
-
-    <div class="pull-right">
+    <div class="header-nav-right">
       <a href="<%= teach_path %>" id="teach">
         <button type="button" class="btn bg-green">Give your own Helpouts</button>
       </a>

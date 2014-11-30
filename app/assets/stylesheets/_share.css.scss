@@ -1,3 +1,6 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 body {
   min-width: 1200px;
   background-color: #eee;
@@ -12,8 +15,9 @@ body {
   border-radius: 3px;
 }
 
-a {
+.button-link, .button-link:hover {
   text-decoration: none;
+  color: white;
 }
 
 /* Background color */
@@ -57,7 +61,7 @@ a {
 
 /* Header */
 header {
-  .top {
+  .header-top {
     @extend .bg-green;
     @extend .white;
     text-align: center;
@@ -70,12 +74,25 @@ header {
     }
   }
 
-  .nav {
+  .header-nav {
     @extend .bg-white;
     padding: 10px 0px;
+    position: relative;
 
-    #teach, #teach:hover {
-      @extend .white;
+    .header-nav-left {
+      .dropdown {
+        display: inline-block;
+      }
+    }
+
+    .header-nav-right {
+      position: absolute;
+      right: 0;
+      top: 10px;
+
+      #teach {
+        color: white;
+      }
     }
   }
 }
@@ -87,14 +104,14 @@ footer {
   width: 100%;
   text-align: center;
 
-  .top {
+  .footer-top {
     @extend .bg-green;
     @extend .white;
     font-size: 12px;
     height: 25px;
     line-height: 25px;
 
-    .wrapper {
+    .footer-top-container {
       position: relative;
       top: -13px;
 
@@ -115,7 +132,7 @@ footer {
     }
   }
 
-  .bottom span {
+  .footer-bottom span {
     font-size: 1.5em;
     margin-right: 20px;
   }
