@@ -69,11 +69,94 @@ h1 {
       width: 365px;
       height: 160px;
       position: absolute;
-      left: 335px;
+      left: 350px;
       top: 0;
       padding: 0;
       margin: 0;
       overflow: hidden;
+    }
+  }
+
+  .course-intro-title {
+    display: block;
+    height: 24px;
+    margin: 16px 0 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 22px;
+  }
+
+  .course-intro-content {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin: 8px 0;
+    box-sizing: content-box;
+    font-size: 13px;
+    overflow: hidden;
+  }
+
+  .course-time-price {
+    /* change the width */
+    width: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    vertical-align: top;
+    overflow: hidden;
+    @extend .text-center;
+
+    .course-time {
+      margin: 20px 0;
+    }
+
+    .course-price {
+      margin: 20px 0;
+    }
+  }
+
+  .more-course {
+    @extend .course-card;
+    border-bottom: 1px solid #e5e5e5;
+    height: 80px;
+    margin-left: 160px;
+    margin-right: 25px;
+    padding-top: 10px;
+    width: auto;
+    position: relative;
+
+    img {
+      height: 70px;
+      width: 124px;
+    }
+
+    .more-course-intro {
+      height: 70px;
+      width: 365px;
+      position: absolute;
+      top: 0;
+      left: 124px;
+      padding: 10px 14px 0 50px;
+      overflow: hedden;
+    }
+  }
+
+  .more-course-link {
+    margin-left: 160px;
+    padding: 10px 0;
+
+    a {
+      font-size: 12px;
+      
+      &:link, &:visited {
+        color: #427fed;
+        text-decoration: none;
+      }
     }
   }
 }

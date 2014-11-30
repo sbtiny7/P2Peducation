@@ -20,17 +20,107 @@
       </select>
     </div>
   </div>
+
+  <div class="course-container">
+    <div class="course-card">
+      <%= image_tag "category-course.jpg", class: "course-image" %>
+      <%= image_tag "people-7.png", class: "course-teacher" %>
+      <div class="course-intro">
+        <h2 class="course-intro-title">
+          Fresh Food Presention: home canning, Friday
+        </h2>
+        <p>Janet Cassidy • Cooking</p>
+        <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor...</p>
+        <% 5.times do %>
+          <span class="glyphicon glyphicon-star green"></span>
+        <% end %>
+      </div>
+      <div class="course-time-price">
+        <div class="course-time">
+          Next course is on
+          <br />
+          2014-12-31
+        </div>
+        <div class="course-price">
+          Price:
+          $19.99
+        </div>
+      </div>
+    </div>
+  </div>
   
   <div class="course-container">
     <div class="course-card">
       <%= image_tag "category-course-image.png", class: "course-image" %>
       <%= image_tag "people-6.jpg", class: "course-teacher" %>
       <div class="course-intro">
-        
+        <h2 class="course-intro-title">
+          Fresh Food Presention: home canning, Friday
+        </h2>
+        <p>Janet Cassidy • Cooking</p>
+        <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor...</p>
+        <% 5.times do %>
+          <span class="glyphicon glyphicon-star green"></span>
+        <% end %>
       </div>
-      
+      <div class="course-time-price">
+        <div class="course-time">
+          Next course is on
+          <br />
+          2014-12-31
+        </div>
+        <div class="course-price">
+          Price:
+          $19.99
+        </div>
+      </div>
     </div>
-    
+  
+    <div class="more-course">
+      <%= image_tag "more-course-image.jpg" %>
+      <div class="more-course-intro">
+          <h2 class="course-intro-title">
+            Fresh Food Presention: home canning, Friday
+          </h2>
+          <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor...</p>
+      </div>
+      <div class="course-time-price">
+        <div class="course-time">
+          Next course is on
+          <br />
+          2014-12-31
+        </div>
+        <div class="course-price">
+          Price:
+          $19.99
+        </div>
+      </div>
+    </div>
+  
+    <div class="more-course">
+      <%= image_tag "more-course-image.jpg" %>
+      <div class="more-course-intro">
+          <h2 class="course-intro-title">
+            Fresh Food Presention: home canning, Friday
+          </h2>
+          <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor...</p>
+      </div>
+      <div class="course-time-price">
+        <div class="course-time">
+          Next course is on
+          <br />
+          2014-12-31
+        </div>
+        <div class="course-price">
+          Price:
+          $19.99
+        </div>
+      </div>
+    </div>
+
+    <div class="more-course-link">
+      <%= link_to "View more listing" %>
+    </div>
   </div>
 </div>
 
