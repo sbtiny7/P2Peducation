@@ -53,6 +53,7 @@ Rails.application.routes.draw do
         match 'teacher_action', via: [:put, :post, :patch]
         get 'teacher/:teacher_id/complate' => 'courses#complate', as: :complate
         get 'pub'
+        get 'publish' => 'courses#publish'
       end
       collection do
         get 'new/online' => 'courses#new_online'

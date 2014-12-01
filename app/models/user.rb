@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     orders.select {|o| o.resource.id == course_id}.last
   end
 
-  def bougth_courses
+  def bought_courses
     self.orders.where(status: 'paid').includes(:resource).map {|x| x.resource}
   end
 

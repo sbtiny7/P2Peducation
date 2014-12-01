@@ -1,13 +1,16 @@
 <script>
 </script>
 
-</script>
 <h1>
   <%= @course.title %>
 </h1>
 
+<h1>
+    <%= "正在直播" if @course.living %>
+</h1>
 <div id="chat_box">
 </div>
+
 
 <input id="message" type="text"/>
 <button id="send_message">发送</button>
