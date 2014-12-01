@@ -312,7 +312,7 @@
     position: relative;
     cursor: pointer;
     display: inline-block;
-    margin-bottom: 270px;
+    margin-bottom: 254px;
 
     .pre-button-image {
       background-image: url("pre-button.png");
@@ -335,7 +335,6 @@
   overflow: hidden;
 
   .category-slider-head {
-    color: #53a93f;
     display: table;
     font-size: 24px;
     font-weight: 300;
@@ -343,12 +342,21 @@
     text-transform: uppercase;
     width: 100%;
 
-    .current-category {
+    a {
+      @extend .green;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .head-left {
       display: table-cell;
       text-align: left;
     }
 
-    #view-all {
+    .head-right {
       display: table-cell;
       text-align: right;
     }
@@ -375,7 +383,7 @@
     /* why 15px? a extra margin? */
     margin-right: 11px;
     vertical-align: top;
-    
+
     width: 290px;
     height: 550px;
   }

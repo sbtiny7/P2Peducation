@@ -35,6 +35,10 @@ class CoursesController < ApplicationController
     render json: {success: false}
   end
 
+  def search
+    @title = "Helpouts for '#{params[:query]}'"
+  end
+
   private
   def per_page
     15

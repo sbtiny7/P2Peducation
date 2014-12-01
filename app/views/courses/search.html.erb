@@ -1,10 +1,10 @@
 <% content_for :head do %>
-  <%= stylesheet_link_tag "category" %>
+  <%= stylesheet_link_tag "search" %>
 <% end %>
 
 <div class="view-container">
   <div class="title">
-    <h1>Browse by category</h1>
+    <h1><%= @title %></h1>
 
     <select name="category-filter" id="search-category-filter">
       <option value="art">Art</option>
@@ -39,10 +39,9 @@
         <div class="course-time">
           Next course is on
           <br />
-          2014-12-31
+          <time>2014-12-31</time>
         </div>
         <div class="course-price">
-          Price:
           $19.99
         </div>
       </div>
@@ -58,7 +57,7 @@
           Fresh Food Presention: home canning, Friday
         </h2>
         <p>Janet Cassidy • Cooking</p>
-        <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor...</p>
+        <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor enjoy the flavor of summer all year.</p>
         <% 5.times do %>
           <span class="glyphicon glyphicon-star green"></span>
         <% end %>
@@ -67,10 +66,9 @@
         <div class="course-time">
           Next course is on
           <br />
-          2014-12-31
+          <time>2014-12-31</time>
         </div>
         <div class="course-price">
-          Price:
           $19.99
         </div>
       </div>
@@ -84,11 +82,8 @@
           </h2>
           <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor...</p>
       </div>
-      <div class="course-time-price">
-        <div class="course-price">
-          Price:
-          $19.99
-        </div>
+      <div class="course-price">
+        $19.99
       </div>
     </div>
   
@@ -100,11 +95,8 @@
           </h2>
           <p class="course-intro-content">Enjoy the flavor of summer all year! Learn to preserve your favorite fresh foods at the peak of flavor...</p>
       </div>
-      <div class="course-time-price">
-        <div class="course-price">
-          Price:
-          $19.99
-        </div>
+      <div class="course-price">
+        $19.99
       </div>
     </div>
 

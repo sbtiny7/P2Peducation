@@ -86,7 +86,7 @@ Rails.application.routes.draw do
 
   root 'home#index', as: :home
   get 'teach' => "teach#index", as: :teach
-  get 'category' => "category#index", as: :category
+  get 'search' => "courses#search"
 
   #for api
   get 'home/index'
