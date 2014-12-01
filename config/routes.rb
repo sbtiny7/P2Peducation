@@ -91,7 +91,9 @@ Rails.application.routes.draw do
   get 'course/:id' => 'courses#show_after_bought', as: :course
   get 'courses' => 'courses#index', as: :courses
 
-  root 'home#index'
+  root 'home#index', as: :home
+  get 'teach' => "teach#index", as: :teach
+  get 'category' => "category#index", as: :category
 
   #for api
   get 'home/index'

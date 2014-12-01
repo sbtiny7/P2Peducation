@@ -1,0 +1,139 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  min-width: 1200px;
+  background-color: #eee;
+}
+
+/* Component */
+
+.btn-link:hover {
+  text-decoration: none;
+  border: solid 1px #eee;
+  box-shadow: 1px 1px 1px #eee;
+  border-radius: 3px;
+}
+
+.button-link, .button-link:hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* Background color */
+.bg-green {
+  background-color: #53a93f;
+}
+
+.bg-gray {
+  background-color: #eee;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+/* Font color */
+.white {
+  color: white;
+}
+
+.green {
+  color: #53a93f;
+}
+
+.gray {
+  color: rgb(100, 100, 100);
+}
+
+.text-shadow {
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Font size */
+.font-2x {
+  font-size: 2em;
+}
+
+.font-3x {
+  font-size: 3em;
+}
+
+/* Header */
+header {
+  .header-top {
+    @extend .bg-green;
+    @extend .white;
+    text-align: center;
+    border-bottom: 1px solid #008000;
+    font-size: 13px;
+    padding: 4px 0;
+
+    a, a:hover {
+      @extend .white;
+    }
+  }
+
+  .header-nav {
+    @extend .bg-white;
+    padding: 10px 0px;
+    position: relative;
+
+    .header-nav-left {
+      .dropdown {
+        display: inline-block;
+      }
+    }
+
+    .header-nav-right {
+      position: absolute;
+      right: 0;
+      top: 10px;
+
+      #teach {
+        color: white;
+      }
+    }
+  }
+}
+
+/* Footer */
+
+footer {
+  height: 180px;
+  width: 100%;
+  text-align: center;
+
+  .footer-top {
+    @extend .bg-green;
+    @extend .white;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+
+    .footer-top-container {
+      position: relative;
+      top: -13px;
+
+      a {
+        @extend .white;
+      }
+    }
+  }
+
+  ul {
+    height: 80px;
+    line-height: 80px;
+    list-style: outside none none;
+
+    li {
+      display: inline-block;
+      padding: 0 15px;
+    }
+  }
+
+  .footer-bottom span {
+    font-size: 1.5em;
+    margin-right: 20px;
+  }
+}

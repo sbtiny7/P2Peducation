@@ -1,0 +1,54 @@
+<div id="banner">
+  <div class="banner-bgs">
+    <div class="banner-bg bg-active"   id="bg-image-1"></div>
+    <div class="banner-bg bg-inactive" id="bg-image-2"></div>
+    <div class="banner-bg bg-inactive" id="bg-image-3"></div>
+    <div class="banner-bg bg-inactive" id="bg-image-4"></div>
+    <div class="banner-bg bg-inactive" id="bg-image-5"></div>
+  </div>
+
+  <div class="banner-content">
+    <div class="banner-title">
+      Get help from an expert
+      <br />
+      over live video
+    </div>
+
+    <a href="#" class="watch-video">
+      <%= image_tag "play.png" %>
+      Watch a short video
+    </a>
+
+    <form id="searchForm" action="" method="post">
+      <input type="text" placeholder="I need help with..." name="q" id="" value="" />
+      <button type="submit" id="searchButton"></button>
+    </form>
+
+    <div class="banner-intro">
+      <div class="banner-intro-head">
+        <%= image_tag "people-1.jpg" %>
+        <div class="banner-intro-head-title">
+          <strong>David</strong>
+          <br />
+          Cooking
+        </div>
+      </div>
+
+      <div class="banner-intro-content">
+        <p>Living is eating. Eating needs cooking.</p>
+        <% 5.times do %>
+          <span class="glyphicon glyphicon-star green"></span>
+        <% end %>
+        <p>--Bob--</p>
+      </div>
+    </div>
+
+    <ul class="indicator">
+      <li class="indicator-active" data-index="0"></li>
+      <li class="indicator-inactive" data-index="1"></li>
+      <li class="indicator-inactive" data-index="2"></li>
+      <li class="indicator-inactive" data-index="3"></li>
+      <li class="indicator-inactive" data-index="4"></li>
+    </ul>
+  </div>
+</div>
