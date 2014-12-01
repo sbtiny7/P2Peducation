@@ -1,61 +1,77 @@
 <%= content_for :head do %>
-  <%= stylesheet_link_tag 'course' %>
+    <%= stylesheet_link_tag 'course' %>
 <% end %>
-<div class="content" style="margin:80px 0px;">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-8 video-player-container">
-        <video width="550px" height="362px" controls="controls">
-          <source src="" type="video/ogg">
-          <source src="" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="col-md-4 col-sm-4">
-        <div class="ul-ele-title">
-          <span class=""><%= link_to @course.title.truncate(20), @course %></span>
+<div class="view-content">
+    <div class="">
+        <div class="category">
+            <div class="img_and_title">
+                <img class="computer" src="/assets/computer.png"/>
+                <a class="category_link">瑜伽</a>
+            </div>
         </div>
 
-        <div class="ul-ele-label">
-          <span class="">主讲人&nbsp;:&nbsp;</span><span><%= link_to @course.teacher.try(:name), '' %></span>
-        </div>
-        <% if 'OFFLINE'.eql? @course.course_type %>
-          <div class="ul-ele-label">
-            <span class="">地址&nbsp;:&nbsp;</span><span><%= @course.address_detail %></span>
-          </div>
-        <% end %>
-        <div class="ul-ele-label">
-          <span class="">价格&nbsp;:&nbsp;</span><span class="currency"><%= number_to_currency(@course.price, :unit => '￥', :precision => 2) %></span>
+        <div  class="header_section">
+            <div>
+                <div class="teacher_info">
+                    <div class="border_font">
+                        <a>
+                            <%= image_tag "people-3.jpg", class: "teacher_avatar" %>
+                        </a>
+                        <div>
+                            <a class="teacher_name"><%= @course.teacher.name %></a>
+                        </div>
+                        <div class="price">
+                            &#65509;<%= @course.price %>
+                        </div>
+                    </div>
+                    <div class="course_type">
+                        <%= @course.course_type %>
+                    </div>
+                    <div class="start_time">
+                        <span class="glyphicon glyphicon-time"></span> <%= @course.start_time %>
+                    </div>
+                    <div>
+                        <%= link_to "立即购买", '/', class: "btn btn-google" %>
+                    </div>
+                </div>
+                <div class="img_wrap">
+                    <%= image_tag "https://lh5.googleusercontent.com/mjd6kFZfNoQgw_41I5Y3laUyEpN4irk_7X1PVpFZjqc=w640-h360-n-k-no" %>
+                </div>
+            </div>
+
+            <div>
+                <h1 class="course_name"><%= @course.title %></h1>
+                <div class="review_section">
+                    <span class="starts">
+                        <span class="glyphicon glyphicon-star green"></span>
+                        <span class="glyphicon glyphicon-star green"></span>
+                        <span class="glyphicon glyphicon-star green"></span>
+                        <span class="glyphicon glyphicon-star green"></span>
+                        <span class="glyphicon glyphicon-star green"></span>
+                    </span>
+                    <span class="review_count">
+                        15 个评价
+                    </span>
+                </div>
+            </div>
         </div>
 
-        <div class="ul-ele">
-          <% if @course_owner %>
-            <%= link_to "编辑", edit_accounts_course_path(@course.id), class: "btn btn-success btn-lg"%>
-          <% elsif @tickets_bought %>
-            <%= button_tag '已购买', data: {disable_with: "已购买..."}, class: 'btn btn-info btn-lg' %>
-          <% elsif @course.is_jammed? %>
-            <%= button_tag '没有名额啦', data: {disable_with: "请联系教师..."}, class: 'btn btn-default btn-lg' %>
-          <% else %>
-            <%= link_to "报名#{t @course.course_type, scope: "accounts"}",
-              new_accounts_order_path(course_id: @course, i: Time.now.to_i), class: 'btn btn-primary btn-lg' %>
-            <div class="numbers-left"><%= left_content @course.just_numbers_left %></div>
-          <% end %>
-        </div>
-      </div>
+        <!--div class="col-md-4 col-sm-4">
+            <div class="ul-ele">
+                <% if @course_owner %>
+                    <%= link_to "编辑", edit_accounts_course_path(@course.id), class: "btn btn-success btn-lg"%>
+                <% elsif @tickets_bought %>
+                    <%= button_tag '已购买', data: {disable_with: "已购买..."}, class: 'btn btn-info btn-lg' %>
+                <% elsif @course.is_jammed? %>
+                    <%= button_tag '没有名额啦', data: {disable_with: "请联系教师..."}, class: 'btn btn-default btn-lg' %>
+                <% else %>
+                    <%= link_to "报名#{t @course.course_type, scope: "accounts"}",
+                                new_accounts_order_path(course_id: @course, i: Time.now.to_i), class: 'btn btn-primary btn-lg' %>
+                    <div class="numbers-left"><%= left_content @course.just_numbers_left %></div>
+                <% end %>
+            </div>
+        </div-->
     </div>
-  </div>
-
-  <div class="jumbotron">
-    <div class="container">
-      <%= render :partial => 'teacher_description' %>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="course-description">
-      <%= @course.detail.html_safe * 50 %>
-    </div>
-  </div>
 </div>
 
 

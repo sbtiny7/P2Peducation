@@ -1,68 +1,104 @@
-.content .ul-ele-title span {
-  font-family: -webkit-pictograph;
-  font-size: x-large;
+body {
+    min-width: 1200px;
+    margin: 0 0 0 0;
+    line-height: 1;
+    background: #eee;
+    color: #404040;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+.view-content {
+    width: 900px;
+    margin: 0 auto;
+}
+.category {
+    position: relative;
+    width: 100%;
+    height: 60px;
 }
 
-.content .teacher-description {
-  margin-top: 30px;
-  padding: 20px 10px;
+.computer {
+    width: 28px;
+}
+.img_and_title {
+    padding-top: 17px;
+}
+.category_link {
+    margin-left: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #666;
+    line-height: 20px;
+    background-repeat: no-repeat;
+}
+.header_section {
+    background: #fff;
+    position: relative;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.15);
+}
+.img_wrap {
+    width: 640px;
+    height: 360px;
+    img {
+        width: 100%;
+    }
 }
 
-.content .currency {
-  color: red;
-  font-weight: bold;
+.teacher_avatar {
+    border-radius: 50%;
+    margin: 12px auto;
+    width: 90px;
+    height: 90px;
+}
+.teacher_info {
+    float: right;
+    width: 258px;
+    text-align: center;
+}
+.border_font {
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+}
+.course_name {
+    color: #666;
+    font-size: 30px;
+    font-weight: 300;
+    padding: 10px 20px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.starts {
+    font-size: 16px;
+}
+.review_count {
+    font-size: 13px;
+}
+.review_section {
+    margin: 0 20px 20px;
+}
+.teacher_name {
+    color: #333;
+}
+.price {
+    margin: 10px auto;
 }
 
-.content .ul-ele-title {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 1em;
+.start_time {
+    margin: 10px auto;
+    font-size: 14px;
 }
-
-.content .ul-ele-label {
-  line-height: 63px;
-}
-
-.numbers-left {
-  color: red;
-  display: inline;
-  font-size: 1em;
-}
-
-.content .teacher-description .face-ul {
-  padding: 0px;
-}
-
-.content .teacher-description .face-ul li {
-  list-style: none;
-  margin: 0px;
-  line-height: 2em;
-}
-
-.content .teacher-description .teacher-avatar {
-  text-align: center;
-}
-
-.content .teacher-description .teacher-avatar img {
-  width: 200px;
-  height: 140px;
-}
-
-.text-align-right {
-  text-align: right;
-}
-
-.course-description{
-  border-top: 1px solid #ccc;
-  padding: 30px;
-}
-.content .jumbotron {
-  margin-bottom: 0px;
-}
-
-
-.expired_tip {
-  margin-left: 10px;
-  font-weight: normal;
-  font-size: 10px;
-  color: #FFA900;
+.btn-google {
+    color: white;
+    background-color: #4D90FE;
+    border-color: #3079ED;
+    border-radius: 2px;
+    width: 220px;
+    &:hover {
+        color: white;
+        background-color: #3079ED;
+    }
 }
