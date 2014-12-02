@@ -13,6 +13,7 @@
 #  agreement_id :integer          not null              # 协议id
 #  created_at   :datetime
 #  updated_at   :datetime
+#  avatar       :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
