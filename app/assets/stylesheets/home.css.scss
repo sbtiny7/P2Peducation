@@ -382,6 +382,9 @@
 
 .category-item {
   @extend .bg-white;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
   margin-bottom: 20px;
   display: inline-block;
   cursor: pointer;
