@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209032654) do
+ActiveRecord::Schema.define(version: 20141209064652) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -148,6 +148,15 @@ ActiveRecord::Schema.define(version: 20141209032654) do
   add_index "provinces", ["name"], name: "index_provinces_on_name", using: :btree
   add_index "provinces", ["pinyin"], name: "index_provinces_on_pinyin", using: :btree
   add_index "provinces", ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr", using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.string   "comment"
+    t.integer  "grade"
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"

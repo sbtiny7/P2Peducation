@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   has_many :teachers
   has_many :courses
   has_many :lessons, :through => :courses
+  has_many :reviews
 
   has_many :studyships, :as => :student
   has_many :applied_courses, :through => :studyships, :source => :course

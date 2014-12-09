@@ -58,6 +58,7 @@ class Course < ActiveRecord::Base
     has_many :studyships
     has_many :students, :through => :studyships
     has_many :videos, :as => :videoable
+    has_many :reviews
     validates_presence_of :title, :price, :detail
     validates :course_type, :inclusion => {
         :in => TYPES,

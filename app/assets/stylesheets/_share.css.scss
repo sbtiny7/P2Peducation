@@ -112,7 +112,7 @@ footer {
     .footer-top-container {
       position: relative;
       top: -13px;
-
+      margin-top: 60px;
       a {
         @extend .white;
       }
@@ -138,4 +138,8 @@ footer {
 .logo {
     width: 35px;
     margin-left: 30px;
+}
+
+.clear {
+    clear: both;
 }
