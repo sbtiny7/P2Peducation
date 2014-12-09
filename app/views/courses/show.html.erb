@@ -56,6 +56,44 @@
             </div>
         </div>
 
+        <div class="left_side">
+            <div>
+                <h4 class="title">00 课程介绍</h4>
+                <%= sanitize @course.detail %>
+            </div>
+            <div>
+                <h4>
+                    00 老师介绍
+                </h4>
+                <%= sanitize @teacher.introduce %>
+            </div>
+            <div>
+                <h4>
+                    00 课程评价
+                </h4>
+            </div>
+        </div>
+
+        <div class="right_side">
+            <div class="related_class">
+                <ul>
+                    <li>游戏系列</li>
+                    <li>挑战周长</li>
+                    <li>游戏系列</li>
+                    <li>挑战周长</li>
+                </ul>
+            </div>
+            <div class="tips">
+                <ul>
+                    <li>游戏系列</li>
+                    <li>挑战周长</li>
+                    <li>游戏系列</li>
+                    <li>挑战周长</li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="clear"></div>
         <!--div class="col-md-4 col-sm-4">
             <div class="ul-ele">
                 <% if @course_owner %>

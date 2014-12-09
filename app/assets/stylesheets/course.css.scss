@@ -102,3 +102,27 @@ body {
         background-color: #3079ED;
     }
 }
+.left_side {
+    div {
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+    }
+    .title {
+
+    }
+    width: 580px;
+    float: left;
+}
+.right_side {
+    div {
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+    }
+    float: right;
+    width: 300px;
+}
+.clear {
+    clear: both;
+}

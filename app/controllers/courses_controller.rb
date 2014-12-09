@@ -14,6 +14,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.where(status: true).find(params[:id])
+    @teacher = @course.teacher
     if user_signed_in?
       @tickets_bought = current_user.has_bought? @course.id
       @course_owner = (current_user.id == @course.user.id)

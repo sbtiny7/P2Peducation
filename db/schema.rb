@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128123625) do
+ActiveRecord::Schema.define(version: 20141209032654) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20141128123625) do
     t.integer  "agreement_id",              null: false, comment: "协议id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "introduce"
   end
 
   create_table "users", force: true do |t|
