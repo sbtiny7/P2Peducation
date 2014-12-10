@@ -71,3 +71,4 @@ gem 'therubyracer'
 gem 'kaminari'
 gem 'bootstrap_kaminari'
 gem 'gon', '~> 5.2.3' #render value to js
+gem 'china_sms'

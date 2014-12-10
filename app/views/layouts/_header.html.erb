@@ -64,8 +64,12 @@
             <a href="<%= teach_path %>" id="teach">
                 <button type="button" class="btn bg-green">我要教课</button>
             </a>
-            <button type="button" class="btn btn-link">登录</button>
-            <button type="button" class="btn btn-link">注册</button>
+            <% if user_signed_in? %>
+                <button type="button" class="btn btn-link"><%= current_user.username %><span class="glyphicon glyphicon-chevron-down"></span> </button>
+            <% else %>
+                <button type="button" class="btn btn-link">登录</button>
+                <button type="button" class="btn btn-link">注册</button>
+            <% end %>
         </div>
     </div>
 </header>

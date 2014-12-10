@@ -27,6 +27,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  authentication_token   :string(255)
+#  captcha                :string(255)
 #
 # Indexes
 #
@@ -124,6 +125,25 @@ class User < ActiveRecord::Base
   def reset_authentication_token!
       self.authentication_token = generate_authentication_token
       self.save
+  end
+
+  def generate_captcha(new_phone)
+    if self.phone.blank?
+      self.phone = new_phone
+    end
+    self.captcha = sprintf("%6s", rand(100000..999999))
+    result = self.save
+    ChinaSMS.to(self.phone, "您本次验证码为#{self.captcha}【人人讲堂】") if result
+    result
+  end
+
+  def check_captcha(number)
+    if self.captcha == number
+      self.update_attribute :captcha, nil
+      true
+    else
+      false
+    end
   end
 end
 

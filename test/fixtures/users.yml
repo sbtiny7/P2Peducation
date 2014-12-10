@@ -27,6 +27,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  authentication_token   :string(255)
+#  captcha                :string(255)
 #
 # Indexes
 #

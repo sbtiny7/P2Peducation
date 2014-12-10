@@ -31,7 +31,7 @@
                         <span class="glyphicon glyphicon-time"></span> <%= @course.start_time %>
                     </div>
                     <div>
-                        <%= link_to "立即购买", '/', class: "btn btn-google" %>
+                        <%= link_to "立即购买", "/accounts/orders/new?course_id=#{@course.id}", class: "btn btn-google" %>
                     </div>
                 </div>
                 <div class="img_wrap">
