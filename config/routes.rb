@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     post "stream/stream_start"
     post "stream/stream_stop"
     post "stream/change_archived_url"
+
+    post "/server/send_captcha"
   end
 
 

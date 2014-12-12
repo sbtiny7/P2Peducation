@@ -137,9 +137,9 @@ class User < ActiveRecord::Base
     result
   end
 
-  def check_captcha(number)
+  def check_captcha(number, clear = false)
     if self.captcha == number
-      self.update_attribute :captcha, nil
+      self.update_attribute :captcha, nil if clear
       true
     else
       false

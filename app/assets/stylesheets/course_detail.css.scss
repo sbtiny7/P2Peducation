@@ -61,32 +61,27 @@
     padding-top: 20px;
     padding-left: 10px;
     font-size: 13px;
-    label {
-        font-weight: normal;
-        width: 67px;
-        text-align: right;
-        color: #737373;
-    }
-    div {
+    >div {
         padding: 10px 0;
+        >label {
+            font-weight: normal;
+            width: 67px;
+            text-align: right;
+            color: #737373;
+        }
     }
 }
 
 .id_verify {
     border-bottom: solid 1px #C7C4C4;
 }
-#phone, #captcha {
+#phone, #captcha,#username {
     width: 132px;
     border: solid 1px #C7C4C4;
     margin-right: 12px;
     height: 30px;
 }
 
-#username {
-    border: solid 1px #C7C4C4;
-    height: 30px;
-    width: 120px;
-}
 .course_button {
     border-radius: 3px;
     font-size: 12px;
@@ -94,7 +89,6 @@
     padding-right: 20px;
 }
 .real_name {
-    margin-left: 10px;
 }
 #pay_method_alipay {
     margin-right: 10px;
@@ -117,7 +111,7 @@
     padding-left: 60px;
     padding-right: 60px;
     float: left;
-    margin-top: 17px;
+    margin-top: 7px;
 }
 .pay_tips {
     font-size: 12px;
@@ -125,5 +119,23 @@
     margin-left: 10px;
     p {
         margin: 5px 0;
+    }
+}
+#re_get {
+    font-style: italic;
+    color: #B3B3B3;
+    display: none;
+    margin-top: 10px;
+}
+.error_message {
+    label {
+        color: #D36262;
+        font-style: italic;
+        font-weight: normal;
+    }
+}
+.agree_error {
+    margin-top: 10px;
+    label {
     }
 }
