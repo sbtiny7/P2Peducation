@@ -26,6 +26,8 @@
 #  status         :integer          default(0), not null   # 课程状态
 #  created_at     :datetime
 #  updated_at     :datetime
+#  comment_token  :string(255)
+#  living         :boolean
 #
 # Indexes
 #
@@ -56,13 +58,14 @@ class Course < ActiveRecord::Base
     has_many :studyships
     has_many :students, :through => :studyships
     has_many :videos, :as => :videoable
+    has_many :reviews
     validates_presence_of :title, :price, :detail
     validates :course_type, :inclusion => {
         :in => TYPES,
         :message => "%{value}不能作为课程类型"
     }
 
-    before_create :init
+    before_create :init, :generate_comment_token
     before_save :parse_values
 
     # 返回剩下的空座位的数量
@@ -120,5 +123,13 @@ class Course < ActiveRecord::Base
 
     def chat_channel
         "/chat/#{self.id}"
+    end
+
+    protected
+    def generate_comment_token
+        self.comment_token = loop do
+            random_token = Devise.friendly_token
+            break random_token unless Course.exists?(comment_token: random_token)
+        end
     end
 end

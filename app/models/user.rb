@@ -27,6 +27,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  authentication_token   :string(255)
+#  captcha                :string(255)
 #
 # Indexes
 #
@@ -57,6 +58,7 @@ class User < ActiveRecord::Base
   has_many :teachers
   has_many :courses
   has_many :lessons, :through => :courses
+  has_many :reviews
 
   has_many :studyships, :as => :student
   has_many :applied_courses, :through => :studyships, :source => :course
@@ -99,7 +101,7 @@ class User < ActiveRecord::Base
     orders.select {|o| o.resource.id == course_id}.last
   end
 
-  def bougth_courses
+  def bought_courses
     self.orders.where(status: 'paid').includes(:resource).map {|x| x.resource}
   end
 
@@ -123,6 +125,25 @@ class User < ActiveRecord::Base
   def reset_authentication_token!
       self.authentication_token = generate_authentication_token
       self.save
+  end
+
+  def generate_captcha(new_phone)
+    if self.phone.blank?
+      self.phone = new_phone
+    end
+    self.captcha = sprintf("%6s", rand(100000..999999))
+    result = self.save
+    ChinaSMS.to(self.phone, "您本次验证码为#{self.captcha}【人人讲堂】") if result
+    result
+  end
+
+  def check_captcha(number, clear = false)
+    if self.captcha == number
+      self.update_attribute :captcha, nil if clear
+      true
+    else
+      false
+    end
   end
 end
 

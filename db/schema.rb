@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112095416) do
+ActiveRecord::Schema.define(version: 20141210130320) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 20141112095416) do
     t.integer  "status",                                  default: 0,   null: false, comment: "课程状态"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "comment_token"
+    t.boolean  "living"
   end
 
   add_index "courses", ["token"], name: "index_courses_on_token", unique: true, using: :btree
@@ -147,6 +149,15 @@ ActiveRecord::Schema.define(version: 20141112095416) do
   add_index "provinces", ["pinyin"], name: "index_provinces_on_pinyin", using: :btree
   add_index "provinces", ["pinyin_abbr"], name: "index_provinces_on_pinyin_abbr", using: :btree
 
+  create_table "reviews", force: true do |t|
+    t.string   "comment"
+    t.integer  "grade"
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -179,6 +190,7 @@ ActiveRecord::Schema.define(version: 20141112095416) do
     t.integer  "agreement_id",              null: false, comment: "协议id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "introduce"
   end
 
   create_table "users", force: true do |t|
@@ -206,6 +218,7 @@ ActiveRecord::Schema.define(version: 20141112095416) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "authentication_token"
+    t.string   "captcha"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

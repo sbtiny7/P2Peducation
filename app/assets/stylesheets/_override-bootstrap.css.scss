@@ -1,0 +1,13 @@
+
+.btn-link {
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+a {
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}

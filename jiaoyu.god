@@ -12,7 +12,7 @@ God.watch do |w|
   w.name = "faye"
   w.start = "node faye.js"
   w.dir = "/var/www/chat_server"
-  w.log = "#{w.dir}/#{w.name}.log"
+  w.log = "#{w.dir}/log/#{w.name}.log"
   w.keepalive
 end
 
@@ -20,7 +20,7 @@ God.watch do |w|
   w.name = "chat_web"
   w.start = "node app.js"
   w.dir = "/var/www/chat_server/webserver"
-  w.log = "#{w.dir}/#{w.name}.log"
+  w.log = "#{w.dir}/../log/#{w.name}.log"
   w.keepalive
 end
 

@@ -1,14 +1,17 @@
 class Accounts::CoursesController < ApplicationController
   include ChinaRegionFu::Helpers
   before_action :authenticate_user!
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :complate, :pub]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :complate, :pub, :publish]
 
   layout 'accounts'
 
+  def publish
+    render layout: "application"
+  end
   # GET /courses
   # GET /courses.json
   def index
-    @courses = current_user.courses.all.includes(:teacher)
+    @courses = current_user.courses.includes(:teacher)
   end
 
   # GET /courses/1

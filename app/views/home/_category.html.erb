@@ -1,0 +1,94 @@
+<div id="category">
+  <h2 class="category-head">发现课程</h2>
+
+  <div class="category-list">
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Art" id="category-icon-1"></div>
+    </a>
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Computer" id="category-icon-2"></div>
+    </a>
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Cooking" id="category-icon-3"></div>
+    </a>
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Book" id="category-icon-4"></div>
+    </a>
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Fashion" id="category-icon-5"></div>
+    </a>
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Fitness" id="category-icon-6"></div>
+    </a>
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Health" id="category-icon-7"></div>
+    </a>
+    <a class="category-icon-container" href="#">
+      <div class="category-icon" data-toggle="tooltip" data-placement="top" title="Garden" id="category-icon-8"></div>
+    </a>
+  </div>
+
+  <div class="category-content">
+    <div class="pre-next-button" id="pre-button">
+      <div class="pre-button-image"></div>
+    </div>
+
+    <div class="category-slider text-center">
+      <div class="category-slider-head">
+        <div class="current-category">
+          <a class="green" href="#">ART & MUSIC</a>
+        </div>
+
+        <div id="view-all">
+          <a class="green" href="#">VIEW ALL</a>
+        </div>
+      </div>
+
+      <div class="category-slider-viewport">
+        <div class="category-slider-container">
+          <% 12.times do %>
+
+            <div class="category-col">
+              <% 2.times do %>
+                <div class="category-item">
+                  <div class="category-course-image">
+                    <%= image_tag "category-course-image.png" %>
+                  </div>
+                  
+                  <a href="#">
+                    <%= image_tag "people-3.jpg", class: "category-avatar" %>
+                  </a>
+
+                  <div class="category-course-intro-container">
+                    <span class="category-course-intro">Have Fun with Voice Lesson</span>
+                  </div>
+
+                  <div class="category-teacher-container">
+                    <span class="category-teacher">David</span>
+                  </div>
+
+                  <div class="category-review-container">
+                    <div class="stars">
+                      <% 5.times do %>
+                        <span class="glyphicon glyphicon-star green"></span>
+                      <% end %>
+                    </div>
+                    <div class="price">
+                      $19.99
+                    </div>
+                  </div>
+                </div>
+              
+              <% end %>
+            </div>
+          
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="pre-next-button mirror" id="next-button">
+      <div class="pre-button-image"></div>
+    </div>
+  </div>
+</div>

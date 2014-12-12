@@ -1,7 +1,7 @@
 # encoding: utf-8
 class CoursesController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:enroll_create]
+  before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
     conditions = {:status => 1}
@@ -14,6 +14,18 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.where(status: true).find(params[:id])
+    @teacher = @course.teacher
+    @reviews = @course.reviews
+    maker = @course.reviews.group_by(&:grade)
+    if @reviews.length == 0
+      @star_chart = (1..5).map {|x| {index: x, stars: 0, per: 0}}
+    else
+      @star_chart = (1..5).map {|x|
+        {index: x,
+         stars: (maker[x] || []).length,
+         per: ((maker[x] || []).length / @reviews.length.to_f * 100).round}
+      }
+    end
     if user_signed_in?
       @tickets_bought = current_user.has_bought? @course.id
       @course_owner = (current_user.id == @course.user.id)
@@ -24,6 +36,11 @@ class CoursesController < ApplicationController
     @course = Course.where(status: true).find(params[:id])
     @tieckts_bought = current_user.has_bought? @course.id
     @chat_channel = @course.chat_channel
+    @user = current_user
+    gon.faye_server = "http://#{Settings.host}:9292/faye"
+    gon.chat_channel = @chat_channel
+    gon.user_id =  @user.id 
+    gon.comment_token =  @course.comment_token 
   end
 
   def enroll

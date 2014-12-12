@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     post "stream/stream_start"
     post "stream/stream_stop"
     post "stream/change_archived_url"
+
+    post "/server/send_captcha"
   end
 
 
@@ -53,6 +55,7 @@ Rails.application.routes.draw do
         match 'teacher_action', via: [:put, :post, :patch]
         get 'teacher/:teacher_id/complate' => 'courses#complate', as: :complate
         get 'pub'
+        get 'publish' => 'courses#publish'
       end
       collection do
         get 'new/online' => 'courses#new_online'
@@ -91,7 +94,9 @@ Rails.application.routes.draw do
   get 'course/:id' => 'courses#show_after_bought', as: :course
   get 'courses' => 'courses#index', as: :courses
 
-  root 'home#index'
+  root 'home#index', as: :home
+  get 'teach' => "teach#index", as: :teach
+  get 'category' => "category#index", as: :category
 
   #for api
   get 'home/index'

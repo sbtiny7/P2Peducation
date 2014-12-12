@@ -11,6 +11,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 gem 'pry'
+gem 'pry-nav'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -68,3 +70,5 @@ gem 'therubyracer'
 
 gem 'kaminari'
 gem 'bootstrap_kaminari'
+gem 'gon', '~> 5.2.3' #render value to js
+gem 'china_sms'

@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     def index #首页
       @open_lessons = Course.limit(3)
       @live_lessons = Course.limit(5)
+
       respond_to do |f|
           f.html
           f.json {render json: {offline_course: Course.limit(5),

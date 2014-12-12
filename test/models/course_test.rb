@@ -25,6 +25,8 @@
 #  status         :integer          default(0), not null   # 课程状态
 #  created_at     :datetime
 #  updated_at     :datetime
+#  comment_token  :string(255)
+#  living         :boolean
 #
 # Indexes
 #

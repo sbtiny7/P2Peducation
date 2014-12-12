@@ -6,6 +6,13 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+        .remember_me {
+            margin-bottom: 10px;
+        }
+        .sign_in_form {
+            margin-top: 20px;
+        }
+
     </style>
 <% end %>
 
@@ -20,7 +27,7 @@
 
 <div class="">
 
-    <div class="row">
+    <div class="">
         <div class="col-md-8"></div>
         <div class="col-md-4 sign_in_form">
             <div class="" >
@@ -38,7 +45,7 @@
                         </div>
 
                         <% if devise_mapping.rememberable? -%>
-                            <div><%= f.check_box :remember_me %>记住密码</div>
+                            <div class="remember_me"><%= f.check_box :remember_me %>记住密码</div>
                         <% end -%>
 
                         <button type="submit" class="btn btn-info">

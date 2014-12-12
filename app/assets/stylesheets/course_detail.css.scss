@@ -1,0 +1,141 @@
+@import "variables";
+.order_info {
+  background-color: #fff;
+  margin-top: 40px;
+  padding: 17px 31px 40px 31px;
+  table {
+    width: 100%;
+    border-bottom: solid 1px #C7C4C4;
+  }
+}
+.table_title {
+  border-bottom: solid 1px #C7C4C4;
+  color: #008000;
+  font-size: 15px;
+  td {
+    padding: 10px 0;
+  }
+}
+.course_pic {
+  width: 200px;
+  img {
+    width: 200px;
+    height: 112px;
+  }
+}
+.table_info {
+  td {
+    padding: 10px 10px 0 10px;
+  }
+  .top {
+     vertical-align: top;
+  }
+}
+.course_type, .course_teacher, .course_start {
+  font-size: 12px;
+  color: gray;
+  margin-top: 8px;
+}
+.payment {
+    background-color: #fff;
+    margin-top: 40px;
+    width: 664px;
+    table {
+        width: 100%;
+    }
+}
+.introduce {
+    width: 122px;
+    background-color: #F1F4F4;
+    padding-left: 14px;
+    div {
+        background-color: #fff;
+        padding: 5px;
+    }
+    .title {
+
+    }
+}
+.content {
+    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-left: 10px;
+    font-size: 13px;
+    >div {
+        padding: 10px 0;
+        >label {
+            font-weight: normal;
+            width: 67px;
+            text-align: right;
+            color: #737373;
+        }
+    }
+}
+
+.id_verify {
+    border-bottom: solid 1px #C7C4C4;
+}
+#phone, #captcha,#username {
+    width: 132px;
+    border: solid 1px #C7C4C4;
+    margin-right: 12px;
+    height: 30px;
+}
+
+.course_button {
+    border-radius: 3px;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.real_name {
+}
+#pay_method_alipay {
+    margin-right: 10px;
+}
+.total_title {
+    font-size: 15px;
+    font-weight: 700;
+}
+.total_content {
+    font-size: 20px;
+    font-weight: 300;
+    color: #EC8934;
+}
+.agreement {
+    color: $main_color;
+}
+.go_pay {
+    background-color: #F89138;
+    border-radius: 3px;
+    padding-left: 60px;
+    padding-right: 60px;
+    float: left;
+    margin-top: 7px;
+}
+.pay_tips {
+    font-size: 12px;
+    float: left;
+    margin-left: 10px;
+    p {
+        margin: 5px 0;
+    }
+}
+#re_get {
+    font-style: italic;
+    color: #B3B3B3;
+    display: none;
+    margin-top: 10px;
+}
+.error_message {
+    label {
+        color: #D36262;
+        font-style: italic;
+        font-weight: normal;
+    }
+}
+.agree_error {
+    margin-top: 10px;
+    label {
+    }
+}

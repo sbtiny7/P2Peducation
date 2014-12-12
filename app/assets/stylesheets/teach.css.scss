@@ -1,0 +1,57 @@
+@import "share";
+
+.teach-container {
+  margin: 0 auto;
+  padding: 40px 0 60px;
+  width: 900px;
+}
+
+#banner {
+  /* helpouts's width si 400px */
+  height: 350px;
+  width: 100%;
+  position: relative;
+
+  .banner-bg {
+    position: absolute;
+    height: 350px;
+    width: 900px;
+    transition: all 1s linear;
+  }
+
+  .bg-active {
+    opacity: 1;
+  }
+
+  .bg-inactive {
+    opacity: 0;
+  }
+
+
+  @for $i from 1 through 2 {
+    #banner-bg-#{$i} {
+      background-image: url("home-banner-bg-image-#{$i}.jpg");
+    }
+  }
+
+  .banner-text {
+    position: absolute;
+    bottom: 100px;
+    padding: 0 100px;
+  }
+}
+
+
+.choice-list {
+  @extend .bg-white;
+  width: 900px;
+  padding: 40px 0;
+
+  .choice {
+    @extend .text-center;
+    /* why is 300px wrong? */
+    width: 295px;
+    padding: 0 20px;
+    display: inline-block;
+  }
+}
