@@ -1,15 +1,33 @@
-default: &default
-  partner_id: ''
-  key: ''
-  email: ''
-  host: abc.com
-  port: 3002
-
+---
+default:
+  partner_id: 
+  key: 
+  email: 
+  host: 
+  comment_server: 
+  port: 
+  expired_duration: 
 development:
-  <<: *default
-
+  partner_id: 
+  key: 
+  email: 
+  host: 
+  comment_server: 
+  port: 
+  expired_duration: 
 production:
-  <<: *default
-
+  partner_id: 
+  key: 
+  email: 
+  host: 
+  comment_server: 
+  port: 
+  expired_duration: 
 test:
-  <<: *default
+  partner_id: 
+  key: 
+  email: 
+  host: 
+  comment_server: 
+  port: 
+  expired_duration: 

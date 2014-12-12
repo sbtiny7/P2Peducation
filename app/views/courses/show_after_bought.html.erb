@@ -16,6 +16,6 @@
 <button id="send_message">发送</button>
 <%= image_tag @course.image, :width => 400 %>
 
-<%= javascript_include_tag "http://#{Settings.host}:9292/faye/faye.js"%>
+<%= javascript_include_tag "http://#{Settings.comment_server}:9292/faye/faye.js"%>
 <%= include_gon %>
 <%= javascript_include_tag "chat"%>
