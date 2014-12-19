@@ -35,6 +35,11 @@ class CoursesController < ApplicationController
         @tieckts_bought = current_user.has_bought? @course.id
         @chat_channel = @course.chat_channel
         @user = current_user
+        if @course.living
+            gon.live = true
+            gon.app_name = Settings.media_server["app_name"]
+            gon.token = @course.token
+        end
         gon.faye_server = "http://#{Settings.chat_server}:9292/faye"
         gon.chat_channel = @chat_channel
         gon.video_channel = @course.video_channel
@@ -42,7 +47,7 @@ class CoursesController < ApplicationController
         gon.comment_token =  @course.comment_token
         gon.chat_server = Settings.chat_server
         gon.username = @user.username
-        gon.media_server = Settings.media_server
+        gon.media_server = Settings.media_server["url"]
     end
 
     def enroll

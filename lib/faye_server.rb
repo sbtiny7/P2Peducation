@@ -1,6 +1,8 @@
 ##
 #提供faye server的服务，发送消息, 生成频道
 #
+require 'net/http'
+require 'json'
 
 module FayeServer
     class Common
@@ -18,15 +20,17 @@ module FayeServer
         #负责发送json数据到服务器, ext是增加额外的参数，比如认证token
         #
         def self.broadcast(channel, data)
-            faye_url = FayeServer::Common.faye_url
-            #message = {:channel => channel, :data => data, :ext => {:auth_token => FAYE_TOKEN} }
-            message = {:channel => channel, :message => data }
-            uri = URI.parse "http://jiaoyu.chinacloudapp.cn/chat_server/publish"
-            begin
-                Net::HTTP.post_form(uri, message)
-            rescue Exception => e
-                Rails.logger.info("#{e}")
-            end
+            @host = Settings.chat_server
+            @port = '80'
+            @post_ws = "/chat_server/publish"
+            @payload ={
+                channel: channel,
+                message: data
+            }.to_json
+
+            req = Net::HTTP::Post.new(@post_ws, initheader = {'Content-Type' =>'application/json'})
+            req.body = @payload
+            response = Net::HTTP.new(@host, @port).start {|http| http.request(req) }
         end
     end
 end

@@ -9,10 +9,11 @@ function video_handle(data) {
             //TODO get url from media server
             video_url = "rtmp://" + gon.media_server + "/" + data.app_name +
             "/" + data.token ;
-            play_video(600, 400, video_url, "", true, "LIVING");
+            play_video(700, 525, video_url, "", true, "LIVING");
             break;
         case "video_stop":
-            //
+            $('.live_video').html('<div id="stream-player"></div>');
+            $("#stream-player").css('visibility','visible')
             break;
     }
     console.log(data);
@@ -75,3 +76,9 @@ load_comments();
 
 var scroll_top = $('.comments_pane')[0].scrollHeight - $('.comments_pane').height();
 $('.comments_pane').animate({scrollTop:scroll_top+"px"}, 1000, function(){});
+
+if (gon.live) {
+    video_url = "rtmp://" + gon.media_server + "/" + gon.app_name +
+    "/" + gon.token ;
+    play_video(600, 400, video_url, "", true, "LIVING");
+}
