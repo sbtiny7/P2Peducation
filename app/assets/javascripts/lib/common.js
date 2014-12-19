@@ -51,3 +51,103 @@
 
 })(jQuery);
 
+function crossDomainAjax (url, successCallback) {
+
+    // IE8 & 9 only Cross domain JSON GET request
+    if ('XDomainRequest' in window && window.XDomainRequest !== null) {
+
+        var xdr = new XDomainRequest(); // Use Microsoft XDR
+        xdr.open('get', url);
+        xdr.onload = function () {
+            var dom  = new ActiveXObject('Microsoft.XMLDOM')
+            var JSON;
+            try {
+                JSON = $.parseJSON(xdr.responseText);
+            } catch(err) {
+                JSON = null;
+            }
+
+            dom.async = false;
+
+            if (JSON == null || typeof (JSON) == 'undefined') {
+                try {
+                    JSON = $.parseJSON(data.firstChild.textContent);
+                } catch(err) {
+                    JSON = null;
+                }
+            }
+
+            if (JSON == null || typeof (JSON) == 'undefined') {
+                JSON = {};
+            }
+
+            successCallback(JSON); // internal function
+        };
+
+        xdr.onerror = function() {
+            _result = false;
+        };
+
+        xdr.send();
+    } else {
+        $.ajax({
+            url: url,
+            cache: false,
+            dataType: 'json',
+            type: 'GET',
+            async: false, // must be set to false
+            success: function (data, success) {
+                successCallback(data);
+            }
+        });
+    }
+}
+
+
+function play_video(width, height, file, image, autoplay, vstate, tid)
+{
+    if (vstate == 'LIVING')
+    {
+        var flashvars = {
+            src:file,
+            streamType:"live",
+            autoPlay:autoplay,
+            poster:image,
+            controlBarAutoHide:true,
+            bufferTime:2,
+            initialBufferTime:0.5,
+            liveBufferTime:2
+        };
+    }
+    else
+    {
+        var flashvars = {
+            src:file,
+            autoPlay:autoplay,
+            poster:image,
+            controlBarAutoHide:true,
+            plugin_hls: "/HLSDynamicPlugin.swf"
+        };
+    }
+
+
+    var params = {
+//src: file,
+//autoPlay: autoplay,
+//controlBarAutoHide: true,
+//poster: image,
+//javascriptCallbackFunction: ""
+        allowFullScreen:  "true",
+        wmode: "transparent"
+    };
+    var attributes = {
+
+    };
+    swfobject.embedSWF (
+//"/StrobeMediaPlayback.swf"+"?myid="+tid+"&upload=http://"+location.host+"/api/upload_snapshot.js",
+        "/Strobe601.swf",
+//"http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf",
+        "stream-player",
+        width, height, "10.1.0", "/expressInstall.swf",
+        flashvars, params, attributes);
+}

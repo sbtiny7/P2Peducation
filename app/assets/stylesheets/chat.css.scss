@@ -1,0 +1,68 @@
+@import "variables";
+.bigger_container {
+    margin: 0 auto;
+    width: 1300px;
+}
+
+.live_left, .live_right, .live_middle  {
+    float: left;
+}
+
+.live_right, .live_left  {
+    height: 560px;
+    width: 200px;
+    background-color: #858585;
+}
+
+.live_middle {
+    width: 900px;
+}
+
+.title  {
+    background-color: #2A2A2A;
+    padding: 8px 0;
+
+    h4 {
+        margin: 0 0 0 100px;
+        color: #fff;
+    }
+}
+#video {
+    width: 700px;
+    height: 525px;
+    background-color: gray;
+    margin: 0 auto;
+}
+.live_video {
+    background-color: #030303;
+}
+.comment_item {
+    width: 180px;
+    margin: 5px 10px;
+    min-height: 100px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    .down {
+        margin-top: 10px;
+    }
+}
+.username {
+    color: $main_color;
+    margin-right: 45px;
+}
+.comments_pane {
+    height: 470px;
+    overflow: scroll;
+}
+.g_comments {
+    padding: 10px;
+}
+#send_message {
+    margin-top: 10px;
+}
+.time {
+    float: right;
+    margin-right: 10px;
+}

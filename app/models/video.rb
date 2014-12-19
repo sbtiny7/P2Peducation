@@ -8,6 +8,9 @@
 #  videoable_type :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  tid            :string(255)
+#  preview_addr   :string(255)
+#  archived_addr  :string(255)
 #
 
 class Video < ActiveRecord::Base

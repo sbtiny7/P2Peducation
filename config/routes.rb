@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     post 'enroll' => 'courses#enroll_create', :as => 'enroll_course'
   end
 
+
+  post "/auth" => "api/stream#auth"
   # ↓ 移动端API ↓
 
   get 'api/study/study.:format' => 'api/study#study'

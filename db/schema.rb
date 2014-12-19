@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210130320) do
+ActiveRecord::Schema.define(version: 20141219024635) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -239,6 +239,9 @@ ActiveRecord::Schema.define(version: 20141210130320) do
     t.string   "videoable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "tid"
+    t.string   "preview_addr"
+    t.string   "archived_addr"
   end
 
 end

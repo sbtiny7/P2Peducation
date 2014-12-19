@@ -1,21 +1,63 @@
-<script>
-</script>
+<%= stylesheet_link_tag "chat"%>
+<%= stylesheet_link_tag 'course' %>
+<div class="bigger_container">
+    <div class="live_left">
+    </div>
+    <div class="live_middle">
+        <div class="title">
+            <h4>
+                <%= @course.title %>
+            </h4>
+        </div>
+        <div class="live_video">
+            <div id="stream-player"></div>
+        </div>
 
-<h1>
-  <%= @course.title %>
-</h1>
+        <div class="left_side">
+            <div class="section">
+                <h4>课程介绍</h4>
+                <%= sanitize @course.detail %>
+                <h5>课程介绍</h5>
+                <div></div>
+                <div class="chapter"></div>
+            </div>
+            <div class="section">
+                <h4>评价</h4>
+            </div>
+        </div>
+        <div class="right_side">
+            <div class="section">
+                <h4>老师介绍</h4>
+                <div class="teacher_info"></div>
+            </div>
 
-<h1>
-    <%= "正在直播" if @course.living %>
-</h1>
-<div id="chat_box">
+            <div class="section">
+                <h4>参加学生</h4>
+                <div class="stude_info"></div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="live_right">
+        <div class="comments_pane"></div>
+        <div class="g_comments">
+            <%= text_field_tag :comment, nil, class: "form-control" %>
+            <%= submit_tag "评论", class: "btn btn-success btn-sm", id: "send_message" %>
+        </div>
+    </div>
 </div>
-
-
-<input id="message" type="text"/>
-<button id="send_message">发送</button>
-<%= image_tag @course.image, :width => 400 %>
-
-<%= javascript_include_tag "http://#{Settings.comment_server}:9292/faye/faye.js"%>
+<script id="comment_template" type="text/x-jquery-tmpl">
+        <div class="comment_item">
+            <div class="up">
+                <span class="username">${username}</span>
+                <span class="time">${created_at}</span>
+            </div>
+            <div class="down">
+                <div class="comment_content">${content}</div>
+            </div>
+        </div>
+</script>
+<%= javascript_include_tag "http://#{Settings.chat_server}:9292/faye/faye.js"%>
 <%= include_gon %>
 <%= javascript_include_tag "chat"%>

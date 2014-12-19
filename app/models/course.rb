@@ -124,12 +124,19 @@ class Course < ActiveRecord::Base
     def chat_channel
         "/chat/#{self.id}"
     end
+    def video_channel
+        "/video/#{self.id}"
+    end
 
     protected
     def generate_comment_token
         self.comment_token = loop do
             random_token = Devise.friendly_token
             break random_token unless Course.exists?(comment_token: random_token)
+        end
+        self.token = loop do
+            random_token = Devise.friendly_token
+            break random_token unless Course.exists?(token: random_token)
         end
     end
 end

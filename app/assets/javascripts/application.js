@@ -4,6 +4,7 @@
 //= require bootstrap-sprockets
 //= require share
 //= require plugins/validate/index
+//= require lib/jquery.tmpl
 
 //jQuery.validator.addMethod("notEqual", function(value, element, param) {
 //  return this.optional(element) || value ! param;
