@@ -1,18 +1,48 @@
-<div class="row lesson_nav">
-    <% [["正在学习", "/accounts/student/learning"], ["待支付", "/accounts/student/pending"], ["收藏", "/accounts/student/favorite" ]].each do |item| %>
-        <div class="col-md-4">
-            <div class="<%= item[1].include? params[:action] %>">
-                <%= link_to item[0], item[1], class: "btn btn-info" %>
+<%= stylesheet_link_tag "learning" %>
+<div class="view-content">
+    <div class="account_left">
+        <div class="sign">
+            <div class="user_avatar">
+                <div class="avatar_wrap">
+                    <%= image_tag "people-2.jpg" %>
+                </div>
+                <div class="username">
+                    <%= current_user.username %>
+                </div>
+            </div>
+            <div class="settings">
+                <span class="personal">个人设置</span>
+                <span>修改密码</span>
+            </div>
+            <%# TODO add course account %>
+            <%# TODO add icon %>
+            <div class="pane">
+                <div>
+                    <h4>我的课程</h4>
+                    <div class="sub_class">
+                        <div>我学的课</div>
+                        <div>我教的课</div>
+                    </div>
+                </div>
+                <div>
+                    <h4>课程消费</h4>
+                </div>
+                <div>
+                    <h4>课程收入</h4>
+                </div>
             </div>
         </div>
-    <% end %>
-</div>
-<div class="lesson_detail accounts_course">
-    <div class="row">
-        <% @courses.each do |c| %>
-            <div class="col-md-4">
-                <%= render partial: 'accounts/shared/single_course', locals: {course: c, path: course_path(c)} %>
-            </div>
-        <% end %>
+    </div>
+    <div class="account_middle">
+        <div class="ad">
+            <%= image_tag "account_learning.png" %>
+        </div>
+        <div class="learning">
+            <span class="active">正在学习</span>
+            <span>已学习</span>
+        </div>
+        <div class="no_class">
+            你还没有参加任何课程 <a class="btn btn-success btn-sm">浏览课程</a>
+        </div>
     </div>
 </div>

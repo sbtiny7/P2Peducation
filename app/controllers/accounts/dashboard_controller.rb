@@ -1,6 +1,5 @@
 class Accounts::DashboardController <  ApplicationController
   before_action :authenticate_user!
-  layout "accounts"
   def learning
     @courses = current_user.bought_courses
     render "union_courses.html.erb"

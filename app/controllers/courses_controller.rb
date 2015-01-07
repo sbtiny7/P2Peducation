@@ -32,9 +32,11 @@ class CoursesController < ApplicationController
 
     def show_after_bought
         @course = Course.where(status: true).find(params[:id])
+        @reviews = @course.reviews
         @tieckts_bought = current_user.has_bought? @course.id
         @chat_channel = @course.chat_channel
         @user = current_user
+        @teacher = @course.teacher
         if @course.living
             gon.live = true
             gon.app_name = Settings.media_server["app_name"]

@@ -98,62 +98,6 @@ body {
         background-color: #3079ED;
     }
 }
-.left_side {
-    .section {
-        background-color: white;
-        margin-top: 20px;
-        padding: 20px;
-    }
-    .title {
-
-    }
-    width: 580px;
-    float: left;
-}
-.right_side {
-    .section {
-        background-color: white;
-        margin-top: 20px;
-        padding: 20px;
-    }
-    float: right;
-    width: 300px;
-}
-.review {
-    border-top: solid 1px #e9e9e9;
-    margin: 10px -20px;
-    padding: 15px 20px;
-}
-.review_avatar {
-    float: left;
-}
-.avatar_wrap {
-    width: 32px;
-    border-radius: 50%;
-    overflow: hidden;
-    img {
-        width: 100%;
-    }
-}
-.review_content {
-    margin-left: 45px;
-}
-.review_starts {
-    font-size: 15px;
-    .review_time {
-        font-size: 13px;
-        margin-left: 5px;
-        vertical-align: 2px;
-    }
-}
-.review_comment {
-    margin: 10px 0;
-}
-.reviewer {
-    font-weight: 700;
-    margin: 10px 0;
-    color: #000;
-}
 .blank {
     color: #ABABAB;
 }

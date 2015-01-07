@@ -14,6 +14,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  introduce    :string(255)
+#  job          :string(255)
 #
 
 class Teacher < ActiveRecord::Base

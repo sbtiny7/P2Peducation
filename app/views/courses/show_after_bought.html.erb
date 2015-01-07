@@ -1,5 +1,4 @@
 <%= stylesheet_link_tag "chat"%>
-<%= stylesheet_link_tag 'course' %>
 <div class="bigger_container">
     <div class="live_left">
     </div>
@@ -18,22 +17,91 @@
                 <h4>课程介绍</h4>
                 <%= sanitize @course.detail %>
                 <h5>课程介绍</h5>
-                <div></div>
-                <div class="chapter"></div>
+                <%# TODO fake date  %>
+                <div class="chapter">
+                    <div class="chapter_item">
+                        <div class="chapter_icon">x</div>
+                        <div class="chapter_right">
+                            <div class="chapter_title">第一章 课程介绍</div>
+                            <div class="chapter_introduce">ooo</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
             </div>
             <div class="section">
                 <h4>评价</h4>
+                <div class="computed">
+                    <div class="comment_user">
+                        <%# TODO fake %>
+                        <div class="avatar_wrap">
+                            <%= image_tag "people-1.jpg" %>
+                        </div>
+                    </div>
+                    <div class="comment_body">
+                        <div class="grade">
+                            满意程度
+                            <span class="starts">
+                                <% 5.times do %>
+                                    <span class="glyphicon glyphicon-star green"></span>
+                                <% end %>
+                            </span>
+                            5 好评
+                        </div>
+                        <%= text_area_tag :course_review %>
+                    </div>
+                    <div class="clear"></div>
+                    <div>
+                        <div class="share_tag">
+                            <%# TODO %>
+                        </div>
+                        <%= submit_tag "提交", class: "btn btn-sm btn-success", id: "submit" %>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div>
+                    <table class="cate">
+                        <tr>
+                            <td class="by_starts">按热门</td>
+                            <td>按时间</td>
+                        </tr>
+                    </table>
+                </div>
+                <% @reviews.each do |r|%>
+                    <%= render partial: "review", locals: {r: r}%>
+                <% end %>
             </div>
         </div>
         <div class="right_side">
             <div class="section">
-                <h4>老师介绍</h4>
-                <div class="teacher_info"></div>
+                <div class="">
+                    <div class="teacher_avatar">
+                        <div class="avatar_wrap avatar_big">
+                            <%= image_tag "people-1.jpg" %>
+                        </div>
+                    </div>
+                    <div class="teacher_info">
+                        <div class="teacher_name"><%= @course.teacher.name %></div>
+                        <div class="teacher_job"><%= @course.teacher.job %></div>
+                    </div>
+                    <div class="teacher_intro">
+                        <%= @teacher.introduce %>
+                    </div>
+                </div>
             </div>
 
             <div class="section">
-                <h4>参加学生</h4>
-                <div class="stude_info"></div>
+                <div class="student_title"><span class="count">98</span>人在学习该课程</div>
+                <div class="student_info">
+                    <div class="avatar_list">
+                        <% 12.times do %>
+                            <div class="avatar_wrap">
+                                <%= image_tag "people-1.jpg" %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
             </div>
         </div>
 

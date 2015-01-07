@@ -66,3 +66,81 @@
     float: right;
     margin-right: 10px;
 }
+.chapter {
+    margin-left: 20px;
+}
+.chapter_icon {
+    float: left;
+    height: 10px;
+    margin-right: 10px;
+}
+.chapter_title {
+    font-size: 15px;
+    color: gray;
+}
+.chapter_introduce {
+    font-size: 13px;
+    color: gray;
+    margin-top: 10px;
+}
+.chapter_right {
+    float: left;
+}
+.starts {
+    margin: 0 10px;
+    vertical-align: -2px;
+}
+.comment_user, .comment_body {
+    float: left
+}
+.comment_body {
+    margin-left: 10px;
+}
+#course_review {
+    margin-top: 10px;
+    height: 70px;
+    width: 498px;
+    border: solid 1px #e9e9e9;
+    resize: none;
+}
+#submit {
+    margin-top: 10px;
+    float: right;
+}
+.cate {
+    td {padding: 6px;}
+    .by_starts {
+        border-right: 1px solid;
+    }
+}
+.teacher_info {
+    height: 70px;
+    vertical-align: middle;
+    padding: 9px 0 9px 90px;
+    .teacher_name {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+    .teacher_job {
+        color: gray;
+    }
+}
+.teacher_avatar {
+    float: left;
+}
+.teacher_intro {
+    margin-top: 20px;
+}
+.avatar_list {
+    overflow: hidden;
+    border-top: 1px solid #C5C5C5;
+    margin-top: 11px;
+    div {
+        float: left;
+        margin: 10px;
+    }
+}
+
+body{
+    width: 1300px !important;
+}
