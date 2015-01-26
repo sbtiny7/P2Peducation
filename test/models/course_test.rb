@@ -27,6 +27,7 @@
 #  updated_at     :datetime
 #  comment_token  :string(255)
 #  living         :boolean
+#  introduction   :text
 #
 # Indexes
 #

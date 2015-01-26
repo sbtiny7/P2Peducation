@@ -65,10 +65,21 @@
                 <button type="button" class="btn bg-green">我要教课</button>
             </a>
             <% if user_signed_in? %>
-                <button type="button" class="btn btn-link"><%= current_user.username %><span class="glyphicon glyphicon-chevron-down"></span> </button>
+                <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                        <%= current_user.username %>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">
+                            <%= link_to "退出", "/accounts/sign_out", method: "delete" %>
+                        </li>
+                    </ul>
+                </span>
+
             <% else %>
-                <button type="button" class="btn btn-link">登录</button>
-                <button type="button" class="btn btn-link">注册</button>
+                <%= link_to "登录", "/accounts/sign_in", class:"btn btn-link" %>
+                <%= link_to "注册", "/accounts/sign_up", class: "btn btn-link" %>
             <% end %>
         </div>
     </div>

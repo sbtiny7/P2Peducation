@@ -1,4 +1,5 @@
-<%= stylesheet_link_tag "learning" %>
+<%= stylesheet_link_tag "learning"  %>
+<%= javascript_include_tag "learning"  %>
 <div class="view-content">
     <div class="account_left">
         <div class="sign">
@@ -41,8 +42,16 @@
             <span class="active">正在学习</span>
             <span>已学习</span>
         </div>
+        <% if @courses.length == 0 %>
         <div class="no_class">
             你还没有参加任何课程 <a class="btn btn-success btn-sm">浏览课程</a>
         </div>
+        <% else %>
+            <div class="my_classes">
+                <% @courses.each do |item|%>
+                    <%= render partial: "item", locals: {item: item} %>
+                <% end %>
+            </div>
+        <% end %>
     </div>
 </div>

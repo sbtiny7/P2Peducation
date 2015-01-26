@@ -1,7 +1,6 @@
 body {
     min-width: 1200px;
     background-color: #eee;
-    font-size: 100%;
 }
 
 /* Component */
@@ -85,7 +84,7 @@ header {
 
         .header-nav-right {
             position: absolute;
-            right: 0;
+            right: 40px;
             top: 10px;
 
             #teach {

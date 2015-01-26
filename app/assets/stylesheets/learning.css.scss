@@ -74,3 +74,77 @@
     border: 1px dotted;
     text-align: center;
 }
+.category-item {
+    position: relative;
+    width: 220px;
+    background-color: white;
+    border-radius: 5px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 12px;
+}
+.category-course-image {
+    position: relative;
+    img {
+        width: 100%;
+    }
+}
+.category-avatar {
+    border-radius: 50%;
+    position: absolute;
+    top: 97px;
+    width: 50px;
+    left: 10px
+}
+
+.category-course-intro-container {
+    height: 36px;
+    margin-top: -36px;
+    margin-left: 65px;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 600;
+}
+.category-teacher-container {
+    margin-left: 65px;
+    font-weight: 600;
+}
+
+.category-review-container {
+    overflow: hidden;
+    padding: 10px;
+}
+.my_classes {
+}
+.stars {
+    float: left;
+}
+.price {
+    float: right;
+}
+.mask {
+    display: none;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0.6;
+}
+.detail {
+    padding: 5px;
+    font-size: 12px;
+    overflow: hidden;
+    height: 70px;
+}
+.reverse {
+    display: none;
+    color: white;
+    position: absolute;
+    top: 0;
+}
+.start_time {
+    margin-top: 28px;
+    border-top: 1px solid;
+    padding-left: 96px;
+}

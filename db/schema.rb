@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220071943) do
+ActiveRecord::Schema.define(version: 20150123084842) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20141220071943) do
     t.datetime "updated_at"
     t.string   "comment_token"
     t.boolean  "living"
+    t.text     "introduction"
   end
 
   add_index "courses", ["token"], name: "index_courses_on_token", unique: true, using: :btree

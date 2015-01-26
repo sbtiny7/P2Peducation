@@ -41,7 +41,7 @@ var send_message = function() {
     $("#comment").val("");
 };
 
-$("#send_message").click(send_message());
+$("#send_message").click(send_message);
 
 $('#comment').keypress(function (e) {
     if (e.which == 13) {

@@ -1,0 +1,42 @@
+<div class="category-item">
+    <a href="/course/<%= item.id %>">
+        <div class="category-course-image">
+            <img alt="Category course image" src="/assets/category-course-image.png">
+            <div class="mask">
+            </div>
+            <div class="reverse">
+                <div class="detail">
+                    <%= item.introduction %>
+                </div>
+                <div class="start_time">
+                    <%= l item.start_time, :format => :short%>
+                </div>
+            </div>
+            <div class="category-course-intro-container">
+                <span class="category-course-intro"><%= item.title %></span>
+            </div>
+        </div>
+    </a>
+
+    <a href="#">
+        <img alt="People 3" class="category-avatar" src="/assets/people-3.jpg">
+    </a>
+
+
+    <div class="category-teacher-container">
+        <span class="category-teacher"><%= item.teacher.name %></span>
+    </div>
+
+    <div class="category-review-container">
+        <div class="stars">
+            <span class="glyphicon glyphicon-star green"></span>
+            <span class="glyphicon glyphicon-star green"></span>
+            <span class="glyphicon glyphicon-star green"></span>
+            <span class="glyphicon glyphicon-star green"></span>
+            <span class="glyphicon glyphicon-star green"></span>
+        </div>
+        <div class="price">
+            $ <%= item.price %>
+        </div>
+    </div>
+</div>
