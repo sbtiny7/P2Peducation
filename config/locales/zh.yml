@@ -123,6 +123,7 @@ zh:
       file: 文件
       message_id: 消息
       deleted: 是否删除
+      blank: "空"
     message:
       content: 内容
       phones: 电话号码
@@ -273,6 +274,8 @@ zh:
         deleted: 删除视频
         user: 视频上传者
         tid: 视频的TagID号
+      lesson: 
+        video: 视频
       image:
         title: 图片标题
         file: 图片文件

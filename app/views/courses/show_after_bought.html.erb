@@ -22,8 +22,16 @@
                     <div class="chapter_item">
                         <div class="chapter_icon">x</div>
                         <div class="chapter_right">
-                            <div class="chapter_title">第一章 课程介绍</div>
-                            <div class="chapter_introduce">ooo</div>
+                            <% if @sections %>
+                                <% @sections.each_with_index  do |s, i| %>
+                                    <div class="chapter_title"><%= "第#{i+1}章 #{s.name}"%></div>
+                                    <% s.lessons.each_with_index  do |lesson, index|%>
+                                        <div class="lesson">
+                                            <%= link_to lesson.title, "/lesson/#{lesson.id}" %>
+                                        </div>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
                         </div>
                     </div>
                 </div>

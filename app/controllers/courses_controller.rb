@@ -35,6 +35,7 @@ class CoursesController < ApplicationController
         if params[:lesson_id]
             @lesson = Lesson.find params[:lesson_id]
             @course = @lesson.section.course
+            @sections = @course.sections
             if @course.course_type == "RECORD"
                 gon.record = true
                 gon.record_url = @lesson.video.archived_addr
