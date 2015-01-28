@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123084842) do
+ActiveRecord::Schema.define(version: 20150126091739) do
 
   create_table "agreements", force: true do |t|
     t.text     "detail"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20150123084842) do
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section_id"
   end
 
   add_index "lessons", ["token"], name: "index_lessons_on_token", unique: true, using: :btree
@@ -169,6 +170,13 @@ ActiveRecord::Schema.define(version: 20150123084842) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "sections", force: true do |t|
+    t.integer  "course_id"
+    t.string   "name",       comment: "课程名字"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "studyships", force: true do |t|
     t.integer  "student_id"

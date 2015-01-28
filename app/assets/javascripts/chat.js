@@ -78,7 +78,11 @@ var scroll_top = $('.comments_pane')[0].scrollHeight - $('.comments_pane').heigh
 $('.comments_pane').animate({scrollTop:scroll_top+"px"}, 1000, function(){});
 
 if (gon.live) {
+    //TODO get media server url
     video_url = "rtmp://" + gon.media_server + "/" + gon.app_name +
     "/" + gon.token ;
     play_video(600, 400, video_url, "", true, "LIVING");
+} else if (gon.record) {
+    video_url = gon.record_url;
+    play_video(600, 400, video_url, "", false, "ARCHIVED");
 }

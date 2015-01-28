@@ -39,7 +39,7 @@
 
 class Course < ActiveRecord::Base
 
-    TYPES = %w(ONLINE OFFLINE)
+    TYPES = %w(ONLINE OFFLINE RECORD)
     CATEGORIES = %w(实用技能 兴趣爱好)
     DEFAULT_IMG_PATH = "/temp.jpg"
 
@@ -55,7 +55,7 @@ class Course < ActiveRecord::Base
     belongs_to :city
     belongs_to :district
     has_many :orders , foreign_key: :goods_id
-    has_many :lessons
+    has_many :sections
     has_many :studyships
     has_many :students, :through => :studyships
     has_many :videos, :as => :videoable

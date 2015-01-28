@@ -9,6 +9,7 @@
 #  token      :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  section_id :integer
 #
 # Indexes
 #
@@ -19,5 +20,6 @@ class Lesson < ActiveRecord::Base
     belongs_to :course
     has_many :learnships
     has_many :students, :through => :learnships
-    has_many :videos, :as => :videoable
+    has_one :video, :as => :videoable
+    belongs_to :section
 end

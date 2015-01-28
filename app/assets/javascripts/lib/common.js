@@ -104,7 +104,7 @@ function crossDomainAjax (url, successCallback) {
 }
 
 
-function play_video(width, height, file, image, autoplay, vstate, tid)
+function play_video(width, height, file, image, autoplay, vstate)
 {
     if (vstate == 'LIVING')
     {
@@ -144,7 +144,6 @@ function play_video(width, height, file, image, autoplay, vstate, tid)
 
     };
     swfobject.embedSWF (
-//"/StrobeMediaPlayback.swf"+"?myid="+tid+"&upload=http://"+location.host+"/api/upload_snapshot.js",
         "/Strobe601.swf",
 //"http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf",
         "stream-player",

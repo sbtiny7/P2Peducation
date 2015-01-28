@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   # ↑ 咱们用的后台管理 ↑
 
 
+  get "lesson/:lesson_id" => "courses#show_after_bought"
   # ↓ 用户使用的管理页面 ↓
 
   namespace :accounts do

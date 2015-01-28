@@ -30,8 +30,18 @@ class CoursesController < ApplicationController
         end
     end
 
+
     def show_after_bought
-        @course = Course.where(status: true).find(params[:id])
+        if params[:lesson_id]
+            @lesson = Lesson.find params[:lesson_id]
+            @course = @lesson.section.course
+            if @course.course_type == "RECORD"
+                gon.record = true
+                gon.record_url = @lesson.video.archived_addr
+            end
+        else
+            @course = Course.where(status: true).find(params[:id])
+        end
         @reviews = @course.reviews
         @tieckts_bought = current_user.has_bought? @course.id
         @chat_channel = @course.chat_channel

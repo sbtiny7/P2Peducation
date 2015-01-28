@@ -1,24 +1,17 @@
 # == Schema Information
 #
-# Table name: lessons
+# Table name: sections
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
 #  course_id  :integer
-#  title      :string(255)
-#  token      :string(255)
+#  name       :string(255)                            # 课程名字
 #  created_at :datetime
 #  updated_at :datetime
-#  section_id :integer
-#
-# Indexes
-#
-#  index_lessons_on_token  (token) UNIQUE
 #
 
 require 'test_helper'
 
-class LessonTest < ActiveSupport::TestCase
+class SectionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
