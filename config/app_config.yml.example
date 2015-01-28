@@ -4,7 +4,11 @@ default:
   key: 
   email: 
   host: 
-  comment_server: 
+  chat_server: 
+  media_query_url: 
+  media_server: &1
+    url: 
+    app_name: 
   port: 
   expired_duration: 
 development:
@@ -12,7 +16,9 @@ development:
   key: 
   email: 
   host: 
-  comment_server: 
+  chat_server: 
+  media_query_url: 
+  media_server: *1
   port: 
   expired_duration: 
 production:
@@ -20,7 +26,9 @@ production:
   key: 
   email: 
   host: 
-  comment_server: 
+  chat_server: 
+  media_query_url: 
+  media_server: *1
   port: 
   expired_duration: 
 test:
@@ -28,6 +36,8 @@ test:
   key: 
   email: 
   host: 
-  comment_server: 
+  chat_server: 
+  media_query_url: 
+  media_server: *1
   port: 
   expired_duration: 
