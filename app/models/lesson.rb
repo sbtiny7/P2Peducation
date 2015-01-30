@@ -23,4 +23,5 @@ class Lesson < ActiveRecord::Base
     has_one :video, :as => :videoable
     belongs_to :section
     validates_presence_of :video
+    validates_presence_of :title
 end

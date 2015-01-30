@@ -129,6 +129,16 @@ class Course < ActiveRecord::Base
         "/video/#{self.id}"
     end
 
+    def link_url
+        if self.course_type == "RECORD"
+            #TODO 优化写法 这样查询效率有点低
+            #TODO 记住上一次学习的位置
+            "/lesson/#{self.sections.first.lessons.first.id}"
+        else
+            "/course/#{self.id}"
+        end
+    end
+
     protected
     def generate_comment_token
         self.comment_token = loop do

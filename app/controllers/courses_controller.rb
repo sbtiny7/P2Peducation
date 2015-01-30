@@ -37,8 +37,12 @@ class CoursesController < ApplicationController
             @course = @lesson.section.course
             @sections = @course.sections
             if @course.course_type == "RECORD"
-                gon.record = true
-                gon.record_url = @lesson.video.archived_addr
+                if current_user.has_bought? @course.id
+                    gon.record = true
+                    gon.record_url = @lesson.video.archived_addr
+                else
+                    return redirect_to public_show_course_path(@course)
+                end
             end
         else
             @course = Course.where(status: true).find(params[:id])
