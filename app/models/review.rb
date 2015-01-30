@@ -14,4 +14,5 @@
 class Review < ActiveRecord::Base
     belongs_to :user
     belongs_to :course
+    validates_presence_of :grade
 end

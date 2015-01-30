@@ -5,6 +5,12 @@ class Accounts::CoursesController < ApplicationController
 
   layout 'accounts'
 
+  def review
+    #TODO review 分页
+    current_user.reviews.create(course_id: params[:course_id], grade: params[:score], comment: params[:course_review])
+    redirect_to :back
+  end
+
   def publish
     render layout: "application"
   end

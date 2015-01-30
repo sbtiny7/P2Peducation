@@ -86,3 +86,16 @@ if (gon.live) {
     video_url = gon.record_url;
     play_video(600, 400, video_url, "", false, "ARCHIVED");
 }
+
+$('.stars .glyphicon-star').click(function() {
+    var stars = $('.stars .glyphicon-star');
+    var score = stars.index(this) + 1;
+    $('#score').val(score);
+    for (var i = 0; i < 5; i++) {
+        if (i <= score - 1)
+            $(stars[i]).addClass("green");
+        else
+            $(stars[i]).removeClass("green");
+    }
+    console.log(score);
+});

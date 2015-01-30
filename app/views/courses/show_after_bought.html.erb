@@ -40,31 +40,35 @@
             <div class="section">
                 <h4>评价</h4>
                 <div class="computed">
-                    <div class="comment_user">
-                        <%# TODO fake %>
-                        <div class="avatar_wrap">
-                            <%= image_tag "people-1.jpg" %>
+                    <%= form_tag "/accounts/courses/review" do %>
+                        <%= hidden_field_tag :score, 5 %>
+                        <%= hidden_field_tag :course_id, @course.id %>
+                        <div class="comment_user">
+                            <%# TODO fake %>
+                            <div class="avatar_wrap">
+                                <%= image_tag "people-1.jpg" %>
+                            </div>
                         </div>
-                    </div>
-                    <div class="comment_body">
-                        <div class="grade">
-                            满意程度
-                            <span class="starts">
+                        <div class="comment_body">
+                            <div class="grade">
+                                满意程度
+                            <span class="stars">
                                 <% 5.times do %>
                                     <span class="glyphicon glyphicon-star green"></span>
                                 <% end %>
                             </span>
-                            5 好评
+                                5 好评
+                            </div>
+                            <%= text_area_tag :course_review %>
                         </div>
-                        <%= text_area_tag :course_review %>
-                    </div>
-                    <div class="clear"></div>
-                    <div>
-                        <div class="share_tag">
-                            <%# TODO %>
+                        <div class="clear"></div>
+                        <div>
+                            <div class="share_tag">
+                                <%# TODO %>
+                            </div>
+                            <%= submit_tag "提交", class: "btn btn-sm btn-success", id: "submit" %>
                         </div>
-                        <%= submit_tag "提交", class: "btn btn-sm btn-success", id: "submit" %>
-                    </div>
+                    <% end %>
                     <div class="clear"></div>
                 </div>
 

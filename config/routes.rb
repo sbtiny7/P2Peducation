@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       collection do
         get 'new/online' => 'courses#new_online'
         get 'new/offline' => 'courses#new_offline'
+        post 'review' => 'courses#review'
       end
     end
 
