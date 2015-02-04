@@ -1,6 +1,5 @@
 class Accounts::MainController < ApplicationController
     before_action :authenticate_user!
-    layout 'accounts'
 
     def index #已报名课程
     end

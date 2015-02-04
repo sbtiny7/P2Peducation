@@ -12,8 +12,8 @@
                 </div>
             </div>
             <div class="settings">
-                <span class="personal">个人设置</span>
-                <span>修改密码</span>
+                <span class="personal"><%= link_to "个人设置", "/accounts/config" %></span>
+                <span><%= link_to "修改密码", "/accounts/edit" %></span>
             </div>
             <%# TODO add course account %>
             <%# TODO add icon %>
@@ -44,7 +44,7 @@
         </div>
         <% if @courses.length == 0 %>
         <div class="no_class">
-            你还没有参加任何课程 <a class="btn btn-success btn-sm">浏览课程</a>
+            你还没有参加任何课程 <a class="btn btn-success btn-sm" href="/">浏览课程</a>
         </div>
         <% else %>
             <div class="my_classes">
