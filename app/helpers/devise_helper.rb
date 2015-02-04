@@ -1,5 +1,5 @@
 module DeviseHelper
   def devise_error_messages!
-    'KABOOM!'
+    resource.errors.full_messages.join(", ")
   end
 end
