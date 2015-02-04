@@ -58,8 +58,14 @@ $(function() {
     })
     $('#order').submit(function() {
         if ($("[name='courses[]']:checked").length == 0) {
-            alert("请至少选择一件商品")
+            alert("请至少选择一件商品");
             return false;
         }
     })
-})
+    $(".glyphicon-remove").click(function(){
+        $(this).closest("tr").remove();
+        if ($(".order_info tr").length <= 1) {
+            $(".order_info").html('<div class="no_goods"><div>购物车没有课程啦</div><div><a href="/">选择其他课程></a></div></div>')
+        }
+    })
+});

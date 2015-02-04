@@ -25,7 +25,7 @@
 }
 .table_info {
   td {
-    padding: 10px 10px 0 10px;
+    padding: 10px;
   }
   .top {
      vertical-align: top;
@@ -137,5 +137,16 @@
 .agree_error {
     margin-top: 10px;
     label {
+    }
+}
+.no_goods {
+    padding-left: 340px;
+    padding-top: 20px;
+    a {
+        color: #005ea7;
+        &:hover {
+            color: #E4393C;
+            text-decoration: underline;
+        }
     }
 }
