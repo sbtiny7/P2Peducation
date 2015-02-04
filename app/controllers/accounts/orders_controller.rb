@@ -50,7 +50,9 @@ class Accounts::OrdersController < ApplicationController
                 case result_params[:trade_status]
                     when 'TRADE_SUCCESS'
                         @order.pay
-                        render :partial => 'join_info', locals: {order: @order} and return
+                        #render :partial => 'join_info', locals: {order: @order} and return
+                        #TODO 购买成功页面
+                        return redirect_to  @order.resource.link_url
                     when 'TRADE_FINISHED'
                         logger.info '超时或者交易失败'
                         redirect_to accounts_course_path(@order) and return
