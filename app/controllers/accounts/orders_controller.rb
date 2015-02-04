@@ -62,6 +62,14 @@ class Accounts::OrdersController < ApplicationController
         redirect_to root_path
     end
 
+    def payment_done
+        @order = Order.last
+        @course = @order.resource
+        @qr = RQRCode::QRCode.new(
+            "http://#{Settings.host}/public/courses/#{@course.id}",
+            :size => 4, :level => :h )
+    end
+
     #
     #def settle
     #  @order = current_user.orders.where(:trade_no => params[:trade_no]).first

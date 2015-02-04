@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag "payment_done" %>
+<div class="outer">
+    <div class="inner">
+        <div class="title">报名成功</div>
+        <div class="body">
+            <div class="welcome_message"></div>
+            <div class="scan">
+                <div class="qr_code">
+                    <table>
+                        <% @qr.modules.each_index do |x| %>
+                            <tr>
+                                <% @qr.modules.each_index do |y| %>
+                                    <% if @qr.dark?(x,y) %>
+                                        <td class="black"/>
+                                    <% else %>
+                                        <td class="white"/>
+                                    <% end %>
+                                <% end %>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+                <div>
+                    <div class="wonderful">
+                        <p><span class="wechat">微信</span>扫一扫</p>
+                        <p>分享－才精彩</p>
+                    </div>
+                    <div class="share">
+                        <p>分享此活动 -&#62;</p>
+                        <p>到微信朋友圈</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
