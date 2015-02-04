@@ -50,35 +50,37 @@
 
             <div class="category-col">
               <% 2.times do %>
-                <div class="category-item">
-                  <div class="category-course-image">
-                    <%= image_tag "category-course-image.png" %>
-                  </div>
-                  
-                  <a href="#">
-                    <%= image_tag "people-3.jpg", class: "category-avatar" %>
-                  </a>
+                    <a href="/public/courses/1">
+                        <div class="category-item">
+                            <div class="category-course-image">
+                                <%= image_tag "category-course-image.png" %>
+                            </div>
 
-                  <div class="category-course-intro-container">
-                    <span class="category-course-intro">Have Fun with Voice Lesson</span>
-                  </div>
+                            <a href="#">
+                                <%= image_tag "people-3.jpg", class: "category-avatar" %>
+                            </a>
 
-                  <div class="category-teacher-container">
-                    <span class="category-teacher">David</span>
-                  </div>
+                            <div class="category-course-intro-container">
+                                <span class="category-course-intro">Have Fun with Voice Lesson</span>
+                            </div>
 
-                  <div class="category-review-container">
-                    <div class="stars">
-                      <% 5.times do %>
-                        <span class="glyphicon glyphicon-star green"></span>
-                      <% end %>
-                    </div>
-                    <div class="price">
-                      $19.99
-                    </div>
-                  </div>
-                </div>
-              
+                            <div class="category-teacher-container">
+                                <span class="category-teacher">David</span>
+                            </div>
+
+                            <div class="category-review-container">
+                                <div class="stars">
+                                    <% 5.times do %>
+                                        <span class="glyphicon glyphicon-star green"></span>
+                                    <% end %>
+                                </div>
+                                <div class="price">
+                                    $19.99
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
               <% end %>
             </div>
           
