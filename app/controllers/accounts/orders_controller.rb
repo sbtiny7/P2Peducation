@@ -13,7 +13,11 @@ class Accounts::OrdersController < ApplicationController
         @order = current_user.orders.build
         @order.set_values @course
         @pending_order = current_user.pending_order @course.id
-        render 'new'
+        if current_user.has_bought? @course.id
+            redirect_to course_path(@course)
+        else
+            render 'new'
+        end
     end
 
     def create

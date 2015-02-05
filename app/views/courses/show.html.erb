@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="course_type">
-                        <%= @course.course_type %>
+                        <%= t @course.course_type, scope: "accounts"%>
                     </div>
                     <div class="start_time">
                         <span class="glyphicon glyphicon-time"></span> <%= @course.start_time %>
