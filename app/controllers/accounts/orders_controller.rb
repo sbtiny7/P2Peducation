@@ -14,7 +14,7 @@ class Accounts::OrdersController < ApplicationController
         @order.set_values @course
         @pending_order = current_user.pending_order @course.id
         if current_user.has_bought? @course.id
-            redirect_to course_path(@course)
+            redirect_to @course.link_url
         else
             render 'new'
         end
