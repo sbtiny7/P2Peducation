@@ -28,6 +28,7 @@
 #  updated_at             :datetime
 #  authentication_token   :string(255)
 #  captcha                :string(255)
+#  real_name              :string(255)                            # 真实姓名
 #
 # Indexes
 #

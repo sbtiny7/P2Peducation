@@ -1,6 +1,6 @@
 class Accounts::MainController < ApplicationController
     before_action :authenticate_user!
-
+    layout "accounts"
     def index #已报名课程
     end
 
@@ -11,7 +11,7 @@ class Accounts::MainController < ApplicationController
     def update_account
         if current_user.update(user_params)
             flash.now[:notice] = '账号设置成功'
-            render "account"
+            render "account", layout: "accounts"
         else
             render :action => :config_account
         end
@@ -52,6 +52,7 @@ class Accounts::MainController < ApplicationController
     def user_params
         if params[:user]
             params.require(:user).permit(
+                :real_name,
                 :username,
                 :email,
                 :phone,

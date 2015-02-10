@@ -2,7 +2,7 @@ class Accounts::DashboardController <  ApplicationController
   before_action :authenticate_user!
   def learning
     @courses = current_user.bought_courses
-    render "union_courses.html.erb"
+    render "union_courses.html.erb", layout: "accounts"
   end
   def pending
     @courses = current_user.learning_courses

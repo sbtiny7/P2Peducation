@@ -1,17 +1,15 @@
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">上传头像</h3>
+<%= javascript_include_tag "lib/jquery.jcrop" %>
+<%= stylesheet_link_tag "upload_avatar" %>
+<div class="upload_avatar">
+  <div class="">
+    <h3 class="">上传头像</h3>
   </div>
-  <div class="panel-body">
+  <div class="body">
     <div class="row">
       <div class="col-md-6">
         <div class="avatar_preview_wrapper">
           <div class="avatar_preview">
-          </div>
-          <div class="avatar_preview">
-            <%= image_tag "#{current_user.avatar.url}?#{@timestamp}", :class => "avatar_preview", :width => 400, :height => 400 %>
-          </div>
-          <div class="avatar_preview">
+            <%= image_tag "#{current_user.avatar.url}?#{@timestamp}", :class => "avatar_preview", :width => 200 %>
           </div>
         </div>
       </div>
@@ -32,90 +30,16 @@
         </div>
 
         <div class="form-group text-right">
-          <%= f.submit '提交', class: 'btn btn-danger' %>
+          <%= f.submit '更新头像', class: 'btn btn-danger' %>
         </div>
 
-        <div style="width:100px;height:100px;overflow:hidden;margin-left:50px">
+        <div style="width:100px;height:100px;overflow:hidden;">
           <%= image_tag "#{current_user.avatar.url}?#{@timestamp}", :id => "crop_preview" %>
         </div>
         <%= f.hidden_field :avatar_x, :id => :avatar_x %>
         <%= f.hidden_field :avatar_y, :id => :avatar_y %>
         <%= f.hidden_field :avatar_w, :id => :avatar_w %>
         <%= f.hidden_field :avatar_h, :id => :avatar_h %>
-
-        <!--div class="well">
-          用于调试
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :fw, '图片w', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :fw, nil, class: "form-control" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :fh, '图片h', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :fh, nil, class: "form-control" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :iw, '元素w', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :iw, nil, class: "form-control" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :ih, '元素h', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :ih, nil, class: "form-control" %>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :x, '选区x', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :x, nil, class: "form-control" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :y, '选区y', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :y, nil, class: "form-control" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :w, '选区w', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :w, nil, class: "form-control" %>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-btn">
-                    <%#= label_tag :h, '选区h', class: 'btn btn-info' %>
-                  </span>
-                  <%#= text_field_tag :h, nil, class: "form-control" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div-->
 
         <% end %>
       </div>
@@ -133,7 +57,7 @@ var img = $('img.avatar_preview')[0];
 img.onload = function () {
   $('#fw').val(img.naturalWidth);
   $('#fh').val(img.naturalHeight);
-  $('img.avatar_preview').removeAttr("width").removeAttr("height").removeAttr("style").css("max-width", "400px").css("max-height", "400px");
+  $('img.avatar_preview').removeAttr("width").removeAttr("height").removeAttr("style").css("width", "200px");
   crop_image();
 }
 var ie_preview_wrapper = $('div.avatar_preview_wrapper');

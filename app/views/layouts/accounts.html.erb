@@ -6,27 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= content_for?(:title) ? yield(:title) : "教育直播" %></title>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag "accounts", :media => "all" %>
-  <%= javascript_include_tag "accounts" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "sidebar", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= yield :head %>
 </head>
 <body>
   <%#= bootstrap_flash %>
   <%= render "layouts/header" %>
 
-  <div class="container our_container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="sidebar">
-          <%= render "layouts/sidebar" %>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <div  class="content">
+  <div class="view-content">
+      <%= render "layouts/new_sidebar"  %>
+      <div class="account_middle">
           <%= yield %>
-        </div>
       </div>
-    </div>
   </div>
   <%= render "layouts/footer" %>
   <%= yield :foot %>

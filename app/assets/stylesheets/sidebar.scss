@@ -1,0 +1,59 @@
+@import "variables";
+.account_left {
+    float: left;
+    width: 191px;
+    background-color: #fff;
+}
+.account_middle {
+    float: left;
+    width: 696px;
+    margin-left: 12px;
+}
+.avatar_wrap {
+    float: left;
+}
+.user_avatar {
+    padding: 10px;
+}
+.username {
+    padding-left: 65px;
+    color: $main_color;
+    font-size: 16px;
+    height: 50px;
+}
+.ad {
+    img {
+        width: 100%;
+    }
+}
+.view-content {
+    margin-top: 20px;
+}
+.settings {
+    .personal {
+        border-right: 1px solid $border_color;
+    }
+    span {
+        padding: 7px 16px;
+    }
+    border-bottom: 3px solid $border_color;
+    border-top: 1px solid $border_color;
+    padding: 5px 0;
+}
+
+.pane {
+    h4 {
+        font-size: 15px;
+    }
+    color: $main_color;
+    padding-left: 40px;
+}
+.sub_class {
+    padding-left: 20px;
+}
+
+.user_avatar {
+    .avatar_wrap {
+        width: 50px;
+    }
+}

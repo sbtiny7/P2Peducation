@@ -1,57 +1,23 @@
-<%= stylesheet_link_tag "learning"  %>
-<%= javascript_include_tag "learning"  %>
-<div class="view-content">
-    <div class="account_left">
-        <div class="sign">
-            <div class="user_avatar">
-                <div class="avatar_wrap">
-                    <%= image_tag "people-2.jpg" %>
-                </div>
-                <div class="username">
-                    <%= current_user.username %>
-                </div>
-            </div>
-            <div class="settings">
-                <span class="personal"><%= link_to "个人设置", "/accounts/config" %></span>
-                <span><%= link_to "修改密码", "/accounts/edit" %></span>
-            </div>
-            <%# TODO add course account %>
-            <%# TODO add icon %>
-            <div class="pane">
-                <div>
-                    <h4>我的课程</h4>
-                    <div class="sub_class">
-                        <div>我学的课</div>
-                        <div>我教的课</div>
-                    </div>
-                </div>
-                <div>
-                    <h4>课程消费</h4>
-                </div>
-                <div>
-                    <h4>课程收入</h4>
-                </div>
-            </div>
-        </div>
+<% content_for :head do %>
+    <%= stylesheet_link_tag "learning"  %>
+    <%= javascript_include_tag "learning"  %>
+<% end %>
+
+<div class="ad">
+    <%= image_tag "account_learning.png" %>
+</div>
+<div class="learning">
+    <span class="active">正在学习</span>
+    <span>已学习</span>
+</div>
+<% if @courses.length == 0 %>
+    <div class="no_class">
+        你还没有参加任何课程 <a class="btn btn-success btn-sm" href="/">浏览课程</a>
     </div>
-    <div class="account_middle">
-        <div class="ad">
-            <%= image_tag "account_learning.png" %>
-        </div>
-        <div class="learning">
-            <span class="active">正在学习</span>
-            <span>已学习</span>
-        </div>
-        <% if @courses.length == 0 %>
-        <div class="no_class">
-            你还没有参加任何课程 <a class="btn btn-success btn-sm" href="/">浏览课程</a>
-        </div>
-        <% else %>
-            <div class="my_classes">
-                <% @courses.each do |item|%>
-                    <%= render partial: "item", locals: {item: item} %>
-                <% end %>
-            </div>
+<% else %>
+    <div class="my_classes">
+        <% @courses.each do |item|%>
+            <%= render partial: "item", locals: {item: item} %>
         <% end %>
     </div>
-</div>
+<% end %>

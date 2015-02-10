@@ -1,0 +1,35 @@
+<div class="account_left">
+    <div class="sign">
+        <div class="user_avatar">
+            <a href="/accounts/config_avatar">
+                <div class="avatar_wrap">
+                    <%= image_tag current_user.avatar.url(:crop)%>
+                </div>
+            </a>
+            <div class="username">
+                <%= current_user.username %>
+            </div>
+        </div>
+        <div class="settings">
+            <span class="personal"><%= link_to "个人设置", "/accounts/config" %></span>
+            <span><%= link_to "修改密码", "/accounts/edit" %></span>
+        </div>
+        <%# TODO add course account %>
+        <%# TODO add icon %>
+        <div class="pane">
+            <div>
+                <h4>我的课程</h4>
+                <div class="sub_class">
+                    <div>我学的课</div>
+                    <div>我教的课</div>
+                </div>
+            </div>
+            <div>
+                <h4>课程消费</h4>
+            </div>
+            <div>
+                <h4>课程收入</h4>
+            </div>
+        </div>
+    </div>
+</div>
