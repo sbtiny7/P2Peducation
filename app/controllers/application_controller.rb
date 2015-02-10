@@ -62,4 +62,8 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  def detect_phone
+      request.variant = :mobile if browser.mobile?
+  end
+
 end

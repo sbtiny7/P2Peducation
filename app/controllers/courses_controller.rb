@@ -1,6 +1,7 @@
 # encoding: utf-8
 class CoursesController < ApplicationController
     before_filter :authenticate_user!, :except => [:show, :index]
+    before_action :detect_phone, only: [:show]
     def index
         conditions = {:status => 1}
         conditions = conditions.merge(:course_type => params[:course_type]) if params[:course_type] # TODO 讨论：是否在直播中的状态？预告状态？
@@ -27,6 +28,10 @@ class CoursesController < ApplicationController
         if user_signed_in?
             @tickets_bought = current_user.has_bought? @course.id
             @course_owner = (current_user.id == @course.user.id)
+        end
+        respond_to do |format|
+            format.html 
+            format.html.phone
         end
     end
 
